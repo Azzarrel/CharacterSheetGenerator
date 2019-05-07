@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Table>
+  <Attributes>
+    <Name>Wahrnehmung</Name>
+    <Tag>WA</Tag>
+    <Value>8</Value>
+    <Color>58880</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Willenskraft</Name>
+    <Tag>WK</Tag>
+    <Value>8</Value>
+    <Color>13120050</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Klugheit</Name>
+    <Tag>KL</Tag>
+    <Value>8</Value>
+    <Color>11154120</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Intuition</Name>
+    <Tag>IN</Tag>
+    <Value>8</Value>
+    <Color>7923400</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Charisma</Name>
+    <Tag>CH</Tag>
+    <Value>8</Value>
+    <Color>657930</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Fingerfertigkeit</Name>
+    <Tag>FF</Tag>
+    <Value>8</Value>
+    <Color>15329546</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Gewandtheit</Name>
+    <Tag>GE</Tag>
+    <Value>8</Value>
+    <Color>6594790</Color>
+  </Attributes>
+  <Attributes>
+    <Name>Stärke</Name>
+    <Tag>ST</Tag>
+    <Value>8</Value>
+    <Color>16760430</Color>
+  </Attributes>
+  <CharacterInformation>
+    <Name>Name</Name>
+    <Value />
+    <RowPosition>0</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Familienname</Name>
+    <Value />
+    <RowPosition>1</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Geburtstag</Name>
+    <Value />
+    <RowPosition>1</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Hautfarbe</Name>
+    <Value />
+    <RowPosition>2</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Alter</Name>
+    <Value />
+    <RowPosition>2</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Geschlecht</Name>
+    <Value />
+    <RowPosition>2</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Spezies</Name>
+    <Value />
+    <RowPosition>3</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Größe</Name>
+    <Value />
+    <RowPosition>3</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Gewicht</Name>
+    <Value />
+    <RowPosition>3</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Haarfarbe</Name>
+    <Value />
+    <RowPosition>4</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Augenfarbe</Name>
+    <Value />
+    <RowPosition>4</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Kultur</Name>
+    <Value />
+    <RowPosition>5</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Profession</Name>
+    <Value />
+    <RowPosition>5</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Titel</Name>
+    <Value />
+    <RowPosition>6</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Sozialstatus</Name>
+    <Value />
+    <RowPosition>6</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Charakteristika</Name>
+    <Value />
+    <RowPosition>7</RowPosition>
+  </CharacterInformation>
+  <CharacterInformation>
+    <Name>Sonstiges</Name>
+    <Value />
+    <RowPosition>8</RowPosition>
+  </CharacterInformation>
+  <SkillGroups>
+    <Name>Körpertalente</Name>
+    <Grouping>Left</Grouping>
+  </SkillGroups>
+  <SkillGroups>
+    <Name>Wissenstalente</Name>
+    <Grouping>Left</Grouping>
+  </SkillGroups>
+  <Skills>
+    <Name>Klettern</Name>
+    <Requirement>FF/KO/ST</Requirement>
+    <Value>0</Value>
+    <Difficulty>B</Difficulty>
+    <Routine />
+    <Comment />
+    <Category>Körpertalente</Category>
+    <Grouping>Left</Grouping>
+  </Skills>
+  <Skills>
+    <Name>Akrobatik</Name>
+    <Requirement>GE/GE/ST</Requirement>
+    <Value>1</Value>
+    <Difficulty>B</Difficulty>
+    <Routine />
+    <Comment />
+    <Category>Körpertalente</Category>
+    <Grouping>Left</Grouping>
+  </Skills>
+  <Skills>
+    <Name>Schwmimmen</Name>
+    <Requirement>KO/KO/ST</Requirement>
+    <Value>0</Value>
+    <Difficulty>B</Difficulty>
+    <Routine />
+    <Comment />
+    <Category>Körpertalente</Category>
+    <Grouping>Left</Grouping>
+  </Skills>
+  <Skills>
+    <Name>Reiten</Name>
+    <Requirement>WK/GE/ST</Requirement>
+    <Value>0</Value>
+    <Difficulty>B</Difficulty>
+    <Routine />
+    <Comment />
+    <Category>Körpertalente</Category>
+    <Grouping>Left</Grouping>
+  </Skills>
+  <Skills>
+    <Name>Schleichen</Name>
+    <Requirement>WK/GE/KO</Requirement>
+    <Value>0</Value>
+    <Difficulty>B</Difficulty>
+    <Routine />
+    <Comment />
+    <Category>Körpertalente</Category>
+    <Grouping>Left</Grouping>
+  </Skills>
+  <Skills>
+    <Name>Expertise</Name>
+    <Requirement>WA/IN/KL</Requirement>
+    <Value>0</Value>
+    <Difficulty>C</Difficulty>
+    <Routine />
+    <Comment />
+    <Category>Wissenstalente</Category>
+    <Grouping>Left</Grouping>
+  </Skills>
+  <TraitCategory>
+    <Name>Körpereigenschaften</Name>
+    <TraitCategory_Id>0</TraitCategory_Id>
+  </TraitCategory>
+  <TraitCategory>
+    <Name>Charaktereigenschaften</Name>
+    <TraitCategory_Id>1</TraitCategory_Id>
+  </TraitCategory>
+  <Trait>
+    <Name>Arrogant</Name>
+    <Description>blubb</Description>
+    <Trait_Id>0</Trait_Id>
+    <TraitCategory_Id>0</TraitCategory_Id>
+  </Trait>
+  <Trait>
+    <Name>Feige</Name>
+    <Description>blubb</Description>
+    <Trait_Id>1</Trait_Id>
+    <TraitCategory_Id>0</TraitCategory_Id>
+  </Trait>
+  <Trait>
+    <Name>Feige</Name>
+    <Description>blubb</Description>
+    <Trait_Id>2</Trait_Id>
+    <TraitCategory_Id>1</TraitCategory_Id>
+  </Trait>
+  <TraitModifier>
+    <NameLink>Charisma</NameLink>
+    <TableLink>Attribute</TableLink>
+    <Value>1</Value>
+    <Trait_Id>0</Trait_Id>
+  </TraitModifier>
+  <TraitModifier>
+    <NameLink>Willenskraft</NameLink>
+    <TableLink>Attribute</TableLink>
+    <Value>-1</Value>
+    <Trait_Id>1</Trait_Id>
+  </TraitModifier>
+  <TraitModifier>
+    <NameLink>Willenskraft</NameLink>
+    <TableLink>Attribute</TableLink>
+    <Value>-1</Value>
+    <Trait_Id>2</Trait_Id>
+  </TraitModifier>
+  <StatusValues>
+    <Name>Lebenspunkte</Name>
+    <Base>7</Base>
+    <Standard>32</Standard>
+    <Modifiers>0</Modifiers>
+    <Bonus>0</Bonus>
+    <Value>32</Value>
+  </StatusValues>
+  <StatusValues>
+    <Name>Ausdauer</Name>
+    <Base>12</Base>
+    <Standard>30</Standard>
+    <Modifiers>0</Modifiers>
+    <Bonus>0</Bonus>
+    <Value>30</Value>
+  </StatusValues>
+  <StatusValues>
+    <Name>Mana</Name>
+    <Base>5</Base>
+    <Standard>16</Standard>
+    <Modifiers>0</Modifiers>
+    <Bonus>0</Bonus>
+    <Value>16</Value>
+  </StatusValues>
+  <StatusValues>
+    <Name>Agilität</Name>
+    <Base>4</Base>
+    <Standard>7</Standard>
+    <Modifiers>-2</Modifiers>
+    <Bonus>0</Bonus>
+    <Value>5</Value>
+  </StatusValues>
+  <StatusValues>
+    <Name>Zähigkeit</Name>
+    <Base>-4</Base>
+    <Standard>1</Standard>
+    <Modifiers>0</Modifiers>
+    <Bonus>0</Bonus>
+    <Value>1</Value>
+  </StatusValues>
+  <StatusValues>
+    <Name>Initiative</Name>
+    <Base>2</Base>
+    <Standard>2</Standard>
+    <Modifiers>0</Modifiers>
+    <Bonus>1</Bonus>
+    <Value>3</Value>
+  </StatusValues>
+</Table>

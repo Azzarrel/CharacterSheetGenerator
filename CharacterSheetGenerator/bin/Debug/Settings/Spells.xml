@@ -1,0 +1,23 @@
+<PlayerData>
+<Spells>	
+		<Name>Dornenschild</Name>
+		<Type>f</Type>
+		<Requirement>FF/GE</Requirement>
+		<Value>0</Value>
+		<Damage>1D6</Damage>
+		<MagicDamage>3</MagicDamage>
+		<ArmorPenetration>1</ArmorPenetration>
+		<Impulse></Impulse>
+		<Range></Range>
+		<Duration></Duration>
+		<FlavorText></FlavorText>
+	</Spells>	
+	<Rituals>	
+		<Name>Schild</Name>
+		<Type>f</Type>
+		<Requirement>FF/GE</Requirement>
+		<Value>0</Value>
+		<Duration></Duration>
+		<FlavorText></FlavorText>
+	</Rituals>	
+</PlayerData>

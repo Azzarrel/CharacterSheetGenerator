@@ -8,39 +8,19 @@
     <Grid>
         <Grid.Resources>
             <!-- Header Styles -->
-            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleName">
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="FontWeight" Value="Bold" />
+            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleName" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="210" />
-                <Setter Property="Background" Value="White" />
-                <Setter Property="BorderBrush" Value="Black" />
-                <Setter Property="BorderThickness" Value="0,2,0,2" />
             </Style>
-            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleSkillCheck">
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="FontWeight" Value="Bold" />
+            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleSkillCheck" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="70" />
-                <Setter Property="Background" Value="White" />
-                <Setter Property="BorderBrush" Value="Black" />
-                <Setter Property="BorderThickness" Value="0,2,0,2" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </Style>
-            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleValue">
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="FontWeight" Value="Bold" />
+            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleValue" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="40" />
-                <Setter Property="Background" Value="White" />
-                <Setter Property="BorderBrush" Value="Black" />
-                <Setter Property="BorderThickness" Value="0,2,0,2" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </Style>
-            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleComment">
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="FontWeight" Value="Bold" />
+            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleComment" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="240" />
-                <Setter Property="Background" Value="White" />
-                <Setter Property="BorderBrush" Value="Black" />
-                <Setter Property="BorderThickness" Value="0,2,0,2" />
             </Style>
       
             <!-- Category -->          
@@ -125,7 +105,7 @@
             </Style>
         </Grid.Resources>
 
-        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" >
+        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
             <DataGrid.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>

@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:CharacterSheetGenerator"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="DataGridColumnHeader" x:Key="DefaultHeaderStyle">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="0,2,0,2" />
+        </Style>
     </Application.Resources>
 </Application>

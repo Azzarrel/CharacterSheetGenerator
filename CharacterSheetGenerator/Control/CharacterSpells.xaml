@@ -23,7 +23,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel>
                     <Label FontSize="26" FontWeight="Bold">Kampftechniken</Label>
-                    <DataGrid Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" >
+                    <DataGrid Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                     <DataGrid.Columns>
                         <!--<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Name"/>-->
                         <DataGridComboBoxColumn Width="200" Header="Name" SelectedItemBinding="{Binding Weapon}" DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}"/>
@@ -58,7 +58,7 @@
             </Grid>
             <StackPanel Grid.Row="1">
                 <Label FontSize="26" FontWeight="Bold">Zaubersprüche</Label>
-            <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Spells, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" >
+                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Spells, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Name"/>-->
                     <DataGridTextColumn Binding="{Binding Name}"  IsReadOnly="True"/>
@@ -69,7 +69,7 @@
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <Label FontSize="26" FontWeight="Bold">Rituale</Label>
-                <DataGrid Grid.Row="2" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Rituals, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" >
+                <DataGrid Grid.Row="2" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Rituals, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                     <DataGrid.Columns>
                         <!--<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Name"/>-->
                         <DataGridTextColumn Binding="{Binding Name}"  IsReadOnly="True"/>

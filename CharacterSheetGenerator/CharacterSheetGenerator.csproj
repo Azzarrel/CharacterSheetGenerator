@@ -165,11 +165,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XML\Default.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XML\Attributes.xml" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

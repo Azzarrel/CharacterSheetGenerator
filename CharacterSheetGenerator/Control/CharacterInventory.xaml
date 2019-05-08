@@ -26,7 +26,7 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </Style>
         </Grid.Resources>
-        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray">
+        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True" Header="Name"/>
                 <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True"/>

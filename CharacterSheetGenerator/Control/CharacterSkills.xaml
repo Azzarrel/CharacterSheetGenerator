@@ -8,15 +8,8 @@
     <Grid>
         <Grid.Resources>
             <!-- Header Styles -->
-            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleName" BasedOn="{StaticResource DefaultHeaderStyle}">
-                <Setter Property="Width" Value="210" />
-            </Style>
             <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleSkillCheck" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="70" />
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-            </Style>
-            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleValue" BasedOn="{StaticResource DefaultHeaderStyle}">
-                <Setter Property="Width" Value="40" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </Style>
             <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleComment" BasedOn="{StaticResource DefaultHeaderStyle}">
@@ -31,77 +24,20 @@
             </Style>
             
             <!-- Cell Styles -->
-            <Style TargetType="DataGridCell" x:Key="CommentGridCellStyleBold">
+            <Style TargetType="DataGridCell" x:Key="CommentGridCellStyle">
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="FontWeight" Value="UltraLight" />
                 <Setter Property="Width" Value="240" />
-            </Style>
-            <Style TargetType="DataGridCell" x:Key="SkillGridCellStyleBold">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="DemiBold" />
-                <Setter Property="Width" Value="210" />
-            </Style>
-            <Style TargetType="DataGridCell" x:Key="ValueGridCellStyle">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Width" Value="40" />
-                <Setter Property="Height" Value="27 "/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type DataGridCell}">
-                            <Grid>
-                                <TextBox Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content.Text}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" BorderThickness="0">
-                                    <TextBox.Style>
-                                        <Style TargetType="{x:Type TextBox}">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Foreground" Value="DarkCyan" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Style>
-                                </TextBox>
-                            </Grid>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            
-            <Style TargetType="DataGridCell" x:Key="RoutineGridCellStyle">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type DataGridCell}">
-                            <Grid Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}">
-                                <TextBlock Text="{Binding Routine}" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                </TextBlock>
-                            </Grid>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Width" Value="40" />
-                <Setter Property="Height" Value="27 "/>
             </Style>
             <Style TargetType="DataGridRowHeader" x:Key="InvisibleRowHeader">
                 <Setter Property="Background" Value="White" />
                 <Setter Property="Width" Value="0" />
             </Style>
-            <Style TargetType="DataGridCell" x:Key="SkillCheckGridCellStyle">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type DataGridCell}">
-                            <Grid Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}">
-                                <TextBlock Text="{Binding Requirement}" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                                </TextBlock>
-                            </Grid>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
+            <Style TargetType="DataGridCell" x:Key="SkillCheckGridCellStyle" BasedOn="{StaticResource BaseGridCellStyleGray}">
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="FontStyle" Value="Italic" />
-                <Setter Property="Width" Value="70"/>
-                <Setter Property="Height" Value="27"/>
+                <Setter Property="FontWeight" Value="Thin" />
+                <Setter Property="Width" Value="70" />
             </Style>
         </Grid.Resources>
 
@@ -126,11 +62,11 @@
                 </GroupStyle>
             </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True" HeaderStyle="{StaticResource HeaderStyleName}" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource ItemNameCellStyle}" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" Header="Name"/>
                 <DataGridTextColumn Binding="{Binding Requirement}" CellStyle="{StaticResource SkillCheckGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}" IsReadOnly="True" Header="Probe"/>
-                <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource ValueGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleValue}" Header="Fw."/>
-                <DataGridTextColumn Binding="{Binding Routine}" CellStyle="{StaticResource RoutineGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleValue}" IsReadOnly="True" Header="R."/>
-                <DataGridTextColumn Binding="{Binding Comment}" CellStyle="{StaticResource CommentGridCellStyleBold}" HeaderStyle="{StaticResource HeaderStyleComment}"  Header="     Anmerkungen"/>
+                <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" Header="Fw."/>
+                <DataGridTextColumn Binding="{Binding Routine}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" IsReadOnly="True" Header="R."/>
+                <DataGridTextColumn Binding="{Binding Comment}" CellStyle="{StaticResource CommentGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleComment}"  Header="     Anmerkungen"/>
             </DataGrid.Columns>
         </DataGrid>
 

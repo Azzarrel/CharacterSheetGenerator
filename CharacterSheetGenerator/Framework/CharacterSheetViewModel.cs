@@ -30,7 +30,13 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public List<AttributeModel> SpecialAttributes
+        public List<ModelObject> ModelObjects
+        {
+         get { return Get<List<ModelObject>>(); }
+         set { Set(value); }
+        }
+
+    public List<AttributeModel> SpecialAttributes
         {
             get { return Get<List<AttributeModel>>(); }
             set { Set(value); }
@@ -168,6 +174,8 @@ namespace CharacterSheetGenerator
                 Data.Merge(l_Data);
             }
 
+            ModelObjects = new List<ModelObject>();
+
             //Alle Tabellen aus dem DateSet in Listen umwandeln
             CreateAttributes();
             CreateSpecialAttributes();
@@ -216,23 +224,30 @@ namespace CharacterSheetGenerator
         private void CreateAttributes()
         {
 
-            List<AttributeModel> l_AttributeList = new List<AttributeModel>();
+           
             foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Base'"))
             {
-                AttributeModel attribute = new AttributeModel
-                {
-                    Name = row["Name"].ToString(),
-                    Tag = row["Tag"].ToString(),
-                    Base = double.Parse(row["Value"].ToString()),
-                    Value = double.Parse(row["Value"].ToString()),
-                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
+            AttributeModel attribute = new AttributeModel
+               {
+              Name = row["Name"].ToString(),
+              Tag = row["Tag"].ToString(),
+              Base = double.Parse(row["Value"].ToString()),
+              Value = double.Parse(row["Value"].ToString()),
+              Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
+              Special = false,
 
                 };
-                l_AttributeList.Add(attribute);
+                ModelObjects.Add(attribute);
                 attribute.PropertyChanged += Attribute_PropertyChanged;
             }
-            Attributes = l_AttributeList;
-        }
+ 
+      Attributes = ModelObjects.OfType<AttributeModel>().ToList().Where(a => a.Special == false).ToList();
+
+      //    return animals.Where(animal => animal is Cat)
+        //          .Select(animal => (Cat)animal);
+    
+
+  }
 
         /// <summary>
         /// Spezielle Attribute sind eigentlich StatusValues, die auf einigen Seiten bei den Attributen oben stehen.
@@ -240,7 +255,7 @@ namespace CharacterSheetGenerator
         private void CreateSpecialAttributes()
         {
 
-            List<AttributeModel> l_AttributeList = new List<AttributeModel>();
+
             foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Special'"))
             {
                 AttributeModel attribute = new AttributeModel
@@ -250,13 +265,14 @@ namespace CharacterSheetGenerator
                     Base = double.Parse(row["Value"].ToString()),
                     Value = double.Parse(row["Value"].ToString()),
                     Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
+                    Special = true,
 
                 };
-                l_AttributeList.Add(attribute);
-                attribute.PropertyChanged += Attribute_PropertyChanged;
+        ModelObjects.Add(attribute);
+        attribute.PropertyChanged += Attribute_PropertyChanged;
             }
-            SpecialAttributes = l_AttributeList;
-        }
+      SpecialAttributes = ModelObjects.OfType<AttributeModel>().ToList().Where(a => a.Special == true).ToList();
+    }
 
         public void Attribute_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -814,16 +830,7 @@ namespace CharacterSheetGenerator
         public void CalculateAttributes(AttributeModel attr)
         {
 
-            foreach (TraitCategoryModel cat in Traits)
-            {
-                foreach (TraitModel t in cat.Traits)
-                {
-                    foreach (TraitModifierModel mod in t.Modifiers.Where(x => x.NameLink == attr.Name))
-                    {
-                        attr.Modifiers = int.Parse(Math.Round(mod.Value, 0).ToString());
-                    }
-                }
-            }
+            
             attr.Value = attr.Base + attr.Modifiers;
 
         }
@@ -914,11 +921,32 @@ namespace CharacterSheetGenerator
             weapon.BlockTotal = weapon.BlockBase + weapon.BlockBonus;
         }
 
-        #endregion Waffen
+    #endregion Waffen
 
-        #endregion Calculation
+    #region Traits
 
-        public void Button2_Click(object sender, EventArgs e)
+    public void CalculateTraitModifiers()
+    {
+      double mod = 0;
+      foreach (TraitModifierModel modifier in Traits.Select(c => c.Traits.Select(t => t.Modifiers)))
+      {
+        foreach (ModelObject model in ModelObjects.Where(m => m.Name == modifier.NameLink))
+        {
+          model.Modifiers = Math.Round(mod + modifier.Value, 0);
+        }
+
+      }
+    }
+      
+    
+
+
+    #endregion Traits
+
+
+    #endregion Calculation
+
+    public void Button2_Click(object sender, EventArgs e)
         {
             XmlTextWriter writer = new XmlTextWriter("Product2.xml", System.Text.Encoding.UTF8);
             writer.WriteStartDocument(true);

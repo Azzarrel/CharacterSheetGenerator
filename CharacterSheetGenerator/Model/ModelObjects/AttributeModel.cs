@@ -8,32 +8,8 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator 
 {
-    public class AttributeModel : NotifyBase
-    {
-
-        public string Name
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        public double Base
-        {
-            get { return Get<double>(); }
-            set { Set(value); }
-        }
-
-        public double Value
-        {
-            get { return Get<double>(); }
-            set { Set(value); }
-        }
-
-        public double Modifiers
-        {
-            get { return Get<double>(); }
-            set { Set(value); }
-        }
+    public class AttributeModel : ModelObject
+  {
 
         public SolidColorBrush Color
         {
@@ -47,5 +23,10 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+    public bool Special
+    {
+      get { return Get<bool>(); }
+      set { Set(value); }
     }
+  }
 }

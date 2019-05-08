@@ -167,4 +167,8 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>REM Kopiert die Dll in den Debug-Ordner, zum Testen
+xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

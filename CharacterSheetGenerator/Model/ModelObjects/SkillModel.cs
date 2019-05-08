@@ -51,6 +51,12 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public string Grouping
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
         public void SetRoutine(int value)
         {
             Routine = "";

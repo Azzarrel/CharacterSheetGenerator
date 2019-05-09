@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace CharacterSheetGenerator
 {
+  /// <summary>
+  /// Ähnlich zu der Parse-Methode by Typen gibt der Parser eine Methode mit der Objekte auch in nullable Datentypen geparst werden können
+  /// </summary>
     static class Parser
     {
 

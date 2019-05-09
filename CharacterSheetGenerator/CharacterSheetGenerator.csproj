@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GridHelpers.cs" />
     <Compile Include="Model\ModelObjects\ModelObject.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Control\CharacterInventory.xaml.cs">
@@ -80,9 +81,9 @@
     <Compile Include="Model\CombatSheet\WeaponSelectModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponModel.cs" />
     <Compile Include="Model\ModelObjects\StatusValueModel.cs" />
-    <Compile Include="Model\TraitModifierModel.cs" />
-    <Compile Include="Model\TraitModel.cs" />
-    <Compile Include="Model\TraitCategoryModel.cs" />
+    <Compile Include="Model\Traits\TraitModifierModel.cs" />
+    <Compile Include="Model\Traits\TraitModel.cs" />
+    <Compile Include="Model\Traits\TraitCategoryModel.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -137,7 +138,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\CharacterSheetViewModel.cs" />
+    <Compile Include="ViewModel\CharacterSheetViewModel.cs" />
     <Compile Include="ColorHandler.cs" />
     <Compile Include="NotifyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -165,7 +166,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM Kopiert die Dll in den Debug-Ordner, zum Testen

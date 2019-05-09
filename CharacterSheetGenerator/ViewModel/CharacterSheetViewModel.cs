@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml;
 
@@ -162,7 +163,7 @@ namespace CharacterSheetGenerator
 
         private void InitializeSettings()
         {
-
+      //Hier wird das ganze Xml-Zeugs aus dem Ordner ins DataSet geladen
             XmlReader xmlData;
             Data = new DataSet();
 
@@ -222,11 +223,31 @@ namespace CharacterSheetGenerator
 
         }
 
-        #region Initialization
+    #region Commands
 
-        #region Attributes
+   //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
+    private void CreateCommands()
+    {
+      BasicCommand = new RelayCommand(BasicMethod, CanExecute);
 
-        private void CreateAttributes()
+    }
+    public ICommand BasicCommand { get; private set; }
+    public void BasicMethod()
+    {
+      //hier könnte ihre Command-Spezifische Methode stehen
+    }
+    public bool CanExecute()
+    {
+      return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
+    }
+    #endregion Commands
+
+
+    #region Initialization
+
+    #region Attributes
+
+    private void CreateAttributes()
         {
 
 
@@ -259,7 +280,7 @@ namespace CharacterSheetGenerator
         /// </summary>
         private void CreateSpecialAttributes()
         {
-
+      //Aktuell immer schwarz, sonst Kirsten Ritzmann!
 
             foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Special'"))
             {
@@ -269,7 +290,7 @@ namespace CharacterSheetGenerator
                     Tag = row["Tag"].ToString(),
                     Base = double.Parse(row["Value"].ToString()),
                     Value = double.Parse(row["Value"].ToString()),
-                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
+                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))), 
                     Special = true,
 
                 };
@@ -387,7 +408,7 @@ namespace CharacterSheetGenerator
         public void StatusValue_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             StatusValueModel stv = sender as StatusValueModel;
-
+         
             switch (e.PropertyName)
             {
                 case "Base":
@@ -924,6 +945,11 @@ namespace CharacterSheetGenerator
 
         #endregion Calculation
 
+    /// <summary>
+    /// Speicher-Button, der oben rechts zurzeit einfach so hin-geflatscht ist und nicht mit dem Print Button (3) verwechselt werden sollte.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
         public void Button2_Click(object sender, EventArgs e)
         {
             XmlTextWriter writer = new XmlTextWriter("Product2.xml", System.Text.Encoding.UTF8);

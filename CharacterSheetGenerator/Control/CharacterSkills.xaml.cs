@@ -28,32 +28,6 @@ namespace CharacterSheetGenerator.Control
             }
         }
 
-        private DataSet m_SourceData = new DataSet();
-
-        public static readonly DependencyProperty SourceDataProperty =
-            DependencyProperty.Register("SourceData", typeof(DataSet), typeof(CharacterSkills),
-            new FrameworkPropertyMetadata(new DataSet(), OnSourceDataPropertyChanged));
-
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        public DataSet SourceData
-        {
-            get { return (DataSet)GetValue(SourceDataProperty); }
-            set { SetValue(SourceDataProperty, value); }
-        }
-
-        private static void OnSourceDataPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            CharacterSkills UserControl = obj as CharacterSkills;
-            UserControl.OnPropertyChanged("SourceData");
-            UserControl.OnSourceDataPropertyChanged(e);
-            UserControl.GroupSkills();
-        }
-
-        private void OnSourceDataPropertyChanged(DependencyPropertyChangedEventArgs e)
-        {
-            m_SourceData = SourceData;
-
-        }
 
         private SolidColorBrush m_CellColor = new SolidColorBrush();
 
@@ -112,33 +86,6 @@ namespace CharacterSheetGenerator.Control
         {
             CellColor = new SolidColorBrush(ColorHandler.IntToColor(15329769));
             InitializeComponent();
-        }
-
-        public void GroupSkills()
-        {
-            List<SkillModel> l_SkillList = new List<SkillModel>();
-            foreach (DataRow row in SourceData.Tables["Skills"].Rows)
-            {
-                SkillModel skill = new SkillModel
-                {
-                    Name = row["Name"].ToString(),
-                    Requirement = row["Requirement"].ToString(),
-                    Value = int.Parse(row["Value"].ToString()),
-                    Difficulty = row["Difficulty"].ToString(),
-                    Routine = row["Routine"].ToString(),
-                    Comment = row["Comment"].ToString(),
-                    Category = row["Category"].ToString(),
-
-
-                };
-                l_SkillList.Add(skill);
-            }
-            ListCollectionView l_Skills = new ListCollectionView(l_SkillList);
-            
-
-            l_Skills.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
-
-            Skills = l_Skills;
         }
 
 

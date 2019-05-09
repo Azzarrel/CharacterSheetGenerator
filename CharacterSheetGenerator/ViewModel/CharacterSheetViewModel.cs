@@ -242,7 +242,6 @@ namespace CharacterSheetGenerator
     }
     #endregion Commands
 
-
     #region Initialization
 
     #region Attributes
@@ -463,9 +462,11 @@ namespace CharacterSheetGenerator
             }
 
             SkillsLeft = new ListCollectionView(ModelObjects.OfType<SkillModel>().ToList().Where(s => s.Grouping == "Left").ToList());
-            SkillsRight = new ListCollectionView(ModelObjects.OfType<SkillModel>().ToList().Where(s => s.Grouping == "Right").ToList());
+      SkillsLeft.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+      SkillsRight = new ListCollectionView(ModelObjects.OfType<SkillModel>().ToList().Where(s => s.Grouping == "Right").ToList());
+      SkillsRight.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
 
-        }
+    }
 
         public void Skill_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {

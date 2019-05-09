@@ -18,7 +18,10 @@ namespace CharacterSheetGenerator
         {
             if (propertyValues.ContainsKey(propertyName))
             {
-                propertyValues[propertyName] = value;
+        if (!propertyValues[propertyName].Equals(value))
+        {
+          propertyValues[propertyName] = value;
+        }
             }
             else
             {

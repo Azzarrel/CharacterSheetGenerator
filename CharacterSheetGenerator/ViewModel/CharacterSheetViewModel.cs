@@ -934,7 +934,7 @@ namespace CharacterSheetGenerator
                 {
                     model.Modifiers = Math.Round(model.Modifiers + modifier.Value, 0);
                 }
-
+                //Todo: Gleiches für alle Weapons machen
             }
         }
 

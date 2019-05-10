@@ -72,7 +72,7 @@ namespace CharacterSheetGenerator.Control
         {
             CharacterSkills UserControl = obj as CharacterSkills;
             UserControl.OnPropertyChanged("Skills");
-            UserControl.OnSkillsPropertyChanged(e);
+            UserControl.OnSkillsPropertyChanged(e);     
 
         }
 

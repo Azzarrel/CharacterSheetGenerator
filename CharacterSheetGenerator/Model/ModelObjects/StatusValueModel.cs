@@ -24,7 +24,6 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-
         public  List<string> AttributeLinks
         {
             get { return Get<List<string>>(); }

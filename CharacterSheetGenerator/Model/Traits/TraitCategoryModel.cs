@@ -17,6 +17,13 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public string Type
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+
         public string TraitTexts
         {
             get { return Get<string>(); }
@@ -29,7 +36,12 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-     
+        public int Key
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
+
     }
 
 }

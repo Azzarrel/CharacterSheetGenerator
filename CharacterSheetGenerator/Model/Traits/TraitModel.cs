@@ -28,5 +28,11 @@ namespace CharacterSheetGenerator
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        public int Key
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public int Key
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
 
     }
 }

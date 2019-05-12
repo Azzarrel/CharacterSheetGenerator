@@ -163,7 +163,7 @@ namespace CharacterSheetGenerator
 
         private void InitializeSettings()
         {
-      //Hier wird das ganze Xml-Zeugs aus dem Ordner ins DataSet geladen
+            //Hier wird das ganze Xml-Zeugs aus dem Ordner ins DataSet geladen
             XmlReader xmlData;
             Data = new DataSet();
 
@@ -188,7 +188,7 @@ namespace CharacterSheetGenerator
             CreateCharacterInformation();
             CreateCharacterTraits();
             CreateCombatTraits();
-            CreateSpellTraits();      
+            CreateSpellTraits();
             CreateWeapons();
             CreateSelectedWeapons();
             CreateMeleeWeapons();
@@ -200,11 +200,11 @@ namespace CharacterSheetGenerator
             CreateInventory();
 
             CalculateTraitModifiers();
-
+            CreateCommands();
 
             foreach (AttributeModel attr in Attributes)
             {
-                CalculateAttributes(attr);
+                CalculateModelObject(attr);
             }
 
             foreach (StatusValueModel stv in StatusValues)
@@ -223,30 +223,180 @@ namespace CharacterSheetGenerator
 
         }
 
-    #region Commands
+        #region Commands
 
-   //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
-    private void CreateCommands()
-    {
-      BasicCommand = new RelayCommand(BasicMethod, CanExecute);
+        //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
+        private void CreateCommands()
+        {
+            SaveCommand = new RelayCommand(SaveMethod, CanExecute);
 
-    }
-    public ICommand BasicCommand { get; private set; }
-    public void BasicMethod()
-    {
-      //hier könnte ihre Command-Spezifische Methode stehen
-    }
-    public bool CanExecute()
-    {
-      return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
-    }
-    #endregion Commands
+        }
+        public ICommand SaveCommand { get; private set; }
+        public void SaveMethod()
+        {
 
-    #region Initialization
+            DataTable tblAttributeLink = Data.Tables["SVAttributeLink"].Copy();
 
-    #region Attributes
 
-    private void CreateAttributes()
+            Data.Clear();
+            foreach(AttributeModel atr in Attributes)
+            {
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base" , atr.Tag, atr.Base, atr.Color);
+            }
+            foreach (AttributeModel atr in SpecialAttributes)
+            {
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Special", atr.Tag, atr.Base, atr.Color);
+            }
+
+            int i = 0;
+            foreach (CharacterInformationModel info in CharacterInformation)
+            {
+                Data.Tables["CharacterInformation"].Rows.Add(info.FirstElement, info.FirstValue, i);
+                if(info.SecondElement != null && info.SecondElement != "")
+                {
+                    Data.Tables["CharacterInformation"].Rows.Add(info.SecondElement, info.SecondValue, i);
+                }
+                if (info.SecondElement != null && info.SecondElement != "")
+                {
+                    Data.Tables["CharacterInformation"].Rows.Add(info.ThirdElement, info.ThirdValue, i);
+                }
+                i++;
+            }
+
+            foreach(StatusValueModel stv in StatusValues)
+            {
+                Data.Tables["StatusValues"].Rows.Add(stv.Name, stv.Base, stv.Bonus, stv.Key);
+            }
+
+            foreach (DataRow row in tblAttributeLink.Rows)
+            {
+                Data.Tables["SVAttributeLink"].Rows.Add(row["SVAttributeLink_Text"], row["StatusValues_Id"]);
+            }
+
+            foreach (SkillModel skill in SkillsLeft)
+            {
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+            }
+            foreach (SkillModel skill in SkillsRight)
+            {
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+            }
+
+            foreach(WeaponModel weapon in Weapons)
+            {
+                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Position);
+            }
+            foreach(MeleeWeaponModel weapon in MeleeWeapons)
+            {
+                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+            }
+            foreach(RangedWeaponModel weapon in RangedWeapons)
+            {
+                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+            }
+            foreach(ArmorModel armor in Armor)
+            {
+                Data.Tables["Armor"].Rows.Add(armor.Name, armor.Head, armor.Torso, armor.LeftArm, armor.RightArm, armor.LeftLeg, armor.RightLeg, armor.Toughness, armor.Slow, armor.Restriction, armor.Break);
+            }
+            foreach(OffHandModel offhand in OffHands)
+            {
+                Data.Tables["OffHand"].Rows.Add(offhand.Name, offhand.Strenght, offhand.Toughness, offhand.Break, offhand.AttackBonus, offhand.BlockBonus);
+            }
+          
+            foreach(TraitCategoryModel traitcategory in Traits)
+            {
+                Data.Tables["TraitCategory"].Rows.Add(traitcategory.Name, traitcategory.Type, traitcategory.Key);
+               foreach (TraitModel trait in traitcategory.Traits)
+                {
+                    Data.Tables["Trait"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
+                    foreach(TraitModifierModel modifier in trait.Modifiers)
+                    {
+                        Data.Tables["TraitModifier"].Rows.Add(modifier.NameLink, modifier.Value, trait.Key);
+                    }
+                }
+            }
+            foreach(SpellModel spell in Spells)
+            {
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.FlavorText);
+            }
+            foreach(RitualModel ritual in Rituals)
+            {
+                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.FlavorText);
+            }
+            foreach(InventoryItemModel item in InventoryLeft)
+            {
+                Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
+            }
+            foreach (InventoryItemModel item in InventoryRight)
+            {
+                Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
+            }
+
+            string SaveName = "MyDummyCharacter";
+
+            DirectoryInfo di = Directory.CreateDirectory(SaveName);
+
+            foreach (DataTable tbl in Data.Tables)
+            {
+                XmlTextWriter writer = new XmlTextWriter(SaveName + "/" + tbl.TableName + ".xml", System.Text.Encoding.UTF8);
+                writer.WriteStartDocument(true);
+                writer.Formatting = Formatting.Indented;
+                writer.Indentation = 2;
+                writer.WriteStartElement("Table");
+                foreach (DataRow row in tbl.Rows)
+                {
+                    writer.WriteStartElement(tbl.TableName);
+                    foreach (DataColumn col in tbl.Columns)
+                    {
+                        writer.WriteStartElement(col.ColumnName);
+                        writer.WriteString(row[col].ToString());
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndDocument();
+                writer.Close();
+            }
+
+
+            //XmlTextWriter writer = new XmlTextWriter("Product2.xml", System.Text.Encoding.UTF8);
+            //    writer.WriteStartDocument(true);
+            //    writer.Formatting = Formatting.Indented;
+            //    writer.Indentation = 2;
+            //    writer.WriteStartElement("Table");
+            //    foreach (DataTable tbl in Data.Tables)
+            //    {
+
+            //        foreach (DataRow row in tbl.Rows)
+            //        {
+            //            writer.WriteStartElement(tbl.TableName);
+            //            foreach (DataColumn col in tbl.Columns)
+            //            {
+            //                writer.WriteStartElement(col.ColumnName);
+            //                writer.WriteString(row[col].ToString());
+            //                writer.WriteEndElement();
+            //            }
+            //            writer.WriteEndElement();
+            //        }
+
+            //    }
+            //    writer.WriteEndDocument();
+            //    writer.Close();
+            MessageBox.Show("XML File created ! ");
+            
+
+        }
+        public bool CanExecute()
+        {
+            return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
+        }
+        #endregion Commands
+
+        #region Initialization
+
+        #region Attributes
+
+        private void CreateAttributes()
         {
 
 
@@ -279,7 +429,7 @@ namespace CharacterSheetGenerator
         /// </summary>
         private void CreateSpecialAttributes()
         {
-      //Aktuell immer schwarz, sonst Kirsten Ritzmann!
+            //Aktuell immer schwarz, sonst Kirsten Ritzmann!
 
             foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Special'"))
             {
@@ -289,7 +439,7 @@ namespace CharacterSheetGenerator
                     Tag = row["Tag"].ToString(),
                     Base = double.Parse(row["Value"].ToString()),
                     Value = double.Parse(row["Value"].ToString()),
-                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))), 
+                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
                     Special = true,
 
                 };
@@ -380,7 +530,7 @@ namespace CharacterSheetGenerator
 
         public void CreateStatusValues()
         {
-            
+
             foreach (DataRow row in Data.Tables["StatusValues"].Rows)
             {
                 List<string> attributelinks = new List<string>();
@@ -391,6 +541,7 @@ namespace CharacterSheetGenerator
 
                 StatusValueModel statusvalue = new StatusValueModel
                 {
+                    Key = int.Parse(row["StatusValues_Id"].ToString()),
                     Name = row["Name"].ToString(),
                     Base = double.Parse(row["Base"].ToString()),
                     Bonus = double.Parse(row["Bonus"].ToString()),
@@ -407,7 +558,7 @@ namespace CharacterSheetGenerator
         public void StatusValue_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             StatusValueModel stv = sender as StatusValueModel;
-         
+
             switch (e.PropertyName)
             {
                 case "Base":
@@ -462,15 +613,15 @@ namespace CharacterSheetGenerator
             }
 
             SkillsLeft = new ListCollectionView(ModelObjects.OfType<SkillModel>().ToList().Where(s => s.Grouping == "Left").ToList());
-      SkillsLeft.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
-      SkillsRight = new ListCollectionView(ModelObjects.OfType<SkillModel>().ToList().Where(s => s.Grouping == "Right").ToList());
-      SkillsRight.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+            SkillsLeft.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
+            SkillsRight = new ListCollectionView(ModelObjects.OfType<SkillModel>().ToList().Where(s => s.Grouping == "Right").ToList());
+            SkillsRight.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
 
-    }
+        }
 
         public void Skill_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-
+            CalculateModelObject(sender as SkillModel);
         }
 
         #endregion Fertigkeiten    
@@ -499,6 +650,7 @@ namespace CharacterSheetGenerator
                     }
                     TraitModel trait = new TraitModel
                     {
+                        Key = int.Parse(rowTrait["Trait_Id"].ToString()),
                         Name = rowTrait["Name"].ToString(),
                         Description = rowTrait["Description"].ToString(),
                         Modifiers = modifiers,
@@ -508,7 +660,9 @@ namespace CharacterSheetGenerator
                 }
                 TraitCategoryModel category = new TraitCategoryModel
                 {
+                    Key = int.Parse(rowCategory["TraitCategory_Id"].ToString()),
                     Name = rowCategory["Name"].ToString(),
+                    Type = rowCategory["Type"].ToString(),
                     TraitTexts = traitTexts,
                     Traits = traits,
                 };
@@ -840,11 +994,38 @@ namespace CharacterSheetGenerator
 
         #region Calculation
 
+        #region Pre Init
+
+        public void PreInitializeModelObjects(List<ModelObject> ModelList)
+        {
+            foreach(ModelObject model in ModelList)
+            {
+                if(model.GetType() == typeof(StatusValueModel))
+                {
+
+                    List<AttributeModel> attributeList = new List<AttributeModel>();
+                    foreach (string s in ((StatusValueModel)model).AttributeLinks)
+                    {
+                        attributeList.Add(Attributes.Where(x => x.Name == s).FirstOrDefault());
+                    }
+                    CalculateStatusValues(attributeList.ToArray(), (StatusValueModel)model);
+                }
+
+
+            }
+        }
+
+        #endregion Pre Init
+
+        #region Post Init
+
+        #endregion Post Init 
+
         #region Basiswerte
 
-        public void CalculateAttributes(AttributeModel attr)
+        public void CalculateModelObject(ModelObject model)
         {
-            attr.Value = attr.Base + attr.Modifiers;
+            model.Value = model.Base + model.Modifiers;
         }
 
         /// <summary>
@@ -927,7 +1108,7 @@ namespace CharacterSheetGenerator
         //Todo: Geht aktuell nur auf Traits, nicht auf Combat und SpellTraits
         public void CalculateTraitModifiers()
         {
-            
+
             foreach (TraitModifierModel modifier in Traits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
             {
                 foreach (ModelObject model in ModelObjects.Where(m => m.Name == modifier.NameLink))
@@ -945,40 +1126,6 @@ namespace CharacterSheetGenerator
 
 
         #endregion Calculation
-
-    /// <summary>
-    /// Speicher-Button, der oben rechts zurzeit einfach so hin-geflatscht ist und nicht mit dem Print Button (3) verwechselt werden sollte.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-        public void Button2_Click(object sender, EventArgs e)
-        {
-            XmlTextWriter writer = new XmlTextWriter("Product2.xml", System.Text.Encoding.UTF8);
-            writer.WriteStartDocument(true);
-            writer.Formatting = Formatting.Indented;
-            writer.Indentation = 2;
-            writer.WriteStartElement("Table");
-            foreach (DataTable tbl in Data.Tables)
-            {
-
-                foreach (DataRow row in tbl.Rows)
-                {
-                    writer.WriteStartElement(tbl.TableName);
-                    foreach (DataColumn col in tbl.Columns)
-                    {
-                        writer.WriteStartElement(col.ColumnName);
-                        writer.WriteString(row[col].ToString());
-                        writer.WriteEndElement();
-                    }
-                    writer.WriteEndElement();
-                }
-
-            }
-            writer.WriteEndDocument();
-            writer.Close();
-            MessageBox.Show("XML File created ! ");
-        }
-
 
     }
 }

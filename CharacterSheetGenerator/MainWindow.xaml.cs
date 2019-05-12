@@ -45,13 +45,6 @@ namespace CharacterSheetGenerator
 
         }
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            if(m_DataContext != null)
-            {
-                m_DataContext.Button2_Click(sender, e);
-            }
-        }
 
             private void Button3_Click(object sender, RoutedEventArgs e)
         {

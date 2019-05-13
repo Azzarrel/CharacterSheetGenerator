@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
@@ -23,16 +24,16 @@ namespace CharacterSheetGenerator.Control
     /// </summary>
     public partial class CharacterAttributes : UserControl
     {
-        private List<AttributeModel> m_AttributeList = new List<AttributeModel>();
+        private ObservableCollection<AttributeModel> m_AttributeList = new ObservableCollection<AttributeModel>();
 
         public static readonly DependencyProperty AttributeListProperty =
-            DependencyProperty.Register("AttributeList", typeof(List<AttributeModel>), typeof(CharacterAttributes),
-            new FrameworkPropertyMetadata(new List<AttributeModel>(), OnAttributeListPropertyChanged));
+            DependencyProperty.Register("AttributeList", typeof(ObservableCollection<AttributeModel>), typeof(CharacterAttributes),
+            new FrameworkPropertyMetadata(new ObservableCollection<AttributeModel>(), OnAttributeListPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<AttributeModel> AttributeList
+        public ObservableCollection<AttributeModel> AttributeList
         {
-            get { return (List<AttributeModel>)GetValue(AttributeListProperty); }
+            get { return (ObservableCollection<AttributeModel>)GetValue(AttributeListProperty); }
             set { SetValue(AttributeListProperty, value); }
         }
 

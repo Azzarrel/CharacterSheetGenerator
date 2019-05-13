@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -24,9 +25,9 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public  List<string> AttributeLinks
+        public  ObservableCollection<string> AttributeLinks
         {
-            get { return Get<List<string>>(); }
+            get { return Get<ObservableCollection<string>>(); }
             set { Set(value); }
         }
 

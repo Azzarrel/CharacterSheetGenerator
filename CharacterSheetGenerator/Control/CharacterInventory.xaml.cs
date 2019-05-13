@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Data;
 using System.Data;
+using System.Collections.ObjectModel;
 
 namespace CharacterSheetGenerator.Control
 {
@@ -40,16 +41,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<InventoryItemModel> m_Inventory = new List<InventoryItemModel>();
+        private ObservableCollection<InventoryItemModel> m_Inventory = new ObservableCollection<InventoryItemModel>();
 
         public static readonly DependencyProperty InventoryProperty =
-            DependencyProperty.Register("Inventory", typeof(List<InventoryItemModel>), typeof(CharacterInventory),
-            new FrameworkPropertyMetadata(new List<InventoryItemModel>(), OnInventoryPropertyChanged));
+            DependencyProperty.Register("Inventory", typeof(ObservableCollection<InventoryItemModel>), typeof(CharacterInventory),
+            new FrameworkPropertyMetadata(new ObservableCollection<InventoryItemModel>(), OnInventoryPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<InventoryItemModel> Inventory
+        public ObservableCollection<InventoryItemModel> Inventory
         {
-            get { return (List<InventoryItemModel>)GetValue(InventoryProperty); }
+            get { return (ObservableCollection<InventoryItemModel>)GetValue(InventoryProperty); }
             set { SetValue(InventoryProperty, value); }
         }
 

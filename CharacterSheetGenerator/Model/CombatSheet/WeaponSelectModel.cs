@@ -22,22 +22,25 @@ namespace CharacterSheetGenerator
             {
                 m_Weapon = value;
                 OnPropertyChanged("AttackBase");
+                OnPropertyChanged("AttackStandard");
                 OnPropertyChanged("AttackBonus");
                 OnPropertyChanged("AttackTotal");
                 OnPropertyChanged("BlockBase");
+                OnPropertyChanged("BlockStandard");
                 OnPropertyChanged("BlockBonus");
                 OnPropertyChanged("BlockTotal");
                 OnPropertyChanged("Weapon");
                 OnPropertyChanged("Position");
+                OnPropertyChanged("AttributeLink");
                 OnPropertyChanged("Stamina");
                 OnPropertyChanged("Initiative");
                 OnPropertyChanged("Damage");
                 OnPropertyChanged("Impulse");
-                OnPropertyChanged("ArmorPenetration");
+                OnPropertyChanged("ArmorPenetration"); 
                 OnPropertyChanged();
             }
         }
-        //public List<WeaponModel> Weapons { get; set; }
+        //public ObservableCollection<WeaponModel> Weapons { get; set; }
 
         public String Name
         {
@@ -56,6 +59,18 @@ namespace CharacterSheetGenerator
             set
             {
                 m_Weapon.AttackBase = value;
+            }
+        }
+
+        public double AttackStandard
+        {
+            get
+            {
+                return m_Weapon?.AttackStandard ?? 0;
+            }
+            set
+            {
+                m_Weapon.AttackStandard = value;
             }
         }
 
@@ -94,6 +109,19 @@ namespace CharacterSheetGenerator
                 m_Weapon.BlockBase = value;
             }
         }
+
+        public double BlockStandard
+        {
+            get
+            {
+                return m_Weapon?.BlockStandard ?? 0;
+            }
+            set
+            {
+                m_Weapon.BlockStandard = value;
+            }
+        }
+
         public double BlockBonus
         {
             get

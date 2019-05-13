@@ -24,16 +24,16 @@ namespace CharacterSheetGenerator.Control
     /// </summary>
     public partial class CharacterSpells : UserControl
     {
-        private List<WeaponModel> m_Weapons = new List<WeaponModel>();
+        private ObservableCollection<WeaponModel> m_Weapons = new ObservableCollection<WeaponModel>();
 
         public static readonly DependencyProperty WeaponProperty =
-            DependencyProperty.Register("Weapons", typeof(List<WeaponModel>), typeof(CharacterSpells),
-            new FrameworkPropertyMetadata(new List<WeaponModel>(), OnWeaponPropertyChanged));
+            DependencyProperty.Register("Weapons", typeof(ObservableCollection<WeaponModel>), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(new ObservableCollection<WeaponModel>(), OnWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<WeaponModel> Weapons
+        public ObservableCollection<WeaponModel> Weapons
         {
-            get { return (List<WeaponModel>)GetValue(WeaponProperty); }
+            get { return (ObservableCollection<WeaponModel>)GetValue(WeaponProperty); }
             set { SetValue(WeaponProperty, value); }
         }
 
@@ -50,16 +50,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<WeaponSelectModel> m_SelectedWeapons = new List<WeaponSelectModel>();
+        private ObservableCollection<WeaponSelectModel> m_SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
 
         public static readonly DependencyProperty SelectedWeaponProperty =
-            DependencyProperty.Register("SelectedWeapons", typeof(List<WeaponSelectModel>), typeof(CharacterSpells),
-            new FrameworkPropertyMetadata(new List<WeaponSelectModel>(), OnSelectedWeaponPropertyChanged));
+            DependencyProperty.Register("SelectedWeapons", typeof(ObservableCollection<WeaponSelectModel>), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(new ObservableCollection<WeaponSelectModel>(), OnSelectedWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<WeaponSelectModel> SelectedWeapons
+        public ObservableCollection<WeaponSelectModel> SelectedWeapons
         {
-            get { return (List<WeaponSelectModel>)GetValue(SelectedWeaponProperty); }
+            get { return (ObservableCollection<WeaponSelectModel>)GetValue(SelectedWeaponProperty); }
             set { SetValue(SelectedWeaponProperty, value); }
         }
 
@@ -76,16 +76,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<TraitCategoryModel> m_SpellTraits = new List<TraitCategoryModel>();
+        private ObservableCollection<TraitCategoryModel> m_SpellTraits = new ObservableCollection<TraitCategoryModel>();
 
         public static readonly DependencyProperty TraitProperty =
-            DependencyProperty.Register("SpellTraits", typeof(List<TraitCategoryModel>), typeof(CharacterSpells),
-            new FrameworkPropertyMetadata(new List<TraitCategoryModel>(), OnTraitPropertyChanged));
+            DependencyProperty.Register("SpellTraits", typeof(ObservableCollection<TraitCategoryModel>), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(new ObservableCollection<TraitCategoryModel>(), OnTraitPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<TraitCategoryModel> SpellTraits
+        public ObservableCollection<TraitCategoryModel> SpellTraits
         {
-            get { return (List<TraitCategoryModel>)GetValue(TraitProperty); }
+            get { return (ObservableCollection<TraitCategoryModel>)GetValue(TraitProperty); }
             set { SetValue(TraitProperty, value); }
         }
 
@@ -104,16 +104,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<SpellModel> m_Spells = new List<SpellModel>();
+        private ObservableCollection<SpellModel> m_Spells = new ObservableCollection<SpellModel>();
 
         public static readonly DependencyProperty SpellProperty =
-            DependencyProperty.Register("Spells", typeof(List<SpellModel>), typeof(CharacterSpells),
-            new FrameworkPropertyMetadata(new List<SpellModel>(), OnSpellPropertyChanged));
+            DependencyProperty.Register("Spells", typeof(ObservableCollection<SpellModel>), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(new ObservableCollection<SpellModel>(), OnSpellPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<SpellModel> Spells
+        public ObservableCollection<SpellModel> Spells
         {
-            get { return (List<SpellModel>)GetValue(SpellProperty); }
+            get { return (ObservableCollection<SpellModel>)GetValue(SpellProperty); }
             set { SetValue(SpellProperty, value); }
         }
 
@@ -130,16 +130,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<RitualModel> m_Rituals = new List<RitualModel>();
+        private ObservableCollection<RitualModel> m_Rituals = new ObservableCollection<RitualModel>();
 
         public static readonly DependencyProperty RitualProperty =
-            DependencyProperty.Register("Rituals", typeof(List<RitualModel>), typeof(CharacterSpells),
-            new FrameworkPropertyMetadata(new List<RitualModel>(), OnRitualPropertyChanged));
+            DependencyProperty.Register("Rituals", typeof(ObservableCollection<RitualModel>), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(new ObservableCollection<RitualModel>(), OnRitualPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<RitualModel> Rituals
+        public ObservableCollection<RitualModel> Rituals
         {
-            get { return (List<RitualModel>)GetValue(RitualProperty); }
+            get { return (ObservableCollection<RitualModel>)GetValue(RitualProperty); }
             set { SetValue(RitualProperty, value); }
         }
 

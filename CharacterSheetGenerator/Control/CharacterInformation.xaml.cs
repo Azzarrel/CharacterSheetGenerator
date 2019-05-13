@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Data;
 using System.Data;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace CharacterSheetGenerator.Control
 {
@@ -15,16 +16,16 @@ namespace CharacterSheetGenerator.Control
     public partial class CharacterOverview : UserControl
     {
 
-        private List<CharacterInformationModel> m_CharacterInformation = new List<CharacterInformationModel>();
+        private ObservableCollection<CharacterInformationModel> m_CharacterInformation = new ObservableCollection<CharacterInformationModel>();
 
         public static readonly DependencyProperty CharacterInformationProperty =
-            DependencyProperty.Register("CharacterInformation", typeof(List<CharacterInformationModel>), typeof(CharacterOverview),
-            new FrameworkPropertyMetadata(new List<CharacterInformationModel>(), OnCharacterInformationPropertyChanged));
+            DependencyProperty.Register("CharacterInformation", typeof(ObservableCollection<CharacterInformationModel>), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(new ObservableCollection<CharacterInformationModel>(), OnCharacterInformationPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<CharacterInformationModel> CharacterInformation
+        public ObservableCollection<CharacterInformationModel> CharacterInformation
         {
-            get { return (List<CharacterInformationModel>)GetValue(CharacterInformationProperty); }
+            get { return (ObservableCollection<CharacterInformationModel>)GetValue(CharacterInformationProperty); }
             set { SetValue(CharacterInformationProperty, value); }
         }
 
@@ -43,16 +44,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<TraitCategoryModel> m_Traits = new List<TraitCategoryModel>();
+        private ObservableCollection<TraitCategoryModel> m_Traits = new ObservableCollection<TraitCategoryModel>();
 
         public static readonly DependencyProperty TraitProperty =
-            DependencyProperty.Register("Traits", typeof(List<TraitCategoryModel>), typeof(CharacterOverview),
-            new FrameworkPropertyMetadata(new List<TraitCategoryModel>(), OnTraitPropertyChanged));
+            DependencyProperty.Register("Traits", typeof(ObservableCollection<TraitCategoryModel>), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(new ObservableCollection<TraitCategoryModel>(), OnTraitPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<TraitCategoryModel> Traits
+        public ObservableCollection<TraitCategoryModel> Traits
         {
-            get { return (List<TraitCategoryModel>)GetValue(TraitProperty); }
+            get { return (ObservableCollection<TraitCategoryModel>)GetValue(TraitProperty); }
             set { SetValue(TraitProperty, value); }
         }
 
@@ -71,16 +72,16 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        private List<StatusValueModel> m_StatusValues = new List<StatusValueModel>();
+        private ObservableCollection<StatusValueModel> m_StatusValues = new ObservableCollection<StatusValueModel>();
 
         public static readonly DependencyProperty StatusValuesProperty =
-            DependencyProperty.Register("StatusValues", typeof(List<StatusValueModel>), typeof(CharacterOverview),
-            new FrameworkPropertyMetadata(new List<StatusValueModel>(), OnStatusValuesPropertyChanged));
+            DependencyProperty.Register("StatusValues", typeof(ObservableCollection<StatusValueModel>), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(new ObservableCollection<StatusValueModel>(), OnStatusValuesPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public List<StatusValueModel> StatusValues
+        public ObservableCollection<StatusValueModel> StatusValues
         {
-            get { return (List<StatusValueModel>)GetValue(StatusValuesProperty); }
+            get { return (ObservableCollection<StatusValueModel>)GetValue(StatusValuesProperty); }
             set { SetValue(StatusValuesProperty, value); }
         }
 

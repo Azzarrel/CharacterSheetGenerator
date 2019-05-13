@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -30,9 +31,9 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public List<TraitModel> Traits
+        public ObservableCollection<TraitModel> Traits
         {
-            get { return Get<List<TraitModel>>(); }
+            get { return Get<ObservableCollection<TraitModel>>(); }
             set { Set(value); }
         }
 

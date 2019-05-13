@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,9 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public List<TraitModifierModel> Modifiers
+        public ObservableCollection<TraitModifierModel> Modifiers
         {
-            get { return Get<List<TraitModifierModel>>(); }
+            get { return Get<ObservableCollection<TraitModifierModel>>(); }
             set { Set(value); }
         }
 

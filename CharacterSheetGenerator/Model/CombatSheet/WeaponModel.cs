@@ -23,6 +23,12 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public double AttackStandard
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
         public double AttackModifier
         {
             get { return Get<double>(); }
@@ -38,14 +44,16 @@ namespace CharacterSheetGenerator
         public double AttackTotal
         {
             get { return Get<double>(); }
-            set
-            {
-                Set(value);
-                AttackBonus = AttackTotal - (AttackBase+AttackModifier);
-            }
+            set { Set(value); }
         }
 
         public double BlockBase
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+        public double BlockStandard
         {
             get { return Get<double>(); }
             set { Set(value); }
@@ -66,11 +74,7 @@ namespace CharacterSheetGenerator
         public double BlockTotal
         {
             get { return Get<double>(); }
-            set
-            {
-                Set(value);
-                BlockBonus = BlockTotal - (BlockBase+BlockModifier);
-            }
+            set { Set(value); }
         }
 
         public string AttributeLink

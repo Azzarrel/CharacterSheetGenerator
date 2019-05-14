@@ -24,96 +24,13 @@ namespace CharacterSheetGenerator
         public DataSet Data { get; set; } = new DataSet();
 
 
-        public ObservableCollection<StatusValueModel> StatusValues
-        {
-            get { return Get<ObservableCollection<StatusValueModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<CharacterInformationModel> CharacterInformation
-        {
-            get { return Get<ObservableCollection<CharacterInformationModel>>(); }
-            set { Set(value); }
-        }
-
-        public ListCollectionView SkillsLeft
-        {
-            get { return Get<ListCollectionView>(); }
-            set { Set(value); }
-        }
-
-        public ListCollectionView SkillsRight
-        {
-            get { return Get<ListCollectionView>(); }
-            set { Set(value); }
-        }
-
-        #region Combat Sheet
-
-        public ObservableCollection<WeaponModel> Weapons
-        {
-            get { return Get<ObservableCollection<WeaponModel>>(); }
-            set { Set(value); }
-        }
-
-
-
-        public ObservableCollection<MeleeWeaponModel> MeleeWeapons
-        {
-            get { return Get<ObservableCollection<MeleeWeaponModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<RangedWeaponModel> RangedWeapons
-        {
-            get { return Get<ObservableCollection<RangedWeaponModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<ArmorModel> Armor
-        {
-            get { return Get<ObservableCollection<ArmorModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<OffHandModel> OffHands
-        {
-            get { return Get<ObservableCollection<OffHandModel>>(); }
-            set { Set(value); }
-        }
-
-        #endregion Combat Sheet
-
-        public ObservableCollection<SpellModel> Spells
-        {
-            get { return Get<ObservableCollection<SpellModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<RitualModel> Rituals
-        {
-            get { return Get<ObservableCollection<RitualModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<InventoryItemModel> InventoryLeft
-        {
-            get { return Get<ObservableCollection<InventoryItemModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<InventoryItemModel> InventoryRight
-        {
-            get { return Get<ObservableCollection<InventoryItemModel>>(); }
-            set { Set(value); }
-        }
 
         #endregion Properties
 
         public CharacterSheetViewModel()
         {
             InitializeSettings();
-
+            CreateCommands();
         }
 
         private void InitializeSettings()
@@ -153,8 +70,8 @@ namespace CharacterSheetGenerator
             CreateRituals();
             CreateInventory();
 
-            //CalculateTraitModifiers();
-            CreateCommands();
+            CalculateTraitModifiers();
+            
 
 
             foreach (StatusValueModel stv in StatusValues)
@@ -281,7 +198,7 @@ namespace CharacterSheetGenerator
             {
                 Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
             }
-
+            //Todo eigenes Fenster
             string SaveName = "MyDummyCharacter";
 
             DirectoryInfo di = Directory.CreateDirectory(SaveName);
@@ -309,29 +226,6 @@ namespace CharacterSheetGenerator
             }
 
 
-            //XmlTextWriter writer = new XmlTextWriter("Product2.xml", System.Text.Encoding.UTF8);
-            //    writer.WriteStartDocument(true);
-            //    writer.Formatting = Formatting.Indented;
-            //    writer.Indentation = 2;
-            //    writer.WriteStartElement("Table");
-            //    foreach (DataTable tbl in Data.Tables)
-            //    {
-
-            //        foreach (DataRow row in tbl.Rows)
-            //        {
-            //            writer.WriteStartElement(tbl.TableName);
-            //            foreach (DataColumn col in tbl.Columns)
-            //            {
-            //                writer.WriteStartElement(col.ColumnName);
-            //                writer.WriteString(row[col].ToString());
-            //                writer.WriteEndElement();
-            //            }
-            //            writer.WriteEndElement();
-            //        }
-
-            //    }
-            //    writer.WriteEndDocument();
-            //    writer.Close();
             MessageBox.Show("XML File created ! ");
             
 
@@ -341,8 +235,6 @@ namespace CharacterSheetGenerator
             return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
         }
         #endregion Commands
-
-
 
         #region Attributes
 
@@ -453,6 +345,16 @@ namespace CharacterSheetGenerator
 
         #region Persönliche Daten
 
+        #region Properties
+
+        public ObservableCollection<CharacterInformationModel> CharacterInformation
+        {
+            get { return Get<ObservableCollection<CharacterInformationModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
         #region Initialization
 
         public void CreateCharacterInformation()
@@ -505,6 +407,16 @@ namespace CharacterSheetGenerator
         #endregion Persönliche Daten
 
         #region Statuswerte
+
+        #region Properties
+
+        public ObservableCollection<StatusValueModel> StatusValues
+        {
+            get { return Get<ObservableCollection<StatusValueModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
 
         #region Initialization
 
@@ -617,6 +529,23 @@ namespace CharacterSheetGenerator
         #endregion Statuswerte
 
         #region Fertigkeiten 
+
+        #region Properties
+
+        public ListCollectionView SkillsLeft
+        {
+            get { return Get<ListCollectionView>(); }
+            set { Set(value); }
+        }
+
+        public ListCollectionView SkillsRight
+        {
+            get { return Get<ListCollectionView>(); }
+            set { Set(value); }
+        }
+
+
+        #endregion Properties
 
         #region Initialization
 
@@ -823,10 +752,31 @@ namespace CharacterSheetGenerator
 
         #endregion Initialization
 
+        #region Events
+
         public void Trait_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
         }
+
+        #endregion Events
+
+        #region Calculation
+        //Todo: Geht aktuell nur auf Traits, nicht auf Combat und SpellTraits
+        public void CalculateTraitModifiers()
+        {
+
+            foreach (TraitModifierModel modifier in Traits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+            {
+                foreach (AttributeModel atr in Attributes.Where(m => m.Name == modifier.NameLink))
+                {
+                    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+                }
+                //Todo: Gleiches für alle Weapons machen
+            }
+        }
+
+        #endregion Calculation
 
         #endregion Traits
 
@@ -834,9 +784,27 @@ namespace CharacterSheetGenerator
 
         #region Properties
 
+        public ObservableCollection<WeaponModel> Weapons
+        {
+            get { return Get<ObservableCollection<WeaponModel>>(); }
+            set { Set(value); }
+        }
+
         public ObservableCollection<WeaponSelectModel> SelectedWeapons
         {
             get { return Get<ObservableCollection<WeaponSelectModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<MeleeWeaponModel> MeleeWeapons
+        {
+            get { return Get<ObservableCollection<MeleeWeaponModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<RangedWeaponModel> RangedWeapons
+        {
+            get { return Get<ObservableCollection<RangedWeaponModel>>(); }
             set { Set(value); }
         }
 
@@ -978,6 +946,22 @@ namespace CharacterSheetGenerator
 
         #region Rüstung und Zweithand
 
+        #region Properties
+
+        public ObservableCollection<ArmorModel> Armor
+        {
+            get { return Get<ObservableCollection<ArmorModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<OffHandModel> OffHands
+        {
+            get { return Get<ObservableCollection<OffHandModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
         #region Initialization
 
         public void CreateArmor()
@@ -1037,6 +1021,23 @@ namespace CharacterSheetGenerator
 
         #region Zauber und Rituale
 
+        #region Properties
+
+
+        public ObservableCollection<SpellModel> Spells
+        {
+            get { return Get<ObservableCollection<SpellModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<RitualModel> Rituals
+        {
+            get { return Get<ObservableCollection<RitualModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
         #region Initialization
 
         public void CreateSpells()
@@ -1095,6 +1096,22 @@ namespace CharacterSheetGenerator
 
         #region Inventar
 
+        #region Properties
+
+        public ObservableCollection<InventoryItemModel> InventoryLeft
+        {
+            get { return Get<ObservableCollection<InventoryItemModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<InventoryItemModel> InventoryRight
+        {
+            get { return Get<ObservableCollection<InventoryItemModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
         #region Initialization
 
         public void CreateInventory()
@@ -1120,48 +1137,6 @@ namespace CharacterSheetGenerator
 
         #endregion Inventar
 
-
-        #region Calculation
-
-        #region Pre Init
-
-        #region Traits
-        //Todo: Geht aktuell nur auf Traits, nicht auf Combat und SpellTraits
-        public void CalculateTraitModifiers()
-        {
-
-            foreach (TraitModifierModel modifier in Traits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
-            {
-                foreach (AttributeModel atr in Attributes.Where(m => m.Name == modifier.NameLink))
-                {
-                    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
-                }
-                //Todo: Gleiches für alle Weapons machen
-            }
-        }
-
-        #endregion Pre Init
-
-        #region Post Init
-
-        #endregion Post Init 
-
-        #region Basiswerte
-
-        #endregion Basiswerte
-
-
-
-
-
-
-
-
-
-        #endregion Traits
-
-
-        #endregion Calculation
 
     }
 }

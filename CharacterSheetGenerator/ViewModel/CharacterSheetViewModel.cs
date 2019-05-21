@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml;
+
 
 namespace CharacterSheetGenerator
 {
@@ -31,24 +33,20 @@ namespace CharacterSheetGenerator
         {
             InitializeSettings();
             CreateCommands();
+            //Speicher-Ordner anlegen
+            if (!Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves"))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves");
+            }
         }
 
         private void InitializeSettings()
         {
             //Hier wird das ganze Xml-Zeugs aus dem Ordner ins DataSet geladen
-            XmlReader xmlData;
+
             Data = new DataSet();
 
-            DataSet l_Data = new DataSet();
-            string[] files = Directory.GetFiles("Settings", "*.xml");
-
-            foreach (string s in files)
-            {
-                l_Data = new DataSet();
-                xmlData = XmlReader.Create(s, new XmlReaderSettings());
-                l_Data.ReadXml(xmlData);
-                Data.Merge(l_Data);
-            }
+            LoadData("Settings");
 
 
             //Alle Tabellen aus dem DateSet in Listen umwandeln
@@ -71,7 +69,7 @@ namespace CharacterSheetGenerator
             CreateInventory();
 
             CalculateTraitModifiers();
-            
+
 
 
             foreach (StatusValueModel stv in StatusValues)
@@ -90,15 +88,44 @@ namespace CharacterSheetGenerator
 
         }
 
+        public void LoadData(string Path)
+        {
+
+            XmlReader xmlData;
+
+            DataSet l_Data = new DataSet();
+            string[] files = Directory.GetFiles(Path, "*.xml");
+
+
+            if (files.Count() == 0)
+            {
+
+                throw new Exception("Der angegebene Pfad enthält keine Charakterdaten");
+            }
+            Data = new DataSet();
+            foreach (string s in files)
+            {
+                l_Data = new DataSet();
+                xmlData = XmlReader.Create(s, new XmlReaderSettings());
+                l_Data.ReadXml(xmlData);
+                Data.Merge(l_Data);
+            }
+
+
+
+        }
+
         #region Commands
 
         //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
         private void CreateCommands()
         {
             SaveCommand = new RelayCommand(SaveMethod, CanExecute);
+            LoadCommand = new RelayCommand(LoadMethod, CanExecute);
 
         }
         public ICommand SaveCommand { get; private set; }
+        public ICommand LoadCommand { get; private set; }
         public void SaveMethod()
         {
 
@@ -198,38 +225,81 @@ namespace CharacterSheetGenerator
             {
                 Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
             }
-            //Todo eigenes Fenster
-            string SaveName = "MyDummyCharacter";
 
-            DirectoryInfo di = Directory.CreateDirectory(SaveName);
 
-            foreach (DataTable tbl in Data.Tables)
+
+
+
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue != "" &&
+                CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue != null)
             {
-                XmlTextWriter writer = new XmlTextWriter(SaveName + "/" + tbl.TableName + ".xml", System.Text.Encoding.UTF8);
-                writer.WriteStartDocument(true);
-                writer.Formatting = Formatting.Indented;
-                writer.Indentation = 2;
-                writer.WriteStartElement("Table");
-                foreach (DataRow row in tbl.Rows)
+                if (Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\" + CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue))
+                    folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\" + CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue;
+            }
+            else
+            {
+                folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
+            }
+            //saveFileDialog.FileName = CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue;
+            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string SavePath = Path.GetDirectoryName(folderBrowserDialog.SelectedPath);
+                
+
+
+
+                DirectoryInfo di = Directory.CreateDirectory(SavePath);
+
+
+                foreach (DataTable tbl in Data.Tables)
                 {
-                    writer.WriteStartElement(tbl.TableName);
-                    foreach (DataColumn col in tbl.Columns)
+                    XmlTextWriter writer = new XmlTextWriter(SavePath + "/" + tbl.TableName + ".xml", System.Text.Encoding.UTF8);
+                    writer.WriteStartDocument(true);
+                    writer.Formatting = Formatting.Indented;
+                    writer.Indentation = 2;
+                    writer.WriteStartElement("Table");
+                    foreach (DataRow row in tbl.Rows)
                     {
-                        writer.WriteStartElement(col.ColumnName);
-                        writer.WriteString(row[col].ToString());
+                        writer.WriteStartElement(tbl.TableName);
+                        foreach (DataColumn col in tbl.Columns)
+                        {
+                            writer.WriteStartElement(col.ColumnName);
+                            writer.WriteString(row[col].ToString());
+                            writer.WriteEndElement();
+                        }
                         writer.WriteEndElement();
                     }
-                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                    writer.Close();
                 }
-                writer.WriteEndDocument();
-                writer.Close();
+
+
+                MessageBox.Show("XML File created ! ");
             }
-
-
-            MessageBox.Show("XML File created ! ");
             
 
         }
+
+        public void LoadMethod()
+        {
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
+            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    LoadData(folderBrowserDialog.SelectedPath);
+                    MessageBox.Show("Charakter erfolgreich geladen");
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+            
+        }
+
         public bool CanExecute()
         {
             return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
@@ -772,7 +842,32 @@ namespace CharacterSheetGenerator
                 {
                     atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
                 }
-                //Todo: Gleiches für alle Weapons machen
+                //ToDo: Weg finden das auch auf Skills anzuwneden
+                //foreach (SkillModel atr in SkillsLeft.Where(m => m.Name == modifier.NameLink))
+                //{
+                //    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+                //}
+                //foreach (SkillModel atr in SkillsRight.Where(m => m.Name == modifier.NameLink))
+                //{
+                //    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+                //}
+                foreach (StatusValueModel stv in StatusValues.Where(m => m.Name == modifier.NameLink))
+                {
+                    stv.Modifiers = Math.Round(stv.Modifiers + modifier.Value, 0);
+                }
+                //Auch hier gibt es noch Probleme, um die ich mich noch kümmern muss
+                //foreach (WeaponModel atr in Weapons.Where(m => m.Name == modifier.NameLink))
+                //{
+                //    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+                //}
+            }
+            foreach (TraitModifierModel modifier in CombatTraits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+            {
+
+            }
+            foreach (TraitModifierModel modifier in SpellTraits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+            {
+
             }
         }
 
@@ -930,13 +1025,21 @@ namespace CharacterSheetGenerator
             double standardValues = 0;
             foreach (string s in attributes)
             {
-                standardValues = Attributes.Where(x => x.Tag == s).FirstOrDefault().Value;
+                standardValues += Attributes.Where(x => x.Tag == s).FirstOrDefault().Value;
             }
             weapon.AttackStandard = Math.Round((standardValues / 2 / attributes.Length) + weapon.AttackBase, 0);
             weapon.AttackTotal = weapon.AttackStandard + weapon.AttackBonus + weapon.AttackModifier;
 
             weapon.BlockStandard = Math.Round((standardValues / 2 / attributes.Length) + +weapon.BlockBase, 0);           
             weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockModifier;
+
+            //ToDo: Die WeaponSelectModels kriegen aktuell nicht mit, wenn sich die Werte der Waffen verändern
+            //Um das fürs Erste mal zu bypassen, setzten wir einfach das WeaponModel-Property nochmal neu und lösen so ein PropertyChangedEvent aus
+            foreach(WeaponSelectModel selectedweapon in SelectedWeapons.Where(s => s.Weapon == weapon))
+            {
+                selectedweapon.Weapon = weapon;
+            }
+
         }
 
 

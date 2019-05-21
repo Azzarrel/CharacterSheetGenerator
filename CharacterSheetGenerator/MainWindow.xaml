@@ -13,6 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button Name="button1" Command="{Binding LoadCommand}" Width="40" Height="30">L</Button>
             <Button Name="button2" Command="{Binding SaveCommand}" Width="40" Height="30">S</Button>
             <Button Name="button3" Click="Button3_Click" Width="40" Height="30">P</Button>
         </StackPanel>

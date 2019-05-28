@@ -45,6 +45,11 @@
         <Style TargetType="DataGridColumnHeader" x:Key="NumericValueHeaderStyleGray" BasedOn="{StaticResource NumericValueHeaderStyle}">
             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
         </Style>
+        
+        
+        
+        
+        
         <!-- Cell Styles -->
         <Style TargetType="DataGridCell" x:Key="DefaultCellStyle">
             <Setter Property="FontSize" Value="16" />

@@ -17,5 +17,11 @@ namespace CharacterSheetGenerator
 
             return Color.FromRgb(r, g, b);
         }
+
+        public static int ColorToInt(Color color)
+        {
+            return (int)((color.A << 24) | (color.R << 16) |
+                          (color.G << 8) | (color.B << 0));
+        }
     }
 }

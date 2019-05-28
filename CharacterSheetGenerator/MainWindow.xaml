@@ -203,16 +203,11 @@
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="2"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                <DockPanel VerticalAlignment="Top">
-                                    <TextBlock HorizontalAlignment="Right">test</TextBlock>
-                                    <Label HorizontalAlignment="Right" Width="20"></Label>
-                                </DockPanel>
-                                
                             </Grid>
                         </Grid>
                     </Grid>

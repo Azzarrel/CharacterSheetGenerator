@@ -49,6 +49,32 @@ namespace CharacterSheetGenerator
             LoadData("Settings");
 
 
+
+        }
+
+        public void LoadData(string Path)
+        {
+
+            XmlReader xmlData;
+
+            DataSet l_Data = new DataSet();
+            string[] files = Directory.GetFiles(Path, "*.xml");
+
+
+            if (files.Count() == 0)
+            {
+
+                throw new Exception("Der angegebene Pfad enthält keine Charakterdaten");
+            }
+            Data = new DataSet();
+            foreach (string s in files)
+            {
+                l_Data = new DataSet();
+                xmlData = XmlReader.Create(s, new XmlReaderSettings());
+                l_Data.ReadXml(xmlData);
+                Data.Merge(l_Data);
+            }
+
             //Alle Tabellen aus dem DateSet in Listen umwandeln
             CreateAttributes();
             CreateSpecialAttributes();
@@ -88,33 +114,6 @@ namespace CharacterSheetGenerator
 
         }
 
-        public void LoadData(string Path)
-        {
-
-            XmlReader xmlData;
-
-            DataSet l_Data = new DataSet();
-            string[] files = Directory.GetFiles(Path, "*.xml");
-
-
-            if (files.Count() == 0)
-            {
-
-                throw new Exception("Der angegebene Pfad enthält keine Charakterdaten");
-            }
-            Data = new DataSet();
-            foreach (string s in files)
-            {
-                l_Data = new DataSet();
-                xmlData = XmlReader.Create(s, new XmlReaderSettings());
-                l_Data.ReadXml(xmlData);
-                Data.Merge(l_Data);
-            }
-
-
-
-        }
-
         #region Commands
 
         //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
@@ -135,11 +134,11 @@ namespace CharacterSheetGenerator
             Data.Clear();
             foreach(AttributeModel atr in Attributes)
             {
-                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base" , atr.Tag, atr.Base, atr.Color);
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base" , atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
             }
             foreach (AttributeModel atr in SpecialAttributes)
             {
-                Data.Tables["Attributes"].Rows.Add(atr.Name, "Special", atr.Tag, atr.Base, atr.Color);
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Special", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
             }
 
             int i = 0;
@@ -182,11 +181,11 @@ namespace CharacterSheetGenerator
             }
             foreach(MeleeWeaponModel weapon in MeleeWeapons)
             {
-                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
             foreach(RangedWeaponModel weapon in RangedWeapons)
             {
-                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
             foreach(ArmorModel armor in Armor)
             {
@@ -231,20 +230,18 @@ namespace CharacterSheetGenerator
 
 
             System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
             if (CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue != "" &&
                 CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue != null)
             {
                 if (Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\" + CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue))
                     folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\" + CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue;
             }
-            else
-            {
-                folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
-            }
+
             //saveFileDialog.FileName = CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue;
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string SavePath = Path.GetDirectoryName(folderBrowserDialog.SelectedPath);
+                string SavePath = folderBrowserDialog.SelectedPath;
                 
 
 

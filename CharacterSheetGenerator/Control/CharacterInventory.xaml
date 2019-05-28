@@ -26,13 +26,15 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </Style>
         </Grid.Resources>
-        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True" Header="Name"/>
-                <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyle}"/>
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="#" HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                <DataGridTextColumn Binding="{Binding Value}" Header="Wert" HeaderStyle="{StaticResource BaseHeaderStyle}" CellStyle="{StaticResource BaseGridCellStyle}"/>
+                <DataGridTextColumn Binding="{Binding Weight}" Header="Gw" HeaderStyle="{StaticResource BaseHeaderStyleGray}" CellStyle="{StaticResource BaseGridCellStyleGray}"/>
+                <DataGridTextColumn Binding="{Binding Place}" Header="Ort" HeaderStyle="{StaticResource BaseHeaderStyle}" CellStyle="{StaticResource BaseGridCellStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
-
 
     </Grid>
 

@@ -76,5 +76,15 @@ namespace CharacterSheetGenerator
             get { return Get<string>(); }
             set { Set(value); }
         }
+        public int Mana
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
+        public bool AttackBonus
+        {
+            get { return Get<bool>(); }
+            set { Set(value); }
+        }
     }
 }

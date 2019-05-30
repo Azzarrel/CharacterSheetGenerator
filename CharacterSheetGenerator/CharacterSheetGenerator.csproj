@@ -85,9 +85,15 @@
     <Compile Include="Model\CombatSheet\WeaponSelectModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponModel.cs" />
     <Compile Include="Model\ModelObjects\StatusValueModel.cs" />
+    <Compile Include="Model\SaveDataModel.cs" />
     <Compile Include="Model\Traits\TraitModifierModel.cs" />
     <Compile Include="Model\Traits\TraitModel.cs" />
     <Compile Include="Model\Traits\TraitCategoryModel.cs" />
+    <Compile Include="ViewModel\LoadWindowViewModel.cs" />
+    <Compile Include="ViewModel\SaveWindowViewModel.cs" />
+    <Compile Include="View\SaveFileWindow.xaml.cs">
+      <DependentUpon>SaveFileWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Control\CharacterInventory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,7 +118,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -129,11 +135,15 @@
     <Compile Include="Control\CharacterAttributes.xaml.cs">
       <DependentUpon>CharacterAttributes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SaveFileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,9 +175,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM Kopiert die Dll in den Debug-Ordner, zum Testen

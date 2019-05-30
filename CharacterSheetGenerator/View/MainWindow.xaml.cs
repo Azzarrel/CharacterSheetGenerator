@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterSheetGenerator.View;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 
-namespace CharacterSheetGenerator
+namespace CharacterSheetGenerator.View
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -29,7 +30,7 @@ namespace CharacterSheetGenerator
         {
             InitializeComponent();
             DataContext = new CharacterSheetViewModel();
-            
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -46,7 +47,7 @@ namespace CharacterSheetGenerator
         }
 
 
-            private void Button3_Click(object sender, RoutedEventArgs e)
+        private void Button3_Click(object sender, RoutedEventArgs e)
         {
 
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using CharacterSheetGenerator.ViewModel;
+using CharacterSheetGenerator.View;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -81,9 +83,7 @@ namespace CharacterSheetGenerator
             CreateStatusValues();
             CreateSkills();
             CreateCharacterInformation();
-            CreateCharacterTraits();
-            CreateCombatTraits();
-            CreateSpellTraits();
+            CreateTraits();
             CreateWeapons();
             CreateSelectedWeapons();
             CreateMeleeWeapons();
@@ -132,9 +132,9 @@ namespace CharacterSheetGenerator
 
 
             Data.Clear();
-            foreach(AttributeModel atr in Attributes)
+            foreach (AttributeModel atr in Attributes)
             {
-                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base" , atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
             }
             foreach (AttributeModel atr in SpecialAttributes)
             {
@@ -145,7 +145,7 @@ namespace CharacterSheetGenerator
             foreach (CharacterInformationModel info in CharacterInformation)
             {
                 Data.Tables["CharacterInformation"].Rows.Add(info.FirstElement, info.FirstValue, i);
-                if(info.SecondElement != null && info.SecondElement != "")
+                if (info.SecondElement != null && info.SecondElement != "")
                 {
                     Data.Tables["CharacterInformation"].Rows.Add(info.SecondElement, info.SecondValue, i);
                 }
@@ -156,7 +156,7 @@ namespace CharacterSheetGenerator
                 i++;
             }
 
-            foreach(StatusValueModel stv in StatusValues)
+            foreach (StatusValueModel stv in StatusValues)
             {
                 Data.Tables["StatusValues"].Rows.Add(stv.Name, stv.Base, stv.Bonus, stv.Key);
             }
@@ -175,48 +175,48 @@ namespace CharacterSheetGenerator
                 Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
             }
 
-            foreach(WeaponModel weapon in Weapons)
+            foreach (WeaponModel weapon in Weapons)
             {
                 Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Position);
             }
-            foreach(MeleeWeaponModel weapon in MeleeWeapons)
+            foreach (MeleeWeaponModel weapon in MeleeWeapons)
             {
                 Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
-            foreach(RangedWeaponModel weapon in RangedWeapons)
+            foreach (RangedWeaponModel weapon in RangedWeapons)
             {
                 Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
-            foreach(ArmorModel armor in Armor)
+            foreach (ArmorModel armor in Armor)
             {
                 Data.Tables["Armor"].Rows.Add(armor.Name, armor.Head, armor.Torso, armor.LeftArm, armor.RightArm, armor.LeftLeg, armor.RightLeg, armor.Toughness, armor.Slow, armor.Restriction, armor.Break);
             }
-            foreach(OffHandModel offhand in OffHands)
+            foreach (OffHandModel offhand in OffHands)
             {
                 Data.Tables["OffHand"].Rows.Add(offhand.Name, offhand.Strenght, offhand.Toughness, offhand.Break, offhand.AttackBonus, offhand.BlockBonus);
             }
-          
-            foreach(TraitCategoryModel traitcategory in Traits)
+
+            foreach (TraitCategoryModel traitcategory in Traits)
             {
                 Data.Tables["TraitCategory"].Rows.Add(traitcategory.Name, traitcategory.Type, traitcategory.Key);
-               foreach (TraitModel trait in traitcategory.Traits.ToList())
+                foreach (TraitModel trait in traitcategory.Traits.ToList())
                 {
                     Data.Tables["Trait"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
-                    foreach(TraitModifierModel modifier in trait.Modifiers.ToList())
+                    foreach (TraitModifierModel modifier in trait.Modifiers.ToList())
                     {
-                        Data.Tables["TraitModifier"].Rows.Add(modifier.NameLink, modifier.Value, trait.Key);
+                        Data.Tables["TraitModifier"].Rows.Add(modifier.NameLink, modifier.TypeLink, modifier.Value, trait.Key);
                     }
                 }
             }
-            foreach(SpellModel spell in Spells)
+            foreach (SpellModel spell in Spells)
             {
                 Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.FlavorText);
             }
-            foreach(RitualModel ritual in Rituals)
+            foreach (RitualModel ritual in Rituals)
             {
                 Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.FlavorText);
             }
-            foreach(InventoryItemModel item in InventoryLeft)
+            foreach (InventoryItemModel item in InventoryLeft)
             {
                 Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
             }
@@ -225,76 +225,64 @@ namespace CharacterSheetGenerator
                 Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
             }
 
+            SaveWindowViewModel vm = new SaveWindowViewModel();
+            vm.Data = this.Data;
 
+            SaveFileWindow saveWindow = new SaveFileWindow();
+            saveWindow.DataContext = vm;
+            saveWindow.ShowDialog();
 
-
-
-            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
-            if (CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue != "" &&
-                CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue != null)
-            {
-                if (Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\" + CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue))
-                    folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\" + CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue;
-            }
-
-            //saveFileDialog.FileName = CharacterInformation.Where(c => c.FirstElement == "Name").FirstOrDefault().FirstValue;
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string SavePath = folderBrowserDialog.SelectedPath;
-                
-
-
-
-                DirectoryInfo di = Directory.CreateDirectory(SavePath);
-
-
-                foreach (DataTable tbl in Data.Tables)
-                {
-                    XmlTextWriter writer = new XmlTextWriter(SavePath + "/" + tbl.TableName + ".xml", System.Text.Encoding.UTF8);
-                    writer.WriteStartDocument(true);
-                    writer.Formatting = Formatting.Indented;
-                    writer.Indentation = 2;
-                    writer.WriteStartElement("Table");
-                    foreach (DataRow row in tbl.Rows)
-                    {
-                        writer.WriteStartElement(tbl.TableName);
-                        foreach (DataColumn col in tbl.Columns)
-                        {
-                            writer.WriteStartElement(col.ColumnName);
-                            writer.WriteString(row[col].ToString());
-                            writer.WriteEndElement();
-                        }
-                        writer.WriteEndElement();
-                    }
-                    writer.WriteEndDocument();
-                    writer.Close();
-                }
-
-
-                MessageBox.Show("XML File created ! ");
-            }
-            
 
         }
 
         public void LoadMethod()
         {
-            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                try
-                {
-                    LoadData(folderBrowserDialog.SelectedPath);
-                    MessageBox.Show("Charakter erfolgreich geladen");
-                }
-                catch(Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-            }
             
+            LoadWindowViewModel vm = new LoadWindowViewModel();
+            
+
+            SaveFileWindow saveWindow = new SaveFileWindow();
+            saveWindow.DataContext = vm;
+            saveWindow.ShowDialog();
+            if (vm.LoadSucessful == true)
+            {
+                this.Data.Clear();
+                this.Data = vm.Data;
+
+                //Alle Tabellen aus dem DateSet in Listen umwandeln
+                CreateAttributes();
+                CreateSpecialAttributes();
+                CreateStatusValues();
+                CreateSkills();
+                CreateCharacterInformation();
+                CreateTraits();
+                CreateWeapons();
+                CreateSelectedWeapons();
+                CreateMeleeWeapons();
+                CreateRangedWeapons();
+                CreateArmor();
+                CreateOffHands();
+                CreateSpells();
+                CreateRituals();
+                CreateInventory();
+
+                CalculateTraitModifiers();
+            }
+            //System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            //folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
+            //if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        LoadData(folderBrowserDialog.SelectedPath);
+            //        MessageBox.Show("Charakter erfolgreich geladen");
+            //    }
+            //    catch(Exception e)
+            //    {
+            //        MessageBox.Show(e.Message);
+            //    }
+            //}
+
         }
 
         public bool CanExecute()
@@ -410,6 +398,8 @@ namespace CharacterSheetGenerator
 
         #endregion Attributes
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
         #region Persönliche Daten
 
         #region Properties
@@ -472,6 +462,8 @@ namespace CharacterSheetGenerator
         #endregion Events
 
         #endregion Persönliche Daten
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
         #region Statuswerte
 
@@ -595,6 +587,8 @@ namespace CharacterSheetGenerator
 
         #endregion Statuswerte
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
         #region Fertigkeiten 
 
         #region Properties
@@ -667,6 +661,8 @@ namespace CharacterSheetGenerator
 
         #endregion Fertigkeiten   
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
         #region Traits
 
         #region Properties
@@ -693,129 +689,69 @@ namespace CharacterSheetGenerator
 
         #region Initialization
 
-        //ToDo: Rework
-        public void CreateCharacterTraits()
+
+        public void CreateTraits()
         {
-            ObservableCollection<TraitCategoryModel> l_TraitList = new ObservableCollection<TraitCategoryModel>();
-            foreach (DataRow rowCategory in Data.Tables["TraitCategory"].Select("Type = 'Character'"))
+
+            foreach(DataRow rowCategoryType in Data.Tables["TraitCategory"].DefaultView.ToTable(true, "Type").Rows)
             {
-                ObservableCollection<TraitModel> traits = new ObservableCollection<TraitModel>();
-                string traitTexts = "";
-                foreach (DataRow rowTrait in Data.Tables["Trait"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
+                ObservableCollection<TraitCategoryModel> l_TraitList = new ObservableCollection<TraitCategoryModel>();
+                foreach (DataRow rowCategory in Data.Tables["TraitCategory"].Select("Type = '"+ rowCategoryType["Type"].ToString() + "'"))
                 {
-
-                    ObservableCollection<TraitModifierModel> modifiers = new ObservableCollection<TraitModifierModel>();
-                    foreach (DataRow rowModifier in Data.Tables["TraitModifier"].Select("Trait_Id = " + rowTrait["Trait_Id"]))
+                    ObservableCollection<TraitModel> traits = new ObservableCollection<TraitModel>();
+                    string traitTexts = ""; //Die Auflistung aller Traits in einer Kateogorie per Name
+                    foreach (DataRow rowTrait in Data.Tables["Trait"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
                     {
-                        TraitModifierModel modifier = new TraitModifierModel
+
+                        ObservableCollection<TraitModifierModel> modifiers = new ObservableCollection<TraitModifierModel>();
+                        foreach (DataRow rowModifier in Data.Tables["TraitModifier"].Select("Trait_Id = " + rowTrait["Trait_Id"]))
                         {
-                            NameLink = rowModifier["NameLink"].ToString(),
-                            Value = int.Parse(rowModifier["Value"].ToString()),
-                        };
-                        modifiers.Add(modifier);
-                    }
-                    TraitModel trait = new TraitModel
-                    {
-                        Key = int.Parse(rowTrait["Trait_Id"].ToString()),
-                        Name = rowTrait["Name"].ToString(),
-                        Description = rowTrait["Description"].ToString(),
-                        Modifiers = modifiers,
-                    };
-                    traitTexts += rowTrait["Name"].ToString() + ", ";
-                    traits.Add(trait);
-                }
-                TraitCategoryModel category = new TraitCategoryModel
-                {
-                    Key = int.Parse(rowCategory["TraitCategory_Id"].ToString()),
-                    Name = rowCategory["Name"].ToString(),
-                    Type = rowCategory["Type"].ToString(),
-                    TraitTexts = traitTexts,
-                    Traits = traits,
-                };
-                l_TraitList.Add(category);
-            }
-            Traits = l_TraitList;
-        }
-
-        public void CreateCombatTraits()
-        {
-            ObservableCollection<TraitCategoryModel> l_TraitList = new ObservableCollection<TraitCategoryModel>();
-            foreach (DataRow rowCategory in Data.Tables["TraitCategory"].Select("Type = 'Combat'"))
-            {
-                ObservableCollection<TraitModel> traits = new ObservableCollection<TraitModel>();
-                string traitTexts = "";
-                foreach (DataRow rowTrait in Data.Tables["Trait"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
-                {
-
-                    ObservableCollection<TraitModifierModel> modifiers = new ObservableCollection<TraitModifierModel>();
-                    foreach (DataRow rowModifier in Data.Tables["TraitModifier"].Select("Trait_Id = " + rowTrait["Trait_Id"]))
-                    {
-                        TraitModifierModel modifier = new TraitModifierModel
+                            TraitModifierModel modifier = new TraitModifierModel
+                            {
+                                NameLink = rowModifier["NameLink"].ToString(),
+                                TypeLink = rowModifier["TypeLink"].ToString(),
+                                Value = int.Parse(rowModifier["Value"].ToString()),
+                            };
+                            modifiers.Add(modifier);
+                        }
+                        TraitModel trait = new TraitModel
                         {
-                            NameLink = rowModifier["NameLink"].ToString(),
-                            Value = int.Parse(rowModifier["Value"].ToString()),
+                            Key = int.Parse(rowTrait["Trait_Id"].ToString()),
+                            Name = rowTrait["Name"].ToString(),
+                            Description = rowTrait["Description"].ToString(),
+                            Modifiers = modifiers,
                         };
-                        modifiers.Add(modifier);
+                        traitTexts += rowTrait["Name"].ToString() + ", ";
+                        traits.Add(trait);
                     }
-                    TraitModel trait = new TraitModel
+                    TraitCategoryModel category = new TraitCategoryModel
                     {
-                        Name = rowTrait["Name"].ToString(),
-                        Description = rowTrait["Description"].ToString(),
-                        Modifiers = modifiers,
+                        Key = int.Parse(rowCategory["TraitCategory_Id"].ToString()),
+                        Name = rowCategory["Name"].ToString(),
+                        Type = rowCategory["Type"].ToString(),
+                        TraitTexts = traitTexts,
+                        Traits = traits,
                     };
-                    traitTexts += rowTrait["Name"].ToString() + ", ";
-                    traits.Add(trait);
+                    l_TraitList.Add(category);
                 }
-                TraitCategoryModel category = new TraitCategoryModel
+                
+                //Hardcoded je nach Typ die Zuordnung
+                if (rowCategoryType["Type"].ToString() == "Character")
                 {
-                    Name = rowCategory["Name"].ToString(),
-                    TraitTexts = traitTexts,
-                    Traits = traits,
-                };
-                l_TraitList.Add(category);
-            }
-            CombatTraits = l_TraitList;
-        }
-
-        public void CreateSpellTraits()
-        {
-            ObservableCollection<TraitCategoryModel> l_TraitList = new ObservableCollection<TraitCategoryModel>();
-            foreach (DataRow rowCategory in Data.Tables["TraitCategory"].Select("Type = 'Spell'"))
-            {
-                ObservableCollection<TraitModel> traits = new ObservableCollection<TraitModel>();
-                string traitTexts = "";
-                foreach (DataRow rowTrait in Data.Tables["Trait"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
-                {
-
-                    ObservableCollection<TraitModifierModel> modifiers = new ObservableCollection<TraitModifierModel>();
-                    foreach (DataRow rowModifier in Data.Tables["TraitModifier"].Select("Trait_Id = " + rowTrait["Trait_Id"]))
-                    {
-                        TraitModifierModel modifier = new TraitModifierModel
-                        {
-                            NameLink = rowModifier["NameLink"].ToString(),
-                            Value = int.Parse(rowModifier["Value"].ToString()),
-                        };
-                        modifiers.Add(modifier);
-                    }
-                    TraitModel trait = new TraitModel
-                    {
-                        Name = rowTrait["Name"].ToString(),
-                        Description = rowTrait["Description"].ToString(),
-                        Modifiers = modifiers,
-                    };
-                    traitTexts += rowTrait["Name"].ToString() + ", ";
-                    traits.Add(trait);
+                    Traits = l_TraitList;
                 }
-                TraitCategoryModel category = new TraitCategoryModel
+                if (rowCategoryType["Type"].ToString() == "Combat")
                 {
-                    Name = rowCategory["Name"].ToString(),
-                    TraitTexts = traitTexts,
-                    Traits = traits,
-                };
-                l_TraitList.Add(category);
+                    CombatTraits = l_TraitList;
+                }
+                if (rowCategoryType["Type"].ToString() == "Spell")
+                {
+                    SpellTraits = l_TraitList;
+                }
             }
-            SpellTraits = l_TraitList;
+            
         }
+     
 
         #endregion Initialization
 
@@ -829,48 +765,56 @@ namespace CharacterSheetGenerator
         #endregion Events
 
         #region Calculation
-        //Todo: Geht aktuell nur auf Traits, nicht auf Combat und SpellTraits
+
+        //ToDo: Muss man wohl nochmal überarbeiten
         public void CalculateTraitModifiers()
         {
 
-            foreach (TraitModifierModel modifier in Traits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
-            {
-                foreach (AttributeModel atr in Attributes.Where(m => m.Name == modifier.NameLink))
-                {
-                    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
-                }
-                //ToDo: Weg finden das auch auf Skills anzuwneden
-                //foreach (SkillModel atr in SkillsLeft.Where(m => m.Name == modifier.NameLink))
-                //{
-                //    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
-                //}
-                //foreach (SkillModel atr in SkillsRight.Where(m => m.Name == modifier.NameLink))
-                //{
-                //    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
-                //}
-                foreach (StatusValueModel stv in StatusValues.Where(m => m.Name == modifier.NameLink))
-                {
-                    stv.Modifiers = Math.Round(stv.Modifiers + modifier.Value, 0);
-                }
-                //Auch hier gibt es noch Probleme, um die ich mich noch kümmern muss
-                //foreach (WeaponModel atr in Weapons.Where(m => m.Name == modifier.NameLink))
-                //{
-                //    atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
-                //}
-            }
-            foreach (TraitModifierModel modifier in CombatTraits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
-            {
+            List<ObservableCollection<TraitCategoryModel>> l_traits = new List<ObservableCollection<TraitCategoryModel>>();
+            l_traits.Add(Traits);
+            l_traits.Add(CombatTraits);
+            l_traits.Add(SpellTraits);
 
-            }
-            foreach (TraitModifierModel modifier in SpellTraits.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+            foreach (ObservableCollection<TraitCategoryModel> traitcategory in l_traits)
             {
-
+                foreach (TraitModifierModel modifier in traitcategory.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+                {
+                    foreach (AttributeModel atr in Attributes.Where(m => m.Name == modifier.NameLink))
+                    {
+                        atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+                    }
+                    foreach (SkillModel skl in SkillsLeft.Cast<SkillModel>().Where(m => m.Name == modifier.NameLink))
+                    {
+                        skl.Modifiers = Math.Round(skl.Modifiers + modifier.Value, 0);
+                    }
+                    foreach (SkillModel skl in SkillsRight.Cast<SkillModel>().Where(m => m.Name == modifier.NameLink))
+                    {
+                        skl.Modifiers = Math.Round(skl.Modifiers + modifier.Value, 0);
+                    }
+                    foreach (StatusValueModel stv in StatusValues.Where(m => m.Name == modifier.NameLink))
+                    {
+                        stv.Modifiers = Math.Round(stv.Modifiers + modifier.Value, 0);
+                    }
+                    foreach (WeaponModel weap in Weapons.Where(m => m.Name == modifier.NameLink))
+                    {
+                        if (modifier.TypeLink == "Attack")
+                        {
+                            weap.AttackModifier = Math.Round(weap.AttackModifier + modifier.Value, 0);
+                        }
+                        if (modifier.TypeLink == "Block")
+                        {
+                            weap.BlockModifier = Math.Round(weap.BlockModifier + modifier.Value, 0);
+                        }
+                    }
+                }
             }
         }
 
         #endregion Calculation
 
         #endregion Traits
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
         #region Waffen
 
@@ -1044,6 +988,8 @@ namespace CharacterSheetGenerator
 
         #endregion Waffen
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
         #region Rüstung und Zweithand
 
         #region Properties
@@ -1119,6 +1065,8 @@ namespace CharacterSheetGenerator
 
         #endregion Rüstung und Zweithand
 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
         #region Zauber und Rituale
 
         #region Properties
@@ -1193,6 +1141,8 @@ namespace CharacterSheetGenerator
         #endregion Initialization
 
         #endregion Zauber und Rituale
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
         #region Inventar
 

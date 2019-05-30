@@ -56,7 +56,7 @@ namespace CharacterSheetGenerator
 
         public void LoadData(string Path)
         {
-
+            //ToDo: Leicht reworken
             XmlReader xmlData;
 
             DataSet l_Data = new DataSet();
@@ -132,6 +132,7 @@ namespace CharacterSheetGenerator
 
 
             Data.Clear();
+            //ToDo: Alles an die entsprechende regions packen.
             foreach (AttributeModel atr in Attributes)
             {
                 Data.Tables["Attributes"].Rows.Add(atr.Name, "Base", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
@@ -248,7 +249,7 @@ namespace CharacterSheetGenerator
             {
                 this.Data.Clear();
                 this.Data = vm.Data;
-
+                //ToDo: In eigene Methode packen
                 //Alle Tabellen aus dem DateSet in Listen umwandeln
                 CreateAttributes();
                 CreateSpecialAttributes();
@@ -268,20 +269,7 @@ namespace CharacterSheetGenerator
 
                 CalculateTraitModifiers();
             }
-            //System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            //folderBrowserDialog.SelectedPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
-            //if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    try
-            //    {
-            //        LoadData(folderBrowserDialog.SelectedPath);
-            //        MessageBox.Show("Charakter erfolgreich geladen");
-            //    }
-            //    catch(Exception e)
-            //    {
-            //        MessageBox.Show(e.Message);
-            //    }
-            //}
+
 
         }
 
@@ -1099,7 +1087,7 @@ namespace CharacterSheetGenerator
                     Name = row["Name"].ToString(),
                     Type = row["Type"].ToString(),
                     Requirement = row["Requirement"].ToString(),
-                    Value = int.Parse(row["Value"].ToString()),
+                    Value = Parser.ToNullable<int>(row["Value"].ToString()),
                     Damage = row["Damage"].ToString(),
                     MagicDamage = row["MagicDamage"].ToString(),
                     ArmorPenetration = row["ArmorPenetration"].ToString(),
@@ -1126,7 +1114,7 @@ namespace CharacterSheetGenerator
                     Name = row["Name"].ToString(),
                     Type = row["Type"].ToString(),
                     Requirement = row["Requirement"].ToString(),
-                    Value = int.Parse(row["Value"].ToString()),
+                    Value = Parser.ToNullable<int>(row["Value"].ToString()),
                     Duration = row["Duration"].ToString(),
                     FlavorText = row["FlavorText"].ToString(),
 

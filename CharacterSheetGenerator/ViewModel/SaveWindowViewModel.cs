@@ -12,29 +12,8 @@ using System.Xml;
 
 namespace CharacterSheetGenerator.ViewModel
 {
-    class SaveWindowViewModel : NotifyBase
+    class SaveWindowViewModel : DialogueWindowViewModel
     {
-        const string VERSION = "0.2.0.0";
-        public DataSet Data { get; set; } = new DataSet();
-        public string SaveName
-        {
-            get { return Get<string>(); }
-            set
-            {
-                Set(value);
-                CanExecute();
-            }
-        }
-
-        public string SaveFolder
-        {
-            get { return Get<string>(); }
-            set
-            {
-                Set(value);
-                CanExecute();
-            }
-        }
 
         public double Exp
         {
@@ -46,75 +25,19 @@ namespace CharacterSheetGenerator.ViewModel
             }
         }
 
-        public SaveDataModel SelectedItem
-        {
-            get { return Get<SaveDataModel>(); }
-            set
-            {
-                Set(value);
-                SaveName = value.SaveName;
-            }
-        }
-
-        public string CommandName
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-
-        public ObservableCollection<SaveDataModel> SaveData
-        {
-            get { return Get<ObservableCollection<SaveDataModel>>(); }
-            set { Set(value); }
-        }
-
         public SaveWindowViewModel()
         {
             SaveName = "";
             CommandName = "Speichern";
-            CreateCommands();
             Exp = 0;
 
-            XmlReader xmlData;
-            DataSet l_Data = new DataSet();
-            SaveData = new ObservableCollection<SaveDataModel>();
-            SaveFolder = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves";
-            string[] dirs = Directory.GetDirectories(SaveFolder);
-            foreach (string dir in dirs)
-            {
-                if (Directory.GetFiles(dir, "SaveData.xml").Count() >= 0)
-                {
-                    xmlData = XmlReader.Create(dir + "\\SaveData.xml", new XmlReaderSettings());
-                    l_Data.ReadXml(xmlData);
-
-                }
-            }
-
-            foreach (DataRow row in l_Data.Tables["SaveData"].Rows)
-            {
-                SaveDataModel save = new SaveDataModel
-                {
-                    Version = row["Version"].ToString(),
-                    SaveName = row["SaveName"].ToString(),
-                    CharacterName = row["CharacterName"].ToString(),
-                    Expieriece = double.Parse(row["Exp"].ToString()),
-                    LastModified = DateTime.Parse(row["LastModified"].ToString()),
-
-                };
-                SaveData.Add(save);
-            }
+            base.Initializce();
         }
-        private void CreateCommands()
+
+
+        public override void ProcessCommand()
         {
-            DialogCommand = new RelayCommand(SaveMethod, CanExecute);
-
-
-        }
-        public ICommand DialogCommand { get; private set; }
-
-        public void SaveMethod()
-        {
+            //Prüft, ob bereits ein Speicherstand mit diesen Namen existiert
             if (Directory.GetDirectories(SaveFolder, SaveName).Count() != 0)
             {
                 if (MessageBox.Show("Trotzdem überschreiben", "Der angegebene Name existiert bereits", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
@@ -125,32 +48,40 @@ namespace CharacterSheetGenerator.ViewModel
 
             }
 
+            // Wirft einen Fehler, wenn ein Zeichen vorkommen sollte, was in der Ordnerstruktur von Windows Probleme machen sollte.
             if ((SaveName != "") && !SaveName.Contains('/') && !SaveName.Contains('\\') && !SaveName.Contains('^') && !SaveName.Contains('"') && !SaveName.Contains('§') && !SaveName.Contains('$') && !SaveName.Contains('&')
                                  && !SaveName.Contains('<') && !SaveName.Contains('>') && !SaveName.Contains('|') && !SaveName.Contains('.') && !SaveName.Contains(':') && !SaveName.Contains(',') && !SaveName.Contains('#') && !SaveName.Contains('+')
                                  && !SaveName.Contains('~') && !SaveName.Contains('?') && !SaveName.Contains('='))
             {
+                //Erstellt einen neuen Ordner
                 DirectoryInfo di = Directory.CreateDirectory(SaveFolder + "\\" + SaveName);
 
-                Data.Tables["SaveData"].Rows.Add(VERSION, SaveName, (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()), DateTime.Now, Exp);
-                foreach (SaveDataModel s in SaveData.Where(s => s.SaveName == SaveName))
-                {
-                    SaveData.Remove(s);
-                }
-                SaveDataModel save = new SaveDataModel
-                {
-                    Version = VERSION,
-                    SaveName = SaveName,
-                    CharacterName = (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()),
-                    Expieriece = Exp,
-                    LastModified = DateTime.Now,
+                //Fügt die Speicherdaten des Charakters in die Tabelle ein
+                Data.Tables["SaveData"].Rows.Add(VERSION, SaveName, (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()), DateTime.Now, Exp); //ToDo: Exp
+
+                //Nachdem das Fenster sich jetzt nach dem Speichern schließt vermutlich nicht mehr benötigt
+
+                ////Löscht den alten Eintrag in der Liste, wenn es ihn schon gab
+                //foreach (SaveDataModel s in SaveData.Where(s => s.SaveName == SaveName))
+                //{
+                //    SaveData.Remove(s);
+                //}
+                ////Fügt einen neuen Eintrag in die Liste ein
+                //SaveDataModel save = new SaveDataModel
+                //{
+                //    Version = VERSION,
+                //    SaveName = SaveName,
+                //    CharacterName = (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()),
+                //    Expieriece = Exp,
+                //    LastModified = DateTime.Now,
 
 
-                };
-                SaveData.Add(save);
+                //};
+                //SaveData.Add(save);
 
 
 
-
+                //Speichert die Daten in xml ab.
                 foreach (DataTable tbl in Data.Tables)
                 {
                     XmlTextWriter writer = new XmlTextWriter(SaveFolder + "\\" + SaveName + "/" + tbl.TableName + ".xml", System.Text.Encoding.UTF8);
@@ -180,12 +111,6 @@ namespace CharacterSheetGenerator.ViewModel
             {
                 MessageBox.Show("Der Speicherpfad enthält ungültige Zeichen");
             }
-
-        }
-
-        public bool CanExecute()
-        {
-            return true;
 
         }
 

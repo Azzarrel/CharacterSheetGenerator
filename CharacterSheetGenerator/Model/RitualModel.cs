@@ -29,9 +29,9 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public int Value
+        public int? Value
         {
-            get { return Get<int>(); }
+            get { return Get<int?>(); }
             set { Set(value); }
         }
 

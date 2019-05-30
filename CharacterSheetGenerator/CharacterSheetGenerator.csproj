@@ -48,9 +48,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -89,6 +89,7 @@
     <Compile Include="Model\Traits\TraitModifierModel.cs" />
     <Compile Include="Model\Traits\TraitModel.cs" />
     <Compile Include="Model\Traits\TraitCategoryModel.cs" />
+    <Compile Include="ViewModel\DialogueWindowViewModel.cs" />
     <Compile Include="ViewModel\LoadWindowViewModel.cs" />
     <Compile Include="ViewModel\SaveWindowViewModel.cs" />
     <Compile Include="View\SaveFileWindow.xaml.cs">

@@ -8,35 +8,46 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator 
 {
-    public class InventoryItemModel : NotifyBase
+    public class MoneyModel : NotifyBase
     {
 
-        public string Name
+        public double? Gold
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public double? Silver
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public double? Copper
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public double? Iron
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public string Gems
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public double? Quantity
+        public string Artifacts
         {
-            get { return Get<double?>(); }
+            get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public double? Value
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-        public double? Weight
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-
-        public string Place
+        public string Rest
         {
             get { return Get<string>(); }
             set { Set(value); }

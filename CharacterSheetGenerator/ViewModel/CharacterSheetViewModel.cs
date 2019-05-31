@@ -42,25 +42,19 @@ namespace CharacterSheetGenerator
             }
         }
 
+        #region Initilaization
+
+        /// <summary>
+        /// Zur Erstinitialisierung der Standarddaten
+        /// </summary>
         private void InitializeSettings()
         {
-            //Hier wird das ganze Xml-Zeugs aus dem Ordner ins DataSet geladen
-
+            
             Data = new DataSet();
-
-            LoadData("Settings");
-
-
-
-        }
-
-        public void LoadData(string Path)
-        {
-            //ToDo: Leicht reworken
             XmlReader xmlData;
 
             DataSet l_Data = new DataSet();
-            string[] files = Directory.GetFiles(Path, "*.xml");
+            string[] files = Directory.GetFiles("Settings", "*.xml");
 
 
             if (files.Count() == 0)
@@ -77,42 +71,67 @@ namespace CharacterSheetGenerator
                 Data.Merge(l_Data);
             }
 
-            //Alle Tabellen aus dem DateSet in Listen umwandeln
-            CreateAttributes();
-            CreateSpecialAttributes();
-            CreateStatusValues();
-            CreateSkills();
-            CreateCharacterInformation();
-            CreateTraits();
-            CreateWeapons();
-            CreateSelectedWeapons();
-            CreateMeleeWeapons();
-            CreateRangedWeapons();
-            CreateArmor();
-            CreateOffHands();
-            CreateSpells();
-            CreateRituals();
-            CreateInventory();
 
-            CalculateTraitModifiers();
+            LoadData();
 
-
-
-            foreach (StatusValueModel stv in StatusValues)
-            {
-                ObservableCollection<AttributeModel> attributeList = new ObservableCollection<AttributeModel>();
-                foreach (string s in stv.AttributeLinks.ToList())
-                {
-                    attributeList.Add(Attributes.Where(x => x.Name == s).FirstOrDefault());
-                }
-                AttributeModel[] attributes = attributeList.ToArray();
-                CalculateStatusValues(attributes, stv);
-
-            }
-
-            CalculateWeaponAll();
 
         }
+
+        /// <summary>
+        /// /Alle Tabellen aus dem DateSet in Listen laden
+        /// </summary>
+        public void LoadData()
+        {
+
+            LoadAttributes();
+            LoadSpecialAttributes();
+            LoadStatusValues();
+            LoadSkills();
+            LoadCharacterInformation();
+            LoadTraits();
+            LoadWeapons();
+            LoadSelectedWeapons();
+            LoadMeleeWeapons();
+            LoadRangedWeapons();
+            LoadArmor();
+            LoadOffHands();
+            LoadSpells();
+            LoadRituals();
+            LoadInventory();
+            LoadMoney();
+
+            //Zusammengesetzte Werte direkt neu berechnen.
+            CalculateTraitModifiers();
+            CalculateStatusValuesAll();
+            CalculateWeaponAll();
+            Inventory_PropertyChanged(null, null);
+
+        }
+
+        /// <summary>
+        /// Listen wieder in ein DataSet zurückwandeln fürs Speichern
+        /// </summary>
+        /// <param name="tblAttributeLink"></param>
+        public void SaveData(DataTable tblAttributeLink)
+        {
+            SaveAttributes();
+            SaveSpecialAttributes();
+            SaveCharacterInformation();
+            SaveStatusValues(tblAttributeLink);
+            SaveSkills();
+            SaveWeapons();
+            SaveArmor();
+            SaveOffHand();
+            SaveTraits();
+            SaveSpells();
+            SaveRituals();
+            SaveInventory();
+            SaveMoney();
+        }
+
+        #endregion Initilaization
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
         #region Commands
 
@@ -123,109 +142,19 @@ namespace CharacterSheetGenerator
             LoadCommand = new RelayCommand(LoadMethod, CanExecute);
 
         }
+
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
+
         public void SaveMethod()
         {
 
             DataTable tblAttributeLink = Data.Tables["SVAttributeLink"].Copy();
 
-
+            //DataSet vor dem Speichern mit aktuellen Daten füllen
             Data.Clear();
-            //ToDo: Alles an die entsprechende regions packen.
-            foreach (AttributeModel atr in Attributes)
-            {
-                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
-            }
-            foreach (AttributeModel atr in SpecialAttributes)
-            {
-                Data.Tables["Attributes"].Rows.Add(atr.Name, "Special", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
-            }
-
-            int i = 0;
-            foreach (CharacterInformationModel info in CharacterInformation)
-            {
-                Data.Tables["CharacterInformation"].Rows.Add(info.FirstElement, info.FirstValue, i);
-                if (info.SecondElement != null && info.SecondElement != "")
-                {
-                    Data.Tables["CharacterInformation"].Rows.Add(info.SecondElement, info.SecondValue, i);
-                }
-                if (info.SecondElement != null && info.SecondElement != "")
-                {
-                    Data.Tables["CharacterInformation"].Rows.Add(info.ThirdElement, info.ThirdValue, i);
-                }
-                i++;
-            }
-
-            foreach (StatusValueModel stv in StatusValues)
-            {
-                Data.Tables["StatusValues"].Rows.Add(stv.Name, stv.Base, stv.Bonus, stv.Key);
-            }
-
-            foreach (DataRow row in tblAttributeLink.Rows)
-            {
-                Data.Tables["SVAttributeLink"].Rows.Add(row["SVAttributeLink_Text"], row["StatusValues_Id"]);
-            }
-
-            foreach (SkillModel skill in SkillsLeft)
-            {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
-            }
-            foreach (SkillModel skill in SkillsRight)
-            {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
-            }
-
-            foreach (WeaponModel weapon in Weapons)
-            {
-                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Position);
-            }
-            foreach (MeleeWeaponModel weapon in MeleeWeapons)
-            {
-                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
-            }
-            foreach (RangedWeaponModel weapon in RangedWeapons)
-            {
-                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
-            }
-            foreach (ArmorModel armor in Armor)
-            {
-                Data.Tables["Armor"].Rows.Add(armor.Name, armor.Head, armor.Torso, armor.LeftArm, armor.RightArm, armor.LeftLeg, armor.RightLeg, armor.Toughness, armor.Slow, armor.Restriction, armor.Break);
-            }
-            foreach (OffHandModel offhand in OffHands)
-            {
-                Data.Tables["OffHand"].Rows.Add(offhand.Name, offhand.Strenght, offhand.Toughness, offhand.Break, offhand.AttackBonus, offhand.BlockBonus);
-            }
-
-            foreach (TraitCategoryModel traitcategory in Traits)
-            {
-                Data.Tables["TraitCategory"].Rows.Add(traitcategory.Name, traitcategory.Type, traitcategory.Key);
-                foreach (TraitModel trait in traitcategory.Traits.ToList())
-                {
-                    Data.Tables["Trait"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
-                    foreach (TraitModifierModel modifier in trait.Modifiers.ToList())
-                    {
-                        Data.Tables["TraitModifier"].Rows.Add(modifier.NameLink, modifier.TypeLink, modifier.Value, trait.Key);
-                    }
-                }
-            }
-            foreach (SpellModel spell in Spells)
-            {
-                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.FlavorText);
-            }
-            foreach (RitualModel ritual in Rituals)
-            {
-                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.FlavorText);
-            }
-            foreach (InventoryItemModel item in InventoryLeft)
-            {
-                Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
-            }
-            foreach (InventoryItemModel item in InventoryRight)
-            {
-                Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
-            }
-
+            SaveData(tblAttributeLink);
+  
             SaveWindowViewModel vm = new SaveWindowViewModel();
             vm.Data = this.Data;
 
@@ -241,33 +170,16 @@ namespace CharacterSheetGenerator
             
             LoadWindowViewModel vm = new LoadWindowViewModel();
             
-
             SaveFileWindow saveWindow = new SaveFileWindow();
             saveWindow.DataContext = vm;
             saveWindow.ShowDialog();
+            //Wenn das Lade-Fenster geschlossen wurde, ohne, dass ein Ladevorgang ausgeführt wurde, dann keine neuen Daten laden.
             if (vm.LoadSucessful == true)
             {
                 this.Data.Clear();
                 this.Data = vm.Data;
-                //ToDo: In eigene Methode packen
-                //Alle Tabellen aus dem DateSet in Listen umwandeln
-                CreateAttributes();
-                CreateSpecialAttributes();
-                CreateStatusValues();
-                CreateSkills();
-                CreateCharacterInformation();
-                CreateTraits();
-                CreateWeapons();
-                CreateSelectedWeapons();
-                CreateMeleeWeapons();
-                CreateRangedWeapons();
-                CreateArmor();
-                CreateOffHands();
-                CreateSpells();
-                CreateRituals();
-                CreateInventory();
 
-                CalculateTraitModifiers();
+                LoadData();
             }
 
 
@@ -277,9 +189,12 @@ namespace CharacterSheetGenerator
         {
             return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
         }
+
         #endregion Commands
 
-        #region Attributes
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Attribute
 
         #region Properties
 
@@ -297,9 +212,9 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        private void CreateAttributes()
+        private void LoadAttributes()
         {
             Attributes = new ObservableCollection<AttributeModel>();
             foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Base'"))
@@ -323,7 +238,7 @@ namespace CharacterSheetGenerator
         /// <summary>
         /// Spezielle Attribute sind eigentlich StatusValues, die auf einigen Seiten bei den Attributen oben stehen.
         /// </summary>
-        private void CreateSpecialAttributes()
+        private void LoadSpecialAttributes()
         {
             //Aktuell immer schwarz, sonst Kirsten Ritzmann!
             SpecialAttributes = new ObservableCollection<AttributeModel>();
@@ -343,7 +258,27 @@ namespace CharacterSheetGenerator
             }
         }
 
-        #endregion Initialization
+        #endregion Loading
+
+        #region Saving
+
+        private void SaveAttributes()
+        {
+            foreach (AttributeModel atr in Attributes)
+            {
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Base", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
+            }
+          
+        }
+        private void SaveSpecialAttributes()
+        {
+            foreach (AttributeModel atr in SpecialAttributes)
+            {
+                Data.Tables["Attributes"].Rows.Add(atr.Name, "Special", atr.Tag, atr.Base, ColorHandler.ColorToInt(atr.Color.Color));
+            }
+        }
+
+        #endregion Saving
 
         #region Events
 
@@ -363,6 +298,8 @@ namespace CharacterSheetGenerator
                 AttributeModel[] attributes = attributeList.ToArray();
                 CalculateStatusValues(attributes, stv);
             }
+
+            CalculateCarryWeight();
 
             //Alle Waffen die auf dieses Attribut basieren updaten
             foreach (WeaponModel weapon in Weapons.Where(x => x.AttributeLink.Contains(attr.Tag)))
@@ -384,7 +321,7 @@ namespace CharacterSheetGenerator
 
         #endregion Events
 
-        #endregion Attributes
+        #endregion Attribute
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
@@ -400,9 +337,9 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        public void CreateCharacterInformation()
+        public void LoadCharacterInformation()
         {
 
             ObservableCollection<CharacterInformationModel> l_CharInfo = new ObservableCollection<CharacterInformationModel>();
@@ -438,7 +375,29 @@ namespace CharacterSheetGenerator
             CharacterInformation = l_CharInfo;
         }
 
-        #endregion Initialization
+        #endregion Loading
+
+        #region Saving
+
+        private void SaveCharacterInformation()
+        {
+            int i = 0;
+            foreach (CharacterInformationModel info in CharacterInformation)
+            {
+                Data.Tables["CharacterInformation"].Rows.Add(info.FirstElement, info.FirstValue, i);
+                if (info.SecondElement != null && info.SecondElement != "")
+                {
+                    Data.Tables["CharacterInformation"].Rows.Add(info.SecondElement, info.SecondValue, i);
+                }
+                if (info.SecondElement != null && info.SecondElement != "")
+                {
+                    Data.Tables["CharacterInformation"].Rows.Add(info.ThirdElement, info.ThirdValue, i);
+                }
+                i++;
+            }
+        }
+
+        #endregion Saving
 
         #region Events
 
@@ -465,9 +424,9 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        public void CreateStatusValues()
+        public void LoadStatusValues()
         {
             StatusValues = new ObservableCollection<StatusValueModel>();
             foreach (DataRow row in Data.Tables["StatusValues"].Rows)
@@ -493,7 +452,24 @@ namespace CharacterSheetGenerator
             }
         }
 
-        #endregion Initialization
+        #endregion Loading
+
+        #region Saving
+
+        private void SaveStatusValues(DataTable tblAttributeLink)
+        {
+            foreach (StatusValueModel stv in StatusValues)
+            {
+                Data.Tables["StatusValues"].Rows.Add(stv.Name, stv.Base, stv.Bonus, stv.Key);
+            }
+
+            foreach (DataRow row in tblAttributeLink.Rows)
+            {
+                Data.Tables["SVAttributeLink"].Rows.Add(row["SVAttributeLink_Text"], row["StatusValues_Id"]);
+            }
+        }
+
+        #endregion Saving
 
         #region Events
 
@@ -535,6 +511,21 @@ namespace CharacterSheetGenerator
         #endregion Events
 
         #region Calculation
+
+        public void CalculateStatusValuesAll()
+        {
+            foreach (StatusValueModel stv in StatusValues)
+            {
+                ObservableCollection<AttributeModel> attributeList = new ObservableCollection<AttributeModel>();
+                foreach (string s in stv.AttributeLinks.ToList())
+                {
+                    attributeList.Add(Attributes.Where(x => x.Name == s).FirstOrDefault());
+                }
+                AttributeModel[] attributes = attributeList.ToArray();
+                CalculateStatusValues(attributes, stv);
+
+            }
+        }
 
         public void CalculateStatusValues(AttributeModel[] attributes, StatusValueModel stv)
         {
@@ -596,9 +587,9 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        private void CreateSkills()
+        private void LoadSkills()
         {
             List<SkillModel> l_skills = new List<SkillModel>();
             foreach (DataRow row in Data.Tables["Skills"].Rows)
@@ -616,6 +607,7 @@ namespace CharacterSheetGenerator
 
                 };
                 l_skills.Add(skill);
+                skill.PropertyChanged += Skill_PropertyChanged;
             }
 
             SkillsLeft = new ListCollectionView(l_skills.Where(s => s.Grouping == "Left").ToList());
@@ -625,7 +617,24 @@ namespace CharacterSheetGenerator
 
         }
 
-        #endregion Initialization
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveSkills()
+        {
+
+            foreach (SkillModel skill in SkillsLeft)
+            {
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+            }
+            foreach (SkillModel skill in SkillsRight)
+            {
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+            }
+        }
+
+        #endregion Saving
 
         #region Events
 
@@ -651,7 +660,201 @@ namespace CharacterSheetGenerator
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Traits
+        #region Waffen
+
+        #region Properties
+
+        public ObservableCollection<WeaponModel> Weapons
+        {
+            get { return Get<ObservableCollection<WeaponModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<WeaponSelectModel> SelectedWeapons
+        {
+            get { return Get<ObservableCollection<WeaponSelectModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<MeleeWeaponModel> MeleeWeapons
+        {
+            get { return Get<ObservableCollection<MeleeWeaponModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<RangedWeaponModel> RangedWeapons
+        {
+            get { return Get<ObservableCollection<RangedWeaponModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
+        #region Loading
+
+        public void LoadWeapons()
+        {
+            ObservableCollection<WeaponModel> l_weapons = new ObservableCollection<WeaponModel>();
+            foreach (DataRow row in Data.Tables["Weapons"].Rows)
+            {
+
+                WeaponModel weapon = new WeaponModel
+                {
+                    Name = row["Name"].ToString(),
+                    AttributeLink = row["AttributeLink"].ToString(),
+                    AttackBonus = double.Parse(row["AttackBonus"].ToString()),
+                    BlockBonus = double.Parse(row["BlockBonus"].ToString()),
+                    Position = int.Parse(row["Position"].ToString()),
+                    Stamina = int.Parse(row["Position"].ToString()),
+                    Initiative = int.Parse(row["Position"].ToString()),
+                    Damage = row["Damage"].ToString(),
+                    Impulse = row["Impulse"].ToString(),
+                    ArmorPenetration = row["ArmorPenetration"].ToString(),
+                };
+                l_weapons.Add(weapon);
+            }
+            Weapons = l_weapons;
+        }
+
+        public void LoadSelectedWeapons()
+        {
+            SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
+            foreach (WeaponModel w in Weapons.Where(x => x.Position != 0))
+            {
+                WeaponSelectModel ws = new WeaponSelectModel { Weapon = w };
+                SelectedWeapons.Add(ws);
+                ws.PropertyChanged += SelectedWeapon_PropertyChanged;
+            }
+
+
+
+        }
+
+        public void LoadMeleeWeapons()
+        {
+            ObservableCollection<MeleeWeaponModel> l_weapons = new ObservableCollection<MeleeWeaponModel>();
+            foreach (DataRow row in Data.Tables["MeleeWeapons"].Rows)
+            {
+
+                MeleeWeaponModel weapon = new MeleeWeaponModel();
+
+                weapon.Name = row["Name"].ToString();
+                weapon.Weapons = Weapons.Where(x => x.Name == row["Weapons"].ToString()).ToList().FirstOrDefault();
+                weapon.AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString());
+                weapon.BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString());
+                weapon.Damage = row["Damage"].ToString();
+                weapon.Impulse = row["Impulse"].ToString();
+                weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
+                weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
+                weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
+                weapon.Range = row["Range"].ToString();
+
+
+                l_weapons.Add(weapon);
+            }
+            MeleeWeapons = l_weapons;
+        }
+
+        public void LoadRangedWeapons()
+        {
+            ObservableCollection<RangedWeaponModel> l_weapons = new ObservableCollection<RangedWeaponModel>();
+            foreach (DataRow row in Data.Tables["RangedWeapons"].Rows)
+            {
+
+                RangedWeaponModel weapon = new RangedWeaponModel();
+
+                weapon.Name = row["Name"].ToString();
+                weapon.Weapons = Weapons.Where(x => x.Name == row["Weapons"].ToString()).ToList().FirstOrDefault();
+                weapon.AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString());
+                weapon.BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString());
+                weapon.Damage = row["Damage"].ToString();
+                weapon.Impulse = row["Impulse"].ToString();
+                weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
+                weapon.Load = Parser.ToNullable<int>(row["Load"].ToString());
+                weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
+                weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
+                weapon.Range = row["Range"].ToString();
+
+
+                l_weapons.Add(weapon);
+            }
+            RangedWeapons = l_weapons;
+        }
+
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveWeapons()
+        {
+            foreach (WeaponModel weapon in Weapons)
+            {
+                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Position);
+            }
+            foreach (MeleeWeaponModel weapon in MeleeWeapons)
+            {
+                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+            }
+            foreach (RangedWeaponModel weapon in RangedWeapons)
+            {
+                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+            }
+        }
+
+        #endregion Saving
+
+        #region Events
+
+        public void SelectedWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Enumerable.Range(1, SelectedWeapons.Count).Except(SelectedWeapons.Select(x => x.Position)).FirstOrDefault();
+
+        }
+
+        #endregion Events
+
+        #region Calculation
+
+        public void CalculateWeaponAll()
+        {
+            foreach (WeaponModel weapon in Weapons)
+            {
+                CalculateWeapon(weapon);
+            }
+        }
+        //ToDo: Probleme mit dem WeaponSelectModel => Mr. Jacobs fragen.
+        public void CalculateWeapon(WeaponModel weapon)
+        {
+            //Findet die Attribte, auf der die Grundwerte der Waffe basieren
+            string[] attributes = weapon.AttributeLink.Split('/');
+            double standardValues = 0;
+            foreach (string s in attributes)
+            {
+                standardValues += Attributes.Where(x => x.Tag == s).FirstOrDefault().Value;
+            }
+            weapon.AttackStandard = Math.Round((standardValues / 2 / attributes.Length) + weapon.AttackBase, 0);
+            weapon.AttackTotal = weapon.AttackStandard + weapon.AttackBonus + weapon.AttackModifier;
+
+            weapon.BlockStandard = Math.Round((standardValues / 2 / attributes.Length) + +weapon.BlockBase, 0);
+            weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockModifier;
+
+            //ToDo: Die WeaponSelectModels kriegen aktuell nicht mit, wenn sich die Werte der Waffen verändern
+            //Um das fürs Erste mal zu bypassen, setzten wir einfach das WeaponModel-Property nochmal neu und lösen so ein PropertyChangedEvent aus
+            foreach (WeaponSelectModel selectedweapon in SelectedWeapons.Where(s => s.Weapon == weapon))
+            {
+                selectedweapon.Weapon = weapon;
+            }
+
+        }
+
+
+        #endregion Calculation
+
+        #endregion Waffen
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Eigenschaften
 
         #region Properties
 
@@ -675,10 +878,10 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
 
-        public void CreateTraits()
+        public void LoadTraits()
         {
 
             foreach(DataRow rowCategoryType in Data.Tables["TraitCategory"].DefaultView.ToTable(true, "Type").Rows)
@@ -739,9 +942,29 @@ namespace CharacterSheetGenerator
             }
             
         }
-     
 
-        #endregion Initialization
+
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveTraits()
+        {
+            foreach (TraitCategoryModel traitcategory in Traits)
+            {
+                Data.Tables["TraitCategory"].Rows.Add(traitcategory.Name, traitcategory.Type, traitcategory.Key);
+                foreach (TraitModel trait in traitcategory.Traits.ToList())
+                {
+                    Data.Tables["Trait"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
+                    foreach (TraitModifierModel modifier in trait.Modifiers.ToList())
+                    {
+                        Data.Tables["TraitModifier"].Rows.Add(modifier.NameLink, modifier.TypeLink, modifier.Value, trait.Key);
+                    }
+                }
+            }
+        }
+
+        #endregion Saving
 
         #region Events
 
@@ -800,181 +1023,7 @@ namespace CharacterSheetGenerator
 
         #endregion Calculation
 
-        #endregion Traits
-
-        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
-
-        #region Waffen
-
-        #region Properties
-
-        public ObservableCollection<WeaponModel> Weapons
-        {
-            get { return Get<ObservableCollection<WeaponModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<WeaponSelectModel> SelectedWeapons
-        {
-            get { return Get<ObservableCollection<WeaponSelectModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<MeleeWeaponModel> MeleeWeapons
-        {
-            get { return Get<ObservableCollection<MeleeWeaponModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<RangedWeaponModel> RangedWeapons
-        {
-            get { return Get<ObservableCollection<RangedWeaponModel>>(); }
-            set { Set(value); }
-        }
-
-        #endregion Properties
-
-        #region Initialization
-
-        public void CreateWeapons()
-        {
-            ObservableCollection<WeaponModel> l_weapons = new ObservableCollection<WeaponModel>();
-            foreach (DataRow row in Data.Tables["Weapons"].Rows)
-            {
-
-                WeaponModel weapon = new WeaponModel
-                {
-                    Name = row["Name"].ToString(),
-                    AttributeLink = row["AttributeLink"].ToString(),
-                    AttackBonus = double.Parse(row["AttackBonus"].ToString()),
-                    BlockBonus = double.Parse(row["BlockBonus"].ToString()),
-                    Position = int.Parse(row["Position"].ToString()),
-                    Stamina = int.Parse(row["Position"].ToString()),
-                    Initiative = int.Parse(row["Position"].ToString()),
-                    Damage = row["Damage"].ToString(),
-                    Impulse = row["Impulse"].ToString(),
-                    ArmorPenetration = row["ArmorPenetration"].ToString(),
-                };
-                l_weapons.Add(weapon);
-            }
-            Weapons = l_weapons;
-        }
-
-        public void CreateSelectedWeapons()
-        {
-            SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
-            foreach (WeaponModel w in Weapons.Where(x => x.Position != 0))
-            {
-                WeaponSelectModel ws = new WeaponSelectModel { Weapon = w };
-                SelectedWeapons.Add(ws);
-                ws.PropertyChanged += SelectedWeapon_PropertyChanged;
-            }
-
-
-
-        }
-
-        public void CreateMeleeWeapons()
-        {
-            ObservableCollection<MeleeWeaponModel> l_weapons = new ObservableCollection<MeleeWeaponModel>();
-            foreach (DataRow row in Data.Tables["MeleeWeapons"].Rows)
-            {
-
-                MeleeWeaponModel weapon = new MeleeWeaponModel();
-
-                weapon.Name = row["Name"].ToString();
-                weapon.Weapons = Weapons.Where(x => x.Name == row["Weapons"].ToString()).ToList().FirstOrDefault();
-                weapon.AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString());
-                weapon.BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString());
-                weapon.Damage = row["Damage"].ToString();
-                weapon.Impulse = row["Impulse"].ToString();
-                weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
-                weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
-                weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
-                weapon.Range = row["Range"].ToString();
-
-
-                l_weapons.Add(weapon);
-            }
-            MeleeWeapons = l_weapons;
-        }
-
-        public void CreateRangedWeapons()
-        {
-            ObservableCollection<RangedWeaponModel> l_weapons = new ObservableCollection<RangedWeaponModel>();
-            foreach (DataRow row in Data.Tables["RangedWeapons"].Rows)
-            {
-
-                RangedWeaponModel weapon = new RangedWeaponModel();
-
-                weapon.Name = row["Name"].ToString();
-                weapon.Weapons = Weapons.Where(x => x.Name == row["Weapons"].ToString()).ToList().FirstOrDefault();
-                weapon.AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString());
-                weapon.BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString());
-                weapon.Damage = row["Damage"].ToString();
-                weapon.Impulse = row["Impulse"].ToString();
-                weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
-                weapon.Load = Parser.ToNullable<int>(row["Load"].ToString());
-                weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
-                weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
-                weapon.Range = row["Range"].ToString();
-
-
-                l_weapons.Add(weapon);
-            }
-            RangedWeapons = l_weapons;
-        }
-
-        #endregion Initialization
-
-        #region Events
-
-        public void SelectedWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            Enumerable.Range(1, SelectedWeapons.Count).Except(SelectedWeapons.Select(x => x.Position)).FirstOrDefault();
-
-        }
-
-        #endregion Events
-
-        #region Calculation
-
-        public void CalculateWeaponAll()
-        {
-            foreach (WeaponModel weapon in Weapons)
-            {
-                CalculateWeapon(weapon);
-            }
-        }
-        //ToDo: Probleme mit dem WeaponSelectModel => Mr. Jacobs fragen.
-        public void CalculateWeapon(WeaponModel weapon)
-        {
-            //Findet die Attribte, auf der die Grundwerte der Waffe basieren
-            string[] attributes = weapon.AttributeLink.Split('/');
-            double standardValues = 0;
-            foreach (string s in attributes)
-            {
-                standardValues += Attributes.Where(x => x.Tag == s).FirstOrDefault().Value;
-            }
-            weapon.AttackStandard = Math.Round((standardValues / 2 / attributes.Length) + weapon.AttackBase, 0);
-            weapon.AttackTotal = weapon.AttackStandard + weapon.AttackBonus + weapon.AttackModifier;
-
-            weapon.BlockStandard = Math.Round((standardValues / 2 / attributes.Length) + +weapon.BlockBase, 0);           
-            weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockModifier;
-
-            //ToDo: Die WeaponSelectModels kriegen aktuell nicht mit, wenn sich die Werte der Waffen verändern
-            //Um das fürs Erste mal zu bypassen, setzten wir einfach das WeaponModel-Property nochmal neu und lösen so ein PropertyChangedEvent aus
-            foreach(WeaponSelectModel selectedweapon in SelectedWeapons.Where(s => s.Weapon == weapon))
-            {
-                selectedweapon.Weapon = weapon;
-            }
-
-        }
-
-
-        #endregion Calculation
-
-        #endregion Waffen
+        #endregion Eigenschaften
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
@@ -996,9 +1045,9 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        public void CreateArmor()
+        public void LoadArmor()
         {
             ObservableCollection<ArmorModel> l_armor = new ObservableCollection<ArmorModel>();
             foreach (DataRow row in Data.Tables["Armor"].Rows)
@@ -1026,7 +1075,7 @@ namespace CharacterSheetGenerator
             Armor = l_armor;
         }
 
-        public void CreateOffHands()
+        public void LoadOffHands()
         {
             ObservableCollection<OffHandModel> l_offhands = new ObservableCollection<OffHandModel>();
             foreach (DataRow row in Data.Tables["OffHand"].Rows)
@@ -1049,7 +1098,26 @@ namespace CharacterSheetGenerator
             OffHands = l_offhands;
         }
 
-        #endregion Initialization
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveArmor()
+        {
+            foreach (ArmorModel armor in Armor)
+            {
+                Data.Tables["Armor"].Rows.Add(armor.Name, armor.Head, armor.Torso, armor.LeftArm, armor.RightArm, armor.LeftLeg, armor.RightLeg, armor.Toughness, armor.Slow, armor.Restriction, armor.Break);
+            }
+        }
+        public void SaveOffHand()
+        {
+            foreach (OffHandModel offhand in OffHands)
+            {
+                Data.Tables["OffHand"].Rows.Add(offhand.Name, offhand.Strenght, offhand.Toughness, offhand.Break, offhand.AttackBonus, offhand.BlockBonus);
+            }
+        }
+
+        #endregion Saving
 
         #endregion Rüstung und Zweithand
 
@@ -1074,9 +1142,9 @@ namespace CharacterSheetGenerator
 
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        public void CreateSpells()
+        public void LoadSpells()
         {
             ObservableCollection<SpellModel> l_spells = new ObservableCollection<SpellModel>();
             foreach (DataRow row in Data.Tables["Spells"].Rows)
@@ -1103,7 +1171,7 @@ namespace CharacterSheetGenerator
             Spells = l_spells;
         }
 
-        public void CreateRituals()
+        public void LoadRituals()
         {
             ObservableCollection<RitualModel> l_rituals = new ObservableCollection<RitualModel>();
             foreach (DataRow row in Data.Tables["Rituals"].Rows)
@@ -1126,7 +1194,27 @@ namespace CharacterSheetGenerator
             Rituals = l_rituals;
         }
 
-        #endregion Initialization
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveSpells()
+        {
+            foreach (SpellModel spell in Spells)
+            {
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.FlavorText);
+            }
+        }
+
+        public void SaveRituals()
+        {
+            foreach (RitualModel ritual in Rituals)
+            {
+                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.FlavorText);
+            }
+        }
+
+        #endregion Saving
 
         #endregion Zauber und Rituale
 
@@ -1148,11 +1236,35 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public double WeightLeft
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+        public double WeightRight
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+        public double CarryWeight
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+        public MoneyModel Money
+        {
+            get { return Get<MoneyModel>(); }
+            set { Set(value); }
+        }
+
         #endregion Properties
 
-        #region Initialization
+        #region Loading
 
-        public void CreateInventory()
+        public void LoadInventory()
         {
             List<InventoryItemModel> l_inventory = new List<InventoryItemModel>();
             foreach (DataRow row in Data.Tables["Inventory"].Rows)
@@ -1160,18 +1272,86 @@ namespace CharacterSheetGenerator
                 InventoryItemModel item = new InventoryItemModel
                 {
                     Name = row["Name"].ToString(),
-                    Quantity = double.Parse(row["Quantity"].ToString()),
-                    Value = double.Parse(row["Value"].ToString()),
-                    Weight = double.Parse(row["Weight"].ToString()),
+                    Quantity = Parser.ToNullable<double>(row["Quantity"].ToString()),
+                    Value = Parser.ToNullable<double>(row["Value"].ToString()),
+                    Weight = Parser.ToNullable<double>(row["Weight"].ToString()),
                     Place = row["Place"].ToString(),
                 };
                 l_inventory.Add(item);
+                item.PropertyChanged += Inventory_PropertyChanged;
             }
             InventoryLeft = new ObservableCollection<InventoryItemModel>(l_inventory.GetRange(0, l_inventory.Count / 2));
             InventoryRight = new ObservableCollection<InventoryItemModel>(l_inventory.GetRange(l_inventory.Count / 2, l_inventory.Count / 2));
         }
 
-        #endregion Initialization
+        public void LoadMoney()
+        {
+            foreach (DataRow row in Data.Tables["Money"].Rows)
+            {
+                Money = new MoneyModel
+                {
+                    Gold = Parser.ToNullable<double>(row["Gold"].ToString()),
+                    Silver = Parser.ToNullable<double>(row["Silver"].ToString()),
+                    Copper = Parser.ToNullable<double>(row["Copper"].ToString()),
+                    Iron = Parser.ToNullable<double>(row["Iron"].ToString()),
+                    Gems = row["Gems"].ToString(),
+                    Artifacts = row["Artifacts"].ToString(),
+                    Rest = row["Rest"].ToString(),
+                };
+               
+            }
+        }
+
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveInventory()
+        {
+            foreach (InventoryItemModel item in InventoryLeft)
+            {
+                Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
+            }
+            foreach (InventoryItemModel item in InventoryRight)
+            {
+                Data.Tables["Inventory"].Rows.Add(item.Name, item.Quantity, item.Value, item.Weight, item.Place);
+            }
+        }
+
+        public void SaveMoney()
+        {
+            Data.Tables["Money"].Rows.Add(Money.Gold, Money.Silver, Money.Copper, Money.Iron, Money.Gems, Money.Artifacts, Money.Rest);
+        }
+        #endregion Saving
+
+        #region Calculation
+
+        public void CalculateCarryWeight()
+        {
+            CarryWeight = Math.Round(6 + Attributes.Where(atr => atr.Name == "Stärke").FirstOrDefault().Value * 2);
+        }
+
+        #endregion Calculation
+
+
+        #region Events
+
+        public void Inventory_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            WeightLeft = 0;
+            foreach(InventoryItemModel item in InventoryLeft)
+            {
+                WeightLeft += (item.Weight == null) ? 0 : double.Parse(item.Weight.ToString());
+            }
+
+            WeightRight = 0;
+            foreach (InventoryItemModel item in InventoryRight)
+            {
+                WeightRight += (item.Weight == null) ? 0 : double.Parse(item.Weight.ToString());
+            }
+        }
+
+        #endregion Events
 
         #endregion Inventar
 

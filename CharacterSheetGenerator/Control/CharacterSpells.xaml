@@ -82,16 +82,16 @@
                         <DataGridTextColumn Binding="{Binding Name}"                     Header=" Name"  IsReadOnly="True" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
                         <DataGridComboBoxColumn SelectedItemBinding="{Binding Weapons}"  Header=" Art"  DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}" CellStyle="{StaticResource ComboboxCellStyleGray}"/>
                         <DataGridTextColumn Binding="{Binding Value}"                    Header="FW"   HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
-                        <DataGridTextColumn Binding="{Binding Requirement}"              Header="Probe"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLarge}" CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
-                        <DataGridTextColumn Binding="{Binding Mana}"                     Header="MA"   HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                        <DataGridTextColumn Binding="{Binding Damage}"                   Header="Stk."  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLarge}" CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
+                        <DataGridTextColumn Binding="{Binding Requirement}"              Header="Probe"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
+                        <DataGridTextColumn Binding="{Binding Mana}"                     Header="MA"   HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                        <DataGridTextColumn Binding="{Binding Damage}"                   Header="Stk."  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
                         <DataGridTextColumn Binding="{Binding MagicDamage}"              Header="MStk."  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLarge}" CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
                         <DataGridTextColumn Binding="{Binding Impulse}"                  Header="Imp."  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
                         <DataGridTextColumn Binding="{Binding ArmorPenetration}"         Header="RD."  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLarge}" CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
                         <DataGridTextColumn Binding="{Binding AttackBonus}"              Header="ATm"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleGray}" CellStyle="{StaticResource BaseGridCellStyleGray}"/>
                         <DataGridTextColumn Binding="{Binding Range}"                    Header="RW"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
                         <DataGridTextColumn Binding="{Binding AttackTotal}"              Header="AT." HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
-                        <DataGridTextColumn Binding="{Binding Ticks}"                    Header="INI." HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                        <DataGridTextColumn Binding="{Binding Ticks}"                    Header="INI." HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
                     </DataGrid.Columns>
 
                 </DataGrid>

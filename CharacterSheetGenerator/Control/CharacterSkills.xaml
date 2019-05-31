@@ -69,11 +69,11 @@
                 </GroupStyle>
             </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource ItemNameCellStyle}" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" Header="Name"/>
-                <DataGridTextColumn Binding="{Binding Requirement}" CellStyle="{StaticResource SkillCheckGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}" IsReadOnly="True" Header="Probe"/>
-                <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" Header="Fw."/>
+                <DataGridTextColumn Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource ItemNameCellStyle}" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource SkillCheckGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}" IsReadOnly="True" Header="Probe"/>
+                <DataGridTextColumn Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" Header="Fw."/>
                 <DataGridTextColumn Binding="{Binding Routine}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" IsReadOnly="True" Header="R."/>
-                <DataGridTextColumn Binding="{Binding Comment}" CellStyle="{StaticResource CommentGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleComment}"  Header="     Anmerkungen"/>
+                <DataGridTextColumn Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource CommentGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleComment}"  Header="     Anmerkungen"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -24,6 +24,34 @@ namespace CharacterSheetGenerator.Control
     /// </summary>
     public partial class CharacterSpells : UserControl
     {
+
+
+        private SolidColorBrush m_CellColor = new SolidColorBrush();
+
+        public static readonly DependencyProperty CellColorProperty =
+            DependencyProperty.Register("CellColor", typeof(SolidColorBrush), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(new SolidColorBrush(), OnCellColorPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public SolidColorBrush CellColor
+        {
+            get { return (SolidColorBrush)GetValue(CellColorProperty); }
+            set { SetValue(CellColorProperty, value); }
+        }
+
+        private static void OnCellColorPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterSpells UserControl = obj as CharacterSpells;
+            UserControl.OnPropertyChanged("CellColor");
+            UserControl.OnCellColorPropertyChanged(e);
+        }
+
+        private void OnCellColorPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_CellColor = CellColor;
+
+        }
+
         private ObservableCollection<WeaponModel> m_Weapons = new ObservableCollection<WeaponModel>();
 
         public static readonly DependencyProperty WeaponProperty =
@@ -158,6 +186,7 @@ namespace CharacterSheetGenerator.Control
 
         public CharacterSpells()
         {
+            CellColor = new SolidColorBrush(ColorHandler.IntToColor(15329769));
             InitializeComponent();
 
         }

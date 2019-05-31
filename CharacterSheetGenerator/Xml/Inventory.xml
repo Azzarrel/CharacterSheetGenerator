@@ -1,218 +1,464 @@
 <PlayerData>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
-		<Place></Place>
-	</Inventory>	
-	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight>5</Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
-		<Place></Place>
-	</Inventory><Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 	<Inventory>	
-		<Name>test</Name>
-		<Quantity>0</Quantity>
-		<Value>0</Value>
-		<Weight>0</Weight>
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
 </PlayerData>

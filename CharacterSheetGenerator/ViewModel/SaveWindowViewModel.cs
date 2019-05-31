@@ -59,27 +59,6 @@ namespace CharacterSheetGenerator.ViewModel
                 //Fügt die Speicherdaten des Charakters in die Tabelle ein
                 Data.Tables["SaveData"].Rows.Add(VERSION, SaveName, (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()), DateTime.Now, Exp); //ToDo: Exp
 
-                //Nachdem das Fenster sich jetzt nach dem Speichern schließt vermutlich nicht mehr benötigt
-
-                ////Löscht den alten Eintrag in der Liste, wenn es ihn schon gab
-                //foreach (SaveDataModel s in SaveData.Where(s => s.SaveName == SaveName))
-                //{
-                //    SaveData.Remove(s);
-                //}
-                ////Fügt einen neuen Eintrag in die Liste ein
-                //SaveDataModel save = new SaveDataModel
-                //{
-                //    Version = VERSION,
-                //    SaveName = SaveName,
-                //    CharacterName = (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()),
-                //    Expieriece = Exp,
-                //    LastModified = DateTime.Now,
-
-
-                //};
-                //SaveData.Add(save);
-
-
 
                 //Speichert die Daten in xml ab.
                 foreach (DataTable tbl in Data.Tables)

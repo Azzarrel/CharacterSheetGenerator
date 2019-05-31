@@ -87,6 +87,7 @@ namespace CharacterSheetGenerator
             LoadSpecialAttributes();
             LoadStatusValues();
             LoadSkills();
+            LoadLanguages();
             LoadCharacterInformation();
             LoadTraits();
             LoadWeapons();
@@ -103,6 +104,7 @@ namespace CharacterSheetGenerator
             //Zusammengesetzte Werte direkt neu berechnen.
             CalculateTraitModifiers();
             CalculateStatusValuesAll();
+            CalculateSkillsAll();
             CalculateWeaponAll();
             Inventory_PropertyChanged(null, null);
 
@@ -119,6 +121,7 @@ namespace CharacterSheetGenerator
             SaveCharacterInformation();
             SaveStatusValues(tblAttributeLink);
             SaveSkills();
+            SaveLanguages();
             SaveWeapons();
             SaveArmor();
             SaveOffHand();
@@ -556,6 +559,9 @@ namespace CharacterSheetGenerator
                 case "Geschwindigkeit":
                     stv.Standard = Math.Round(stv.Base, 0);
                     break;
+                case "Wundschwelle":
+                    stv.Standard = Math.Round(stv.Base + attributes[0].Value + attributes[1].Value, 0)/5;
+                    break;
                 default:
                     break;
             }
@@ -598,7 +604,7 @@ namespace CharacterSheetGenerator
                 {
                     Name = row["Name"].ToString(),
                     Requirement = row["Requirement"].ToString(),
-                    Value = int.Parse(row["Value"].ToString()),
+                    Base = Parser.ToNullable<double>(row["Value"].ToString()),
                     Difficulty = row["Difficulty"].ToString(),
                     Comment = row["Comment"].ToString(),
                     Category = row["Category"].ToString(),
@@ -636,6 +642,22 @@ namespace CharacterSheetGenerator
 
         #endregion Saving
 
+        #region Calculation
+
+        public void CalculateSkillsAll()
+        {
+            foreach(SkillModel skill in SkillsLeft)
+            {
+                skill.Value = skill.Base + skill.Modifiers;
+            }
+            foreach (SkillModel skill in SkillsRight)
+            {
+                skill.Value = skill.Base + skill.Modifiers;
+            }
+        }
+
+        #endregion Calculation
+
         #region Events
 
         public void Skill_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -657,6 +679,72 @@ namespace CharacterSheetGenerator
         #endregion Events
 
         #endregion Fertigkeiten   
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Sprachen und Schriften
+
+        #region Properties
+
+        public ObservableCollection<LanguageModel> Languages
+        {
+            get { return Get<ObservableCollection<LanguageModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<LanguageModel> Writings
+        {
+            get { return Get<ObservableCollection<LanguageModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
+        #region Loading
+
+        public void LoadLanguages()
+        {
+            Languages = new ObservableCollection<LanguageModel>();
+            foreach(DataRow row in Data.Tables["Languages"].Rows)
+            {
+                LanguageModel language = new LanguageModel
+                {
+                    Name = row["Name"].ToString(),
+                };
+                Languages.Add(language);
+            }
+
+            Writings = new ObservableCollection<LanguageModel>();
+            foreach (DataRow row in Data.Tables["Writings"].Rows)
+            {
+                LanguageModel writing = new LanguageModel
+                {
+                    Name = row["Name"].ToString(),
+                };
+                Writings.Add(writing);
+            }
+        }
+
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveLanguages()
+        {
+            foreach(LanguageModel language in Languages)
+            {
+                Data.Tables["Languages"].Rows.Add(language.Name);
+            }
+            foreach (LanguageModel writing in Writings)
+            {
+                Data.Tables["Writings"].Rows.Add(writing.Name);
+            }
+        }
+
+        #endregion Saving
+
+        #endregion
+
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

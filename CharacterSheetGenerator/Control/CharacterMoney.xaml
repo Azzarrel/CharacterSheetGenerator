@@ -28,9 +28,9 @@
             <TextBlock Height="15"/>
             <TextBlock HorizontalAlignment="Left" Text="Sonstiges" FontSize="14" FontWeight="SemiBold"/>
             <TextBox Height="100" BorderBrush="Black" BorderThickness="2"  HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Rest, Mode=TwoWay}" FontSize="14" />
-            <TextBlock Height="75"/>
+            <TextBlock Height="52"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Left" Text="Tragkraft:           " FontSize="14" FontWeight="SemiBold"/>
+                <TextBlock HorizontalAlignment="Left" Text="       Tragkraft:           " FontSize="14" FontWeight="SemiBold"/>
                 <TextBox Width="70" Height="30" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CarryWeight, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
             </StackPanel>
         </StackPanel>

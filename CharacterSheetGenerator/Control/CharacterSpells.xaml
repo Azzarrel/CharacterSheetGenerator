@@ -33,11 +33,12 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="40*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel>
                     <Label FontSize="26" FontWeight="Bold">Kampftechniken</Label>
-                    <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+                    <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                         <DataGrid.Columns>
                             <!--<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Name"/>-->
                             <DataGridComboBoxColumn Header=" Waffe" SelectedItemBinding="{Binding Weapon}" DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
@@ -77,7 +78,8 @@
             </Grid>
             <StackPanel Grid.Row="1">
                 <Label FontSize="26" FontWeight="Bold">Zaubersprüche</Label>
-                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Spells, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Spells, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                          RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Name}"                     Header=" Name"  IsReadOnly="True" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
                         <DataGridComboBoxColumn SelectedItemBinding="{Binding Weapons}"  Header=" Art"  DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}" CellStyle="{StaticResource ComboboxCellStyleGray}"/>
@@ -98,7 +100,8 @@
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <Label FontSize="26" FontWeight="Bold">Rituale</Label>
-                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Rituals, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Rituals, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                          RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Name}"                     Header=" Name"  IsReadOnly="True" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
                         <DataGridComboBoxColumn SelectedItemBinding="{Binding Weapons}"  Header=" Art"  DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}" CellStyle="{StaticResource ComboboxCellStyleGray}"/>

@@ -61,6 +61,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="180"/>
+                                <RowDefinition Height="1345"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel Orientation="Horizontal" Grid.Row="1">
@@ -86,6 +87,7 @@
                                     <Grid Grid.Column="1" Background="DarkGray"/>
                                     <ctrl:CharacterSkills Grid.Column="2" VerticalAlignment="Top"  Skills="{Binding SkillsRight, Mode=TwoWay}"/>
                                 </Grid>
+                                <ctrl:CharacterLanguages Grid.Row="3" Language="{Binding Languages}" Writing="{Binding Writings}"/>
                             </Grid>
 
 
@@ -113,7 +115,9 @@
                                     <TextBlock FontSize="20" Text="Kampfwerte" TextAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel>
-                                    <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}" />
+                                    <Viewbox Width="900">
+                                        <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}" />
+                                    </Viewbox>
                                     <ctrl:CharacterAttributes AttributeList="{Binding SpecialAttributes, Mode=TwoWay}"/>
                                 </StackPanel>
                             </StackPanel>
@@ -142,7 +146,7 @@
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20"/>
-                                <RowDefinition Height="180"/>
+                                <RowDefinition Height="260"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel Orientation="Horizontal" Grid.Row="1">
@@ -150,7 +154,12 @@
                                     <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
                                     <TextBlock FontSize="20" Text="Zauber &amp; Magie" TextAlignment="Center"/>
                                 </StackPanel>
-                                <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}"/>
+                                <StackPanel>
+                                    <Viewbox Width="900">
+                                        <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}" />
+                                    </Viewbox>
+                                    <ctrl:CharacterAttributes AttributeList="{Binding SpecialAttributes, Mode=TwoWay}"/>
+                                </StackPanel>
                             </StackPanel>
                             <Grid Grid.Row="2">
                                 <Grid.RowDefinitions>

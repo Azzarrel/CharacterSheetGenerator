@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\CharacterLanguages.xaml.cs">
+      <DependentUpon>CharacterLanguages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\CharacterMoney.xaml.cs">
       <DependentUpon>CharacterMoney.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,7 @@
     </Compile>
     <Compile Include="Model\InventoryItemModel.cs" />
     <Compile Include="Model\RitualModel.cs" />
+    <Compile Include="Model\LanguageModel.cs" />
     <Compile Include="Model\SpellModel.cs" />
     <Compile Include="Model\CombatSheet\RangedWeaponModel .cs" />
     <Compile Include="Model\CombatSheet\MeleeWeaponModel.cs" />
@@ -97,6 +101,10 @@
     <Compile Include="View\SaveFileWindow.xaml.cs">
       <DependentUpon>SaveFileWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\CharacterLanguages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\CharacterMoney.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

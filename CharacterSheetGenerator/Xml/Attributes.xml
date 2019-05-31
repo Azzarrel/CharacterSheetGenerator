@@ -111,10 +111,17 @@
     <Value>0</Value>
     <Color>9999</Color>
   </Attributes>
-    <Attributes>
+   <Attributes>
     <Name>Geschwindigkeit</Name>
     <Type>Special</Type>
     <Tag>GSW</Tag>
+    <Value>0</Value>
+    <Color>9999</Color>
+  </Attributes>
+   <Attributes>
+    <Name>Wundschwelle</Name>
+    <Type>Special</Type>
+    <Tag>WS</Tag>
     <Value>0</Value>
     <Color>9999</Color>
   </Attributes>

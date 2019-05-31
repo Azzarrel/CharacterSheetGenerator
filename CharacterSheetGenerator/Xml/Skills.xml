@@ -144,7 +144,15 @@
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
 	</Skills>
-		
+	<Skills>
+		<Name></Name>
+		<Requirement></Requirement>
+		<Value></Value>
+		<Difficulty></Difficulty>
+		<Comment></Comment>
+		<Category>Körpertalente</Category>
+		<Grouping>Left</Grouping>
+	</Skills>		
 
 		
 <!-- Gesellschaftstalente -->	
@@ -265,7 +273,15 @@
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
 	</Skills>
-	
+	<Skills>
+		<Name></Name>
+		<Requirement></Requirement>
+		<Value></Value>
+		<Difficulty></Difficulty>
+		<Comment></Comment>
+		<Category>Gesellschaftstalente</Category>
+		<Grouping>Left</Grouping>
+	</Skills>	
 	
 	
 <!-- Naturtalente -->	
@@ -340,7 +356,15 @@
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
-	
+	<Skills>
+		<Name></Name>
+		<Requirement></Requirement>
+		<Value></Value>
+		<Difficulty></Difficulty>
+		<Comment></Comment>
+		<Category>Naturtalente</Category>
+		<Grouping>Left</Grouping>
+	</Skills>	
 	
 		
 <!-- Wissenstalente -->		
@@ -498,7 +522,15 @@
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
 	</Skills> 
-	
+	<Skills>
+		<Name></Name>
+		<Requirement></Requirement>
+		<Value></Value>
+		<Difficulty></Difficulty>
+		<Comment></Comment>
+		<Category>Wissenstalente</Category>
+		<Grouping>Right</Grouping>
+	</Skills>	
 	
 	
 <!-- Handwerkstalente  -->	
@@ -700,4 +732,13 @@
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
 	</Skills> 
+	<Skills>
+		<Name></Name>
+		<Requirement></Requirement>
+		<Value></Value>
+		<Difficulty></Difficulty>
+		<Comment></Comment>
+		<Category>Handwerkstalente</Category>
+		<Grouping>Right</Grouping>
+	</Skills>	
 </PlayerData>

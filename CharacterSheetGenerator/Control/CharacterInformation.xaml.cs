@@ -16,6 +16,35 @@ namespace CharacterSheetGenerator.Control
     public partial class CharacterOverview : UserControl
     {
 
+
+        private double m_Expirience = new double();
+
+        public static readonly DependencyProperty ExpirienceProperty =
+            DependencyProperty.Register("Expirience", typeof(double), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(new double(), OnExpiriencePropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public double Expirience
+        {
+            get { return (double)GetValue(ExpirienceProperty); }
+            set { SetValue(ExpirienceProperty, value); }
+        }
+
+        private static void OnExpiriencePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterOverview UserControl = obj as CharacterOverview;
+            UserControl.OnPropertyChanged("Expirience");
+            UserControl.OnExpiriencePropertyChanged(e);
+
+
+        }
+
+        private void OnExpiriencePropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_Expirience = Expirience;
+
+        }
+
         private ObservableCollection<CharacterInformationModel> m_CharacterInformation = new ObservableCollection<CharacterInformationModel>();
 
         public static readonly DependencyProperty CharacterInformationProperty =

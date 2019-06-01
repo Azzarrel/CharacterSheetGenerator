@@ -8,10 +8,10 @@
     <Grid>
         <Grid.Resources>
             <Style TargetType="DataGridColumnHeader" x:Key="InventoryHeaderStyle" BasedOn="{StaticResource BaseHeaderStyleLarge}">
-                <Setter Property="Width" Value="90" />
+                <Setter Property="Width" Value="95" />
             </Style>
             <Style TargetType="DataGridCell" x:Key="InventoryGridCellSty" BasedOn="{StaticResource BaseGridCellStyleLarge}">
-                <Setter Property="Width" Value="90" />
+                <Setter Property="Width" Value="95" />
             </Style>
         </Grid.Resources>
         <Grid.RowDefinitions>

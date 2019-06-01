@@ -27,8 +27,6 @@ namespace CharacterSheetGenerator
 
         public DataSet Data { get; set; } = new DataSet();
 
-
-
         #endregion Properties
 
         public CharacterSheetViewModel()
@@ -42,7 +40,7 @@ namespace CharacterSheetGenerator
             }
         }
 
-        #region Initilaization
+        #region Framework
 
         /// <summary>
         /// Zur Erstinitialisierung der Standarddaten
@@ -107,6 +105,7 @@ namespace CharacterSheetGenerator
             CalculateSkillsAll();
             CalculateWeaponAll();
             Inventory_PropertyChanged(null, null);
+            CalculateExpirience();
 
         }
 
@@ -132,7 +131,7 @@ namespace CharacterSheetGenerator
             SaveMoney();
         }
 
-        #endregion Initilaization
+        #endregion Framework
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
@@ -194,6 +193,123 @@ namespace CharacterSheetGenerator
         }
 
         #endregion Commands
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Expirience
+
+        #region Properties
+
+        public double Expierience
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+
+
+        #endregion Properties
+
+        #region Calculation
+
+        public void CalculateExpirience()
+        {
+            Expierience = CalcExpAttributes() + CalcSExpStatusValues() + CalcExpSkills() + CalcExpWeapon() + CalcExpSpells();
+        }
+
+        public double CalcExpAttributes()
+        {
+            double xp = 0;
+            foreach(AttributeModel attr in Attributes)
+            {
+                for (int i = 3; i < attr.Value; i++)
+                {
+                    xp = (xp + (i - 2) * 2);
+                }
+            }
+            xp = xp - 15 * 18;
+            return xp;
+        }
+        
+        public double CalcExpSkills()
+        {
+            double xp = 0;
+            foreach(SkillModel skill in SkillsLeft)
+            {
+                xp = xp + skill.Value.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
+            }
+            foreach (SkillModel skill in SkillsLeft)
+            {
+                xp = xp + skill.Value.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
+            }
+            return xp;
+        }
+
+        public double GetExpSkillModifier(string s)
+        {
+            double mod = 0;
+            switch(s)
+            {
+                case "A":
+                    mod = 0.5;
+                    break;
+                case "B":
+                    mod = 1;
+                    break;
+                case "C":
+                    mod = 1.5;
+                    break;
+                case "D":
+                    mod = 2;
+                    break;
+                default:
+                    break;
+            }
+            return mod;
+        }
+
+        public double CalcSExpStatusValues()
+        {
+            double xp = 0;
+            foreach(StatusValueModel stv in StatusValues)
+            {
+                xp = xp + stv.Bonus * 5;
+            }
+            return xp;
+        }
+        public double CalcExpWeapon()
+        {
+            double xp = 0;
+            foreach(WeaponModel weapon in Weapons)
+            {
+                for (int i = 0; i < weapon.AttackBonus; i++)
+                {
+                    xp = xp + i;
+                }
+                xp = xp + weapon.AttackBonus;
+                for (int i = 0; i < weapon.BlockBonus; i++)
+                {
+                    xp = xp + i;
+                }
+                xp = xp + weapon.BlockBonus;
+            }
+            return xp;
+        }
+
+        public double CalcExpSpells()
+        {
+            double xp = 0;
+            foreach(SpellModel spell in Spells)
+            {
+                xp = xp + (double)spell.Value * 5;
+            }
+            return xp;
+        }
+
+        #endregion Calculation
+
+
+        #endregion Expierience
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
@@ -560,7 +676,7 @@ namespace CharacterSheetGenerator
                     stv.Standard = Math.Round(stv.Base, 0);
                     break;
                 case "Wundschwelle":
-                    stv.Standard = Math.Round(stv.Base + attributes[0].Value + attributes[1].Value, 0)/5;
+                    stv.Standard = Math.Round(stv.Base + (attributes[0].Value + attributes[1].Value)/5, 0);
                     break;
                 default:
                     break;
@@ -1065,7 +1181,6 @@ namespace CharacterSheetGenerator
 
         #region Calculation
 
-        //ToDo: Muss man wohl nochmal überarbeiten
         public void CalculateTraitModifiers()
         {
 

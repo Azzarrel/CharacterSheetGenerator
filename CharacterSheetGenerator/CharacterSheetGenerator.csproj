@@ -77,8 +77,8 @@
     <Compile Include="Control\CharacterCombat.xaml.cs">
       <DependentUpon>CharacterCombat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\CharacterInformation.xaml.cs">
-      <DependentUpon>CharacterInformation.xaml</DependentUpon>
+    <Compile Include="Control\CharacterOverview.xaml.cs">
+      <DependentUpon>CharacterOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\InventoryItemModel.cs" />
     <Compile Include="Model\RitualModel.cs" />
@@ -98,8 +98,12 @@
     <Compile Include="ViewModel\DialogueWindowViewModel.cs" />
     <Compile Include="ViewModel\LoadWindowViewModel.cs" />
     <Compile Include="ViewModel\SaveWindowViewModel.cs" />
+    <Compile Include="ViewModel\TraitViewModel.cs" />
     <Compile Include="View\SaveFileWindow.xaml.cs">
       <DependentUpon>SaveFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TraitView.xaml.cs">
+      <DependentUpon>TraitView.xaml</DependentUpon>
     </Compile>
     <Page Include="Control\CharacterLanguages.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -121,7 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Control\CharacterInformation.xaml">
+    <Page Include="Control\CharacterOverview.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -159,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SaveFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TraitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

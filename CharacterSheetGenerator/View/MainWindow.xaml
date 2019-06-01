@@ -41,7 +41,7 @@
 
                                 <Grid Grid.Row="2">
                                     <StackPanel>
-                                <ctrl:CharacterOverview VerticalAlignment="Top" CharacterInformation="{Binding CharacterInformation}" StatusValues="{Binding StatusValues, Mode=TwoWay}" Traits="{Binding Traits, Mode=TwoWay}" Expirience="{Binding Expirience}" />
+                                    <ctrl:CharacterOverview VerticalAlignment="Top" CharacterInformation="{Binding CharacterInformation}" StatusValues="{Binding StatusValues, Mode=TwoWay}" Traits="{Binding Traits, Mode=TwoWay}" Expirience="{Binding Expirience}" TraitClickCommand="{Binding OpenTraitViewCommand}"/>
                                     </StackPanel>
                                 </Grid>
                             </Grid>

@@ -7,6 +7,7 @@ using System.Windows.Data;
 using System.Data;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace CharacterSheetGenerator.Control
 {
@@ -129,20 +130,41 @@ namespace CharacterSheetGenerator.Control
 
         }
 
+        private ICommand m_TraitClickCommand;
+
+        public static readonly DependencyProperty TraitClickCommandProperty =
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public ICommand TraitClickCommand
+        {
+            get { return (ICommand)GetValue(TraitClickCommandProperty); }
+            set { SetValue(TraitClickCommandProperty, value); }
+        }
+
+        private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterOverview UserControl = obj as CharacterOverview;
+            UserControl.OnPropertyChanged("TraitClickCommand");
+            UserControl.OnTraitClickCommandPropertyChanged(e);
+
+
+        }
+
+        private void OnTraitClickCommandPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_TraitClickCommand = TraitClickCommand;
+
+        }
+
+
         public CharacterOverview()
         {
             InitializeComponent();
         }
 
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+
 
         private void Charinfo_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -154,6 +176,15 @@ namespace CharacterSheetGenerator.Control
         {
             TextBox box = sender as TextBox;
             box.Background = new SolidColorBrush(Colors.White);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

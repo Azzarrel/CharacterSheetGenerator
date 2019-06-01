@@ -140,13 +140,27 @@ namespace CharacterSheetGenerator
         //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
         private void CreateCommands()
         {
+            OpenTraitViewCommand = new RelayCommand<string>(OpenTraitViewMethod);
             SaveCommand = new RelayCommand(SaveMethod, CanExecute);
             LoadCommand = new RelayCommand(LoadMethod, CanExecute);
 
         }
 
+        public ICommand OpenTraitViewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
+
+
+        public void OpenTraitViewMethod(string Category)
+        {
+            TraitViewModel vm = new TraitViewModel();
+            vm.Traits  =  new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+
+            TraitView traitview = new TraitView();
+            traitview.DataContext = vm;
+            traitview.ShowDialog();
+            
+        }
 
         public void SaveMethod()
         {
@@ -860,7 +874,6 @@ namespace CharacterSheetGenerator
         #endregion Saving
 
         #endregion
-
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

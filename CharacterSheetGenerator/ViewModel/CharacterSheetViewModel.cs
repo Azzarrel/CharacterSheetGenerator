@@ -116,7 +116,7 @@ namespace CharacterSheetGenerator
             CalculateSkillsAll();
             CalculateWeaponAll();
             Inventory_PropertyChanged(null, null);
-            CalculateExpirience();
+            CalculateExpirienceAll();
 
         }
 
@@ -270,18 +270,56 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public double Expttributes
+        {
+            get { return Get<double>(); }
+            set { Set(value); CalculateExpirience(); }
+        }
 
+        public double ExpStatusValues
+        {
+            get { return Get<double>(); }
+            set { Set(value); CalculateExpirience(); }
+        }
 
+        public double ExpSkills
+        {
+            get { return Get<double>(); }
+            set { Set(value); CalculateExpirience(); }
+        }
+
+        public double ExpWeapons
+        {
+            get { return Get<double>(); }
+            set { Set(value); CalculateExpirience(); }
+        }
+
+        public double ExpSpells
+        {
+            get { return Get<double>(); }
+            set { Set(value); CalculateExpirience(); }
+        }
         #endregion Properties
+
+
 
         #region Calculation
 
-        public void CalculateExpirience()
+        public void CalculateExpirienceAll()
         {
-            Expierience = CalcExpAttributes() + CalcSExpStatusValues() + CalcExpSkills() + CalcExpWeapon() + CalcExpSpells();
+            CalcExpAttributes();
+            CalcSExpStatusValues();
+            CalcExpSkills();
+            CalcExpWeapon();
+            CalcExpSpells();
         }
 
-        public double CalcExpAttributes()
+        public void CalculateExpirience()
+        {
+            Expierience = Expttributes + ExpStatusValues + ExpSkills + ExpWeapons + ExpSpells;
+        }
+
+        public void CalcExpAttributes()
         {
             double xp = 0;
             foreach(AttributeModel attr in Attributes)
@@ -292,10 +330,20 @@ namespace CharacterSheetGenerator
                 }
             }
             xp = xp - 15 * 18;
-            return xp;
+            Expttributes = xp;
         }
-        
-        public double CalcExpSkills()
+
+        public void CalcSExpStatusValues()
+        {
+            double xp = 0;
+            foreach (StatusValueModel stv in StatusValues)
+            {
+                xp = xp + stv.Bonus * 5;
+            }
+            ExpStatusValues = xp;
+        }
+
+        public void CalcExpSkills()
         {
             double xp = 0;
             foreach(SkillModel skill in SkillsLeft)
@@ -306,7 +354,7 @@ namespace CharacterSheetGenerator
             {
                 xp = xp + skill.Value.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
             }
-            return xp;
+            ExpSkills = xp;
         }
 
         public double GetExpSkillModifier(string s)
@@ -332,16 +380,7 @@ namespace CharacterSheetGenerator
             return mod;
         }
 
-        public double CalcSExpStatusValues()
-        {
-            double xp = 0;
-            foreach(StatusValueModel stv in StatusValues)
-            {
-                xp = xp + stv.Bonus * 5;
-            }
-            return xp;
-        }
-        public double CalcExpWeapon()
+        public void CalcExpWeapon()
         {
             double xp = 0;
             foreach(WeaponModel weapon in Weapons)
@@ -357,17 +396,17 @@ namespace CharacterSheetGenerator
                 }
                 xp = xp + weapon.BlockBonus;
             }
-            return xp;
+            ExpWeapons = xp;
         }
 
-        public double CalcExpSpells()
+        public void CalcExpSpells()
         {
             double xp = 0;
             foreach(SpellModel spell in Spells)
             {
                 xp = xp + (double)spell.Value * 5;
             }
-            return xp;
+            ExpSpells = xp;
         }
 
         #endregion Calculation
@@ -500,6 +539,8 @@ namespace CharacterSheetGenerator
                 default:
                     break;
             }
+            //Exp neu Berechnen
+            CalcExpAttributes();
         }
 
         #endregion Events
@@ -689,6 +730,10 @@ namespace CharacterSheetGenerator
                 default:
                     break;
             }
+
+
+            //Exp neu Berechnen
+            CalcSExpStatusValues();
         }
 
         #endregion Events
@@ -854,6 +899,9 @@ namespace CharacterSheetGenerator
                 default:
                     break;
             }
+
+            //Exp neu berechnen
+            CalcExpSkills();
         }
 
         #endregion Events
@@ -979,6 +1027,7 @@ namespace CharacterSheetGenerator
                     ArmorPenetration = row["ArmorPenetration"].ToString(),
                 };
                 l_weapons.Add(weapon);
+                weapon.PropertyChanged += Weapon_PropertyChanged;
             }
             Weapons = l_weapons;
         }
@@ -1072,9 +1121,34 @@ namespace CharacterSheetGenerator
 
         #region Events
 
+        public void Weapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            WeaponModel weapon = sender as WeaponModel;
+            switch (e.PropertyName)
+            {
+                
+                case "AttackTotal":
+                    weapon.AttackBonus = weapon.AttackTotal - weapon.AttackModifier - weapon.AttackStandard;
+                    break;
+                case "AttackModifier":
+                    weapon.AttackTotal = weapon.AttackStandard + weapon.AttackModifier + weapon.AttackBonus;
+                    break;
+                case "BlockTotal":
+                    weapon.BlockBonus = weapon.BlockTotal - weapon.BlockModifier - weapon.BlockStandard;
+                    break;
+                case "BlockModifier":
+                    weapon.BlockTotal = weapon.BlockStandard + weapon.BlockModifier + weapon.BlockBonus;
+                    break;
+                default:
+                    break;
+            }
+            CalcExpWeapon();
+        }
+
         public void SelectedWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Enumerable.Range(1, SelectedWeapons.Count).Except(SelectedWeapons.Select(x => x.Position)).FirstOrDefault();
+            //Exp neu berechnen
 
         }
 

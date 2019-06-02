@@ -29,19 +29,25 @@ namespace CharacterSheetGenerator.ViewModel
             {
                 Set(value);
                 if(SelectedTrait != null)
-                TraitModifiers = SelectedTrait.Modifiers;
+                TraitModifiers = new ObservableCollection<ModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
             }
         }
 
-        public ObservableCollection<TraitModifierModel> TraitModifiers
+        public ObservableCollection<ModifierModel> TraitModifiers
         {
-            get { return Get<ObservableCollection<TraitModifierModel>>(); }
+            get { return Get<ObservableCollection<ModifierModel>>(); }
             set { Set(value); }
         }
 
-        public ObservableCollection<string> Names
+        public ObservableCollection<ModifierModel> Modifiers
         {
-            get { return Get<ObservableCollection<string>>(); }
+            get { return Get<ObservableCollection<ModifierModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<BaseModifierModel> BaseModifiers
+        {
+            get { return Get<ObservableCollection<BaseModifierModel>>(); }
             set { Set(value); }
         }
 
@@ -53,7 +59,6 @@ namespace CharacterSheetGenerator.ViewModel
 
         public TraitViewModel()
         {
-            
 
         }
 
@@ -61,13 +66,24 @@ namespace CharacterSheetGenerator.ViewModel
         {
             e.NewItem = new TraitModel
             {
+                Key = Traits.Count(),
                 Name = "",
                 Modifiers = new ObservableCollection<TraitModifierModel>(),
-                Description = "",
+                Description = "",               
             };
 
         }
+        public void ModifierGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            e.NewItem = new TraitModifierModel
+            {
+                NameLink = "",
+                TypeLink = "",
+                Value = 0,
+                
+            };
 
+        }
 
     }
 }

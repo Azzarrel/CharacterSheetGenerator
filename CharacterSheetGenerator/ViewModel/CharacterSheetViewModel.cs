@@ -27,6 +27,12 @@ namespace CharacterSheetGenerator
 
         public DataSet Data { get; set; } = new DataSet();
 
+        public ObservableCollection<BaseModifierModel> BaseModifiers
+        {
+            get { return Get<ObservableCollection<BaseModifierModel>>(); }
+            set { Set(value); }
+        }
+
         #endregion Properties
 
         public CharacterSheetViewModel()
@@ -99,8 +105,13 @@ namespace CharacterSheetGenerator
             LoadInventory();
             LoadMoney();
 
-            //Zusammengesetzte Werte direkt neu berechnen.
-            CalculateTraitModifiers();
+
+            GenerateBaseModifiers();
+            LoadModifiers();
+
+
+            //Zusammengesetzte Werte direkt neu berechnen.           
+            CalculateModifiers();
             CalculateStatusValuesAll();
             CalculateSkillsAll();
             CalculateWeaponAll();
@@ -131,6 +142,42 @@ namespace CharacterSheetGenerator
             SaveMoney();
         }
 
+        public void GenerateBaseModifiers()
+        {
+            BaseModifiers = new ObservableCollection<BaseModifierModel>();
+            foreach(AttributeModel atr in Attributes)
+            {
+                BaseModifierModel m = new BaseModifierModel {   NameLink = atr.Name,  };
+                m.Types.Add("Standard");
+                BaseModifiers.Add(m);
+            }
+            foreach(SkillModel skill in SkillsLeft)
+            {
+                BaseModifierModel m = new BaseModifierModel { NameLink = skill.Name, };
+                m.Types.Add("Standard");
+                BaseModifiers.Add(m);
+            }
+            foreach (SkillModel skill in SkillsRight)
+            {
+                BaseModifierModel m = new BaseModifierModel { NameLink = skill.Name, };
+                m.Types.Add("Standard");
+                BaseModifiers.Add(m);
+            }
+            foreach(StatusValueModel stv in StatusValues)
+            {
+                BaseModifierModel m = new BaseModifierModel { NameLink = stv.Name, };
+                m.Types.Add("Standard");
+                BaseModifiers.Add(m);
+            }
+            foreach(WeaponModel weapon in Weapons)
+            {
+                BaseModifierModel m = new BaseModifierModel { NameLink = weapon.Name, };
+                m.Types.Add("Angriff");
+                m.Types.Add("Parieren");
+                BaseModifiers.Add(m);
+            }
+        }
+
         #endregion Framework
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
@@ -154,7 +201,10 @@ namespace CharacterSheetGenerator
         public void OpenTraitViewMethod(string Category)
         {
             TraitViewModel vm = new TraitViewModel();
+            vm.Modifiers = Modifiers;
+            vm.BaseModifiers = BaseModifiers;
             vm.Traits  =  new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+           
 
             TraitView traitview = new TraitView();
             traitview.DataContext = vm;
@@ -327,7 +377,7 @@ namespace CharacterSheetGenerator
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Attribute
+        #region Attributea
 
         #region Properties
 
@@ -454,11 +504,11 @@ namespace CharacterSheetGenerator
 
         #endregion Events
 
-        #endregion Attribute
+        #endregion Attributea
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Persönliche Daten
+        #region Character Information
 
         #region Properties
 
@@ -541,11 +591,11 @@ namespace CharacterSheetGenerator
 
         #endregion Events
 
-        #endregion Persönliche Daten
+        #endregion Character Information
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Statuswerte
+        #region Status Values
 
         #region Properties
 
@@ -700,11 +750,11 @@ namespace CharacterSheetGenerator
 
         #endregion Calculation
 
-        #endregion Statuswerte
+        #endregion Status Values
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Fertigkeiten 
+        #region Skills 
 
         #region Properties
 
@@ -808,11 +858,11 @@ namespace CharacterSheetGenerator
 
         #endregion Events
 
-        #endregion Fertigkeiten   
+        #endregion Skills    
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Sprachen und Schriften
+        #region Languages and Writing
 
         #region Properties
 
@@ -873,11 +923,11 @@ namespace CharacterSheetGenerator
 
         #endregion Saving
 
-        #endregion
+        #endregion Languages and Writing
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Waffen
+        #region Weapons
 
         #region Properties
 
@@ -1067,11 +1117,11 @@ namespace CharacterSheetGenerator
 
         #endregion Calculation
 
-        #endregion Waffen
+        #endregion Weapons
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Eigenschaften
+        #region Traits
 
         #region Properties
 
@@ -1108,26 +1158,13 @@ namespace CharacterSheetGenerator
                 {
                     ObservableCollection<TraitModel> traits = new ObservableCollection<TraitModel>();
                     string traitTexts = ""; //Die Auflistung aller Traits in einer Kateogorie per Name
-                    foreach (DataRow rowTrait in Data.Tables["Trait"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
+                    foreach (DataRow rowTrait in Data.Tables["Traits"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
                     {
-
-                        ObservableCollection<TraitModifierModel> modifiers = new ObservableCollection<TraitModifierModel>();
-                        foreach (DataRow rowModifier in Data.Tables["TraitModifier"].Select("Trait_Id = " + rowTrait["Trait_Id"]))
-                        {
-                            TraitModifierModel modifier = new TraitModifierModel
-                            {
-                                NameLink = rowModifier["NameLink"].ToString(),
-                                TypeLink = rowModifier["TypeLink"].ToString(),
-                                Value = int.Parse(rowModifier["Value"].ToString()),
-                            };
-                            modifiers.Add(modifier);
-                        }
                         TraitModel trait = new TraitModel
                         {
-                            Key = int.Parse(rowTrait["Trait_Id"].ToString()),
+                            Key = int.Parse(rowTrait["Key"].ToString()),
                             Name = rowTrait["Name"].ToString(),
                             Description = rowTrait["Description"].ToString(),
-                            Modifiers = modifiers,
                         };
                         traitTexts += rowTrait["Name"].ToString() + ", ";
                         traits.Add(trait);
@@ -1172,11 +1209,7 @@ namespace CharacterSheetGenerator
                 Data.Tables["TraitCategory"].Rows.Add(traitcategory.Name, traitcategory.Type, traitcategory.Key);
                 foreach (TraitModel trait in traitcategory.Traits.ToList())
                 {
-                    Data.Tables["Trait"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
-                    foreach (TraitModifierModel modifier in trait.Modifiers.ToList())
-                    {
-                        Data.Tables["TraitModifier"].Rows.Add(modifier.NameLink, modifier.TypeLink, modifier.Value, trait.Key);
-                    }
+                    Data.Tables["Traits"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
                 }
             }
         }
@@ -1197,53 +1230,153 @@ namespace CharacterSheetGenerator
         public void CalculateTraitModifiers()
         {
 
-            List<ObservableCollection<TraitCategoryModel>> l_traits = new List<ObservableCollection<TraitCategoryModel>>();
-            l_traits.Add(Traits);
-            l_traits.Add(CombatTraits);
-            l_traits.Add(SpellTraits);
+            //List<ObservableCollection<TraitCategoryModel>> l_traits = new List<ObservableCollection<TraitCategoryModel>>();
+            //l_traits.Add(Traits);
+            //l_traits.Add(CombatTraits);
+            //l_traits.Add(SpellTraits);
 
-            foreach (ObservableCollection<TraitCategoryModel> traitcategory in l_traits)
+            //foreach (ObservableCollection<TraitCategoryModel> traitcategory in l_traits)
+            //{
+            //    foreach (TraitModifierModel modifier in traitcategory.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+            //    {
+            //        foreach (AttributeModel atr in Attributes.Where(m => m.Name == modifier.NameLink))
+            //        {
+            //            atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+            //        }
+            //        foreach (SkillModel skl in SkillsLeft.Cast<SkillModel>().Where(m => m.Name == modifier.NameLink))
+            //        {
+            //            skl.Modifiers = Math.Round(skl.Modifiers + modifier.Value, 0);
+            //        }
+            //        foreach (SkillModel skl in SkillsRight.Cast<SkillModel>().Where(m => m.Name == modifier.NameLink))
+            //        {
+            //            skl.Modifiers = Math.Round(skl.Modifiers + modifier.Value, 0);
+            //        }
+            //        foreach (StatusValueModel stv in StatusValues.Where(m => m.Name == modifier.NameLink))
+            //        {
+            //            stv.Modifiers = Math.Round(stv.Modifiers + modifier.Value, 0);
+            //        }
+            //        foreach (WeaponModel weap in Weapons.Where(m => m.Name == modifier.NameLink))
+            //        {
+            //            if (modifier.TypeLink == "Angriff")
+            //            {
+            //                weap.AttackModifier = Math.Round(weap.AttackModifier + modifier.Value, 0);
+            //            }
+            //            if (modifier.TypeLink == "Parieren")
+            //            {
+            //                weap.BlockModifier = Math.Round(weap.BlockModifier + modifier.Value, 0);
+            //            }
+            //        }
+            //    }
+            //}
+        }
+
+        #endregion Calculation
+
+        #endregion Traits
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Modifiers
+
+        #region Properties
+
+        public ObservableCollection<ModifierModel> Modifiers
+        {
+            get { return Get<ObservableCollection<ModifierModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties 
+
+        #region Loading
+        public void LoadModifiers()
+        {
+            Modifiers = new ObservableCollection<ModifierModel>();
+            foreach (DataRow row in Data.Tables["Modifiers"].Rows)
             {
-                foreach (TraitModifierModel modifier in traitcategory.SelectMany(c => c.Traits).SelectMany(t => t.Modifiers))
+                BaseModifierModel basemod = BaseModifiers.Where(m => m.NameLink == row["NameLink"].ToString()).FirstOrDefault();
+
+
+
+                ModifierModel mod = new ModifierModel
                 {
-                    foreach (AttributeModel atr in Attributes.Where(m => m.Name == modifier.NameLink))
+                    Modifier = basemod,
+                    Value = double.Parse(row["Value"].ToString()),
+                    TraitLink = int.Parse(row["TraitLink"].ToString()),
+                };
+                mod.Modifier.TypeLink = row["TypeLink"].ToString();
+                Modifiers.Add(mod);
+            }
+        }
+        #endregion Loading
+
+        #region Saving
+
+
+
+        #endregion Saving
+
+        #region Calculation
+
+        public void CalculateModifiers()
+        {
+            foreach (WeaponModel weapon in Weapons)
+            {
+                weapon.AttackModifier = 0;
+                weapon.BlockModifier = 0;
+                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == weapon.Name))
+                {
+                    if(mod.TypeLink == "Angriff")
                     {
-                        atr.Modifiers = Math.Round(atr.Modifiers + modifier.Value, 0);
+                        weapon.AttackModifier = weapon.AttackModifier + mod.Value;
                     }
-                    foreach (SkillModel skl in SkillsLeft.Cast<SkillModel>().Where(m => m.Name == modifier.NameLink))
+                    if (mod.TypeLink == "Parieren")
                     {
-                        skl.Modifiers = Math.Round(skl.Modifiers + modifier.Value, 0);
+                        weapon.BlockModifier = weapon.BlockModifier + mod.Value;
                     }
-                    foreach (SkillModel skl in SkillsRight.Cast<SkillModel>().Where(m => m.Name == modifier.NameLink))
-                    {
-                        skl.Modifiers = Math.Round(skl.Modifiers + modifier.Value, 0);
-                    }
-                    foreach (StatusValueModel stv in StatusValues.Where(m => m.Name == modifier.NameLink))
-                    {
-                        stv.Modifiers = Math.Round(stv.Modifiers + modifier.Value, 0);
-                    }
-                    foreach (WeaponModel weap in Weapons.Where(m => m.Name == modifier.NameLink))
-                    {
-                        if (modifier.TypeLink == "Attack")
-                        {
-                            weap.AttackModifier = Math.Round(weap.AttackModifier + modifier.Value, 0);
-                        }
-                        if (modifier.TypeLink == "Block")
-                        {
-                            weap.BlockModifier = Math.Round(weap.BlockModifier + modifier.Value, 0);
-                        }
-                    }
+                }
+            }
+            foreach (SkillModel skill in SkillsLeft)
+            {
+                skill.Modifiers = 0;
+                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == skill.Name))
+                {
+                    skill.Modifiers = skill.Modifiers + mod.Value;
+                }
+            }
+            foreach (SkillModel skill in SkillsRight)
+            {
+                skill.Modifiers = 0;
+                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == skill.Name))
+                {
+                    skill.Modifiers = skill.Modifiers + mod.Value;
+                }
+            }
+            foreach (AttributeModel atr in Attributes)
+            {
+                atr.Modifiers = 0;
+                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == atr.Name))
+                {
+                    atr.Modifiers = atr.Modifiers + mod.Value;
+                }
+            }
+            foreach (StatusValueModel stv in StatusValues)
+            {
+                stv.Modifiers = 0;
+                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == stv.Name))
+                {
+                    stv.Modifiers = stv.Modifiers + mod.Value;
                 }
             }
         }
 
         #endregion Calculation
 
-        #endregion Eigenschaften
+        #endregion Modifiers
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Rüstung und Zweithand
+        #region Armor and Offhand
 
         #region Properties
 
@@ -1335,11 +1468,11 @@ namespace CharacterSheetGenerator
 
         #endregion Saving
 
-        #endregion Rüstung und Zweithand
+        #endregion Armor and Offhand
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Zauber und Rituale
+        #region Spells and Rituals
 
         #region Properties
 
@@ -1432,11 +1565,11 @@ namespace CharacterSheetGenerator
 
         #endregion Saving
 
-        #endregion Zauber und Rituale
+        #endregion Spells and Rituals
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Inventar
+        #region Inventory
 
         #region Properties
 
@@ -1569,7 +1702,7 @@ namespace CharacterSheetGenerator
 
         #endregion Events
 
-        #endregion Inventar
+        #endregion Inventory
 
 
     }

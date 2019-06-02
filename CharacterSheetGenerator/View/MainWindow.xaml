@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ctrl="clr-namespace:CharacterSheetGenerator.Control"
+        xmlns:help="clr-namespace:CharacterSheetGenerator.Helpers"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="1600" Width="1320" Loaded="Window_Loaded">
     <Grid Name="MainGrid">
@@ -18,7 +20,10 @@
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Width="75" Height="20" Header="Übersicht">
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" >
+                    <i:Interaction.Behaviors>
+                        <help:BubbleScrollEvent />
+                    </i:Interaction.Behaviors>
                     <Grid Name="Übersicht">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>
@@ -51,6 +56,9 @@
             </TabItem>
             <TabItem Width="75" Height="20" Header="Fertigkeiten">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                    <i:Interaction.Behaviors>
+                        <help:BubbleScrollEvent />
+                    </i:Interaction.Behaviors>
                     <Grid Name="Fertigkeiten">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
@@ -97,6 +105,9 @@
             </TabItem>
             <TabItem Width="75" Height="20" Header="Kampf">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                    <i:Interaction.Behaviors>
+                        <help:BubbleScrollEvent />
+                    </i:Interaction.Behaviors>
                     <Grid Name="Kampf">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
@@ -137,6 +148,9 @@
             </TabItem>
             <TabItem Width="75" Height="20" Header="Zauber">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                    <i:Interaction.Behaviors>
+                        <help:BubbleScrollEvent />
+                    </i:Interaction.Behaviors>
                     <Grid Name="Zauber">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>

@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="TraitView" Height="450" Width="800">
     <Grid>
+        <Grid.Resources>
+            <CollectionViewSource x:Key="BaseModifiers" Source="{ Binding Path=BaseModifiers, Mode=TwoWay}"  />
+            <CollectionViewSource x:Key="Types" Source="{ Binding Path=Types, Mode=TwoWay}"  />
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
@@ -22,18 +26,19 @@
             </Grid.ColumnDefinitions>
             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1,0,1,1">
                 <DataGrid Width="330" Grid.Column="1" ItemsSource="{Binding Traits, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow"  SelectedItem="{Binding SelectedTrait, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single" AddingNewItem="DataGrid_AddingNewItem"  >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Eigenschaft"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single" AddingNewItem="TraitGrid_AddingNewItem"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Eigenschaft"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
                 </DataGrid.Columns>
 
             </DataGrid>
             </Border>
             <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1,0,1,1">
-                <DataGrid Width="330" Grid.Column="1" ItemsSource="{Binding TraitModifiers, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
-                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
+                <DataGrid Width="330" Grid.Column="1" ItemsSource="{Binding TraitModifiers, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow" 
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" AddingNewItem="ModifierGrid_AddingNewItem" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding NameLink}" Header="Wirkung"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                        <DataGridComboBoxColumn Header=" Mod" SelectedItemBinding="{Binding Modifier}" DisplayMemberPath="NameLink" ItemsSource="{Binding Source={StaticResource BaseModifiers}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
+                        <DataGridComboBoxColumn Header=" Mod" ItemsSource="{Binding Types}"  HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
                     </DataGrid.Columns>
 
                 </DataGrid>

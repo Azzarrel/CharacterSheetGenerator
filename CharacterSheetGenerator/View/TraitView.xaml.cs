@@ -25,9 +25,13 @@ namespace CharacterSheetGenerator.View
             InitializeComponent();
         }
 
-        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        private void TraitGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
         {
             ((TraitViewModel)DataContext).TraitGrid_AddingNewItem(sender, e);
+        }
+        private void ModifierGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            ((TraitViewModel)DataContext).ModifierGrid_AddingNewItem(sender, e);
         }
     }
 }

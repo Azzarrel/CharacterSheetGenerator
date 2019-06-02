@@ -2,35 +2,25 @@
 	<TraitCategory>
 		<Name>Körpereigenschaften</Name>
 		<Type>Character</Type>
-			<Trait>
-			<Name>Arrogant</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Charisma</NameLink>
-				<TypeLink></TypeLink>
-				<Value>1</Value>
-			</TraitModifier>
-			</Trait>
-			<Trait>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Willenskraft</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
+			<Traits>
+				<Key>0</Key>
+				<Name>Arrogant</Name>
+				<Description>blubb</Description>
+			</Traits>
+			<Traits>
+				<Key>1</Key>
+				<Name>Feige</Name>
+				<Description>blubb</Description>
+			</Traits>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Charaktereigenschaften</Name>
 		<Type>Character</Type>
-		<Trait>
+		<Traits>
+			<Key>2</Key>
 			<Name>Feige</Name>
 			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Initiative</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
+		</Traits>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Allgemeine Sonderfertigkeiten</Name>
@@ -39,41 +29,14 @@
 	<TraitCategory>
 		<Name>Kampfsonderfertigkeiten</Name>
 		<Type>Combat</Type>
-			<Trait>
-			<Name>Arrogant</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Charisma</NameLink>
-				<Value>1</Value>
-			</TraitModifier>
-			</Trait>
-			<Trait>
+		<Traits>
+			<Key>3</Key>
 			<Name>Feige</Name>
 			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Willenskraft</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
+		</Traits>
 	</TraitCategory>	
 	<TraitCategory>
 		<Name>Zaubersonderfertigkeiten</Name>
 		<Type>Spell</Type>
-			<Trait>
-			<Name>Arrogant</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Charisma</NameLink>
-				<Value>1</Value>
-			</TraitModifier>
-			</Trait>
-			<Trait>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Willenskraft</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
 	</TraitCategory>
 </PlayerData>	

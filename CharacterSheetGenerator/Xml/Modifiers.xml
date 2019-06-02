@@ -1,0 +1,20 @@
+<PlayerData>
+	<Modifiers>
+		<NameLink>Willenskraft</NameLink>
+		<TypeLink>Standard</TypeLink>
+		<Value>1</Value>
+		<TraitLink>0</TraitLink>
+	</Modifiers>
+	<Modifiers>
+		<NameLink>Charisma</NameLink>
+		<TypeLink>Standard</TypeLink>
+		<Value>-3</Value>
+		<TraitLink>2</TraitLink>
+	</Modifiers>
+	<Modifiers>
+		<NameLink>Schwerter</NameLink>
+		<TypeLink>Angriff</TypeLink>
+		<Value>31</Value>
+		<TraitLink>3</TraitLink>
+	</Modifiers>	
+</PlayerData>	

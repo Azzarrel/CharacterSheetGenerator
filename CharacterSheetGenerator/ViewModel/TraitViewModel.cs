@@ -68,18 +68,15 @@ namespace CharacterSheetGenerator.ViewModel
             {
                 Key = Traits.Count(),
                 Name = "",
-                Modifiers = new ObservableCollection<TraitModifierModel>(),
                 Description = "",               
             };
 
         }
         public void ModifierGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
         {
-            e.NewItem = new TraitModifierModel
+            e.NewItem = new ModifierModel
             {
-                NameLink = "",
-                TypeLink = "",
-                Value = 0,
+
                 
             };
 

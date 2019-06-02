@@ -35,7 +35,7 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public string FlavorText
+        public string Description
         {
             get { return Get<string>(); }
             set { Set(value); }

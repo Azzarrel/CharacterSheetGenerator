@@ -12,7 +12,7 @@
 	<Skills>
 		<Name>Akrobatik</Name>
 		<Requirement>GE/GE/ST</Requirement>
-		<Value>1</Value>
+		<Value>0</Value>
 		<Difficulty>B</Difficulty>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>

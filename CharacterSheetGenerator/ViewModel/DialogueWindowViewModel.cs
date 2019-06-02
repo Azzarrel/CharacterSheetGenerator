@@ -13,7 +13,7 @@ namespace CharacterSheetGenerator.ViewModel
     class DialogueWindowViewModel : NotifyBase
     {
        
-        protected const string VERSION = "0.2.1.0";
+        protected const string VERSION = "0.4.1.1";
 
 
         public DataSet Data { get; set; } = new DataSet();

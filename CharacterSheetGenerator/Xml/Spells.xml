@@ -1,250 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Table>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
   <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
     <Impulse />
     <Range />
     <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
-  </Spells>
-  <Spells>
-    <Name>Dornenschild</Name>
-    <Type>f</Type>
-    <Requirement>FF/GE</Requirement>
-    <Value>0</Value>
-    <Damage>1D6</Damage>
-    <MagicDamage>3</MagicDamage>
-    <ArmorPenetration>1</ArmorPenetration>
-    <Impulse />
-    <Range />
-    <Duration />
-    <FlavorText />
+    <Description />
   </Spells>
 </Table>

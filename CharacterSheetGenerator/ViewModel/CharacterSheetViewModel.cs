@@ -404,7 +404,7 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach(SpellModel spell in Spells)
             {
-                xp = xp + (double)spell.Value * 5;
+                xp = xp + spell.Value == null ? 0 : (double)spell.Value * 5;
             }
             ExpSpells = xp;
         }
@@ -1236,7 +1236,7 @@ namespace CharacterSheetGenerator
                     {
                         TraitModel trait = new TraitModel
                         {
-                            Key = int.Parse(rowTrait["Key"].ToString()),
+                            Key = rowTrait["Key"].ToString() == "" ? 0 : int.Parse(rowTrait["Key"].ToString()),
                             Name = rowTrait["Name"].ToString(),
                             Description = rowTrait["Description"].ToString(),
                         };
@@ -1375,8 +1375,8 @@ namespace CharacterSheetGenerator
                 ModifierModel mod = new ModifierModel
                 {
                     Modifier = basemod,
-                    Value = double.Parse(row["Value"].ToString()),
-                    TraitLink = int.Parse(row["TraitLink"].ToString()),
+                    Value = row["Value"].ToString() == "" ? 0 : double.Parse(row["Value"].ToString()),
+                    TraitLink = row["TraitLink"].ToString() == "" ? 0 :int.Parse(row["TraitLink"].ToString()),
                 };
                 mod.Modifier.TypeLink = row["TypeLink"].ToString();
                 Modifiers.Add(mod);
@@ -1585,7 +1585,7 @@ namespace CharacterSheetGenerator
                     Impulse = row["Impulse"].ToString(),
                     Range = row["Range"].ToString(),
                     Duration = row["Duration"].ToString(),
-                    FlavorText = row["FlavorText"].ToString(),
+                    Description = row["Description"].ToString(),
                 };
 
 
@@ -1607,7 +1607,7 @@ namespace CharacterSheetGenerator
                     Requirement = row["Requirement"].ToString(),
                     Value = Parser.ToNullable<int>(row["Value"].ToString()),
                     Duration = row["Duration"].ToString(),
-                    FlavorText = row["FlavorText"].ToString(),
+                    Description = row["Description"].ToString(),
 
                 };
 
@@ -1625,7 +1625,7 @@ namespace CharacterSheetGenerator
         {
             foreach (SpellModel spell in Spells)
             {
-                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.FlavorText);
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.Description);
             }
         }
 
@@ -1633,7 +1633,7 @@ namespace CharacterSheetGenerator
         {
             foreach (RitualModel ritual in Rituals)
             {
-                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.FlavorText);
+                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.Description);
             }
         }
 

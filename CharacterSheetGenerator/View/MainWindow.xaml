@@ -7,7 +7,7 @@
         xmlns:help="clr-namespace:CharacterSheetGenerator.Helpers"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1600" Width="1320" Loaded="Window_Loaded">
+        Title="MainWindow" Height="1984" Width="1403" Loaded="Window_Loaded">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>

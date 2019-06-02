@@ -2,25 +2,10 @@
 	<TraitCategory>
 		<Name>Körpereigenschaften</Name>
 		<Type>Character</Type>
-			<Traits>
-				<Key>0</Key>
-				<Name>Arrogant</Name>
-				<Description>blubb</Description>
-			</Traits>
-			<Traits>
-				<Key>1</Key>
-				<Name>Feige</Name>
-				<Description>blubb</Description>
-			</Traits>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Charaktereigenschaften</Name>
 		<Type>Character</Type>
-		<Traits>
-			<Key>2</Key>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-		</Traits>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Allgemeine Sonderfertigkeiten</Name>
@@ -29,14 +14,18 @@
 	<TraitCategory>
 		<Name>Kampfsonderfertigkeiten</Name>
 		<Type>Combat</Type>
-		<Traits>
-			<Key>3</Key>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-		</Traits>
 	</TraitCategory>	
 	<TraitCategory>
 		<Name>Zaubersonderfertigkeiten</Name>
 		<Type>Spell</Type>
+	</TraitCategory>
+	<TraitCategory>
+		<Name>Invis</Name>
+		<Type>Invis</Type>
+			<Traits>
+				<Key></Key>
+				<Name></Name>
+				<Description></Description>
+			</Traits>
 	</TraitCategory>
 </PlayerData>	

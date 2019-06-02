@@ -1,20 +1,20 @@
 <PlayerData>
 	<StatusValues>
 		<Name>Lebenspunkte</Name>
-		<Base>7</Base>
+		<Base>9</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>
 		<SVAttributeLink>Stärke</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
 		<Name>Ausdauer</Name>
-		<Base>12</Base>
+		<Base>7</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
 		<Name>Mana</Name>
-		<Base>5</Base>
+		<Base>7</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Klugheit</SVAttributeLink>
 		<SVAttributeLink>Willenskraft</SVAttributeLink>
@@ -43,14 +43,14 @@
 	<StatusValues>
 		<Name>Initiative</Name>
 		<Base>0</Base>
-		<Bonus>1</Bonus>
+		<Bonus>0</Bonus>
 		<SVAttributeLink>Willenskraft</SVAttributeLink>
 		<SVAttributeLink>Intuition</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
 		<Name>Geschwindigkeit</Name>
-		<Base>7</Base>
-		<Bonus>1</Bonus>
+		<Base>4</Base>
+		<Bonus>0</Bonus>
 	</StatusValues>
 	<StatusValues>
 		<Name>Wundschwelle</Name>

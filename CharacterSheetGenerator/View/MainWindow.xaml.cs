@@ -63,6 +63,10 @@ namespace CharacterSheetGenerator.View
             if (printDialog.ShowDialog() == true)
             {
                 printDialog.PrintVisual(Übersicht, "My First Print Job");
+                //printDialog.PrintVisual(Fertigkeiten, "My First Print Job");
+                //printDialog.PrintVisual(Kampf, "My First Print Job");
+                //printDialog.PrintVisual(Zauber, "My First Print Job");
+                //printDialog.PrintVisual(Inventar, "My First Print Job");
             }
         }
 

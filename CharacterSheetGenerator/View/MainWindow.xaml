@@ -14,9 +14,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Name="button1" Command="{Binding LoadCommand}" Width="40" Height="30">L</Button>
-            <Button Name="button2" Command="{Binding SaveCommand}" Width="40" Height="30">S</Button>
-            <Button Name="button3" Click="Button3_Click" Width="40" Height="30">P</Button>
+            <Button Name="button1" Command="{Binding LoadCommand}" Width="40" Height="30">
+                <Image Source="/images/LoadButtonPicture.png"/>
+            </Button>
+            <Button Name="button2" Command="{Binding SaveCommand}" Width="40" Height="30">
+                <Image Source="/images/SaveButtonpicture.png" />
+            </Button>
+            <Button Name="button3" Click="Button3_Click" Width="40" Height="30">
+                <Image Source="/images/PrintButtonPicture.png"/>
+            </Button>
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Width="75" Height="20" Header="Übersicht">

@@ -81,9 +81,10 @@
     <Compile Include="Control\CharacterMoney.xaml.cs">
       <DependentUpon>CharacterMoney.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataTableListConverter.cs" />
+    <Compile Include="Helpers\Attributes.cs" />
     <Compile Include="Helpers\BubbleScrollEvent.cs" />
     <Compile Include="Helpers\ColorHandler.cs" />
-    <Compile Include="Helpers\GridControl.cs" />
     <Compile Include="Helpers\GridHelpers.cs" />
     <Compile Include="Helpers\NotifyBase.cs" />
     <Compile Include="Helpers\Parser.cs" />

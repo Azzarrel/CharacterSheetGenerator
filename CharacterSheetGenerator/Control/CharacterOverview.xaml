@@ -47,7 +47,9 @@
                         <StackPanel>
                             <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
                             </Label>
-                            <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White">
+                            <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White"
+                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=TraitClickCommand, Mode=TwoWay}"
+                                    CommandParameter="{Binding Name}">
                                 <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap">
 
                                 </TextBlock>
@@ -63,6 +65,26 @@
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="70*"/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="55"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                <TextBlock FontSize="14" FontWeight="Bold" Text="Portrait" VerticalAlignment="Center" Width="250" TextAlignment="Center" HorizontalAlignment="Right"/>
+                <Button BorderBrush="Black" BorderThickness="2" Width="220" Height="300" Background="White" HorizontalAlignment="Right">
+                    <Image></Image>
+                </Button>
+                <TextBlock Height="40"/>
+                    <StackPanel Orientation="Horizontal" Height="50" HorizontalAlignment="Right">
+                        <TextBlock Width="110"/>
+                        <TextBlock FontSize="14" FontWeight="Bold" Text="    Erfahrung:       "  TextAlignment="Center" VerticalAlignment="Center" />
+                        <Border Height="50" Width="160" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Expierience}"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
             <ItemsControl Grid.Row="1" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=StatusValues, Mode=TwoWay}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>

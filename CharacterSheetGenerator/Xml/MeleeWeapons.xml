@@ -1,18 +1,6 @@
 <PlayerData>
 	<MeleeWeapons>	
-		<Name>Dolch</Name>
-		<Weapons>Dolche</Weapons>
-		<Damage></Damage>	
-		<Impulse></Impulse>		
-		<ArmorPenetration></ArmorPenetration>
-		<Range></Range>
-		<Break>0</Break>
-		<Ticks>0</Ticks>
-		<AttackBonus>3</AttackBonus>
-		<BlockBonus>1</BlockBonus>
-	</MeleeWeapons>
-	<MeleeWeapons>	 
-		<Name>Dolche</Name>
+		<Name></Name>
 		<Weapons></Weapons>
 		<Damage></Damage>	
 		<Impulse></Impulse>		
@@ -20,31 +8,43 @@
 		<Range></Range>
 		<Break></Break>
 		<Ticks></Ticks>
-		<AttackBonus>0</AttackBonus>
+		<AttackBonus></AttackBonus>
+		<BlockBonus></BlockBonus>
+	</MeleeWeapons>
+	<MeleeWeapons>	 
+		<Name></Name>
+		<Weapons></Weapons>
+		<Damage></Damage>	
+		<Impulse></Impulse>		
+		<ArmorPenetration></ArmorPenetration>
+		<Range></Range>
+		<Break></Break>
+		<Ticks></Ticks>
+		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
 	</MeleeWeapons>
 	<MeleeWeapons>	
-		<Name>Dolche</Name>
+		<Name></Name>
 		<Weapons></Weapons>
 		<Damage></Damage>	
 		<Impulse></Impulse>		
 		<ArmorPenetration></ArmorPenetration>
 		<Range></Range>
-		<Break>0</Break>
-		<Ticks>0</Ticks>
-		<AttackBonus>3</AttackBonus>
-		<BlockBonus>2</BlockBonus>
+		<Break></Break>
+		<Ticks></Ticks>
+		<AttackBonus></AttackBonus>
+		<BlockBonus></BlockBonus>
 	</MeleeWeapons>
 	<MeleeWeapons>	
-		<Name>Dolche</Name>
+		<Name></Name>
 		<Weapons></Weapons>
 		<Damage></Damage>	
 		<Impulse></Impulse>		
 		<ArmorPenetration></ArmorPenetration>
 		<Range></Range>
-		<Break>5</Break>
-		<Ticks>0</Ticks>
-		<AttackBonus>3</AttackBonus>
-		<BlockBonus>1</BlockBonus>
+		<Break></Break>
+		<Ticks></Ticks>
+		<AttackBonus></AttackBonus>
+		<BlockBonus></BlockBonus>
 	</MeleeWeapons>
 </PlayerData>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="LoadImage" Width="508.071" Height="374.052" Clip="F1 M 0,0L 508.071,0L 508.071,374.052L 0,374.052L 0,0">
+	<Canvas x:Name="Layer_2" Width="508.071" Height="374.052" Canvas.Left="0" Canvas.Top="0">
+		<Path x:Name="Path" Width="426.227" Height="352.126" Canvas.Left="6.89671" Canvas.Top="8.99078" Stretch="Fill" StrokeThickness="1.00014" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFCB75B" Data="F1 M 7.39685,18.5859C 7.37695,14.2163 11.4609,9.50729 17.5233,9.52216L 163.492,9.49084L 204.476,50.4966L 422.581,50.4549C 428.061,50.4505 432.624,56.9827 432.624,60.498L 432.587,112.468L 8.56922,360.576L 7.48574,360.617L 7.39685,18.5859 Z "/>
+		<Path x:Name="Path_0" Width="386.174" Height="285.135" Canvas.Left="26.9751" Canvas.Top="27.9457" Stretch="Fill" StrokeThickness="1.00014" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFECA65" Data="F1 M 27.5148,28.4458L 154.521,28.5421L 195.522,70.4958L 412.65,70.6865L 412.529,112.365L 29.4754,312.539L 27.4752,312.581L 27.5148,28.4458 Z "/>
+		<Path x:Name="Path_1" Width="498.228" Height="249.114" Canvas.Left="6.92326" Canvas.Top="111.999" Stretch="Fill" StrokeThickness="1.00014" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFFBAD3F" Data="F1 M 7.42333,360.513L 97.5193,151.379C 111.078,120.182 127.247,112.681 142.276,112.499L 478.314,112.597C 493.215,112.556 504.591,127.058 504.651,139.351L 504.568,144.602L 411.571,360.613L 7.42333,360.513 Z "/>
+	</Canvas>
+</Canvas>

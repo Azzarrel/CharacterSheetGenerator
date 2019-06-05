@@ -3,37 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:CharacterSheetGenerator"
-        mc:Ignorable="d" Height="1200" Width="920">
+        mc:Ignorable="d" Height="845" Width="580">
     <Grid>
         <Grid.Resources>
-            <Style TargetType="TextBlock" x:Key="HeaderTextBlockSyle">
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="FontWeight" Value="Bold" />
+            <Style TargetType="DataGridColumnHeader" x:Key="InventoryHeaderStyle" BasedOn="{StaticResource BaseHeaderStyleLarge}">
+                <Setter Property="Width" Value="95" />
             </Style>
-            <Style TargetType="DataGridCell" x:Key="SkillGridCellStyleBold">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="Bold" />
-            </Style>
-            <Style TargetType="DataGridCell" x:Key="SkillGridCellStyleGray">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="DataGridCell" x:Key="SkillGridCellStyleGrayBold">
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontWeight" Value="Bold" />
+            <Style TargetType="DataGridCell" x:Key="InventoryGridCellSty" BasedOn="{StaticResource BaseGridCellStyleLarge}">
+                <Setter Property="Width" Value="95" />
             </Style>
         </Grid.Resources>
-        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                  RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True" Header="Name"/>
-                <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource SkillGridCellStyleBold}" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Name" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyle}"/>
+                <DataGridTextColumn Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static sys:String.Empty}}" Header="#" HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                <DataGridTextColumn Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static sys:String.Empty}}" Header="Wert" HeaderStyle="{StaticResource BaseHeaderStyle}" CellStyle="{StaticResource BaseGridCellStyle}"/>
+                <DataGridTextColumn Binding="{Binding Weight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged , TargetNullValue={x:Static sys:String.Empty}}" Header="Gw" HeaderStyle="{StaticResource BaseHeaderStyleGray}" CellStyle="{StaticResource BaseGridCellStyleGray}"/>
+                <DataGridTextColumn Binding="{Binding Place, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Ort" HeaderStyle="{StaticResource InventoryHeaderStyle}" CellStyle="{StaticResource InventoryGridCellSty}"/>
             </DataGrid.Columns>
         </DataGrid>
-
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Grid Width="300">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="Gesamt:"/>
+            </Grid>
+            <Grid Width="100"/>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Total, Mode=TwoWay}"/>
+        </StackPanel>
 
     </Grid>
-
+    
 </UserControl>

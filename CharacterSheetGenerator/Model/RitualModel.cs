@@ -30,13 +30,13 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        public int Value
+        public int? Value
         {
-            get { return Get<int>(); }
+            get { return Get<int?>(); }
             set { Set(value); }
         }
 
-        public string FlavorText
+        public string Description
         {
             get { return Get<string>(); }
             set { Set(value); }

@@ -19,12 +19,6 @@ namespace CharacterSheetGenerator.Traits.Model
             set { Set(value); }
         }
 
-        public ObservableCollection<TraitModifierModel> Modifiers
-        {
-            get { return Get<ObservableCollection<TraitModifierModel>>(); }
-            set { Set(value); }
-        }
-
         public string Description
         {
             get { return Get<string>(); }

@@ -2,34 +2,10 @@
 	<TraitCategory>
 		<Name>Körpereigenschaften</Name>
 		<Type>Character</Type>
-			<Trait>
-			<Name>Arrogant</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Charisma</NameLink>
-				<Value>1</Value>
-			</TraitModifier>
-			</Trait>
-			<Trait>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Willenskraft</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Charaktereigenschaften</Name>
 		<Type>Character</Type>
-		<Trait>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Initiative</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Allgemeine Sonderfertigkeiten</Name>
@@ -38,41 +14,18 @@
 	<TraitCategory>
 		<Name>Kampfsonderfertigkeiten</Name>
 		<Type>Combat</Type>
-			<Trait>
-			<Name>Arrogant</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Charisma</NameLink>
-				<Value>1</Value>
-			</TraitModifier>
-			</Trait>
-			<Trait>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Willenskraft</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
 	</TraitCategory>	
 	<TraitCategory>
 		<Name>Zaubersonderfertigkeiten</Name>
 		<Type>Spell</Type>
-			<Trait>
-			<Name>Arrogant</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Charisma</NameLink>
-				<Value>1</Value>
-			</TraitModifier>
-			</Trait>
-			<Trait>
-			<Name>Feige</Name>
-			<Description>blubb</Description>
-			<TraitModifier>
-				<NameLink>Willenskraft</NameLink>
-				<Value>-1</Value>
-			</TraitModifier>
-		</Trait>
+	</TraitCategory>
+	<TraitCategory>
+		<Name>Invis</Name>
+		<Type>Invis</Type>
+			<Traits>
+				<Key></Key>
+				<Name></Name>
+				<Description></Description>
+			</Traits>
 	</TraitCategory>
 </PlayerData>	

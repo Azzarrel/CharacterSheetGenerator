@@ -1,0 +1,11 @@
+<PlayerData>
+	<Money>	
+		<Gold></Gold>
+		<Silver></Silver>
+		<Copper></Copper>
+		<Iron></Iron>
+		<Gems></Gems>
+		<Artifacts></Artifacts>
+		<Rest></Rest>
+	</Money>
+</PlayerData>

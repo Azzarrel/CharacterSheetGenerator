@@ -35,32 +35,63 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\CharacterLanguages.xaml.cs">
+      <DependentUpon>CharacterLanguages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CharacterMoney.xaml.cs">
+      <DependentUpon>CharacterMoney.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataTableListConverter.cs" />
+    <Compile Include="Helpers\Attributes.cs" />
+    <Compile Include="Helpers\BubbleScrollEvent.cs" />
     <Compile Include="Helpers\ColorHandler.cs" />
     <Compile Include="Helpers\GridHelpers.cs" />
     <Compile Include="Helpers\NotifyBase.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\RichTextBoxHelper.cs" />
+    <Compile Include="Model\Modifiers\BaseModifierModel.cs" />
+    <Compile Include="Model\MoneyModel.cs" />
     <Compile Include="Model\ModelObjects\ModelObject.cs" />
     <Compile Include="Control\CharacterInventory.xaml.cs">
       <DependentUpon>CharacterInventory.xaml</DependentUpon>
@@ -71,11 +102,13 @@
     <Compile Include="Control\CharacterCombat.xaml.cs">
       <DependentUpon>CharacterCombat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\CharacterInformation.xaml.cs">
-      <DependentUpon>CharacterInformation.xaml</DependentUpon>
+    <Compile Include="Control\CharacterOverview.xaml.cs">
+      <DependentUpon>CharacterOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\InventoryItemModel.cs" />
     <Compile Include="Model\RitualModel.cs" />
+    <Compile Include="Model\LanguageModel.cs" />
+    <Compile Include="Model\Modifiers\ModifierModel.cs" />
     <Compile Include="Model\SpellModel.cs" />
     <Compile Include="Model\CombatSheet\RangedWeaponModel .cs" />
     <Compile Include="Model\CombatSheet\MeleeWeaponModel.cs" />
@@ -84,9 +117,27 @@
     <Compile Include="Model\CombatSheet\WeaponSelectModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponModel.cs" />
     <Compile Include="Model\ModelObjects\StatusValueModel.cs" />
-    <Compile Include="Model\Traits\TraitModifierModel.cs" />
+    <Compile Include="Model\SaveDataModel.cs" />
     <Compile Include="Model\Traits\TraitModel.cs" />
     <Compile Include="Model\Traits\TraitCategoryModel.cs" />
+    <Compile Include="ViewModel\DialogueWindowViewModel.cs" />
+    <Compile Include="ViewModel\LoadWindowViewModel.cs" />
+    <Compile Include="ViewModel\SaveWindowViewModel.cs" />
+    <Compile Include="ViewModel\TraitViewModel.cs" />
+    <Compile Include="View\SaveFileWindow.xaml.cs">
+      <DependentUpon>SaveFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TraitView.xaml.cs">
+      <DependentUpon>TraitView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Control\CharacterLanguages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CharacterMoney.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Control\CharacterInventory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,7 +150,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Control\CharacterInformation.xaml">
+    <Page Include="Control\CharacterOverview.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -111,7 +162,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Images\LoadButtonCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Images\PrintButtonCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Images\SaveButtoncode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -128,11 +191,19 @@
     <Compile Include="Control\CharacterAttributes.xaml.cs">
       <DependentUpon>CharacterAttributes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SaveFileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TraitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,6 +227,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -165,7 +237,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Windows\" />
+    <Content Include="Images\LoadButtonPicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\PrintButtonPicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SaveButtonpicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

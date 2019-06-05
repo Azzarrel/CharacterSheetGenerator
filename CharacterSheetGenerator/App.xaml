@@ -1,8 +1,8 @@
 ﻿<Application x:Class="CharacterSheetGenerator.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CharacterSheetGenerator"
-             StartupUri="MainWindow.xaml">
+             xmlns:window="clr-namespace:CharacterSheetGenerator.View"
+             Startup="Application_Startup">
     <Application.Resources>
         <!-- Header Styles -->
         <Style TargetType="DataGridColumnHeader" x:Key="DefaultHeaderStyle">
@@ -45,6 +45,11 @@
         <Style TargetType="DataGridColumnHeader" x:Key="NumericValueHeaderStyleGray" BasedOn="{StaticResource NumericValueHeaderStyle}">
             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
         </Style>
+        
+        
+        
+        
+        
         <!-- Cell Styles -->
         <Style TargetType="DataGridCell" x:Key="DefaultCellStyle">
             <Setter Property="FontSize" Value="16" />

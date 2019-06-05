@@ -18,10 +18,11 @@ namespace CharacterSheetGenerator.Helpers
         {
             if (propertyValues.ContainsKey(propertyName))
             {
-        if (!propertyValues[propertyName].Equals(value))
-        {
-          propertyValues[propertyName] = value;
-        }
+                //Nur ändern, wenn es auch tatsächlich eine Änderung gab, bei null sollte der Wert danach immer von einer Value überschrieben werden
+                if (propertyValues[propertyName] == null || !propertyValues[propertyName].Equals(value))
+                {
+                    propertyValues[propertyName] = value;
+                }
             }
             else
             {

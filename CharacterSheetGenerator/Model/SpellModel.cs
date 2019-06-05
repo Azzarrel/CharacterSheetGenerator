@@ -30,9 +30,9 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        public int Value
+        public int? Value
         {
-            get { return Get<int>(); }
+            get { return Get<int?>(); }
             set { Set(value); }
         }
 
@@ -60,7 +60,7 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        public string FlavorText
+        public string Description
         {
             get { return Get<string>(); }
             set { Set(value); }
@@ -75,6 +75,16 @@ namespace CharacterSheetGenerator.Model
         public string Duration
         {
             get { return Get<string>(); }
+            set { Set(value); }
+        }
+        public int Mana
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
+        public bool AttackBonus
+        {
+            get { return Get<bool>(); }
             set { Set(value); }
         }
     }

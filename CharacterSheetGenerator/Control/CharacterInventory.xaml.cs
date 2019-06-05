@@ -43,6 +43,35 @@ namespace CharacterSheetGenerator.Control
 
         }
 
+
+        private double m_Total = new double();
+
+        public static readonly DependencyProperty TotalProperty =
+            DependencyProperty.Register("Total", typeof(double), typeof(CharacterInventory),
+            new FrameworkPropertyMetadata(new double(), OnTotalPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public double Total
+        {
+            get { return (double)GetValue(TotalProperty); }
+            set { SetValue(TotalProperty, value); }
+        }
+
+        private static void OnTotalPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterInventory UserControl = obj as CharacterInventory;
+            UserControl.OnPropertyChanged("Total");
+            UserControl.OnTotalPropertyChanged(e);
+
+
+        }
+
+        private void OnTotalPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_Total = Total;
+
+        }
+
         private ObservableCollection<InventoryItemModel> m_Inventory = new ObservableCollection<InventoryItemModel>();
 
         public static readonly DependencyProperty InventoryProperty =

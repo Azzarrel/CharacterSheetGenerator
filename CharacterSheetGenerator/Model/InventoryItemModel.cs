@@ -18,21 +18,21 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        public double Quantity
+        public double? Quantity
         {
-            get { return Get<double>(); }
+            get { return Get<double?>(); }
             set { Set(value); }
         }
 
-        public double Value
+        public double? Value
         {
-            get { return Get<double>(); }
+            get { return Get<double?>(); }
             set { Set(value); }
         }
 
-        public double Weight
+        public double? Weight
         {
-            get { return Get<double>(); }
+            get { return Get<double?>(); }
             set { Set(value); }
         }
 

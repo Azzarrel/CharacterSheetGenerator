@@ -19,6 +19,35 @@ namespace CharacterSheetGenerator.Control
     public partial class CharacterOverview : UserControl
     {
 
+
+        private double m_Expirience = new double();
+
+        public static readonly DependencyProperty ExpirienceProperty =
+            DependencyProperty.Register("Expirience", typeof(double), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(new double(), OnExpiriencePropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public double Expirience
+        {
+            get { return (double)GetValue(ExpirienceProperty); }
+            set { SetValue(ExpirienceProperty, value); }
+        }
+
+        private static void OnExpiriencePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterOverview UserControl = obj as CharacterOverview;
+            UserControl.OnPropertyChanged("Expirience");
+            UserControl.OnExpiriencePropertyChanged(e);
+
+
+        }
+
+        private void OnExpiriencePropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_Expirience = Expirience;
+
+        }
+
         private ObservableCollection<CharacterInformationModel> m_CharacterInformation = new ObservableCollection<CharacterInformationModel>();
 
         public static readonly DependencyProperty CharacterInformationProperty =
@@ -103,20 +132,41 @@ namespace CharacterSheetGenerator.Control
 
         }
 
+        private ICommand m_TraitClickCommand;
+
+        public static readonly DependencyProperty TraitClickCommandProperty =
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CharacterOverview),
+            new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public ICommand TraitClickCommand
+        {
+            get { return (ICommand)GetValue(TraitClickCommandProperty); }
+            set { SetValue(TraitClickCommandProperty, value); }
+        }
+
+        private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterOverview UserControl = obj as CharacterOverview;
+            UserControl.OnPropertyChanged("TraitClickCommand");
+            UserControl.OnTraitClickCommandPropertyChanged(e);
+
+
+        }
+
+        private void OnTraitClickCommandPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_TraitClickCommand = TraitClickCommand;
+
+        }
+
+
         public CharacterOverview()
         {
             InitializeComponent();
         }
 
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+
 
         private void Charinfo_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -128,6 +178,15 @@ namespace CharacterSheetGenerator.Control
         {
             TextBox box = sender as TextBox;
             box.Background = new SolidColorBrush(Colors.White);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

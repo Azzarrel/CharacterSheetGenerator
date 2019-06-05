@@ -18,15 +18,21 @@ namespace CharacterSheetGenerator.ModelObjects.Model
             set { Set(value); }
         }
 
-        //public int Value
-        //{
-        //    get { return Get<int>(); }
-        //    set
-        //    {
-        //        Set(value);
-        //        SetRoutine(value);
-        //    }
-        //}
+        public new double? Base
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public new double? Value
+        {
+            get { return Get<double?>(); }
+            set
+            {
+                Set(value);
+                SetRoutine(value);
+            }
+        }
 
         public string Difficulty
         {
@@ -57,7 +63,7 @@ namespace CharacterSheetGenerator.ModelObjects.Model
             set { Set(value); }
         }
 
-        public void SetRoutine(int value)
+        public void SetRoutine(double? value)
         {
             Routine = "";
             if (value > 6)

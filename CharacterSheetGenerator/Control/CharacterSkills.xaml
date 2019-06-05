@@ -48,16 +48,17 @@
             </Style>
         </Grid.Resources>
 
-        <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
+        <DataGrid x:Name="grid1" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
+                  RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
             <DataGrid.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
 
                                 <Border BorderBrush="Black" BorderThickness="0,0,0,0.45">
-                                    <StackPanel Orientation="Horizontal" Height="27">
+                                    <StackPanel Orientation="Horizontal" Height="25">
                                         <TextBlock Width="5"/>
-                                        <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
                                         <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
                                         <TextBlock Width="40"/>
                                         <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
@@ -69,11 +70,11 @@
                 </GroupStyle>
             </DataGrid.GroupStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" CellStyle="{StaticResource ItemNameCellStyle}" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" Header="Name"/>
-                <DataGridTextColumn Binding="{Binding Requirement}" CellStyle="{StaticResource SkillCheckGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}" IsReadOnly="True" Header="Probe"/>
-                <DataGridTextColumn Binding="{Binding Value}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" Header="Fw."/>
+                <DataGridTextColumn Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource ItemNameCellStyle}" IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource SkillCheckGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}" IsReadOnly="True" Header="Probe"/>
+                <DataGridTextColumn Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" Header="Fw."/>
                 <DataGridTextColumn Binding="{Binding Routine}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" IsReadOnly="True" Header="R."/>
-                <DataGridTextColumn Binding="{Binding Comment}" CellStyle="{StaticResource CommentGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleComment}"  Header="     Anmerkungen"/>
+                <DataGridTextColumn Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CellStyle="{StaticResource CommentGridCellStyle}" HeaderStyle="{StaticResource HeaderStyleComment}"  Header="     Anmerkungen"/>
             </DataGrid.Columns>
         </DataGrid>
 

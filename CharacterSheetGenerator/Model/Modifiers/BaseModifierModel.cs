@@ -1,6 +1,7 @@
 ﻿using CharacterSheetGenerator.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,9 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator.Traits.Model 
 {
-    public class TraitModifierModel : NotifyBase
+    public class BaseModifierModel : NotifyBase
     {
+
 
         public string NameLink
         {
@@ -18,20 +20,23 @@ namespace CharacterSheetGenerator.Traits.Model
             set { Set(value); }
         }
 
-        public string TableLink
+        public string TypeLink
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public double Value
+        public ObservableCollection<string> Types
         {
-            get { return Get<double>(); }
-            set
-            {
-                Set(value);
-            }
+            get { return Get<ObservableCollection<string>>(); }
+            set { Set(value); }
+        }
+
+        public BaseModifierModel()
+        {
+            Types = new ObservableCollection<string>();
         }
 
     }
+
 }

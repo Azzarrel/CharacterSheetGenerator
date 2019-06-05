@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using CharacterSheetGenerator.ModelObjects.Model;
 using CharacterSheetGenerator.Traits.Model;
 using CharacterSheetGenerator.Model;
+using System.Windows.Input;
 
 namespace CharacterSheetGenerator.Control
 {

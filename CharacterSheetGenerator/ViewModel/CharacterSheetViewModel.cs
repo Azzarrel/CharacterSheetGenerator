@@ -3,6 +3,8 @@ using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
 using CharacterSheetGenerator.ModelObjects.Model;
 using CharacterSheetGenerator.Traits.Model;
+using CharacterSheetGenerator.View;
+using CharacterSheetGenerator.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

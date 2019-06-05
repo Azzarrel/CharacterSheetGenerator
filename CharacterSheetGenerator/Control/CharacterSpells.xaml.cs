@@ -1,4 +1,5 @@
 ﻿using CharacterSheetGenerator.CombatSheet.Model;
+using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
 using CharacterSheetGenerator.Traits.Model;
 using System;

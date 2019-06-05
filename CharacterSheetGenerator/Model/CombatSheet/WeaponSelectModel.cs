@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator 
+namespace CharacterSheetGenerator.CombatSheet.Model
 {
     public class WeaponSelectModel : INotifyPropertyChanged
     {

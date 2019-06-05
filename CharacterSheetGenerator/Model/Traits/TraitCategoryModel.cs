@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterSheetGenerator.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator 
+namespace CharacterSheetGenerator.Traits.Model
 {
     public class TraitCategoryModel : NotifyBase
     {

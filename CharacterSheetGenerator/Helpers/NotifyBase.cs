@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace CharacterSheetGenerator
+namespace CharacterSheetGenerator.Helpers
 {
     public abstract class NotifyBase : INotifyPropertyChanged
     {

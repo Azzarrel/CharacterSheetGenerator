@@ -7,9 +7,13 @@ using System.Windows.Data;
 using System.Data;
 using System.Linq;
 using System.Collections.ObjectModel;
+<<<<<<< HEAD:CharacterSheetGenerator/Control/CharacterInformation.xaml.cs
 using CharacterSheetGenerator.ModelObjects.Model;
 using CharacterSheetGenerator.Traits.Model;
 using CharacterSheetGenerator.Model;
+=======
+using System.Windows.Input;
+>>>>>>> 2d104a70437f9c93648f37747fefd9b4dc92072d:CharacterSheetGenerator/Control/CharacterOverview.xaml.cs
 
 namespace CharacterSheetGenerator.Control
 {

@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Data;
 using System.Data;
 using System.Collections.ObjectModel;
+using CharacterSheetGenerator.Model;
+using CharacterSheetGenerator.Helpers;
 
 namespace CharacterSheetGenerator.Control
 {

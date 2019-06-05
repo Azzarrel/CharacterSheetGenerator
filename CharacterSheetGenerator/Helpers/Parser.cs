@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharacterSheetGenerator
+namespace CharacterSheetGenerator.Helpers
 {
   /// <summary>
   /// Ähnlich zu der Parse-Methode by Typen gibt der Parser eine Methode mit der Objekte auch in nullable Datentypen geparst werden können

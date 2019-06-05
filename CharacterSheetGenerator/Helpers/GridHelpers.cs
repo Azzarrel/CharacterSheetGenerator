@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CharacterSheetGenerator
+namespace CharacterSheetGenerator.Helpers
 {
   public class GridHelpers
   {

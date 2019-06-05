@@ -7,6 +7,9 @@ using System.Windows.Data;
 using System.Data;
 using System.Linq;
 using System.Collections.ObjectModel;
+using CharacterSheetGenerator.ModelObjects.Model;
+using CharacterSheetGenerator.Traits.Model;
+using CharacterSheetGenerator.Model;
 
 namespace CharacterSheetGenerator.Control
 {

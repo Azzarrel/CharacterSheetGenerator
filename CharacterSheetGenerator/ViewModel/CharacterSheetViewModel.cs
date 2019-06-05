@@ -1,4 +1,9 @@
-﻿using System;
+﻿using CharacterSheetGenerator.CombatSheet.Model;
+using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.Model;
+using CharacterSheetGenerator.ModelObjects.Model;
+using CharacterSheetGenerator.Traits.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

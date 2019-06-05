@@ -1,4 +1,5 @@
-﻿using CharacterSheetGenerator.View;
+﻿using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,6 +29,7 @@ namespace CharacterSheetGenerator.View
 
         public MainWindow()
         {
+            //AssemblyResolver.Hook("\\resouces\\source");
             InitializeComponent();
             DataContext = new CharacterSheetViewModel();
 

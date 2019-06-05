@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterSheetGenerator.View"
         mc:Ignorable="d"
-        Title="TraitView" Height="450" Width="800">
+        Title="TraitView" Height="650" Width="1300">
     <Grid>
         <Grid.Resources>
             <CollectionViewSource x:Key="BaseModifiers" Source="{ Binding Path=BaseModifiers, Mode=TwoWay}"  />
@@ -14,35 +14,73 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.2*"/>
                 <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.8*"/>
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1,0,1,1">
-                <DataGrid Width="330" Grid.Column="1" ItemsSource="{Binding Traits, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow"  SelectedItem="{Binding SelectedTrait, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single" AddingNewItem="TraitGrid_AddingNewItem"  >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}" Header="Eigenschaft"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
-                </DataGrid.Columns>
+            <StackPanel Grid.Column="1" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="10" />
+                    <Button Height="20" Width="20" Content="+" HorizontalAlignment="Left" Command="{Binding InsertTraitsCommand}"/>
+                    <TextBlock Width="10" />
+                    <Button Height="20" Width="20" Content="x" HorizontalAlignment="Left" Command="{Binding DeleteTraitsCommand}"/>
+                </StackPanel>
+                <TextBlock Height="5" />
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1">
 
-            </DataGrid>
-            </Border>
-            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1,0,1,1">
-                <DataGrid Width="330" Grid.Column="1" ItemsSource="{Binding TraitModifiers, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow" 
-                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" AddingNewItem="ModifierGrid_AddingNewItem" >
-                    <DataGrid.Columns>
-                        <DataGridComboBoxColumn Header=" Mod" SelectedItemBinding="{Binding Modifier}" DisplayMemberPath="NameLink" ItemsSource="{Binding Source={StaticResource BaseModifiers}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
-                        <DataGridComboBoxColumn Header=" Mod" ItemsSource="{Binding Types}"  HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
-                    </DataGrid.Columns>
+                    <DataGrid Width="700" Grid.Column="1" ItemsSource="{Binding Traits, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow"  SelectedItem="{Binding SelectedTrait, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left"  CanUserAddRows="False" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Eigenschaft"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                        </DataGrid.Columns>
 
-                </DataGrid>
+                    </DataGrid>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="3">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="10" />
+                    <Button Height="20" Width="20" Content="+" HorizontalAlignment="Left" Command="{Binding InsertModifiersCommand}"/>
+                    <TextBlock Width="10" />
+                    <Button Height="20" Width="20" Content="x" HorizontalAlignment="Left" Command="{Binding DeleteModifiersCommand}"/>
+                </StackPanel>
+                <TextBlock Height="5" />
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1">
+
+                    <DataGrid Width="465" Grid.Column="1" ItemsSource="{Binding TraitModifiers, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow" 
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single" >
+                        <DataGrid.Columns>
+                            <DataGridComboBoxColumn Header=" Modifier" SelectedItemBinding="{Binding Modifier}" DisplayMemberPath="NameLink" ItemsSource="{Binding Source={StaticResource BaseModifiers}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
+                            <DataGridTemplateColumn Header="Art" Width="140">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding Types, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding TypeLink}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding}"/>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Wert" Binding="{Binding Value}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                
             </Border>
+            </StackPanel>
         </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal"  HorizontalAlignment="Right">
+            <Button Content="Speichern" FontSize="14" Height="35" Width="120" HorizontalAlignment="Right"/>
+            <TextBlock Width="40" HorizontalAlignment="Right"/>
+        </StackPanel>
     </Grid>
 </Window>

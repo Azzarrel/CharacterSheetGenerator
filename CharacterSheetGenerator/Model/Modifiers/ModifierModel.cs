@@ -12,42 +12,28 @@ namespace CharacterSheetGenerator
     public class ModifierModel : NotifyBase
     {
 
-        public BaseModifierModel Modifier
-        {
-            get { return Get<BaseModifierModel>(); }
-            set
-            {
-                Set(value);
-                Modifier.TypeLink = Types.FirstOrDefault();
-            }
-        }
 
         public string NameLink
         {
-            get { return Modifier?.NameLink; }
+            get { return Get<string>(); }
+            set { Set(value); }
         }
 
         public string TypeLink
         {
-            get { return Modifier?.TypeLink; }
-            set { Modifier.TypeLink = value; }
+            get { return Get<string>(); }
+            set { Set(value); }
         }
 
         public ObservableCollection<string> Types
         {
-            get { return Modifier?.Types; }
-        }
-
-        public double Value
-        {
-            get { return Get<double>(); }
+            get { return Get<ObservableCollection<string>>(); }
             set { Set(value); }
         }
 
-        public int TraitLink
+        public ModifierModel()
         {
-            get { return Get<int>(); }
-            set { Set(value); }
+            Types = new ObservableCollection<string>();
         }
 
     }

@@ -40,8 +40,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>libs\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,21 +54,6 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
-    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
-    </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -81,7 +66,8 @@
     <Compile Include="Control\CharacterMoney.xaml.cs">
       <DependentUpon>CharacterMoney.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataTableListConverter.cs" />
+    <Compile Include="Helpers\DataTableListConverter.cs" />
+    <Compile Include="Helpers\AssemblyResolver.cs" />
     <Compile Include="Helpers\Attributes.cs" />
     <Compile Include="Helpers\BubbleScrollEvent.cs" />
     <Compile Include="Helpers\ColorHandler.cs" />
@@ -90,7 +76,7 @@
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\RichTextBoxHelper.cs" />
-    <Compile Include="Model\Modifiers\BaseModifierModel.cs" />
+    <Compile Include="Model\Modifiers\ModifierModel.cs" />
     <Compile Include="Model\MoneyModel.cs" />
     <Compile Include="Model\ModelObjects\ModelObject.cs" />
     <Compile Include="Control\CharacterInventory.xaml.cs">
@@ -108,7 +94,7 @@
     <Compile Include="Model\InventoryItemModel.cs" />
     <Compile Include="Model\RitualModel.cs" />
     <Compile Include="Model\LanguageModel.cs" />
-    <Compile Include="Model\Modifiers\ModifierModel.cs" />
+    <Compile Include="Model\Modifiers\TraitModifierModel.cs" />
     <Compile Include="Model\SpellModel.cs" />
     <Compile Include="Model\CombatSheet\RangedWeaponModel .cs" />
     <Compile Include="Model\CombatSheet\MeleeWeaponModel.cs" />
@@ -237,19 +223,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\LoadButtonPicture.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\PrintButtonPicture.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\SaveButtonpicture.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\LoadButtonPicture.png" />
+    <Resource Include="Images\PrintButtonPicture.png" />
+    <Resource Include="Images\SaveButtonpicture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM Kopiert die Dll in den Debug-Ordner, zum Testen
-xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings"</PostBuildEvent>
+    <PostBuildEvent>REM Kopiert die xml in den Debug-Ordner, zum Testen
+xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings"
+
+REM Kopiert die dlls in den Debug-Ordner, zum Testen
+xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Ilibs\*.dll" "$(TargetDir)resources/libs"
+REM Kopiert die png in den Debug-Ordner, zum Testen
+xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Images\*.png" "$(TargetDir)resources/images"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -27,9 +27,9 @@ namespace CharacterSheetGenerator
 
         public DataSet Data { get; set; } = new DataSet();
 
-        public ObservableCollection<BaseModifierModel> BaseModifiers
+        public ObservableCollection<ModifierModel> BaseModifiers
         {
-            get { return Get<ObservableCollection<BaseModifierModel>>(); }
+            get { return Get<ObservableCollection<ModifierModel>>(); }
             set { Set(value); }
         }
 
@@ -144,34 +144,34 @@ namespace CharacterSheetGenerator
 
         public void GenerateBaseModifiers()
         {
-            BaseModifiers = new ObservableCollection<BaseModifierModel>();
+            BaseModifiers = new ObservableCollection<ModifierModel>();
             foreach(AttributeModel atr in Attributes)
             {
-                BaseModifierModel m = new BaseModifierModel {   NameLink = atr.Name,  };
+                ModifierModel m = new ModifierModel {   NameLink = atr.Name,  };
                 m.Types.Add("Standard");
                 BaseModifiers.Add(m);
             }
             foreach(SkillModel skill in SkillsLeft)
             {
-                BaseModifierModel m = new BaseModifierModel { NameLink = skill.Name, };
+                ModifierModel m = new ModifierModel { NameLink = skill.Name, };
                 m.Types.Add("Standard");
                 BaseModifiers.Add(m);
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                BaseModifierModel m = new BaseModifierModel { NameLink = skill.Name, };
+                ModifierModel m = new ModifierModel { NameLink = skill.Name, };
                 m.Types.Add("Standard");
                 BaseModifiers.Add(m);
             }
             foreach(StatusValueModel stv in StatusValues)
             {
-                BaseModifierModel m = new BaseModifierModel { NameLink = stv.Name, };
+                ModifierModel m = new ModifierModel { NameLink = stv.Name, };
                 m.Types.Add("Standard");
                 BaseModifiers.Add(m);
             }
             foreach(WeaponModel weapon in Weapons)
             {
-                BaseModifierModel m = new BaseModifierModel { NameLink = weapon.Name, };
+                ModifierModel m = new ModifierModel { NameLink = weapon.Name, };
                 m.Types.Add("Angriff");
                 m.Types.Add("Parieren");
                 BaseModifiers.Add(m);
@@ -1354,9 +1354,9 @@ namespace CharacterSheetGenerator
 
         #region Properties
 
-        public ObservableCollection<ModifierModel> Modifiers
+        public ObservableCollection<TraitModifierModel> Modifiers
         {
-            get { return Get<ObservableCollection<ModifierModel>>(); }
+            get { return Get<ObservableCollection<TraitModifierModel>>(); }
             set { Set(value); }
         }
 
@@ -1365,14 +1365,14 @@ namespace CharacterSheetGenerator
         #region Loading
         public void LoadModifiers()
         {
-            Modifiers = new ObservableCollection<ModifierModel>();
+            Modifiers = new ObservableCollection<TraitModifierModel>();
             foreach (DataRow row in Data.Tables["Modifiers"].Rows)
             {
-                BaseModifierModel basemod = BaseModifiers.Where(m => m.NameLink == row["NameLink"].ToString()).FirstOrDefault();
+                ModifierModel basemod = BaseModifiers.Where(m => m.NameLink == row["NameLink"].ToString()).FirstOrDefault();
 
 
 
-                ModifierModel mod = new ModifierModel
+                TraitModifierModel mod = new TraitModifierModel
                 {
                     Modifier = basemod,
                     Value = row["Value"].ToString() == "" ? 0 : double.Parse(row["Value"].ToString()),
@@ -1398,7 +1398,7 @@ namespace CharacterSheetGenerator
             {
                 weapon.AttackModifier = 0;
                 weapon.BlockModifier = 0;
-                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == weapon.Name))
+                foreach (TraitModifierModel mod in Modifiers.Where(m => m.NameLink == weapon.Name))
                 {
                     if(mod.TypeLink == "Angriff")
                     {
@@ -1413,7 +1413,7 @@ namespace CharacterSheetGenerator
             foreach (SkillModel skill in SkillsLeft)
             {
                 skill.Modifiers = 0;
-                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == skill.Name))
+                foreach (TraitModifierModel mod in Modifiers.Where(m => m.NameLink == skill.Name))
                 {
                     skill.Modifiers = skill.Modifiers + mod.Value;
                 }
@@ -1421,7 +1421,7 @@ namespace CharacterSheetGenerator
             foreach (SkillModel skill in SkillsRight)
             {
                 skill.Modifiers = 0;
-                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == skill.Name))
+                foreach (TraitModifierModel mod in Modifiers.Where(m => m.NameLink == skill.Name))
                 {
                     skill.Modifiers = skill.Modifiers + mod.Value;
                 }
@@ -1429,7 +1429,7 @@ namespace CharacterSheetGenerator
             foreach (AttributeModel atr in Attributes)
             {
                 atr.Modifiers = 0;
-                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == atr.Name))
+                foreach (TraitModifierModel mod in Modifiers.Where(m => m.NameLink == atr.Name))
                 {
                     atr.Modifiers = atr.Modifiers + mod.Value;
                 }
@@ -1437,7 +1437,7 @@ namespace CharacterSheetGenerator
             foreach (StatusValueModel stv in StatusValues)
             {
                 stv.Modifiers = 0;
-                foreach (ModifierModel mod in Modifiers.Where(m => m.NameLink == stv.Name))
+                foreach (TraitModifierModel mod in Modifiers.Where(m => m.NameLink == stv.Name))
                 {
                     stv.Modifiers = stv.Modifiers + mod.Value;
                 }

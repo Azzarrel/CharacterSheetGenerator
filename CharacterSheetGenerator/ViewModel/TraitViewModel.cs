@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CharacterSheetGenerator.ViewModel
 {
@@ -29,25 +30,25 @@ namespace CharacterSheetGenerator.ViewModel
             {
                 Set(value);
                 if(SelectedTrait != null)
-                TraitModifiers = new ObservableCollection<ModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
+                TraitModifiers = new ObservableCollection<TraitModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
             }
         }
 
-        public ObservableCollection<ModifierModel> TraitModifiers
+        public ObservableCollection<TraitModifierModel> TraitModifiers
         {
-            get { return Get<ObservableCollection<ModifierModel>>(); }
+            get { return Get<ObservableCollection<TraitModifierModel>>(); }
             set { Set(value); }
         }
 
-        public ObservableCollection<ModifierModel> Modifiers
+        public ObservableCollection<TraitModifierModel> Modifiers
         {
-            get { return Get<ObservableCollection<ModifierModel>>(); }
+            get { return Get<ObservableCollection<TraitModifierModel>>(); }
             set { Set(value); }
         }
 
-        public ObservableCollection<BaseModifierModel> BaseModifiers
+        public ObservableCollection<ModifierModel> BaseModifiers
         {
-            get { return Get<ObservableCollection<BaseModifierModel>>(); }
+            get { return Get<ObservableCollection<ModifierModel>>(); }
             set { Set(value); }
         }
 
@@ -59,28 +60,61 @@ namespace CharacterSheetGenerator.ViewModel
 
         public TraitViewModel()
         {
-
+            CreateCommands();
         }
 
-        public void TraitGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+
+        private void CreateCommands()
         {
-            e.NewItem = new TraitModel
-            {
-                Key = Traits.Count(),
-                Name = "",
-                Description = "",               
-            };
+            InsertTraitsCommand = new RelayCommand(InsertTraitsMethod, CanExecute);
+            DeleteTraitsCommand = new RelayCommand(DeleteTraitsMethod, CanExecute);
+            InsertModifiersCommand = new RelayCommand(InsertModifiersMethod, CanExecute);
+            DeleteModifiersCommand = new RelayCommand(DeleteModifiersMethod, CanExecute);
 
         }
-        public void ModifierGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+
+
+        public ICommand InsertTraitsCommand { get; private set; }
+        public ICommand DeleteTraitsCommand { get; private set; }
+        public ICommand InsertModifiersCommand { get; private set; }
+        public ICommand DeleteModifiersCommand { get; private set; }
+
+        public void InsertTraitsMethod()
         {
-            e.NewItem = new ModifierModel
-            {
-
-                
-            };
+            TraitModel trait = new TraitModel { Key = 5 };
+            Traits.Add(trait);
+            SelectedTrait = trait;
 
         }
+
+        public void DeleteTraitsMethod()
+        {
+
+
+        }
+
+        public void InsertModifiersMethod()
+        {
+            TraitModifierModel mod = new TraitModifierModel { Modifier = BaseModifiers.FirstOrDefault(), TraitLink = SelectedTrait.Key };
+            Modifiers.Add(mod);
+            TraitModifiers = new ObservableCollection<TraitModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
+
+        }
+
+        public void DeleteModifiersMethod()
+        {
+
+
+        }
+
+
+        public bool CanExecute()
+        {
+            return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
+        }
+
+
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterSheetGenerator.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CharacterSheetGenerator.Model
 {
     public class SkillModel : TemplateModel
     {
-
+        [ColumnName("Name")]
         public string Name
         {
             get { return Get<string>(); }
@@ -24,19 +25,21 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
+        [ColumnName("Key")]
         public int Key
         {
             get { return Get<int>(); }
             set { Set(value); }
         }
 
-
+        [ColumnName("Requirement")]
         public string Requirement
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Base")]
         public double? Base
         {
             get { return Get<double?>(); }
@@ -53,6 +56,7 @@ namespace CharacterSheetGenerator.Model
             }
         }
 
+        [ColumnName("Difficulty")]
         public string Difficulty
         {
             get { return Get<string>(); }
@@ -65,17 +69,21 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
+        [ColumnName("Comment")]
         public string Comment
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        [ColumnName("Category")]
         public string Category
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Grouping")]
         public string Grouping
         {
             get { return Get<string>(); }

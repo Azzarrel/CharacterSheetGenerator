@@ -1,10 +1,11 @@
-﻿using CharacterSheetGenerator.Model;
+﻿using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
-using static CharacterSheetGenerator.Helpers.Attributes;
+
 
 namespace CharacterSheetGenerator
 {
@@ -23,19 +24,21 @@ namespace CharacterSheetGenerator
         public static List<T> ConvertToList<T>(DataTable dt) where T : TemplateModel
 
         {
-
+            // gibt die Namen aller Columns eines DataTable zurück
             var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
 
+            //gibt alle Properties, die T besitzt zurück
             var properties = typeof(T).GetProperties();
 
+            //wandelt rows in objekte i,
             return dt.AsEnumerable().Select(row => {
-
+                //Erstellt ein neues Objekt
                 var objT = Activator.CreateInstance<T>();
 
                 foreach (var property in properties)
 
                 {
-
+                    //Schaut per Attribut welche Column mit dem aktuellen Property des Objekts verlinkt werden soll
                     foreach (var attribute in property.GetCustomAttributes(false))
 
                     {
@@ -51,7 +54,7 @@ namespace CharacterSheetGenerator
                                 try
 
                                 {
-
+                                    //ToDo: Switch case, um die einzelnen Datentypen entsprechend umzuwandeln?
                                     property.SetValue(objT, row[((ColumnNameAttribute)attribute).Name]);
 
                                 }

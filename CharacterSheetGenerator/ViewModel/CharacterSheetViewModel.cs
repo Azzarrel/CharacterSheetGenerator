@@ -449,7 +449,6 @@ namespace CharacterSheetGenerator
                     Name = row["Name"].ToString(),
                     Tag = row["Tag"].ToString(),
                     Base = double.Parse(row["Value"].ToString()),
-                    Value = double.Parse(row["Value"].ToString()),
                     Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
                     Special = false,
 

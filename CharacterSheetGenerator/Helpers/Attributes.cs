@@ -6,8 +6,7 @@ using System.Text;
 
 namespace CharacterSheetGenerator.Helpers
 {
-    class Attributes
-    {
+
 
         public class ColumnNameAttribute : Attribute
 
@@ -26,5 +25,5 @@ namespace CharacterSheetGenerator.Helpers
 
 
         }
-    }
+    
 }

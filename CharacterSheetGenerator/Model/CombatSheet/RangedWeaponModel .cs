@@ -13,36 +13,42 @@ namespace CharacterSheetGenerator.CombatSheet.Model
     public class RangedWeaponModel : TemplateModel
     {
 
+        [ColumnName("Name")]
         public string Name
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Weapons")]
         public WeaponModel Weapons
         {
             get { return Get<WeaponModel>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Damage")]
         public string Damage
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Impulse")]
         public string Impulse
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("ArmorPenetration")]
         public string ArmorPenetration
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("AttackBonus")]
         public double? AttackBonus
         {
             get { return Get<double?>(); }
@@ -55,6 +61,7 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+        [ColumnName("BlockBonus")]
         public double? BlockBonus
         {
             get { return Get<double?>(); }
@@ -67,24 +74,28 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+        [ColumnName("Load")]
         public int? Load
         {
             get { return Get<int>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Ticks")]
         public int? Ticks
         {
             get { return Get<int?>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Break")]
         public int? Break
         {
             get { return Get<int?>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Range")]
         public string Range
         {
             get { return Get<string>(); }

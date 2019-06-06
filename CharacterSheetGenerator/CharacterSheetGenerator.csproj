@@ -75,8 +75,8 @@
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Model\Modifiers\ModifierModel.cs" />
-    <Compile Include="Model\MoneyModel.cs" />
-    <Compile Include="Model\ModelObject.cs" />
+    <Compile Include="Model\InventorySheet\MoneyModel.cs" />
+    <Compile Include="Model\Template\TemplateModel.cs" />
     <Compile Include="Control\CharacterInventory.xaml.cs">
       <DependentUpon>CharacterInventory.xaml</DependentUpon>
     </Compile>
@@ -89,18 +89,18 @@
     <Compile Include="Control\CharacterOverview.xaml.cs">
       <DependentUpon>CharacterOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\InventoryItemModel.cs" />
-    <Compile Include="Model\RitualModel.cs" />
-    <Compile Include="Model\LanguageModel.cs" />
+    <Compile Include="Model\InventorySheet\InventoryItemModel.cs" />
+    <Compile Include="Model\SpellSheet\RitualModel.cs" />
+    <Compile Include="Model\SkillSheet\LanguageModel.cs" />
     <Compile Include="Model\Modifiers\TraitModifierModel.cs" />
-    <Compile Include="Model\SpellModel.cs" />
+    <Compile Include="Model\SpellSheet\SpellModel.cs" />
     <Compile Include="Model\CombatSheet\RangedWeaponModel .cs" />
     <Compile Include="Model\CombatSheet\MeleeWeaponModel.cs" />
     <Compile Include="Model\CombatSheet\ArmorModel.cs" />
     <Compile Include="Model\CombatSheet\OffHandModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponSelectModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponModel.cs" />
-    <Compile Include="Model\StatusValueModel.cs" />
+    <Compile Include="Model\CharacterSheet\StatusValueModel.cs" />
     <Compile Include="Model\SaveDataModel.cs" />
     <Compile Include="Model\Traits\TraitModel.cs" />
     <Compile Include="Model\Traits\TraitCategoryModel.cs" />
@@ -169,8 +169,8 @@
     <Compile Include="Control\CharacterSkills.xaml.cs">
       <DependentUpon>CharacterSkills.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\CharacterInformationModel.cs" />
-    <Compile Include="Model\SkillModel.cs" />
+    <Compile Include="Model\CharacterSheet\CharacterInformationModel.cs" />
+    <Compile Include="Model\SkillSheet\SkillModel.cs" />
     <Compile Include="Model\AttributeModel.cs" />
     <Compile Include="Control\CharacterAttributes.xaml.cs">
       <DependentUpon>CharacterAttributes.xaml</DependentUpon>

@@ -13,6 +13,7 @@ namespace CharacterSheetGenerator.CombatSheet.Model
     public class WeaponModel : TemplateModel
     {
 
+        [ColumnName("Name")]
         public string Name
         {
             get { return Get<string>(); }
@@ -37,6 +38,8 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+
+        [ColumnName("AttackBonus")]
         public double AttackBonus
         {
             get { return Get<double>(); }
@@ -61,6 +64,8 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+
+        [ColumnName("BlockModifier")]
         public double BlockModifier
         {
             get { return Get<double>(); }
@@ -79,42 +84,56 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+
+        [ColumnName("AttributeLink")]
         public string AttributeLink
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+
+        [ColumnName("Position")]
         public int Position
         {
             get { return Get<int>(); }
             set { Set(value); }
         }
 
+
+        [ColumnName("Stamina")]
         public int Stamina
         {
             get { return Get<int>(); }
             set { Set(value); }
         }
 
+
+        [ColumnName("Initiative")]
         public int Initiative
         {
             get { return Get<int>(); }
             set { Set(value); }
         }
 
+
+        [ColumnName("Damage")]
         public string Damage
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+
+        [ColumnName("Impulse")]
         public string Impulse
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+
+        [ColumnName("ArmorPenetration")]
         public string ArmorPenetration
         {
             get { return Get<string>(); }

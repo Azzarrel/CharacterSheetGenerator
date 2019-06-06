@@ -12,21 +12,31 @@ namespace CharacterSheetGenerator.Model
     public class SpellModel : TemplateModel
     {
 
+        [ColumnName("Name")]
         public string Name
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Type")]
         public string Type
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Requirement")]
         public string Requirement
         {
             get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        [ColumnName("Value")]
+        public int? Base
+        {
+            get { return Get<int?>(); }
             set { Set(value); }
         }
 
@@ -36,52 +46,63 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
+        [ColumnName("Damage")]
         public string Damage
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Impulse")]
         public string Impulse
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("ArmorPenetration")]
         public string ArmorPenetration
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("MagicDamage")]
         public string MagicDamage
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Description")]
         public string Description
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Range")]
         public string Range
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Duration")]
         public string Duration
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
+
+        [ColumnName("Mana")]
         public int Mana
         {
             get { return Get<int>(); }
             set { Set(value); }
         }
+
+        [ColumnName("AttackBonus")]
         public bool AttackBonus
         {
             get { return Get<bool>(); }

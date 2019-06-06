@@ -12,19 +12,21 @@ namespace CharacterSheetGenerator.CombatSheet.Model
 {
     public class OffHandModel : TemplateModel
     {
-
+        [ColumnName("Name")]
         public string Name
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Strenght")]
         public int? Strenght
         {
             get { return Get<int?>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Toughness")]
         public int? Toughness
         {
             get { return Get<int?>(); }
@@ -37,6 +39,7 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+        [ColumnName("AttackBonus")]
         public double? AttackBonus
         {
             get { return Get<double?>(); }
@@ -55,6 +58,7 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+        [ColumnName("BlockBonus")]
         public double? BlockBonus
         {
             get { return Get<double?>(); }
@@ -67,12 +71,12 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+        [ColumnName("Break")]
         public int? Break
         {
             get { return Get<int?>(); }
             set { Set(value); }
         }
-
 
     }
 }

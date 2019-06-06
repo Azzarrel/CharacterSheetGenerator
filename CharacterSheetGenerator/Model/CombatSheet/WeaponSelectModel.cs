@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterSheetGenerator.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator.CombatSheet.Model
 {
-    public class WeaponSelectModel : INotifyPropertyChanged
+    public class WeaponSelectModel : TemplateModel
     {
         private WeaponModel m_Weapon;
         public WeaponModel Weapon

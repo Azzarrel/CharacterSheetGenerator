@@ -67,7 +67,6 @@
       <DependentUpon>CharacterMoney.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataTableListConverter.cs" />
-    <Compile Include="Helpers\AssemblyResolver.cs" />
     <Compile Include="Helpers\Attributes.cs" />
     <Compile Include="Helpers\BubbleScrollEvent.cs" />
     <Compile Include="Helpers\ColorHandler.cs" />
@@ -75,10 +74,9 @@
     <Compile Include="Helpers\NotifyBase.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Helpers\RichTextBoxHelper.cs" />
     <Compile Include="Model\Modifiers\ModifierModel.cs" />
     <Compile Include="Model\MoneyModel.cs" />
-    <Compile Include="Model\ModelObjects\ModelObject.cs" />
+    <Compile Include="Model\ModelObject.cs" />
     <Compile Include="Control\CharacterInventory.xaml.cs">
       <DependentUpon>CharacterInventory.xaml</DependentUpon>
     </Compile>
@@ -102,7 +100,7 @@
     <Compile Include="Model\CombatSheet\OffHandModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponSelectModel.cs" />
     <Compile Include="Model\CombatSheet\WeaponModel.cs" />
-    <Compile Include="Model\ModelObjects\StatusValueModel.cs" />
+    <Compile Include="Model\StatusValueModel.cs" />
     <Compile Include="Model\SaveDataModel.cs" />
     <Compile Include="Model\Traits\TraitModel.cs" />
     <Compile Include="Model\Traits\TraitCategoryModel.cs" />
@@ -172,8 +170,8 @@
       <DependentUpon>CharacterSkills.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CharacterInformationModel.cs" />
-    <Compile Include="Model\ModelObjects\SkillModel.cs" />
-    <Compile Include="Model\ModelObjects\AttributeModel.cs" />
+    <Compile Include="Model\SkillModel.cs" />
+    <Compile Include="Model\AttributeModel.cs" />
     <Compile Include="Control\CharacterAttributes.xaml.cs">
       <DependentUpon>CharacterAttributes.xaml</DependentUpon>
     </Compile>
@@ -225,7 +223,9 @@
   <ItemGroup>
     <Resource Include="Images\LoadButtonPicture.png" />
     <Resource Include="Images\PrintButtonPicture.png" />
-    <Resource Include="Images\SaveButtonpicture.png" />
+    <Content Include="Images\SaveButtonPicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

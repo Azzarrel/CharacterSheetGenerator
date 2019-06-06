@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator.Model 
+namespace CharacterSheetGenerator.Model
 {
-    public class SpellModel : NotifyBase
+    public class RitualModel : TemplateModel
     {
 
         public string Name
@@ -36,37 +36,7 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        public string Damage
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        public string Impulse
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        public string ArmorPenetration
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        public string MagicDamage
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
         public string Description
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        public string Range
         {
             get { return Get<string>(); }
             set { Set(value); }
@@ -75,16 +45,6 @@ namespace CharacterSheetGenerator.Model
         public string Duration
         {
             get { return Get<string>(); }
-            set { Set(value); }
-        }
-        public int Mana
-        {
-            get { return Get<int>(); }
-            set { Set(value); }
-        }
-        public bool AttackBonus
-        {
-            get { return Get<bool>(); }
             set { Set(value); }
         }
     }

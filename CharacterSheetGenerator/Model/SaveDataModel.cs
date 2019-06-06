@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator 
+namespace CharacterSheetGenerator.Model    
 {
-    public class SaveDataModel : NotifyBase
+    public class SaveDataModel : TemplateModel
     {
 
 

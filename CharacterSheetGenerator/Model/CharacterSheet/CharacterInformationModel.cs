@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator.Model
 {
-    public class CharacterInformationModel : NotifyBase
+    public class CharacterInformationModel : TemplateModel
     {
 
         public string FirstElement

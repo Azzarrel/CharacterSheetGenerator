@@ -1,4 +1,4 @@
-﻿using CharacterSheetGenerator.ModelObjects.Model;
+﻿using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

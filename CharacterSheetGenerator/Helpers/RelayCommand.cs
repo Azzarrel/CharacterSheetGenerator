@@ -74,4 +74,5 @@ namespace CharacterSheetGenerator.Helpers
             m_execute((T)parameter);
         }
     }
+   
 }

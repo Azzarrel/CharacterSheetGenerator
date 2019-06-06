@@ -1,7 +1,6 @@
 ﻿using CharacterSheetGenerator.CombatSheet.Model;
 using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
-using CharacterSheetGenerator.ModelObjects.Model;
 using CharacterSheetGenerator.Traits.Model;
 using CharacterSheetGenerator.View;
 using CharacterSheetGenerator.ViewModel;
@@ -47,7 +46,7 @@ namespace CharacterSheetGenerator
             if (!Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves"))
             {
                 DirectoryInfo di = Directory.CreateDirectory(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves");
-            }
+                }
         }
 
         #region Framework

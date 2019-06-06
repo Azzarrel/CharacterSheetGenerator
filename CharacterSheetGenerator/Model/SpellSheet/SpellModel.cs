@@ -1,5 +1,4 @@
 ﻿using CharacterSheetGenerator.Helpers;
-using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator.CombatSheet.Model 
+namespace CharacterSheetGenerator.Model 
 {
-    public class MeleeWeaponModel : TemplateModel
+    public class SpellModel : TemplateModel
     {
 
         public string Name
@@ -19,9 +18,21 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
-        public WeaponModel Weapons
+        public string Type
         {
-            get { return Get<WeaponModel>(); }
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        public string Requirement
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        public int? Value
+        {
+            get { return Get<int?>(); }
             set { Set(value); }
         }
 
@@ -43,45 +54,37 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
-        public double? AttackBonus
+        public string MagicDamage
         {
-            get { return Get<double?>(); }
+            get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public double? AttackTotal
+        public string Description
         {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-        public double? BlockBonus
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-        public double? BlockTotal
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-        public int? Ticks
-        {
-            get { return Get<int?>(); }
-            set { Set(value); }
-        }
-
-        public int? Break
-        {
-            get { return Get<int?>(); }
+            get { return Get<string>(); }
             set { Set(value); }
         }
 
         public string Range
         {
             get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        public string Duration
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+        public int Mana
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
+        public bool AttackBonus
+        {
+            get { return Get<bool>(); }
             set { Set(value); }
         }
     }

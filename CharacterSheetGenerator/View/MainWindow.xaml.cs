@@ -59,6 +59,8 @@ namespace CharacterSheetGenerator.View
 
         private void Button3_Click(object sender, RoutedEventArgs re)
         {
+            
+            Übersicht.UpdateLayout();
             //ToAuskommentiert, da es weiterhin das Problem gibt, dass UserControls, die noch nicht geladen wurden keine Daten haben.
             //System.Windows.FrameworkElement[] elements = { Übersicht as System.Windows.FrameworkElement, Fertigkeiten as System.Windows.FrameworkElement, Kampf as System.Windows.FrameworkElement,
             //                                               Zauber as System.Windows.FrameworkElement, Inventar as System.Windows.FrameworkElement,};

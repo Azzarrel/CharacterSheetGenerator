@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterSheetGenerator.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -7,17 +8,19 @@ using static CharacterSheetGenerator.Helpers.Attributes;
 
 namespace CharacterSheetGenerator
 {
+   
 
     public static class DataTableListConverter
 
     {
 
-        public static ObservableCollection<T> ConvertToObservableCollection<T>(DataTable dt)
+        public static ObservableCollection<T> ConvertToObservableCollection<T>(DataTable dt) where T : TemplateModel
         {
             return new ObservableCollection<T>(ConvertToList<T>(dt));
+            
         }
 
-        public static List<T> ConvertToList<T>(DataTable dt)
+        public static List<T> ConvertToList<T>(DataTable dt) where T : TemplateModel
 
         {
 
@@ -64,6 +67,7 @@ namespace CharacterSheetGenerator
                     }
 
                 }
+
 
                 return objT;
 

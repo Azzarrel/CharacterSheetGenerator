@@ -1,4 +1,5 @@
 ﻿using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator.CombatSheet.Model
 {
-    public class WeaponModel : NotifyBase
+    public class WeaponModel : TemplateModel
     {
 
         public string Name

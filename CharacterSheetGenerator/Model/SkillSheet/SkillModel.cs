@@ -6,10 +6,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator.ModelObjects.Model
+namespace CharacterSheetGenerator.Model
 {
-    public class SkillModel : ModelObject
+    public class SkillModel : TemplateModel
     {
+
+        public string Name
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+
+        public double Modifiers
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+        public int Key
+        {
+            get { return Get<int>(); }
+            set { Set(value); }
+        }
 
 
         public string Requirement
@@ -18,13 +37,13 @@ namespace CharacterSheetGenerator.ModelObjects.Model
             set { Set(value); }
         }
 
-        public new double? Base
+        public double? Base
         {
             get { return Get<double?>(); }
             set { Set(value); }
         }
 
-        public new double? Value
+        public double? Value
         {
             get { return Get<double?>(); }
             set

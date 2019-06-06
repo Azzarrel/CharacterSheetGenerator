@@ -1,4 +1,5 @@
 ﻿using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,7 @@ using System.Windows.Media;
 
 namespace CharacterSheetGenerator 
 {
-    public class ModifierModel : NotifyBase
+    public class ModifierModel : TemplateModel
     {
 
 

@@ -7,45 +7,52 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator.Model
+namespace CharacterSheetGenerator.Model 
 {
-    public class RitualModel : NotifyBase
+    public class MoneyModel : TemplateModel
     {
 
-        public string Name
+        public double? Gold
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public double? Silver
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public double? Copper
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public double? Iron
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public string Gems
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public string Type
+        public string Artifacts
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public string Requirement
+        public string Rest
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
-        public int? Value
-        {
-            get { return Get<int?>(); }
-            set { Set(value); }
-        }
-
-        public string Description
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        public string Duration
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
     }
 }

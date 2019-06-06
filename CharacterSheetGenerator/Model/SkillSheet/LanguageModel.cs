@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator 
+namespace CharacterSheetGenerator.Model 
 {
-    public class LanguageModel : NotifyBase
+    public class LanguageModel : TemplateModel
     {
 
         public string Name

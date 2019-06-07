@@ -57,7 +57,9 @@
                             <StackPanel>
                                 <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
                                 </Label>
-                                <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White">
+                                <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=TraitClickCommand, Mode=TwoWay}"
+                                        CommandParameter="{Binding Name}">
                                     <TextBlock Height="200" Width="700" Text="{Binding TraitTexts}" TextWrapping="Wrap">
 
                                     </TextBlock>

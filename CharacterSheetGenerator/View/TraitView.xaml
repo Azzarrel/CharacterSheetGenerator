@@ -5,11 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterSheetGenerator.View"
         mc:Ignorable="d"
-        Title="TraitView" Height="650" Width="1300">
+        Title="TraitView" Height="650" Width="960">
     <Grid>
         <Grid.Resources>
             <CollectionViewSource x:Key="BaseModifiers" Source="{ Binding Path=BaseModifiers, Mode=TwoWay}"  />
             <CollectionViewSource x:Key="Types" Source="{ Binding Path=Types, Mode=TwoWay}"  />
+
+            <Style TargetType="DataGridColumnHeader" x:Key="NumericValueTraitHeaderStyle" BasedOn="{StaticResource NumericValueHeaderStyle}">
+                <Setter Property="Width" Value="60" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+            </Style>
+
+            <Style TargetType="DataGridCell" x:Key="TextBoxTemplateTraitCellStyle" BasedOn="{StaticResource TextBoxTemplateCellStyle}">
+                <Setter Property="Width" Value="60" />
+            </Style>
+
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -20,9 +30,9 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="1.2*"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="415"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="380"/>
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="1" >
@@ -33,12 +43,21 @@
                     <Button Height="20" Width="20" Content="x" HorizontalAlignment="Left" Command="{Binding DeleteTraitsCommand}"/>
                 </StackPanel>
                 <TextBlock Height="5" />
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" Height="466">
 
-                    <DataGrid Width="700" Grid.Column="1" ItemsSource="{Binding Traits, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow"  SelectedItem="{Binding SelectedTrait, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    <DataGrid Width="415" Grid.Column="1" ItemsSource="{Binding Traits, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow"  SelectedItem="{Binding SelectedTrait, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left"  CanUserAddRows="False" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single"  >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Name}" Header="Eigenschaft"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                            <DataGridTextColumn Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Eigenschaft"  HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                            <DataGridTemplateColumn Header="Beschreibung" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Button>Klick</Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -52,9 +71,9 @@
                     <Button Height="20" Width="20" Content="x" HorizontalAlignment="Left" Command="{Binding DeleteModifiersCommand}"/>
                 </StackPanel>
                 <TextBlock Height="5" />
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" Height="466">
 
-                    <DataGrid Width="465" Grid.Column="1" ItemsSource="{Binding TraitModifiers, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow" 
+                    <DataGrid Width="380" Grid.Column="1" ItemsSource="{Binding TraitModifiers, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="FullRow"  SelectedItem="{Binding SelectedModifier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" SelectionMode="Single" >
                         <DataGrid.Columns>
                             <DataGridComboBoxColumn Header=" Modifier" SelectedItemBinding="{Binding Modifier}" DisplayMemberPath="NameLink" ItemsSource="{Binding Source={StaticResource BaseModifiers}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
@@ -71,7 +90,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Wert" Binding="{Binding Value}" HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyle}" />
+                            <DataGridTextColumn Header="Wert" Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource NumericValueTraitHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateTraitCellStyle}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 
@@ -79,7 +98,7 @@
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal"  HorizontalAlignment="Right">
-            <Button Content="Speichern" FontSize="14" Height="35" Width="120" HorizontalAlignment="Right"/>
+            <Button Content="Speichern" FontSize="14" Height="35" Width="120" HorizontalAlignment="Right" Command="{Binding SaveCommand}" Click="Button_Close"/>
             <TextBlock Width="40" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>

@@ -188,6 +188,34 @@ namespace CharacterSheetGenerator.Control
 
         }
 
+        private ICommand m_TraitClickCommand;
+
+        public static readonly DependencyProperty TraitClickCommandProperty =
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CharacterSpells),
+            new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public ICommand TraitClickCommand
+        {
+            get { return (ICommand)GetValue(TraitClickCommandProperty); }
+            set { SetValue(TraitClickCommandProperty, value); }
+        }
+
+        private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterSpells UserControl = obj as CharacterSpells;
+            UserControl.OnPropertyChanged("TraitClickCommand");
+            UserControl.OnTraitClickCommandPropertyChanged(e);
+
+
+        }
+
+        private void OnTraitClickCommandPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_TraitClickCommand = TraitClickCommand;
+
+        }
+
         public CharacterSpells()
         {
             CellColor = new SolidColorBrush(ColorHandler.IntToColor(15329769));

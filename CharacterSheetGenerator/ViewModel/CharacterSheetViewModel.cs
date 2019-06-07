@@ -158,12 +158,18 @@ namespace CharacterSheetGenerator
             {
                 ModifierModel m = new ModifierModel { NameLink = skill.Name, };
                 m.Types.Add("Standard");
+                if (skill.Name == null || skill.Name == "")
+                    continue;
+
                 BaseModifiers.Add(m);
             }
             foreach (SkillModel skill in SkillsRight)
             {
                 ModifierModel m = new ModifierModel { NameLink = skill.Name, };
                 m.Types.Add("Standard");
+                if (skill.Name == null || skill.Name == "")
+                    continue;
+
                 BaseModifiers.Add(m);
             }
             foreach(StatusValueModel stv in StatusValues)
@@ -199,19 +205,41 @@ namespace CharacterSheetGenerator
         public ICommand OpenTraitViewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
-
+        
+        
+       
 
         public void OpenTraitViewMethod(string Category)
         {
+            int keycounter = 0;
             TraitViewModel vm = new TraitViewModel();
-            vm.Modifiers = Modifiers;
+            vm.Modifiers = new ObservableCollection<TraitModifierModel>(Modifiers);
             vm.BaseModifiers = BaseModifiers;
+            vm.Category = Category;
+            foreach (TraitCategoryModel category in Traits)
+            {
+               keycounter += category.Traits.Count();
+            }
+            vm.KeyCounter = keycounter;
             vm.Traits  =  new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
-           
+            
 
             TraitView traitview = new TraitView();
             traitview.DataContext = vm;
             traitview.ShowDialog();
+            if(vm.IsSaved)
+            {
+                TraitCategoryModel catgory = Traits.Where(c => c.Name == vm.Category).FirstOrDefault();
+                //Die alten Traits einfach mit den neuen Überschreiben
+                catgory.Traits = vm.Traits;
+                catgory.TraitTexts = "";
+                foreach (TraitModel trait in vm.Traits)
+                {
+                    catgory.TraitTexts += " " + trait.Name + ",";
+                }
+                Modifiers = vm.Modifiers;
+                CalculateModifiers();
+            }
             
         }
 
@@ -1367,6 +1395,16 @@ namespace CharacterSheetGenerator
         #region Loading
         public void LoadModifiers()
         {
+            //Todo: Bin mir noch nicht sicher wie glücklich ich mit diesem Fix sein sollte 
+            if(Data.Tables["Modifiers"] == null)
+            {
+                Data.Tables.Add("Modifiers");
+                Data.Tables["Modifiers"].Columns.Add("NameLink");
+                Data.Tables["Modifiers"].Columns.Add("TypeLink");
+                Data.Tables["Modifiers"].Columns.Add("Value");
+                Data.Tables["Modifiers"].Columns.Add("TraitLink");
+            }
+
             Modifiers = new ObservableCollection<TraitModifierModel>();
             foreach (DataRow row in Data.Tables["Modifiers"].Rows)
             {

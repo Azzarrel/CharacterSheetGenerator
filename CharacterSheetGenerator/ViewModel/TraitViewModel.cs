@@ -25,6 +25,33 @@ namespace CharacterSheetGenerator.ViewModel
             }
         }
 
+        public int KeyCounter
+        {
+            get { return Get<int>(); }
+            set
+            {
+                Set(value);
+            }
+        }
+
+        public string Category
+        {
+            get { return Get<string>(); }
+            set
+            {
+                Set(value);
+            }
+        }
+
+        public bool IsSaved
+        {
+            get { return Get<bool>(); }
+            set
+            {
+                Set(value);
+            }
+        }
+
         public TraitModel SelectedTrait
         {
             get { return Get<TraitModel>(); }
@@ -34,6 +61,12 @@ namespace CharacterSheetGenerator.ViewModel
                 if(SelectedTrait != null)
                 TraitModifiers = new ObservableCollection<TraitModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
             }
+        }
+
+        public TraitModifierModel SelectedModifier
+        {
+            get { return Get<TraitModifierModel>(); }
+            set { Set(value); }
         }
 
         public ObservableCollection<TraitModifierModel> TraitModifiers
@@ -62,12 +95,14 @@ namespace CharacterSheetGenerator.ViewModel
 
         public TraitViewModel()
         {
+            IsSaved = false;
             CreateCommands();
         }
 
 
         private void CreateCommands()
         {
+            SaveCommand = new RelayCommand(SaveMethod, CanExecute);
             InsertTraitsCommand = new RelayCommand(InsertTraitsMethod, CanExecute);
             DeleteTraitsCommand = new RelayCommand(DeleteTraitsMethod, CanExecute);
             InsertModifiersCommand = new RelayCommand(InsertModifiersMethod, CanExecute);
@@ -75,7 +110,7 @@ namespace CharacterSheetGenerator.ViewModel
 
         }
 
-
+        public ICommand SaveCommand { get; private set; }
         public ICommand InsertTraitsCommand { get; private set; }
         public ICommand DeleteTraitsCommand { get; private set; }
         public ICommand InsertModifiersCommand { get; private set; }
@@ -83,16 +118,17 @@ namespace CharacterSheetGenerator.ViewModel
 
         public void InsertTraitsMethod()
         {
-            TraitModel trait = new TraitModel { Key = 5 };
+            TraitModel trait = new TraitModel { Key = KeyCounter, Name="<Neue Eigenschaft>" };
             Traits.Add(trait);
             SelectedTrait = trait;
+            KeyCounter++;
 
         }
 
         public void DeleteTraitsMethod()
         {
 
-
+            Traits.Remove(SelectedTrait);
         }
 
         public void InsertModifiersMethod()
@@ -105,16 +141,22 @@ namespace CharacterSheetGenerator.ViewModel
 
         public void DeleteModifiersMethod()
         {
-
+            Modifiers.Remove(SelectedModifier);
+            TraitModifiers = new ObservableCollection<TraitModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
 
         }
 
+        public void SaveMethod()
+        {
+            this.IsSaved = true;
+            
+
+        }
 
         public bool CanExecute()
         {
             return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
         }
-
 
 
 

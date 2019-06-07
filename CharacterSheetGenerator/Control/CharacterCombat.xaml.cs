@@ -231,6 +231,34 @@ namespace CharacterSheetGenerator.Control
             UserControl.OnCellColorPropertyChanged(e);
         }
 
+        private ICommand m_TraitClickCommand;
+
+        public static readonly DependencyProperty TraitClickCommandProperty =
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CharacterCombat),
+            new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public ICommand TraitClickCommand
+        {
+            get { return (ICommand)GetValue(TraitClickCommandProperty); }
+            set { SetValue(TraitClickCommandProperty, value); }
+        }
+
+        private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            CharacterCombat UserControl = obj as CharacterCombat;
+            UserControl.OnPropertyChanged("TraitClickCommand");
+            UserControl.OnTraitClickCommandPropertyChanged(e);
+
+
+        }
+
+        private void OnTraitClickCommandPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_TraitClickCommand = TraitClickCommand;
+
+        }
+
         private void OnCellColorPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             m_CellColor = CellColor;

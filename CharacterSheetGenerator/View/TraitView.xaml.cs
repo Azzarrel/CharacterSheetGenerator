@@ -25,6 +25,9 @@ namespace CharacterSheetGenerator.View
             InitializeComponent();
         }
 
-
+        private void Button_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

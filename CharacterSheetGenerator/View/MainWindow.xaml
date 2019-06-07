@@ -145,7 +145,7 @@
                                 </Grid.RowDefinitions>
                                 <ctrl:CharacterCombat  VerticalAlignment="Top"  Weapons="{Binding Weapons, Mode=TwoWay}" SelectedWeapons="{Binding SelectedWeapons, Mode=TwoWay}"
                                                        MeleeWeapons="{Binding MeleeWeapons, Mode=TwoWay}" RangedWeapons="{Binding RangedWeapons, Mode=TwoWay}" 
-                                                       Armor="{Binding Armor, Mode=TwoWay}" OffHands="{Binding OffHands, Mode=TwoWay}" CombatTraits="{Binding CombatTraits, Mode=TwoWay}"/>
+                                                       Armor="{Binding Armor, Mode=TwoWay}" OffHands="{Binding OffHands, Mode=TwoWay}" CombatTraits="{Binding CombatTraits, Mode=TwoWay}" TraitClickCommand="{Binding OpenTraitViewCommand}"/>
                             </Grid>
                         </Grid>
                         
@@ -187,7 +187,7 @@
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
                                 <ctrl:CharacterSpells  VerticalAlignment="Top"  Weapons="{Binding Weapons, Mode=TwoWay}" SelectedWeapons="{Binding SelectedWeapons, Mode=TwoWay}"
-                                                       Spells="{Binding Spells, Mode=TwoWay}" Rituals="{Binding Rituals, Mode=TwoWay}" SpellTraits="{Binding SpellTraits, Mode=TwoWay}"/>
+                                                       Spells="{Binding Spells, Mode=TwoWay}" Rituals="{Binding Rituals, Mode=TwoWay}" SpellTraits="{Binding SpellTraits, Mode=TwoWay}" TraitClickCommand="{Binding OpenTraitViewCommand}"/>
                             </Grid>
                         </Grid>
                     </Grid>

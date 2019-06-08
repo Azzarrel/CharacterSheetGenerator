@@ -77,7 +77,7 @@ namespace CharacterSheetGenerator.CombatSheet.Model
         [ColumnName("Load")]
         public int? Load
         {
-            get { return Get<int>(); }
+            get { return Get<int?>(); }
             set { Set(value); }
         }
 

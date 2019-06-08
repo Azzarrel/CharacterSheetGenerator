@@ -224,7 +224,7 @@ namespace CharacterSheetGenerator
             vm.Traits  =  new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
             
 
-            TraitView traitview = new TraitView();
+            TraitWindow traitview = new TraitWindow();
             traitview.DataContext = vm;
             traitview.ShowDialog();
             if(vm.IsSaved)
@@ -1049,9 +1049,8 @@ namespace CharacterSheetGenerator
                     AttributeLink = row["AttributeLink"].ToString(),
                     AttackBonus = double.Parse(row["AttackBonus"].ToString()),
                     BlockBonus = double.Parse(row["BlockBonus"].ToString()),
-                    Position = int.Parse(row["Position"].ToString()),
-                    Stamina = int.Parse(row["Position"].ToString()),
-                    Initiative = int.Parse(row["Position"].ToString()),
+                    Stamina = int.Parse(row["Stamina"].ToString()),
+                    Initiative = int.Parse(row["Initiative"].ToString()),
                     Damage = row["Damage"].ToString(),
                     Impulse = row["Impulse"].ToString(),
                     ArmorPenetration = row["ArmorPenetration"].ToString(),
@@ -1065,13 +1064,18 @@ namespace CharacterSheetGenerator
         public void LoadSelectedWeapons()
         {
             SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
-            foreach (WeaponModel w in Weapons.Where(x => x.Position != 0))
+            foreach (DataRow row in Data.Tables["SelectedWeapons"].Rows)
             {
-                WeaponSelectModel ws = new WeaponSelectModel { Weapon = w };
-                SelectedWeapons.Add(ws);
+                WeaponSelectModel ws = new WeaponSelectModel
+                {
+                    Weapon = Weapons.Where(w => w.Name == row["Weapon"].ToString()).FirstOrDefault(),
+                    Position = int.Parse(row["Position"].ToString()),
+                
+                };
                 ws.PropertyChanged += SelectedWeapon_PropertyChanged;
+                SelectedWeapons.Add(ws);
             }
-
+            SelectedWeapons = new ObservableCollection<WeaponSelectModel>(SelectedWeapons.OrderBy(ws => ws.Position));
 
 
         }
@@ -1135,7 +1139,11 @@ namespace CharacterSheetGenerator
         {
             foreach (WeaponModel weapon in Weapons)
             {
-                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Position);
+                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration);
+            }
+            foreach(WeaponSelectModel ws in SelectedWeapons)
+            {
+                Data.Tables["SelectedWeapons"].Rows.Add(ws.Weapon.Name, ws.Position);
             }
             foreach (MeleeWeaponModel weapon in MeleeWeapons)
             {
@@ -1177,8 +1185,8 @@ namespace CharacterSheetGenerator
 
         public void SelectedWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            Enumerable.Range(1, SelectedWeapons.Count).Except(SelectedWeapons.Select(x => x.Position)).FirstOrDefault();
-            //Exp neu berechnen
+           
+            
 
         }
 
@@ -1254,6 +1262,15 @@ namespace CharacterSheetGenerator
 
         public void LoadTraits()
         {
+            //Handling für den Fall, dass ein Charakter keine Traits hat
+            if(Data.Tables["Traits"] == null)
+            {
+                Data.Tables.Add("Traits");
+                Data.Tables["Traits"].Columns.Add("Key", typeof(int));
+                Data.Tables["Traits"].Columns.Add("Name", typeof(string));
+                Data.Tables["Traits"].Columns.Add("Description", typeof(string));
+                Data.Tables["Traits"].Columns.Add("TraitCategory_Id", typeof(int));
+            }
 
             foreach(DataRow rowCategoryType in Data.Tables["TraitCategory"].DefaultView.ToTable(true, "Type").Rows)
             {
@@ -1395,14 +1412,14 @@ namespace CharacterSheetGenerator
         #region Loading
         public void LoadModifiers()
         {
-            //Todo: Bin mir noch nicht sicher wie glücklich ich mit diesem Fix sein sollte 
+            //Todo: Bin mir noch nicht sicher wie glücklich ich mit diesem Fix sein sollte (gleiches bei Traits)
             if(Data.Tables["Modifiers"] == null)
             {
                 Data.Tables.Add("Modifiers");
-                Data.Tables["Modifiers"].Columns.Add("NameLink");
-                Data.Tables["Modifiers"].Columns.Add("TypeLink");
-                Data.Tables["Modifiers"].Columns.Add("Value");
-                Data.Tables["Modifiers"].Columns.Add("TraitLink");
+                Data.Tables["Modifiers"].Columns.Add("NameLink", typeof(string));
+                Data.Tables["Modifiers"].Columns.Add("TypeLink", typeof(string));
+                Data.Tables["Modifiers"].Columns.Add("Value", typeof(double));
+                Data.Tables["Modifiers"].Columns.Add("TraitLink", typeof(int));
             }
 
             Modifiers = new ObservableCollection<TraitModifierModel>();
@@ -1626,6 +1643,9 @@ namespace CharacterSheetGenerator
                     Range = row["Range"].ToString(),
                     Duration = row["Duration"].ToString(),
                     Description = row["Description"].ToString(),
+                    Mana = row["Mana"].ToString(),
+                    Ticks = row["Ticks"].ToString(),
+                
                 };
 
 
@@ -1643,10 +1663,10 @@ namespace CharacterSheetGenerator
                 RitualModel ritual = new RitualModel
                 {
                     Name = row["Name"].ToString(),
-                    Type = row["Type"].ToString(),
                     Requirement = row["Requirement"].ToString(),
                     Value = Parser.ToNullable<int>(row["Value"].ToString()),
                     Duration = row["Duration"].ToString(),
+                    Time = row["Time"].ToString(),
                     Description = row["Description"].ToString(),
 
                 };
@@ -1665,7 +1685,7 @@ namespace CharacterSheetGenerator
         {
             foreach (SpellModel spell in Spells)
             {
-                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.Description);
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.Description, spell.Mana, spell.Ticks);
             }
         }
 
@@ -1673,7 +1693,7 @@ namespace CharacterSheetGenerator
         {
             foreach (RitualModel ritual in Rituals)
             {
-                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Type, ritual.Requirement, ritual.Value, ritual.Duration, ritual.Description);
+                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Time, ritual.Requirement, ritual.Value, ritual.Duration, ritual.Description);
             }
         }
 

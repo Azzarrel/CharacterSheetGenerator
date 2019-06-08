@@ -1,4 +1,5 @@
-﻿using CharacterSheetGenerator.Model;
+﻿using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace CharacterSheetGenerator.CombatSheet.Model
 {
     public class WeaponSelectModel : TemplateModel
     {
+        [ColumnName("Weapon")]
         private WeaponModel m_Weapon;
         public WeaponModel Weapon
         {
@@ -158,16 +160,11 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             }
         }
 
-        public int Position
+        [ColumnName("BlockBonus")]
+        public double Position
         {
-            get
-            {
-                return m_Weapon?.Position ?? 0;
-            }
-            set
-            {
-                m_Weapon.Position = value;
-            }
+            get { return Get<double>(); }
+            set { Set(value); }
         }
 
         public int Stamina

@@ -57,7 +57,7 @@ namespace CharacterSheetGenerator.ViewModel
                 DirectoryInfo di = Directory.CreateDirectory(SaveFolder + "\\" + SaveName);
 
                 //Fügt die Speicherdaten des Charakters in die Tabelle ein
-                Data.Tables["SaveData"].Rows.Add(VERSION, SaveName, (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()), DateTime.Now, Exp); //ToDo: Exp
+                Data.Tables["SaveData"].Rows.Add(VERSION, SaveName, (Data.Tables["CharacterInformation"].Select("Name = 'Name'")[0]["Value"].ToString() + " " + Data.Tables["CharacterInformation"].Select("Name = 'Familienname'")[0]["Value"].ToString()), Exp, DateTime.Now); 
 
 
                 //Speichert die Daten in xml ab.

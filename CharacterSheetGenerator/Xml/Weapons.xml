@@ -9,7 +9,6 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>1D6+4</ArmorPenetration>
-		<Position>6</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Hiebwaffen</Name>
@@ -21,7 +20,6 @@
 		<Damage>2</Damage>
 		<Impulse>1D6+1</Impulse>
 		<ArmorPenetration>3</ArmorPenetration>
-		<Position>7</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Äxte</Name>
@@ -33,7 +31,6 @@
 		<Damage>1D6+3</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Position>8</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Fechtwaffen</Name>
@@ -45,7 +42,6 @@
 		<Damage>1D6+3</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>1D6+2</ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Kettenwaffen</Name>
@@ -57,7 +53,6 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>3</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Lanzen</Name>
@@ -69,7 +64,6 @@
 		<Damage>2D6+2</Damage>
 		<Impulse>4</Impulse>
 		<ArmorPenetration>1D6+4</ArmorPenetration>
-		<Position>2</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Raufen</Name>
@@ -81,7 +75,6 @@
 		<Damage>1D6</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Position>3</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Schilde</Name>
@@ -93,7 +86,6 @@
 		<Damage>1D6</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Stangenwaffen</Name>
@@ -105,7 +97,6 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Position>4</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Zweihandhiebwaffen</Name>
@@ -117,7 +108,6 @@
 		<Damage>4</Damage>
 		<Impulse>2D6+1</Impulse>
 		<ArmorPenetration>3</ArmorPenetration>
-		<Position>5</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Zweihandschwerter</Name>
@@ -129,7 +119,6 @@
 		<Damage>2D6+4</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Zweihandäxte</Name>
@@ -141,7 +130,6 @@
 		<Damage>2D6+3</Damage>
 		<Impulse>3</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Peitschen</Name>
@@ -153,7 +141,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Armbrüste</Name>
@@ -165,7 +152,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Blasrohre</Name>
@@ -177,7 +163,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Bögen</Name>
@@ -189,7 +174,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Diskusse</Name>
@@ -201,7 +185,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Feuerwaffen</Name>
@@ -213,7 +196,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Schleudern</Name>
@@ -225,7 +207,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>kleine Wurfwaffen</Name>
@@ -237,7 +218,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>große Wurfwaffen</Name>
@@ -249,7 +229,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Wurfspeere</Name>
@@ -261,7 +240,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Wurfgeschosse</Name>
@@ -273,7 +251,6 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>0</Position>
 	</Weapons>
 	<Weapons>
 		<Name>Dolche</Name>
@@ -285,6 +262,5 @@
 		<Damage></Damage>
 		<Impulse></Impulse>
 		<ArmorPenetration></ArmorPenetration>
-		<Position>1</Position>
 	</Weapons>
 </PlayerData>

@@ -18,9 +18,9 @@ namespace CharacterSheetGenerator.View
     /// <summary>
     /// Interaktionslogik für TraitView.xaml
     /// </summary>
-    public partial class TraitView : Window
+    public partial class TraitWindow : Window
     {
-        public TraitView()
+        public TraitWindow()
         {
             InitializeComponent();
         }

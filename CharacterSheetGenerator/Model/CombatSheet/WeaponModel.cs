@@ -92,15 +92,6 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
-
-        [ColumnName("Position")]
-        public int Position
-        {
-            get { return Get<int>(); }
-            set { Set(value); }
-        }
-
-
         [ColumnName("Stamina")]
         public int Stamina
         {

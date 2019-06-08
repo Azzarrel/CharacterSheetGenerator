@@ -18,13 +18,6 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        [ColumnName("Type")]
-        public string Type
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
         [ColumnName("Requirement")]
         public string Requirement
         {
@@ -41,6 +34,13 @@ namespace CharacterSheetGenerator.Model
 
         [ColumnName("Description")]
         public string Description
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        [ColumnName("Duration")]
+        public string Time
         {
             get { return Get<string>(); }
             set { Set(value); }

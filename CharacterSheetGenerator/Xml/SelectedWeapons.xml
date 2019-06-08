@@ -1,0 +1,34 @@
+<PlayerData>
+	<SelectedWeapons>	
+		<Weapon>Schwerter</Weapon>
+		<Position>1</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>Dolche</Weapon>
+		<Position>2</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>Bögen</Weapon>
+		<Position>3</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>Raufen</Weapon>
+		<Position>4</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>kleine Wurfwaffen</Weapon>
+		<Position>5</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>große Wurfwaffen</Weapon>
+		<Position>6</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>Äxte</Weapon>
+		<Position>7</Position>
+	</SelectedWeapons>
+	<SelectedWeapons>	
+		<Weapon>Hiebwaffen</Weapon>
+		<Position>8</Position>
+	</SelectedWeapons>	
+</PlayerData>

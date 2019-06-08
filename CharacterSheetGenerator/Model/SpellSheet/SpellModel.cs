@@ -96,9 +96,15 @@ namespace CharacterSheetGenerator.Model
         }
 
         [ColumnName("Mana")]
-        public int Mana
+        public string Mana
         {
-            get { return Get<int>(); }
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        public string Ticks
+        {
+            get { return Get<string>(); }
             set { Set(value); }
         }
 

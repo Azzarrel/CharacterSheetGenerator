@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Table>
+<PlayerData>
   <Spells>
     <Name></Name>
     <Type></Type>
@@ -12,6 +12,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -25,6 +27,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -38,6 +42,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -51,6 +57,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -64,6 +72,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -77,6 +87,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -90,6 +102,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -103,6 +117,8 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
   <Spells>
     <Name></Name>
@@ -116,5 +132,202 @@
     <Range />
     <Duration />
     <Description />
+	<Mana />
+	<Ticks />
   </Spells>
-</Table>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>
+  <Spells>
+    <Name></Name>
+    <Type></Type>
+    <Requirement></Requirement>
+    <Value></Value>
+    <Damage></Damage>
+    <MagicDamage></MagicDamage>
+    <ArmorPenetration></ArmorPenetration>
+    <Impulse />
+    <Range />
+    <Duration />
+    <Description />
+	<Mana />
+	<Ticks />
+  </Spells>  
+</PlayerData>

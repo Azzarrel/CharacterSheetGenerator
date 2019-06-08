@@ -111,8 +111,11 @@
     <Compile Include="View\SaveFileWindow.xaml.cs">
       <DependentUpon>SaveFileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TraitView.xaml.cs">
-      <DependentUpon>TraitView.xaml</DependentUpon>
+    <Compile Include="View\SpellEditorWindow.xaml.cs">
+      <DependentUpon>SpellEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TraitWindow.xaml.cs">
+      <DependentUpon>TraitWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Control\CharacterLanguages.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -187,7 +190,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TraitView.xaml">
+    <Page Include="View\SpellEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TraitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

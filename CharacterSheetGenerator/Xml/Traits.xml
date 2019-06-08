@@ -19,13 +19,4 @@
 		<Name>Zaubersonderfertigkeiten</Name>
 		<Type>Spell</Type>
 	</TraitCategory>
-	<TraitCategory>
-		<Name>Invis</Name>
-		<Type>Invis</Type>
-			<Traits>
-				<Key></Key>
-				<Name></Name>
-				<Description></Description>
-			</Traits>
-	</TraitCategory>
 </PlayerData>	

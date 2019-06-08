@@ -1330,7 +1330,7 @@ namespace CharacterSheetGenerator
                 Data.Tables["TraitCategory"].Rows.Add(traitcategory.Name, traitcategory.Type, traitcategory.Key);
                 foreach (TraitModel trait in traitcategory.Traits.ToList())
                 {
-                    Data.Tables["Traits"].Rows.Add(trait.Name, trait.Description, trait.Key, traitcategory.Key);
+                    Data.Tables["Traits"].Rows.Add(trait.Key, trait.Name, trait.Description, traitcategory.Key);
                 }
             }
         }

@@ -1279,6 +1279,7 @@ namespace CharacterSheetGenerator
                 {
                     ObservableCollection<TraitModel> traits = new ObservableCollection<TraitModel>();
                     string traitTexts = ""; //Die Auflistung aller Traits in einer Kateogorie per Name
+
                     foreach (DataRow rowTrait in Data.Tables["Traits"].Select("TraitCategory_Id = " + rowCategory["TraitCategory_Id"]))
                     {
                         TraitModel trait = new TraitModel
@@ -1290,6 +1291,7 @@ namespace CharacterSheetGenerator
                         traitTexts += rowTrait["Name"].ToString() + ", ";
                         traits.Add(trait);
                     }
+
                     TraitCategoryModel category = new TraitCategoryModel
                     {
                         Key = int.Parse(rowCategory["TraitCategory_Id"].ToString()),

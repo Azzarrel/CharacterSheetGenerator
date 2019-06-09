@@ -2,21 +2,26 @@
 	<TraitCategory>
 		<Name>Körpereigenschaften</Name>
 		<Type>Character</Type>
+		<TraitCategory_Id>1</TraitCategory_Id>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Charaktereigenschaften</Name>
 		<Type>Character</Type>
+		<TraitCategory_Id>2</TraitCategory_Id>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Allgemeine Sonderfertigkeiten</Name>
 		<Type>Character</Type>
+		<TraitCategory_Id>3</TraitCategory_Id>
 	</TraitCategory>
 	<TraitCategory>
 		<Name>Kampfsonderfertigkeiten</Name>
 		<Type>Combat</Type>
+		<TraitCategory_Id>4</TraitCategory_Id>
 	</TraitCategory>	
 	<TraitCategory>
 		<Name>Zaubersonderfertigkeiten</Name>
 		<Type>Spell</Type>
+		<TraitCategory_Id>5</TraitCategory_Id>
 	</TraitCategory>
 </PlayerData>	

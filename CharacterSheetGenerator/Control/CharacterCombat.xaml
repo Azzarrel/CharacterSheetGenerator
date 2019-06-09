@@ -150,16 +150,15 @@
                     <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=OffHands, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Name}" Header=" Name"  IsReadOnly="True" HeaderStyle="{StaticResource ItemHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyle}"/>
-
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="St."  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"  CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="AS."  HeaderStyle="{StaticResource NumericValueHeaderStyle}"  CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="BF."  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"  CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="V."   HeaderStyle="{StaticResource NumericValueHeaderStyle}"  CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="AT."  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"  CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="PA."  HeaderStyle="{StaticResource NumericValueHeaderStyle}"  CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="INI." HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"  CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding dunno}" Header="AD."  HeaderStyle="{StaticResource NumericValueHeaderStyle}"  CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                            <DataGridTextColumn Header=" Name" Binding="{Binding Name}"   HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>
+                            <DataGridTextColumn Header="St."   Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                            <DataGridTextColumn Header="AS."   Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                            <DataGridTextColumn Header="BF."   Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                            <DataGridTextColumn Header="V."    Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                            <DataGridTextColumn Header="AT."   Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                            <DataGridTextColumn Header="PA."   Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                            <DataGridTextColumn Header="INI."  Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                            <DataGridTextColumn Header="AD."   Binding="{Binding dunno}"  HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
                         </DataGrid.Columns>                                                                                           
 
                     </DataGrid>

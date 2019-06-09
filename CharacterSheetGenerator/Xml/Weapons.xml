@@ -148,11 +148,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>2</Stamina>
+		<Initiative>4</Initiative>
+		<Damage>1D6+4</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>2</ArmorPenetration>
 		<Mode>Melee</Mode>
 	</Weapons>
 	<Weapons>
@@ -160,11 +160,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>1</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>1D6+4</Damage>
+		<Impulse>3</Impulse>
+		<ArmorPenetration>1D6+6</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -172,11 +172,11 @@
 		<AttributeLink>KO</AttributeLink>	
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>3</Stamina>
+		<Initiative>1</Initiative>
+		<Damage>1D6+2</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>2</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -184,11 +184,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>2</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>1D6+4</Damage>
+		<Impulse>2</Impulse>
+		<ArmorPenetration>1D6+4</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -196,11 +196,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>2</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>1D6+2</Damage>
+		<Impulse>2</Impulse>
+		<ArmorPenetration>4</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -208,11 +208,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>2</Stamina>
+		<Initiative>5</Initiative>
+		<Damage>1D6+3</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>1D6+2</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -220,11 +220,11 @@
 		<AttributeLink>GE/FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>3</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>1D6+2</Damage>
+		<Impulse>2</Impulse>
+		<ArmorPenetration>2</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -232,11 +232,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>2</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>1D6+2</Damage>
+		<Impulse>1</Impulse>
+		<ArmorPenetration>1D6</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -244,11 +244,11 @@
 		<AttributeLink>FF/ST</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>3</Stamina>
+		<Initiative>3</Initiative>
+		<Damage>1D6+4</Damage>
+		<Impulse>2</Impulse>
+		<ArmorPenetration>1D6+3</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -256,11 +256,11 @@
 		<AttributeLink>GE/FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>3</Stamina>
+		<Initiative>4</Initiative>
+		<Damage>1D6+6</Damage>
+		<Impulse>4</Impulse>
+		<ArmorPenetration>1D6+4</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -268,11 +268,11 @@
 		<AttributeLink>FF</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>1</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>2</Damage>
+		<Impulse>1D6</Impulse>
+		<ArmorPenetration>2</ArmorPenetration>
 		<Mode>Ranged</Mode>
 	</Weapons>
 	<Weapons>
@@ -280,11 +280,59 @@
 		<AttributeLink>GE/ST</AttributeLink>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
-		<Stamina>0</Stamina>
-		<Initiative>0</Initiative>
-		<Damage></Damage>
-		<Impulse></Impulse>
-		<ArmorPenetration></ArmorPenetration>
+		<Stamina>2</Stamina>
+		<Initiative>4</Initiative>
+		<Damage>1D6+2</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>1D6+1</ArmorPenetration>
 		<Mode>Melee</Mode>
+	</Weapons>
+	<Weapons>
+		<Name>Projektilzauber</Name>
+		<AttributeLink>KL/WK</AttributeLink>		
+		<AttackBonus>0</AttackBonus>
+		<BlockBonus>0</BlockBonus>
+		<Stamina>0</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>0</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>0</ArmorPenetration>
+		<Mode>Ranged</Mode>
+	</Weapons>
+	<Weapons>
+		<Name>Flächenzauber</Name>
+		<AttributeLink>KL/WK</AttributeLink>		
+		<AttackBonus>0</AttackBonus>
+		<BlockBonus>0</BlockBonus>
+		<Stamina>0</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>0</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>0</ArmorPenetration>
+		<Mode>Ranged</Mode>
+	</Weapons>
+	<Weapons>
+		<Name>Direktzauber</Name>
+		<AttributeLink>KL/WK</AttributeLink>		
+		<AttackBonus>0</AttackBonus>
+		<BlockBonus>0</BlockBonus>
+		<Stamina>0</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>0</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>0</ArmorPenetration>
+		<Mode>Ranged</Mode>
+	</Weapons>
+	<Weapons>
+		<Name>Umgebungszauber</Name>
+		<AttributeLink>KL/WK</AttributeLink>		
+		<AttackBonus>0</AttackBonus>
+		<BlockBonus>0</BlockBonus>
+		<Stamina>0</Stamina>
+		<Initiative>2</Initiative>
+		<Damage>0</Damage>
+		<Impulse>0</Impulse>
+		<ArmorPenetration>0</ArmorPenetration>
+		<Mode>Ranged</Mode>
 	</Weapons>
 </PlayerData>

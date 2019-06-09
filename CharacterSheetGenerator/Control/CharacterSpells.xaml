@@ -69,17 +69,16 @@
                     <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                         <DataGrid.Columns>
-                            <!--<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Name"/>-->
-                            <DataGridComboBoxColumn Header=" Waffe" SelectedItemBinding="{Binding Weapon}" DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}" CellStyle="{StaticResource ComboboxCellStyle}"/>
-                            <DataGridTextColumn Binding="{Binding AttributeLink}" Header="Basis" IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleGray}" CellStyle="{StaticResource BaseGridCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding AttackTotal}" Header="AT" HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
-                            <DataGridTextColumn Binding="{Binding BlockTotal}" Header="PA" HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGrayBold}"/>
-                            <DataGridTextColumn Binding="{Binding Stamina}" Header="AD" HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
-                            <DataGridTextColumn Binding="{Binding Initiative}" Header="INI" HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding Damage}" Header="Stk." HeaderStyle="{StaticResource BaseHeaderStyle}" CellStyle="{StaticResource BaseGridCellStyle}"/>
-                            <DataGridTextColumn Binding="{Binding Impulse}" Header="Imp." HeaderStyle="{StaticResource BaseHeaderStyleGray}" CellStyle="{StaticResource BaseGridCellStyleGray}"/>
-                            <DataGridTextColumn Binding="{Binding ArmorPenetration}" Header="RD."  HeaderStyle="{StaticResource BaseHeaderStyle}" CellStyle="{StaticResource BaseGridCellStyle}"/>
-                            <!--<DataGridTextColumn Binding="{Binding Position}"  IsReadOnly="True" SortDirection="Descending" />-->
+                            <DataGridComboBoxColumn Header=" Waffe" SelectedItemBinding="{Binding Weapon}" 
+                                                    DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyle}"         CellStyle="{StaticResource ComboboxCellStyle}"/>
+                            <DataGridTextColumn     Header="Basis" Binding="{Binding AttributeLink}"                                 HeaderStyle="{StaticResource BaseHeaderStyleGray}"         CellStyle="{StaticResource BaseGridCellStyleGray}"/>
+                            <DataGridTextColumn     Header="AT"    Binding="{Binding AttackTotal}"                                   HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
+                            <DataGridTextColumn     Header="PA"    Binding="{Binding BlockTotal}"                                    HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGrayBold}"/>
+                            <DataGridTextColumn     Header="AD"    Binding="{Binding Stamina}"                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                            <DataGridTextColumn     Header="INI"   Binding="{Binding Initiative}"                                    HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                            <DataGridTextColumn     Header="Stk."  Binding="{Binding Damage}"                                        HeaderStyle="{StaticResource BaseHeaderStyle}"             CellStyle="{StaticResource BaseGridCellStyle}"/>
+                            <DataGridTextColumn     Header="Imp."  Binding="{Binding Impulse}"                                       HeaderStyle="{StaticResource BaseHeaderStyleGray}"         CellStyle="{StaticResource BaseGridCellStyleGray}"/>
+                            <DataGridTextColumn     Header="RD."   Binding="{Binding ArmorPenetration}"                              HeaderStyle="{StaticResource BaseHeaderStyle}"             CellStyle="{StaticResource BaseGridCellStyle}"/>
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -112,13 +111,14 @@
                 <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Spells, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                           RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}"                     Header=" Name"  IsReadOnly="True" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
-                        <DataGridComboBoxColumn SelectedItemBinding="{Binding Weapons}"  Header=" Art"  DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}" CellStyle="{StaticResource ComboboxCellStyleGray}"/>
-                        <DataGridTextColumn Binding="{Binding Value}"                    Header="FW"   HeaderStyle="{StaticResource NumericValueHeaderStyle}" CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
-                        <DataGridTextColumn Binding="{Binding Requirement}"              Header="Probe"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
-                        <DataGridTextColumn Binding="{Binding Mana}"                     Header="Mana"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLarge}" CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
-                        <DataGridTextColumn Binding="{Binding Ticks}"                    Header="Ticks"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
-                        <DataGridTextColumn Binding="{Binding Description}"              Header=" Beschreibung"   HeaderStyle="{StaticResource DescriptionHeaderStyle}" CellStyle="{StaticResource DescriptionCellStyle}"/>
+                        <DataGridTextColumn      Header=" Name"            Binding="{Binding Name}"                              HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                        <DataGridComboBoxColumn  Header=" Art"             SelectedItemBinding="{Binding Weapons}"  
+                                                 DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}"    CellStyle="{StaticResource ComboboxCellStyleGray}"/>
+                        <DataGridTextColumn      Header="FW"               Binding="{Binding Value}"                              HeaderStyle="{StaticResource NumericValueHeaderStyle}"    CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
+                        <DataGridTextColumn      Header="Probe"            Binding="{Binding Requirement}"                        HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}"   CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
+                        <DataGridTextColumn      Header="Mana"             Binding="{Binding Mana}"                               HeaderStyle="{StaticResource BaseHeaderStyleLarge}"       CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
+                        <DataGridTextColumn      Header="Ticks"            Binding="{Binding Ticks}"                              HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}"   CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
+                        <DataGridTextColumn      Header=" Beschreibung"    Binding="{Binding Description}"                        HeaderStyle="{StaticResource DescriptionHeaderStyle}"     CellStyle="{StaticResource DescriptionCellStyle}"/>
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -128,11 +128,11 @@
                 <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Rituals, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                           RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}"                     Header=" Name"  IsReadOnly="True" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
-                        <DataGridTextColumn Binding="{Binding Value}"                    Header="FW"   HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGrayBold}"/>
-                        <DataGridTextColumn Binding="{Binding Requirement}"              Header="Probe"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLarge}" CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
-                        <DataGridTextColumn Binding="{Binding Time}"                     Header="Länge"  IsReadOnly="True" HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}" CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
-                        <DataGridTextColumn Binding="{Binding Description}"              Header=" Beschreibung" HeaderStyle="{StaticResource DescriptionHeaderStyleRituals}" CellStyle="{StaticResource DescriptionCellStyleRituals}"/>
+                        <DataGridTextColumn   Header=" Name"         Binding="{Binding Name}"        HeaderStyle="{StaticResource WeaponHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                        <DataGridTextColumn   Header="FW"            Binding="{Binding Value}"       HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGrayBold}"/>
+                        <DataGridTextColumn   Header="Probe"         Binding="{Binding Requirement}" HeaderStyle="{StaticResource BaseHeaderStyleLarge}"          CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
+                        <DataGridTextColumn   Header="Länge"         Binding="{Binding Time}"        HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}"      CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
+                        <DataGridTextColumn   Header=" Beschreibung" Binding="{Binding Description}" HeaderStyle="{StaticResource DescriptionHeaderStyleRituals}" CellStyle="{StaticResource DescriptionCellStyleRituals}"/>
                     </DataGrid.Columns>
 
                 </DataGrid>

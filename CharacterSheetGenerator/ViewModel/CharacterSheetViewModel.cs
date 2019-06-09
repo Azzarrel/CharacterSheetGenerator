@@ -794,7 +794,7 @@ namespace CharacterSheetGenerator
                     stv.Standard = Math.Round(stv.Base + attributes[0].Value + attributes[1].Value, 0);
                     break;
                 case "Ausdauer":
-                    stv.Standard = Math.Round(stv.Base + attributes[0].Value * 1.5, 0);
+                    stv.Standard = Math.Round(stv.Base + attributes[0].Value * 2, 0);
                     break;
                 case "Mana":
                     stv.Standard = Math.Round(stv.Base + attributes[0].Value + attributes[1].Value / 2, 0);

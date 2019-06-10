@@ -76,8 +76,9 @@ namespace CharacterSheetGenerator
                 xmlData = XmlReader.Create(s, new XmlReaderSettings());
                 l_Data.ReadXml(xmlData);
                 Data.Merge(l_Data);
+                xmlData.Close();
             }
-
+            
 
             LoadData();
 
@@ -254,6 +255,7 @@ namespace CharacterSheetGenerator
   
             SaveWindowViewModel vm = new SaveWindowViewModel();
             vm.Data = this.Data;
+            vm.Exp = Expierience;
 
             SaveFileWindow saveWindow = new SaveFileWindow();
             saveWindow.DataContext = vm;
@@ -1095,6 +1097,7 @@ namespace CharacterSheetGenerator
                 weapon.Damage = row["Damage"].ToString();
                 weapon.Impulse = row["Impulse"].ToString();
                 weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
+                weapon.Stamina = Parser.ToNullable<int>(row["Stamina"].ToString());
                 weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
                 weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
                 weapon.Range = row["Range"].ToString();
@@ -1120,7 +1123,9 @@ namespace CharacterSheetGenerator
                 weapon.Damage = row["Damage"].ToString();
                 weapon.Impulse = row["Impulse"].ToString();
                 weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
+                weapon.Stamina = Parser.ToNullable<int>(row["Stamina"].ToString());
                 weapon.Load = Parser.ToNullable<int>(row["Load"].ToString());
+                weapon.StaminaLoad = Parser.ToNullable<int>(row["StaminaLoad"].ToString());
                 weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
                 weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
                 weapon.Range = row["Range"].ToString();
@@ -1147,11 +1152,11 @@ namespace CharacterSheetGenerator
             }
             foreach (MeleeWeaponModel weapon in MeleeWeapons)
             {
-                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Stamina, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
             foreach (RangedWeaponModel weapon in RangedWeapons)
             {
-                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Range, weapon.Break, weapon.Load, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Stamina, weapon.Range, weapon.Break, weapon.Load, weapon.StaminaLoad, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
         }
 
@@ -1758,7 +1763,7 @@ namespace CharacterSheetGenerator
                 {
                     Name = row["Name"].ToString(),
                     Quantity = Parser.ToNullable<double>(row["Quantity"].ToString()),
-                    Value = Parser.ToNullable<double>(row["Value"].ToString()),
+                    Value = row["Value"].ToString(),
                     Weight = Parser.ToNullable<double>(row["Weight"].ToString()),
                     Place = row["Place"].ToString(),
                 };

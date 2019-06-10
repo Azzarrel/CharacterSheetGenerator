@@ -27,9 +27,9 @@ namespace CharacterSheetGenerator.Model
         }
 
         [ColumnName("Value")]
-        public double? Value
+        public string Value
         {
-            get { return Get<double?>(); }
+            get { return Get<string>(); }
             set { Set(value); }
         }
 

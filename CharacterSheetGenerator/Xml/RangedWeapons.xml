@@ -5,9 +5,11 @@
 		<Damage></Damage>	
 		<Impulse></Impulse>		
 		<ArmorPenetration></ArmorPenetration>
+		<Stamina></Stamina>
 		<Range></Range>
 		<Break></Break>
 		<Load></Load>
+		<StaminaLoad></StaminaLoad>
 		<Ticks></Ticks>
 		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
@@ -18,9 +20,11 @@
 		<Damage></Damage>	
 		<Impulse></Impulse>		
 		<ArmorPenetration></ArmorPenetration>
+		<Stamina></Stamina>
 		<Range></Range>
 		<Break></Break>
 		<Load></Load>
+		<StaminaLoad></StaminaLoad>
 		<Ticks></Ticks>
 		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
@@ -31,9 +35,11 @@
 		<Damage></Damage>	
 		<Impulse></Impulse>		
 		<ArmorPenetration></ArmorPenetration>
+		<Stamina></Stamina>
 		<Range></Range>
 		<Break></Break>
 		<Load></Load>
+		<StaminaLoad></StaminaLoad>
 		<Ticks></Ticks>
 		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
@@ -44,9 +50,11 @@
 		<Damage></Damage>	
 		<Impulse></Impulse>		
 		<ArmorPenetration></ArmorPenetration>
+		<Stamina></Stamina>
 		<Range></Range>
 		<Break></Break>
 		<Load></Load>
+		<StaminaLoad></StaminaLoad>
 		<Ticks></Ticks>
 		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>

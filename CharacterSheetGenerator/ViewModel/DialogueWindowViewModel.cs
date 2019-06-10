@@ -83,23 +83,29 @@ namespace CharacterSheetGenerator.ViewModel
                 {
                     xmlData = XmlReader.Create(dir + "\\SaveData.xml", new XmlReaderSettings());
                     l_Data.ReadXml(xmlData);
+                    xmlData.Close();
 
                 }
             }
 
-            foreach (DataRow row in l_Data.Tables["SaveData"].Rows)
-            {
-                SaveDataModel save = new SaveDataModel
-                {
-                    Version = row["Version"].ToString(),
-                    SaveName = row["SaveName"].ToString(),
-                    CharacterName = row["CharacterName"].ToString(),
-                    Expieriece = double.Parse(row["Exp"].ToString()),
-                    LastModified = DateTime.Parse(row["LastModified"].ToString()),
 
-                };
-                SaveData.Add(save);
+            if (l_Data.Tables["SaveData"] != null)
+            {
+                foreach (DataRow row in l_Data.Tables["SaveData"].Rows)
+                {
+                    SaveDataModel save = new SaveDataModel
+                    {
+                        Version = row["Version"].ToString(),
+                        SaveName = row["SaveName"].ToString(),
+                        CharacterName = row["CharacterName"].ToString(),
+                        Expieriece = double.Parse(row["Exp"].ToString()),
+                        LastModified = DateTime.Parse(row["LastModified"].ToString()),
+
+                    };
+                    SaveData.Add(save);
+                }
             }
+                      
             CreateCommands();
         }
 

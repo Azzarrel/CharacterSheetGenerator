@@ -95,6 +95,20 @@ namespace CharacterSheetGenerator.CombatSheet.Model
             set { Set(value); }
         }
 
+        [ColumnName("Stamina")]
+        public int? Stamina
+        {
+            get { return Get<int?>(); }
+            set { Set(value); }
+        }
+
+        [ColumnName("StaminaLoad")]
+        public int? StaminaLoad
+        {
+            get { return Get<int?>(); }
+            set { Set(value); }
+        }
+
         [ColumnName("Range")]
         public string Range
         {

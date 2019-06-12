@@ -16,14 +16,14 @@ namespace CharacterSheetGenerator.Control
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class CharacterOverview : UserControl
+    public partial class MainPage : UserControl
     {
 
 
         private double m_Expirience = new double();
 
         public static readonly DependencyProperty ExpirienceProperty =
-            DependencyProperty.Register("Expirience", typeof(double), typeof(CharacterOverview),
+            DependencyProperty.Register("Expirience", typeof(double), typeof(MainPage),
             new FrameworkPropertyMetadata(new double(), OnExpiriencePropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -35,7 +35,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnExpiriencePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterOverview UserControl = obj as CharacterOverview;
+            MainPage UserControl = obj as MainPage;
             UserControl.OnPropertyChanged("Expirience");
             UserControl.OnExpiriencePropertyChanged(e);
 
@@ -51,7 +51,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<CharacterInformationModel> m_CharacterInformation = new ObservableCollection<CharacterInformationModel>();
 
         public static readonly DependencyProperty CharacterInformationProperty =
-            DependencyProperty.Register("CharacterInformation", typeof(ObservableCollection<CharacterInformationModel>), typeof(CharacterOverview),
+            DependencyProperty.Register("CharacterInformation", typeof(ObservableCollection<CharacterInformationModel>), typeof(MainPage),
             new FrameworkPropertyMetadata(new ObservableCollection<CharacterInformationModel>(), OnCharacterInformationPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -63,7 +63,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnCharacterInformationPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterOverview UserControl = obj as CharacterOverview;
+            MainPage UserControl = obj as MainPage;
             UserControl.OnPropertyChanged("CharacterInformation");
             UserControl.OnCharacterInformationPropertyChanged(e);
 
@@ -79,7 +79,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<TraitCategoryModel> m_Traits = new ObservableCollection<TraitCategoryModel>();
 
         public static readonly DependencyProperty TraitProperty =
-            DependencyProperty.Register("Traits", typeof(ObservableCollection<TraitCategoryModel>), typeof(CharacterOverview),
+            DependencyProperty.Register("Traits", typeof(ObservableCollection<TraitCategoryModel>), typeof(MainPage),
             new FrameworkPropertyMetadata(new ObservableCollection<TraitCategoryModel>(), OnTraitPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -91,7 +91,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnTraitPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterOverview UserControl = obj as CharacterOverview;
+            MainPage UserControl = obj as MainPage;
             UserControl.OnPropertyChanged("Traits");
             UserControl.OnTraitPropertyChanged(e);
 
@@ -107,7 +107,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<StatusValueModel> m_StatusValues = new ObservableCollection<StatusValueModel>();
 
         public static readonly DependencyProperty StatusValuesProperty =
-            DependencyProperty.Register("StatusValues", typeof(ObservableCollection<StatusValueModel>), typeof(CharacterOverview),
+            DependencyProperty.Register("StatusValues", typeof(ObservableCollection<StatusValueModel>), typeof(MainPage),
             new FrameworkPropertyMetadata(new ObservableCollection<StatusValueModel>(), OnStatusValuesPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -119,7 +119,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnStatusValuesPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterOverview UserControl = obj as CharacterOverview;
+            MainPage UserControl = obj as MainPage;
             UserControl.OnPropertyChanged("StatusValues");
             UserControl.OnStatusValuesPropertyChanged(e);
 
@@ -135,7 +135,7 @@ namespace CharacterSheetGenerator.Control
         private ICommand m_TraitClickCommand;
 
         public static readonly DependencyProperty TraitClickCommandProperty =
-            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CharacterOverview),
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(MainPage),
             new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -147,7 +147,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterOverview UserControl = obj as CharacterOverview;
+            MainPage UserControl = obj as MainPage;
             UserControl.OnPropertyChanged("TraitClickCommand");
             UserControl.OnTraitClickCommandPropertyChanged(e);
 
@@ -161,7 +161,7 @@ namespace CharacterSheetGenerator.Control
         }
 
 
-        public CharacterOverview()
+        public MainPage()
         {
             InitializeComponent();
         }

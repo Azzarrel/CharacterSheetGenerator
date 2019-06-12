@@ -26,14 +26,14 @@ namespace CharacterSheetGenerator.Control
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class CharacterSpells : UserControl
+    public partial class SpellPage : UserControl
     {
 
 
         private SolidColorBrush m_CellColor = new SolidColorBrush();
 
         public static readonly DependencyProperty CellColorProperty =
-            DependencyProperty.Register("CellColor", typeof(SolidColorBrush), typeof(CharacterSpells),
+            DependencyProperty.Register("CellColor", typeof(SolidColorBrush), typeof(SpellPage),
             new FrameworkPropertyMetadata(new SolidColorBrush(), OnCellColorPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -45,7 +45,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnCellColorPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("CellColor");
             UserControl.OnCellColorPropertyChanged(e);
         }
@@ -59,7 +59,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<WeaponModel> m_Weapons = new ObservableCollection<WeaponModel>();
 
         public static readonly DependencyProperty WeaponProperty =
-            DependencyProperty.Register("Weapons", typeof(ObservableCollection<WeaponModel>), typeof(CharacterSpells),
+            DependencyProperty.Register("Weapons", typeof(ObservableCollection<WeaponModel>), typeof(SpellPage),
             new FrameworkPropertyMetadata(new ObservableCollection<WeaponModel>(), OnWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -71,7 +71,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnWeaponPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("Weapons");
             UserControl.OnWeaponPropertyChanged(e);
         }
@@ -85,7 +85,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<WeaponSelectModel> m_SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
 
         public static readonly DependencyProperty SelectedWeaponProperty =
-            DependencyProperty.Register("SelectedWeapons", typeof(ObservableCollection<WeaponSelectModel>), typeof(CharacterSpells),
+            DependencyProperty.Register("SelectedWeapons", typeof(ObservableCollection<WeaponSelectModel>), typeof(SpellPage),
             new FrameworkPropertyMetadata(new ObservableCollection<WeaponSelectModel>(), OnSelectedWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -97,7 +97,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnSelectedWeaponPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("SelectedWeapons");
             UserControl.OnSelectedWeaponPropertyChanged(e);
         }
@@ -111,7 +111,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<TraitCategoryModel> m_SpellTraits = new ObservableCollection<TraitCategoryModel>();
 
         public static readonly DependencyProperty TraitProperty =
-            DependencyProperty.Register("SpellTraits", typeof(ObservableCollection<TraitCategoryModel>), typeof(CharacterSpells),
+            DependencyProperty.Register("SpellTraits", typeof(ObservableCollection<TraitCategoryModel>), typeof(SpellPage),
             new FrameworkPropertyMetadata(new ObservableCollection<TraitCategoryModel>(), OnTraitPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -123,7 +123,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnTraitPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("SpellTraits");
             UserControl.OnTraitPropertyChanged(e);
 
@@ -139,7 +139,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<SpellModel> m_Spells = new ObservableCollection<SpellModel>();
 
         public static readonly DependencyProperty SpellProperty =
-            DependencyProperty.Register("Spells", typeof(ObservableCollection<SpellModel>), typeof(CharacterSpells),
+            DependencyProperty.Register("Spells", typeof(ObservableCollection<SpellModel>), typeof(SpellPage),
             new FrameworkPropertyMetadata(new ObservableCollection<SpellModel>(), OnSpellPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -151,7 +151,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnSpellPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("Spells");
             UserControl.OnSpellPropertyChanged(e);
         }
@@ -165,7 +165,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<RitualModel> m_Rituals = new ObservableCollection<RitualModel>();
 
         public static readonly DependencyProperty RitualProperty =
-            DependencyProperty.Register("Rituals", typeof(ObservableCollection<RitualModel>), typeof(CharacterSpells),
+            DependencyProperty.Register("Rituals", typeof(ObservableCollection<RitualModel>), typeof(SpellPage),
             new FrameworkPropertyMetadata(new ObservableCollection<RitualModel>(), OnRitualPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -177,7 +177,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnRitualPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("Rituals");
             UserControl.OnRitualPropertyChanged(e);
         }
@@ -191,7 +191,7 @@ namespace CharacterSheetGenerator.Control
         private ICommand m_TraitClickCommand;
 
         public static readonly DependencyProperty TraitClickCommandProperty =
-            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CharacterSpells),
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(SpellPage),
             new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -203,7 +203,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CharacterSpells UserControl = obj as CharacterSpells;
+            SpellPage UserControl = obj as SpellPage;
             UserControl.OnPropertyChanged("TraitClickCommand");
             UserControl.OnTraitClickCommandPropertyChanged(e);
 
@@ -216,7 +216,7 @@ namespace CharacterSheetGenerator.Control
 
         }
 
-        public CharacterSpells()
+        public SpellPage()
         {
             CellColor = new SolidColorBrush(ColorHandler.IntToColor(15329769));
             InitializeComponent();

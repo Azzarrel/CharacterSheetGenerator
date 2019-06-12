@@ -1,5 +1,6 @@
 ﻿using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.View;
+using CharacterSheetGenerator.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,13 +27,12 @@ namespace CharacterSheetGenerator.View
     public partial class MainWindow : Window
     {
 
-        private CharacterSheetViewModel m_DataContext;
+        private MainWindowViewModel m_DataContext;
 
         public MainWindow()
         {
-            //AssemblyResolver.Hook("\\resouces\\source");
             InitializeComponent();
-            DataContext = new CharacterSheetViewModel();
+            DataContext = new MainWindowViewModel();
 
         }
 
@@ -40,7 +40,7 @@ namespace CharacterSheetGenerator.View
         {
             try
             {
-                m_DataContext = (CharacterSheetViewModel)this.DataContext;
+                m_DataContext = (MainWindowViewModel)this.DataContext;
             }
             catch
             {
@@ -49,33 +49,10 @@ namespace CharacterSheetGenerator.View
 
         }
 
-        //private void ScrollViewerOnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        //{
-        //    var scv = sender as ScrollViewer;
-        //    if (scv == null) return;
-        //    scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
-        //    e.Handled = true;
-        //}
-
-
         private void Button3_Click(object sender, RoutedEventArgs re)
         {
 
-            string filePath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves\\test.png";
-            int width = (int)Übersicht.RenderSize.Width;
-            int height = (int)Übersicht.RenderSize.Width;
-
-            RenderTargetBitmap renderTargetBitmap =
-            new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
-            renderTargetBitmap.Render(Übersicht);
-            PngBitmapEncoder pngImage = new PngBitmapEncoder();
-            pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-            using (Stream fileStream = File.Create(filePath))
-            {
-                pngImage.Save(fileStream);
-            }
-
-
+         
             //System.Windows.FrameworkElement[] elements = { Übersicht as System.Windows.FrameworkElement, Fertigkeiten as System.Windows.FrameworkElement, Kampf as System.Windows.FrameworkElement,
             //                                               Zauber as System.Windows.FrameworkElement, Inventar as System.Windows.FrameworkElement,};
 

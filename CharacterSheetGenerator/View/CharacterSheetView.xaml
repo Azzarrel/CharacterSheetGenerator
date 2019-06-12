@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="CharacterSheetGenerator.View.CharacterSheetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ctrl="clr-namespace:CharacterSheetGenerator.Control"
+             xmlns:help="clr-namespace:CharacterSheetGenerator.Helpers"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="8000" d:DesignWidth="1320">
+    <Grid>
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled" >
+            <i:Interaction.Behaviors>
+                <help:BubbleScrollEvent />
+            </i:Interaction.Behaviors>
+            <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Pages, Mode=TwoWay}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <UserControl x:Name="{Binding Name}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+     
+            <StackPanel>
+                <Grid Name="Übersicht">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                                <TextBlock FontSize="20" Text="Persönliche Daten" TextAlignment="Center"/>
+                            </StackPanel>
+                            <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}"/>
+                        </StackPanel>
+
+                        <Grid Grid.Row="2">
+                            <StackPanel>
+                                <ctrl:MainPage VerticalAlignment="Top" CharacterInformation="{Binding CharacterInformation}" StatusValues="{Binding StatusValues, Mode=TwoWay}" Traits="{Binding Traits, Mode=TwoWay}" Expirience="{Binding Expirience}" TraitClickCommand="{Binding OpenTraitViewCommand}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Name="Fertigkeiten">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="1345"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                                <TextBlock FontSize="20" Text="Spielwerte" TextAlignment="Center"/>
+                            </StackPanel>
+                            <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}"/>
+
+                        </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ctrl:CharacterSkills Grid.Column="0" VerticalAlignment="Top"  Skills="{Binding SkillsLeft, Mode=TwoWay}"/>
+                                <Grid Grid.Column="1" Background="DarkGray"/>
+                                <ctrl:CharacterSkills Grid.Column="2" VerticalAlignment="Top"  Skills="{Binding SkillsRight, Mode=TwoWay}"/>
+                            </Grid>
+                            <ctrl:CharacterLanguages Grid.Row="3" Language="{Binding Languages}" Writing="{Binding Writings}"/>
+                        </Grid>
+
+
+                    </Grid>
+                </Grid>
+                <Grid Name="Kampf">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="260"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                                <TextBlock FontSize="20" Text="Kampfwerte" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Viewbox Width="900">
+                                    <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}" />
+                                </Viewbox>
+                                <ctrl:CharacterAttributes AttributeList="{Binding SpecialAttributes, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <ctrl:CombatPage  VerticalAlignment="Top"  Weapons="{Binding Weapons, Mode=TwoWay}" SelectedWeapons="{Binding SelectedWeapons, Mode=TwoWay}"
+                                                       MeleeWeapons="{Binding MeleeWeapons, Mode=TwoWay}" RangedWeapons="{Binding RangedWeapons, Mode=TwoWay}" 
+                                                       Armor="{Binding Armor, Mode=TwoWay}" OffHands="{Binding OffHands, Mode=TwoWay}" CombatTraits="{Binding CombatTraits, Mode=TwoWay}" TraitClickCommand="{Binding OpenTraitViewCommand}"/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Name="Zauber">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="260"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                                <TextBlock FontSize="20" Text="Zauber &amp; Magie" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Viewbox Width="900">
+                                    <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}" />
+                                </Viewbox>
+                                <ctrl:CharacterAttributes AttributeList="{Binding SpecialAttributes, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <ctrl:SpellPage  VerticalAlignment="Top"  Weapons="{Binding Weapons, Mode=TwoWay}" SelectedWeapons="{Binding SelectedWeapons, Mode=TwoWay}"
+                                                       Spells="{Binding Spells, Mode=TwoWay}" Rituals="{Binding Rituals, Mode=TwoWay}" SpellTraits="{Binding SpellTraits, Mode=TwoWay}" TraitClickCommand="{Binding OpenTraitViewCommand}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Name="Inventar">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                                <TextBlock FontSize="20" Text="Inventar" TextAlignment="Center"/>
+                            </StackPanel>
+                            <ctrl:CharacterAttributes VerticalAlignment="Top" AttributeList="{Binding Attributes, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <ctrl:CharacterInventory Grid.Column="0" VerticalAlignment="Top"  Inventory="{Binding InventoryLeft, Mode=TwoWay}" Total="{Binding WeightLeft}"/>
+                                <Grid Grid.Column="1" Background="DarkGray"/>
+                                <ctrl:CharacterInventory Grid.Column="2" VerticalAlignment="Top"  Inventory="{Binding InventoryRight, Mode=TwoWay}" Total="{Binding Weightright}"/>
+                                <ctrl:CharacterMoney Grid.Column="3" Money="{Binding Money, Mode=TwoWay}" CarryWeight="{Binding CarryWeight, Mode=TwoWay}"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </StackPanel>-->
+       
+    </Grid>
+  </UserControl>
+

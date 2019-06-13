@@ -66,12 +66,6 @@
     <Compile Include="Control\SkillPage.xaml.cs">
       <DependentUpon>SkillPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\Partial\CharacterLanguages.xaml.cs">
-      <DependentUpon>CharacterLanguages.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\Partial\CharacterMoney.xaml.cs">
-      <DependentUpon>CharacterMoney.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\DataTableListConverter.cs" />
     <Compile Include="Helpers\Attributes.cs" />
     <Compile Include="Helpers\BubbleScrollEvent.cs" />
@@ -80,12 +74,11 @@
     <Compile Include="Helpers\NotifyBase.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Model\TabModel.cs" />
     <Compile Include="Model\Modifiers\ModifierModel.cs" />
     <Compile Include="Model\InventorySheet\MoneyModel.cs" />
+    <Compile Include="Model\ControlModel.cs" />
     <Compile Include="Model\Template\TemplateModel.cs" />
-    <Compile Include="Control\Partial\CharacterInventory.xaml.cs">
-      <DependentUpon>CharacterInventory.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Control\SpellPage.xaml.cs">
       <DependentUpon>SpellPage.xaml</DependentUpon>
     </Compile>
@@ -115,6 +108,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\SaveWindowViewModel.cs" />
     <Compile Include="ViewModel\TraitViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\CharacterSheetView.xaml.cs">
       <DependentUpon>CharacterSheetView.xaml</DependentUpon>
     </Compile>
@@ -135,18 +129,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Control\Partial\CharacterLanguages.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\Partial\CharacterMoney.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\Partial\CharacterInventory.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Control\SpellPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,14 +138,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\Partial\CharacterSkills.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\Partial\CharacterAttributes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -191,15 +165,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Control\Partial\CharacterSkills.xaml.cs">
-      <DependentUpon>CharacterSkills.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\CharacterSheet\CharacterInformationModel.cs" />
     <Compile Include="Model\SkillSheet\SkillModel.cs" />
     <Compile Include="Model\AttributeModel.cs" />
-    <Compile Include="Control\Partial\CharacterAttributes.xaml.cs">
-      <DependentUpon>CharacterAttributes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -259,7 +227,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM Kopiert die xml in den Debug-Ordner, zum Testen
-xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings"
+xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings/Character/Default"
 
 REM Kopiert die dlls in den Debug-Ordner, zum Testen
 xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Ilibs\*.dll" "$(TargetDir)resources/libs"

@@ -5,8 +5,208 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CharacterSheetGenerator.Control.Base"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1600" d:DesignWidth="1350">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CharacterSheetGenerator;component\Resources\Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.Resources>
+            <!-- Header Styles -->
+            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleSkillCheck" BasedOn="{StaticResource DefaultHeaderStyle}">
+                <Setter Property="Width" Value="70" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleComment" BasedOn="{StaticResource DefaultHeaderStyle}">
+                <Setter Property="Width" Value="240" />
+            </Style>
+
+            <!-- Category -->
+            <Style TargetType="TextBlock" x:Key="CategoryTextBlockSyle">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Width" Value="210" />
+            </Style>
+
+            <!-- Cell Styles -->
+            <Style TargetType="DataGridCell" x:Key="CommentGridCellStyle">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontWeight" Value="UltraLight" />
+                <Setter Property="Width" Value="240" />
+            </Style>
+            <Style TargetType="DataGridRowHeader" x:Key="InvisibleRowHeader">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Width" Value="0" />
+            </Style>
+            <Style TargetType="DataGridCell" x:Key="SkillCheckGridCellStyle" BasedOn="{StaticResource BaseGridCellStyleGray}">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontStyle" Value="Italic" />
+                <Setter Property="FontWeight" Value="Thin" />
+                <Setter Property="Width" Value="70" />
+            </Style>
+        </Grid.Resources>
+        <Grid Name="Fertigkeiten">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="1345"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <StackPanel>
+                        <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                        <TextBlock FontSize="20" Text="Spielwerte" TextAlignment="Center"/>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=AttributeList, Mode=TwoWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <DockPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="ContentPresenter">
+                                <Setter Property="DockPanel.Dock" Value="Left"/>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="12"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="12"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="8"/>
+                                            <RowDefinition Height="80"/>
+                                            <RowDefinition Height="8"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="1">
+                                            <Border BorderThickness="3" BorderBrush="{Binding Color}">
+                                                <Border BorderBrush="Black" BorderThickness="1">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="20"/>
+                                                            <RowDefinition Height="60"/>
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Width="80" Height="20" Grid.Row="0" Text="{Binding Tag,  Mode=TwoWay}" TextAlignment="Left" Margin="8,2,0,0" FontWeight="Bold"/>
+                                                        <TextBox Width="80" Height="60" Grid.Row="1" Text="{Binding Value, Mode=TwoWay}" TextAlignment="Center" FontSize="30" FontWeight="DemiBold"/>
+                                                    </Grid>
+                                                </Border>
+                                            </Border>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </StackPanel>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
+                  RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+                            <DataGrid.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate>
+
+                                            <Border BorderBrush="Black" BorderThickness="0,0,0,0.45">
+                                                <StackPanel Orientation="Horizontal" Height="25">
+                                                    <TextBlock Width="5"/>
+                                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
+                                                    <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                    <TextBlock Width="40"/>
+                                                    <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                </StackPanel>
+                                            </Border>
+
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                </GroupStyle>
+                            </DataGrid.GroupStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"           CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
+                                <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"     CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
+                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"    IsReadOnly="True" />
+                                <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Grid Grid.Column="1" Background="DarkGray"/>
+                        <DataGrid Grid.Column="3" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
+                  RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+                            <DataGrid.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate>
+
+                                            <Border BorderBrush="Black" BorderThickness="0,0,0,0.45">
+                                                <StackPanel Orientation="Horizontal" Height="25">
+                                                    <TextBlock Width="5"/>
+                                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
+                                                    <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                    <TextBlock Width="40"/>
+                                                    <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                </StackPanel>
+                                            </Border>
+
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                </GroupStyle>
+                            </DataGrid.GroupStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"           CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
+                                <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"     CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
+                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"    IsReadOnly="True" />
+                                <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Width="300" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Language, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" VerticalAlignment="Center" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Sprachen" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <DataGrid Width="300" Grid.Column="2" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Writing, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                              RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" VerticalAlignment="Center" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Schriten" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+
+
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

@@ -1,5 +1,5 @@
 ﻿using CharacterSheetGenerator.Helpers;
-using CharacterSheetGenerator.Model;
+using CharacterSheetGenerator.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,33 +7,28 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator.Model
+namespace CharacterSheetGenerator.Model    
 {
-    public class TraitModel : TemplateModel
+    public class TabModel : TemplateModel
     {
 
-        [ColumnName("Key")]
-        public int Key
+       
+        public ViewModelBase ViewModel
         {
-            get { return Get<int>(); }
+            get { return Get<ViewModelBase>(); }
             set { Set(value); }
         }
 
-        [ColumnName("Name")]
         public string Name
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
 
-        [ColumnName("Description")]
-        public string Description
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
 
     }
+
 }

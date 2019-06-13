@@ -1,7 +1,6 @@
 ﻿using CharacterSheetGenerator.CombatSheet.Model;
 using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
-using CharacterSheetGenerator.Traits.Model;
 using CharacterSheetGenerator.View;
 using CharacterSheetGenerator.ViewModel;
 using System;
@@ -23,7 +22,7 @@ using System.Xml;
 
 namespace CharacterSheetGenerator
 {
-    class CharacterSheetViewModel : NotifyBase
+    class CharacterSheetViewModel : ViewModelBase
     {
 
         #region Properties
@@ -36,60 +35,37 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
+        public ObservableCollection<UserControl> Pages
+        {
+            get { return Get<ObservableCollection<UserControl>>(); }
+            set { Set(value); }
+        }
+
+        public string Name
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+
         #endregion Properties
 
         public CharacterSheetViewModel()
         {
-            InitializeSettings();
-            CreateCommands();
-            //Speicher-Ordner anlegen
-            if (!Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves"))
-            {
-                DirectoryInfo di = Directory.CreateDirectory(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves");
-                }
+            
+          
+            
         }
 
         #region Framework
 
-        /// <summary>
-        /// Zur Erstinitialisierung der Standarddaten
-        /// </summary>
-        private void InitializeSettings()
-        {
-            
-            Data = new DataSet();
-            XmlReader xmlData;
-
-            DataSet l_Data = new DataSet();
-            string[] files = Directory.GetFiles("Settings", "*.xml");
-
-
-            if (files.Count() == 0)
-            {
-
-                throw new Exception("Der angegebene Pfad enthält keine Charakterdaten");
-            }
-            Data = new DataSet();
-            foreach (string s in files)
-            {
-                l_Data = new DataSet();
-                xmlData = XmlReader.Create(s, new XmlReaderSettings());
-                l_Data.ReadXml(xmlData);
-                Data.Merge(l_Data);
-                xmlData.Close();
-            }
-            
-
-            LoadData();
-
-
-        }
 
         /// <summary>
         /// /Alle Tabellen aus dem DateSet in Listen laden
         /// </summary>
-        public void LoadData()
+        public void LoadData(DataSet ds)
         {
+            Data = ds.Copy();
 
             LoadAttributes();
             LoadSpecialAttributes();
@@ -190,106 +166,7 @@ namespace CharacterSheetGenerator
 
         #endregion Framework
 
-        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
-
-        #region Commands
-
-        //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
-        private void CreateCommands()
-        {
-            OpenTraitViewCommand = new RelayCommand<string>(OpenTraitViewMethod);
-            SaveCommand = new RelayCommand(SaveMethod, CanExecute);
-            LoadCommand = new RelayCommand(LoadMethod, CanExecute);
-
-        }
-
-        public ICommand OpenTraitViewCommand { get; private set; }
-        public ICommand SaveCommand { get; private set; }
-        public ICommand LoadCommand { get; private set; }
-        
-        
-       
-
-        public void OpenTraitViewMethod(string Category)
-        {
-            int keycounter = 0;
-            TraitViewModel vm = new TraitViewModel();
-            vm.Modifiers = new ObservableCollection<TraitModifierModel>(Modifiers);
-            vm.BaseModifiers = BaseModifiers;
-            vm.Category = Category;
-            foreach (TraitCategoryModel category in Traits)
-            {
-               keycounter += category.Traits.Count();
-            }
-            vm.KeyCounter = keycounter;
-            vm.Traits  =  new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
-            
-
-            TraitWindow traitview = new TraitWindow();
-            traitview.DataContext = vm;
-            traitview.ShowDialog();
-            if(vm.IsSaved)
-            {
-                TraitCategoryModel catgory = Traits.Where(c => c.Name == vm.Category).FirstOrDefault();
-                //Die alten Traits einfach mit den neuen Überschreiben
-                catgory.Traits = vm.Traits;
-                catgory.TraitTexts = "";
-                foreach (TraitModel trait in vm.Traits)
-                {
-                    catgory.TraitTexts += " " + trait.Name + ",";
-                }
-                Modifiers = vm.Modifiers;
-                CalculateModifiers();
-            }
-            
-        }
-
-        public void SaveMethod()
-        {
-
-            DataTable tblAttributeLink = Data.Tables["SVAttributeLink"].Copy();
-
-            //DataSet vor dem Speichern mit aktuellen Daten füllen
-            Data.Clear();
-            SaveData(tblAttributeLink);
-  
-            SaveWindowViewModel vm = new SaveWindowViewModel();
-            vm.Data = this.Data;
-            vm.Exp = Expierience;
-
-            SaveFileWindow saveWindow = new SaveFileWindow();
-            saveWindow.DataContext = vm;
-            saveWindow.ShowDialog();
-
-
-        }
-
-        public void LoadMethod()
-        {
-            
-            LoadWindowViewModel vm = new LoadWindowViewModel();
-            
-            SaveFileWindow saveWindow = new SaveFileWindow();
-            saveWindow.DataContext = vm;
-            saveWindow.ShowDialog();
-            //Wenn das Lade-Fenster geschlossen wurde, ohne, dass ein Ladevorgang ausgeführt wurde, dann keine neuen Daten laden.
-            if (vm.LoadSucessful == true)
-            {
-                this.Data.Clear();
-                this.Data = vm.Data;
-
-                LoadData();
-            }
-
-
-        }
-
-        public bool CanExecute()
-        {
-            return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
-        }
-
-        #endregion Commands
+ 
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

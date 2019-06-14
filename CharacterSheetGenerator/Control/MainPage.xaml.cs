@@ -7,7 +7,6 @@ using System.Windows.Data;
 using System.Data;
 using System.Linq;
 using System.Collections.ObjectModel;
-using CharacterSheetGenerator.Traits.Model;
 using CharacterSheetGenerator.Model;
 using System.Windows.Input;
 

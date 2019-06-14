@@ -1,5 +1,5 @@
 ﻿using CharacterSheetGenerator.Helpers;
-using CharacterSheetGenerator.Traits.Model;
+using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

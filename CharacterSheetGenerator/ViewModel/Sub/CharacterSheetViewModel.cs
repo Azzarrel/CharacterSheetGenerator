@@ -1,4 +1,5 @@
 ﻿using CharacterSheetGenerator.CombatSheet.Model;
+using CharacterSheetGenerator.Control;
 using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
 using CharacterSheetGenerator.View;
@@ -35,9 +36,9 @@ namespace CharacterSheetGenerator
             set { Set(value); }
         }
 
-        public ObservableCollection<UserControl> Pages
+        public ObservableCollection<ControlModel> Pages
         {
-            get { return Get<ObservableCollection<UserControl>>(); }
+            get { return Get<ObservableCollection<ControlModel>>(); }
             set { Set(value); }
         }
 
@@ -52,9 +53,20 @@ namespace CharacterSheetGenerator
 
         public CharacterSheetViewModel()
         {
-            
-          
-            
+            Pages = new ObservableCollection<ControlModel>();
+            ControlModel contrl = new ControlModel
+            {
+                Control = new MainSheet(),
+            };    
+            Pages.Add(contrl);
+
+            contrl = new ControlModel
+            {
+                Control = new SkillSheet(),
+            };
+            Pages.Add(contrl);
+
+            CreateCommands();
         }
 
         #region Framework
@@ -166,7 +178,65 @@ namespace CharacterSheetGenerator
 
         #endregion Framework
 
- 
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Commands
+
+        //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
+        private void CreateCommands()
+        {
+            OpenTraitViewCommand = new RelayCommand<string>(OpenTraitViewMethod);
+
+        }
+
+        public ICommand OpenTraitViewCommand { get; private set; }
+
+
+        public void OpenTraitViewMethod(string Category)
+        {
+
+
+            int keycounter = 0;
+            TraitViewModel vm = new TraitViewModel();
+            vm.Modifiers = new ObservableCollection<TraitModifierModel>(Modifiers);
+            vm.BaseModifiers = BaseModifiers;
+            vm.Category = Category;
+            foreach (TraitCategoryModel category in Traits)
+            {
+                keycounter += category.Traits.Count();
+            }
+            vm.KeyCounter = keycounter;
+            vm.Traits = new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+
+
+            TraitWindow traitview = new TraitWindow();
+            traitview.DataContext = vm;
+            traitview.ShowDialog();
+            if (vm.IsSaved)
+            {
+                TraitCategoryModel catgory = Traits.Where(c => c.Name == vm.Category).FirstOrDefault();
+                //Die alten Traits einfach mit den neuen Überschreiben
+                catgory.Traits = vm.Traits;
+                catgory.TraitTexts = "";
+                foreach (TraitModel trait in vm.Traits)
+                {
+                    catgory.TraitTexts += " " + trait.Name + ",";
+                }
+                Modifiers = vm.Modifiers;
+                CalculateModifiers();
+            }
+
+
+        }
+
+
+
+        public bool CanExecute()
+        {
+            return true; //Hier könnte eine Abfrage, ob das Command ausgeführt werden darf, stehen
+        }
+
+        #endregion Commands
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

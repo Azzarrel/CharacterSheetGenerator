@@ -25,12 +25,12 @@ namespace CharacterSheetGenerator.Control
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class CombatPage : UserControl
+    public partial class CombatSheet : UserControl
     {
         private ObservableCollection<WeaponModel> m_Weapons = new ObservableCollection<WeaponModel>();
 
         public static readonly DependencyProperty WeaponProperty =
-            DependencyProperty.Register("Weapons", typeof(ObservableCollection<WeaponModel>), typeof(CombatPage),
+            DependencyProperty.Register("Weapons", typeof(ObservableCollection<WeaponModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<WeaponModel>(), OnWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -42,7 +42,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnWeaponPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("Weapons");
             UserControl.OnWeaponPropertyChanged(e);
         }
@@ -56,7 +56,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<WeaponSelectModel> m_SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
 
         public static readonly DependencyProperty SelectedWeaponProperty =
-            DependencyProperty.Register("SelectedWeapons", typeof(ObservableCollection<WeaponSelectModel>), typeof(CombatPage),
+            DependencyProperty.Register("SelectedWeapons", typeof(ObservableCollection<WeaponSelectModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<WeaponSelectModel>(), OnSelectedWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -68,7 +68,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnSelectedWeaponPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("SelectedWeapons");
             UserControl.OnSelectedWeaponPropertyChanged(e);
         }
@@ -82,7 +82,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<TraitCategoryModel> m_CombatTraits = new ObservableCollection<TraitCategoryModel>();
 
         public static readonly DependencyProperty TraitProperty =
-            DependencyProperty.Register("CombatTraits", typeof(ObservableCollection<TraitCategoryModel>), typeof(CombatPage),
+            DependencyProperty.Register("CombatTraits", typeof(ObservableCollection<TraitCategoryModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<TraitCategoryModel>(), OnTraitPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -94,7 +94,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnTraitPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("CombatTraits");
             UserControl.OnTraitPropertyChanged(e);
 
@@ -110,7 +110,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<MeleeWeaponModel> m_MeleeWeapons = new ObservableCollection<MeleeWeaponModel>();
 
         public static readonly DependencyProperty MeleeWeaponProperty =
-            DependencyProperty.Register("MeleeWeapons", typeof(ObservableCollection<MeleeWeaponModel>), typeof(CombatPage),
+            DependencyProperty.Register("MeleeWeapons", typeof(ObservableCollection<MeleeWeaponModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<MeleeWeaponModel>(), OnMeleeWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -122,7 +122,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnMeleeWeaponPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("MeleeWeapons");
             UserControl.OnMeleeWeaponPropertyChanged(e);
         }
@@ -136,7 +136,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<RangedWeaponModel> m_RangedWeapons = new ObservableCollection<RangedWeaponModel>();
 
         public static readonly DependencyProperty RangedWeaponProperty =
-            DependencyProperty.Register("RangedWeapons", typeof(ObservableCollection<RangedWeaponModel>), typeof(CombatPage),
+            DependencyProperty.Register("RangedWeapons", typeof(ObservableCollection<RangedWeaponModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<RangedWeaponModel>(), OnRangedWeaponPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -148,7 +148,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnRangedWeaponPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("RangedWeapons");
             UserControl.OnRangedWeaponPropertyChanged(e);
         }
@@ -162,7 +162,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<ArmorModel> m_Armor = new ObservableCollection<ArmorModel>();
 
         public static readonly DependencyProperty ArmorProperty =
-            DependencyProperty.Register("Armor", typeof(ObservableCollection<ArmorModel>), typeof(CombatPage),
+            DependencyProperty.Register("Armor", typeof(ObservableCollection<ArmorModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<ArmorModel>(), OnArmorPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -174,7 +174,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnArmorPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("Armor");
             UserControl.OnArmorPropertyChanged(e);
         }
@@ -188,7 +188,7 @@ namespace CharacterSheetGenerator.Control
         private ObservableCollection<OffHandModel> m_OffHands = new ObservableCollection<OffHandModel>();
 
         public static readonly DependencyProperty OffHandProperty =
-            DependencyProperty.Register("OffHands", typeof(ObservableCollection<OffHandModel>), typeof(CombatPage),
+            DependencyProperty.Register("OffHands", typeof(ObservableCollection<OffHandModel>), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new ObservableCollection<OffHandModel>(), OnOffHandPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -200,7 +200,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnOffHandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("OffHands");
             UserControl.OnOffHandPropertyChanged(e);
         }
@@ -214,7 +214,7 @@ namespace CharacterSheetGenerator.Control
         private SolidColorBrush m_CellColor = new SolidColorBrush();
 
         public static readonly DependencyProperty CellColorProperty =
-            DependencyProperty.Register("CellColor", typeof(SolidColorBrush), typeof(CombatPage),
+            DependencyProperty.Register("CellColor", typeof(SolidColorBrush), typeof(CombatSheet),
             new FrameworkPropertyMetadata(new SolidColorBrush(), OnCellColorPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -226,7 +226,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnCellColorPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("CellColor");
             UserControl.OnCellColorPropertyChanged(e);
         }
@@ -234,7 +234,7 @@ namespace CharacterSheetGenerator.Control
         private ICommand m_TraitClickCommand;
 
         public static readonly DependencyProperty TraitClickCommandProperty =
-            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CombatPage),
+            DependencyProperty.Register("TraitClickCommand", typeof(ICommand), typeof(CombatSheet),
             new FrameworkPropertyMetadata(null, OnTraitClickCommandPropertyChanged));
 
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -246,7 +246,7 @@ namespace CharacterSheetGenerator.Control
 
         private static void OnTraitClickCommandPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            CombatPage UserControl = obj as CombatPage;
+            CombatSheet UserControl = obj as CombatSheet;
             UserControl.OnPropertyChanged("TraitClickCommand");
             UserControl.OnTraitClickCommandPropertyChanged(e);
 
@@ -266,7 +266,7 @@ namespace CharacterSheetGenerator.Control
         }
 
 
-        public CombatPage()
+        public CombatSheet()
         {
             InitializeComponent();
             CellColor = new SolidColorBrush(ColorHandler.IntToColor(15329769));

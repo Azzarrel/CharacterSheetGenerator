@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CharacterSheetGenerator.Control.Base
+namespace CharacterSheetGenerator.Control
 {
     /// <summary>
-    /// Interaktionslogik für SkillPage.xaml
+    /// Interaktionslogik für SkillSheet.xaml
     /// </summary>
-    public partial class SkillPage : UserControl
+    public partial class SkillSheet : UserControl
     {
-        public SkillPage()
+        public SkillSheet()
         {
             InitializeComponent();
         }

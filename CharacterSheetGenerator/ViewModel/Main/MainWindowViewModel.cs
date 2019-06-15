@@ -41,6 +41,7 @@ namespace CharacterSheetGenerator.ViewModel
 
         public MainWindowViewModel()
         {
+            Characters = new ObservableCollection<TabModel>();
             InitializeStartUp();
             //Speicherpfad für die Charakterdaten prüfen und neuen Ordner anlegen, wenn noch keiner existiert
             if (!Directory.Exists(System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Saves"))
@@ -110,56 +111,15 @@ namespace CharacterSheetGenerator.ViewModel
         //Komplette Dummy-Implementierung der Commands, sodass man es einfach erweitern kann
         private void CreateCommands()
         {
-            OpenTraitViewCommand = new RelayCommand<string>(OpenTraitViewMethod);
             SaveCommand = new RelayCommand(SaveMethod, CanExecute);
             LoadCommand = new RelayCommand(LoadMethod, CanExecute);
 
         }
 
-        public ICommand OpenTraitViewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
 
 
-
-
-        public void OpenTraitViewMethod(string Category)
-        {
-            if (SelectedCharacter != null)
-            {
-
-                int keycounter = 0;
-                TraitViewModel vm = new TraitViewModel();
-                vm.Modifiers = new ObservableCollection<TraitModifierModel>(SelectedCharacter.Modifiers);
-                vm.BaseModifiers = SelectedCharacter.BaseModifiers;
-                vm.Category = Category;
-                foreach (TraitCategoryModel category in SelectedCharacter.Traits)
-                {
-                    keycounter += category.Traits.Count();
-                }
-                vm.KeyCounter = keycounter;
-                vm.Traits = new ObservableCollection<TraitModel>(SelectedCharacter.Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
-
-
-                TraitWindow traitview = new TraitWindow();
-                traitview.DataContext = vm;
-                traitview.ShowDialog();
-                if (vm.IsSaved)
-                {
-                    TraitCategoryModel catgory = SelectedCharacter.Traits.Where(c => c.Name == vm.Category).FirstOrDefault();
-                    //Die alten Traits einfach mit den neuen Überschreiben
-                    catgory.Traits = vm.Traits;
-                    catgory.TraitTexts = "";
-                    foreach (TraitModel trait in vm.Traits)
-                    {
-                        catgory.TraitTexts += " " + trait.Name + ",";
-                    }
-                    SelectedCharacter.Modifiers = vm.Modifiers;
-                    SelectedCharacter.CalculateModifiers();
-                }
-            }
-
-        }
 
         public void SaveMethod()
         {

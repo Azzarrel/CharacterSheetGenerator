@@ -3,6 +3,7 @@ using CharacterSheetGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 
@@ -15,13 +16,13 @@ namespace CharacterSheetGenerator
 
     {
 
-        public static ObservableCollection<T> ConvertToObservableCollection<T>(DataTable dt) where T : TemplateModel
+        public static ObservableCollection<T> ConvertToObservableCollection<T>(DataTable dt, PropertyChangedEventHandler eventHandler) where T : TemplateModel
         {
-            return new ObservableCollection<T>(ConvertToList<T>(dt));
-            
+            return new ObservableCollection<T>(ConvertToList<T>(dt, eventHandler));
+
         }
 
-        public static List<T> ConvertToList<T>(DataTable dt) where T : TemplateModel
+        public static List<T> ConvertToList<T>(DataTable dt, PropertyChangedEventHandler eventHandler) where T : TemplateModel
 
         {
             // gibt die Namen aller Columns eines DataTable zurück
@@ -71,7 +72,7 @@ namespace CharacterSheetGenerator
 
                 }
 
-
+                objT.PropertyChanged += eventHandler;
                 return objT;
 
             }).ToList();

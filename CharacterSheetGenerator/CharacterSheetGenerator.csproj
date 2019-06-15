@@ -60,11 +60,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Control\InventoryPage.xaml.cs">
-      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    <Compile Include="Control\InventorySheet.xaml.cs">
+      <DependentUpon>InventorySheet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\SkillPage.xaml.cs">
-      <DependentUpon>SkillPage.xaml</DependentUpon>
+    <Compile Include="Control\SkillSheet.xaml.cs">
+      <DependentUpon>SkillSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataTableListConverter.cs" />
     <Compile Include="Helpers\Attributes.cs" />
@@ -79,14 +79,14 @@
     <Compile Include="Model\InventorySheet\MoneyModel.cs" />
     <Compile Include="Model\ControlModel.cs" />
     <Compile Include="Model\Template\TemplateModel.cs" />
-    <Compile Include="Control\SpellPage.xaml.cs">
-      <DependentUpon>SpellPage.xaml</DependentUpon>
+    <Compile Include="Control\SpelSheet.xaml.cs">
+      <DependentUpon>SpelSheet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\CombatPage.xaml.cs">
-      <DependentUpon>CombatPage.xaml</DependentUpon>
+    <Compile Include="Control\CombatSheet.xaml.cs">
+      <DependentUpon>CombatSheet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Control\MainSheet.xaml.cs">
+      <DependentUpon>MainSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\InventorySheet\InventoryItemModel.cs" />
     <Compile Include="Model\SpellSheet\RitualModel.cs" />
@@ -103,11 +103,11 @@
     <Compile Include="Model\SaveDataModel.cs" />
     <Compile Include="Model\Traits\TraitModel.cs" />
     <Compile Include="Model\Traits\TraitCategoryModel.cs" />
-    <Compile Include="ViewModel\DialogueWindowViewModel.cs" />
-    <Compile Include="ViewModel\LoadWindowViewModel.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\SaveWindowViewModel.cs" />
-    <Compile Include="ViewModel\TraitViewModel.cs" />
+    <Compile Include="ViewModel\Additional\DialogueWindowViewModel.cs" />
+    <Compile Include="ViewModel\Additional\LoadWindowViewModel.cs" />
+    <Compile Include="ViewModel\Main\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Additional\SaveWindowViewModel.cs" />
+    <Compile Include="ViewModel\Additional\TraitViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\CharacterSheetView.xaml.cs">
       <DependentUpon>CharacterSheetView.xaml</DependentUpon>
@@ -121,23 +121,23 @@
     <Compile Include="View\TraitWindow.xaml.cs">
       <DependentUpon>TraitWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Control\InventoryPage.xaml">
+    <Page Include="Control\InventorySheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Control\SkillPage.xaml">
+    <Page Include="Control\SkillSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Control\SpellPage.xaml">
+    <Page Include="Control\SpelSheet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Control\CombatPage.xaml">
+    <Page Include="Control\CombatSheet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Control\MainPage.xaml">
+    <Page Include="Control\MainSheet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -190,7 +190,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModel\CharacterSheetViewModel.cs" />
+    <Compile Include="ViewModel\Sub\CharacterSheetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

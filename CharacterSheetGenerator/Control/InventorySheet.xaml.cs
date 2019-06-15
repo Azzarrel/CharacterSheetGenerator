@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CharacterSheetGenerator.Control.Base
 {
     /// <summary>
-    /// Interaktionslogik für InventoryPage.xaml
+    /// Interaktionslogik für InventorySheet.xaml
     /// </summary>
-    public partial class InventoryPage : UserControl
+    public partial class InventorySheet : UserControl
     {
-        public InventoryPage()
+        public InventorySheet()
         {
             InitializeComponent();
         }

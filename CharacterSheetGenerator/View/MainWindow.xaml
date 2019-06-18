@@ -47,7 +47,7 @@
       </Border>
       <Border Grid.Column="1" Background="#9e9e9e" BorderBrush="DarkGray" BorderThickness="0.1">
         <Grid>
-          <ScrollViewer HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+          <ScrollViewer HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <UserControl Content="{Binding PresentationElement}" HorizontalAlignment="Center">
               <UserControl.LayoutTransform>
                 <ScaleTransform CenterX="0" CenterY="0" ScaleX="{Binding ZoomFactor}" ScaleY="{Binding ZoomFactor}"/>

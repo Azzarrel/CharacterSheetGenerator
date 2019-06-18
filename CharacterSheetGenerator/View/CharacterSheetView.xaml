@@ -27,8 +27,12 @@
               <RowDefinition Height="*"/>
               <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <UserControl Content="{Binding Control}"/>
-            <TextBlock Grid.Row="1"></TextBlock>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="40"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <UserControl Grid.Column="1" Content="{Binding Control}"/>
           </Grid>
         </DataTemplate>
       </ItemsControl.ItemTemplate>

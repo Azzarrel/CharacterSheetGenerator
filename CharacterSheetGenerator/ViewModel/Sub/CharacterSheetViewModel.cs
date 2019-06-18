@@ -71,11 +71,12 @@ namespace CharacterSheetGenerator
 
       Pages.Add(new ControlModel
       {
-        Control = new InventorySheet()
+        Control = new CombatSheet()
       });
+
       Pages.Add(new ControlModel
       {
-        Control = new CombatSheet()
+        Control = new InventorySheet()
       });
 
       CreateCommands();

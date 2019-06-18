@@ -8,54 +8,58 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowState="Maximized"
         Title="MainWindow" d:DesignHeight="1440" d:DesignWidth="2560" Loaded="Window_Loaded">
-    <Grid Name="MainGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
-        </Border>
-        <Border Grid.Row="1" Background="#dadada" BorderBrush="DarkGray" BorderThickness="0.1">
-        </Border>
-        <Border Grid.Row="2" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <TextBlock Width="7"/>
-                <Button Name="button1" Command="{Binding LoadCommand}" Width="25" Height="25" Background="Transparent" BorderThickness="0">
-                    <Image Source="/images/LoadButtonPicture.png"/>
-                </Button>
-                <TextBlock Width="7"/>
-                <Button Name="button2" Command="{Binding SaveCommand}" Width="25" Height="25" Background="Transparent" BorderThickness="0">
-                    <Image Source="/images/SaveButtonpicture.png" />
-                </Button>
-                <TextBlock Width="7"/>
-                <Button Name="button3" Click="Button3_Click" Width="25" Height="25" Background="Transparent" BorderThickness="0">
-                    <Image Source="/images/PrintButtonPicture.png"/>
-                </Button>
-            </StackPanel>
-        </Border>
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+  <Grid Name="MainGrid">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
+    </Border>
+    <Border Grid.Row="1" Background="#dadada" BorderBrush="DarkGray" BorderThickness="0.1">
+    </Border>
+    <Border Grid.Row="2" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <TextBlock Width="7"/>
+        <Button Name="button1" Command="{Binding LoadCommand}" Width="25" Height="25" Background="Transparent" BorderThickness="0">
+          <Image Source="/images/LoadButtonPicture.png"/>
+        </Button>
+        <TextBlock Width="7"/>
+        <Button Name="button2" Command="{Binding SaveCommand}" Width="25" Height="25" Background="Transparent" BorderThickness="0">
+          <Image Source="/images/SaveButtonpicture.png" />
+        </Button>
+        <TextBlock Width="7"/>
+        <Button Name="button3" Click="Button3_Click" Width="25" Height="25" Background="Transparent" BorderThickness="0">
+          <Image Source="/images/PrintButtonPicture.png"/>
+        </Button>
+      </StackPanel>
+    </Border>
+    <Grid Grid.Row="3">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="8*"/>
+        <ColumnDefinition Width="2*"/>
+      </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
-                <Grid></Grid>
-            </Border>
-            <Border Grid.Column="1" Background="#9e9e9e" BorderBrush="DarkGray" BorderThickness="0.1">
-                <Grid>
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-                        <UserControl Content="{Binding PresentationElement}" HorizontalAlignment="Center"/>
-                    </ScrollViewer>
-                </Grid>
-            </Border>
-            <Border Grid.Column="2" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
-                <Grid></Grid>
-            </Border>
-
+      <Border Grid.Column="0" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
+        <Grid></Grid>
+      </Border>
+      <Border Grid.Column="1" Background="#9e9e9e" BorderBrush="DarkGray" BorderThickness="0.1">
+        <Grid>
+          <ScrollViewer HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+            <UserControl Content="{Binding PresentationElement}" HorizontalAlignment="Center">
+              <UserControl.LayoutTransform>
+                <ScaleTransform CenterX="0" CenterY="0" ScaleX="{Binding ZoomFactor}" ScaleY="{Binding ZoomFactor}"/>
+              </UserControl.LayoutTransform>
+            </UserControl>
+          </ScrollViewer>
         </Grid>
+      </Border>
+      <Border Grid.Column="2" Background="#e9e9e9" BorderBrush="DarkGray" BorderThickness="0.1">
+        <Grid></Grid>
+      </Border>
+
     </Grid>
+  </Grid>
 </Window>

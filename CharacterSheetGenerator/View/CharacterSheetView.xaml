@@ -8,27 +8,32 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="8000" d:DesignWidth="1320">
-    <Grid>
-        <ItemsControl ItemsSource="{Binding Pages, Mode=TwoWay}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel HorizontalAlignment="Center"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <UserControl Content="{Binding Control}"/>
-                        <TextBlock Grid.Row="1" Height="40"></TextBlock>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <TextBlock></TextBlock>
+    <ItemsControl Grid.Row="1" ItemsSource="{Binding Pages, Mode=TwoWay}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel HorizontalAlignment="Center"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <UserControl Content="{Binding Control}"/>
+            <TextBlock Grid.Row="1"></TextBlock>
+          </Grid>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
 
-    </Grid>
-  </UserControl>
+  </Grid>
+</UserControl>
 

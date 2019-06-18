@@ -6,7 +6,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:help="clr-namespace:CharacterSheetGenerator.Helpers" 
-        mc:Ignorable="d" Height="1600" Width="1350">
+        mc:Ignorable="d" Height="1600" Width="1350" Background="White">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace CharacterSheetGenerator.CombatSheet.Model
+namespace CharacterSheetGenerator.Model.CombatSheet
 {
     public class WeaponSelectModel : TemplateModel
     {

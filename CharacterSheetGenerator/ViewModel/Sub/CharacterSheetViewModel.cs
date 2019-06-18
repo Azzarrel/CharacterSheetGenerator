@@ -1,7 +1,7 @@
-﻿using CharacterSheetGenerator.CombatSheet.Model;
-using CharacterSheetGenerator.Control;
+﻿using CharacterSheetGenerator.Control;
 using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
+using CharacterSheetGenerator.Model.CombatSheet;
 using CharacterSheetGenerator.View;
 using CharacterSheetGenerator.ViewModel;
 using System;
@@ -54,19 +54,31 @@ namespace CharacterSheetGenerator
         public CharacterSheetViewModel()
         {
             Pages = new ObservableCollection<ControlModel>();
-            ControlModel contrl = new ControlModel
-            {
-                Control = new MainSheet(),
-            };    
-            Pages.Add(contrl);
+      Pages.Add(new ControlModel
+      {
+        Control = new MainSheet()
+      });
 
-            contrl = new ControlModel
-            {
-                Control = new SkillSheet(),
-            };
-            Pages.Add(contrl);
+      Pages.Add(new ControlModel
+      {
+        Control = new SkillSheet()
+      });
 
-            CreateCommands();
+      Pages.Add(new ControlModel
+      {
+        Control = new SpellSheet()
+      });
+
+      Pages.Add(new ControlModel
+      {
+        Control = new InventorySheet()
+      });
+      Pages.Add(new ControlModel
+      {
+        Control = new CombatSheet()
+      });
+
+      CreateCommands();
         }
 
         #region Framework

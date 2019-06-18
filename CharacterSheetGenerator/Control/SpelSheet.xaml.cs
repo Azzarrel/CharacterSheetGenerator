@@ -1,6 +1,6 @@
-﻿using CharacterSheetGenerator.CombatSheet.Model;
-using CharacterSheetGenerator.Helpers;
+﻿using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
+using CharacterSheetGenerator.Model.CombatSheet;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

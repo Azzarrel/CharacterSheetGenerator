@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <Grid Name="MainGrid">
         <Grid.Resources>
-            <CollectionViewSource x:Key="Weapons" Source="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Weapons, Mode=TwoWay}"  />
+            <CollectionViewSource x:Key="Weapons" Source="{Binding Weapons, Mode=TwoWay}"  />
         </Grid.Resources>
         <Grid Name="Kampf">
             <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
                     </StackPanel>
                     <StackPanel>
                         <Viewbox Width="900">
-                            <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=AttributeList, Mode=TwoWay}">
+                            <ItemsControl ItemsSource="{Binding Attributes, Mode=TwoWay}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <DockPanel HorizontalAlignment="Center"/>
@@ -81,7 +81,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Viewbox>
-                        <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SpecialAttributes, Mode=TwoWay}">
+                        <ItemsControl ItemsSource="{Binding SpecialAttributes, Mode=TwoWay}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <DockPanel HorizontalAlignment="Center"/>
@@ -145,7 +145,7 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel>
                                 <Label FontSize="26" FontWeight="Bold">Kampftechniken</Label>
-                                <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                                <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding SelectedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                                     <DataGrid.Columns>
                                         <!--<DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Name"/>-->
@@ -164,7 +164,7 @@
 
                                 </DataGrid>
                             </StackPanel>
-                            <ItemsControl Grid.Column="2" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CombatTraits, Mode=TwoWay}">
+                            <ItemsControl Grid.Column="2" ItemsSource="{Binding CombatTraits, Mode=TwoWay}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel HorizontalAlignment="Center"/>
@@ -176,7 +176,7 @@
                                             <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
                                             </Label>
                                             <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=TraitClickCommand, Mode=TwoWay}"
+                                        Command="{Binding TraitClickCommand, Mode=TwoWay}"
                                         CommandParameter="{Binding Name}">
                                                 <TextBlock Height="200" Width="700" Text="{Binding TraitTexts}" TextWrapping="Wrap">
 
@@ -189,7 +189,7 @@
                         </Grid>
                         <StackPanel Grid.Row="1">
                             <Label FontSize="26" FontWeight="Bold">Nahkampfwaffen</Label>
-                            <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=MeleeWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                            <DataGrid ItemsSource="{Binding MeleeWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                           RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn     Header=" Name" Binding="{Binding Name, Mode=TwoWay}"                                                                                                    HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
@@ -213,7 +213,7 @@
                         </StackPanel>
                         <StackPanel Grid.Row="2">
                             <Label FontSize="26" FontWeight="Bold">Fernkampfwaffen</Label>
-                            <DataGrid Grid.Row="2" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=RangedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                            <DataGrid Grid.Row="2" ItemsSource="{Binding RangedWeapons, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                           RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn     Header=" Name" Binding="{Binding Name, Mode=TwoWay}"                                                                                                                               HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
@@ -245,7 +245,7 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <Label FontSize="26" FontWeight="Bold">Rüstungen</Label>
-                                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Armor, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                                <DataGrid ItemsSource="{Binding Armor, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn  Header=" Rüstung"  Binding="{Binding Name,      Mode=TwoWay}"                                                HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>
@@ -264,7 +264,7 @@
                             </StackPanel>
                             <StackPanel Grid.Column="2">
                                 <Label FontSize="26" FontWeight="Bold">Schilde/Parierwaffen</Label>
-                                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=OffHands, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                                <DataGrid ItemsSource="{Binding OffHands, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header=" Name" Binding="{Binding Name}"         HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>

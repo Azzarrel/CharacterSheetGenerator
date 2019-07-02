@@ -12,118 +12,183 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Name="Übersicht">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="55*"/>
-            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="70*"/>
-            </Grid.RowDefinitions>
-            <ItemsControl Grid.Row="0" ItemsSource="{Binding CharacterInformation, Mode=TwoWay}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Height="40">
-                            <TextBlock Height="38" Width="{Binding FirstElementWidth}" Text="{Binding FirstElement}" FontSize="16" FontWeight="Bold"/>
-                            <TextBox Height="38" Width="{Binding FirstValueWidth}" Text="{Binding FirstValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
-                            <TextBlock Width="5"/>
-                            <TextBlock Height="38" Width="{Binding SecondElementWidth}" Text="{Binding SecondElement}" FontSize="16" FontWeight="Bold"/>
-                            <TextBox Height="38" Width="{Binding SecondValueWidth}" Text="{Binding SecondValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
-                            <TextBlock Width="5"/>
-                            <TextBlock Height="38" Width="{Binding ThirdElementWidth}" Text="{Binding ThirdElement}" FontSize="16" FontWeight="Bold"/>
-                            <TextBox Height="38" Width="{Binding ThirdValueWidth}" Text="{Binding ThirdValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Traits, Mode=TwoWay}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
-                            </Label>
-                            <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White"
-                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=TraitClickCommand, Mode=TwoWay}"
-                                    CommandParameter="{Binding Name}">
-                                <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap">
-
-                                </TextBlock>
-                            </Button>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-
-        </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="70*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="1345"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="55"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                <TextBlock FontSize="14" FontWeight="Bold" Text="Portrait" VerticalAlignment="Center" Width="250" TextAlignment="Center" HorizontalAlignment="Right"/>
-                <Button BorderBrush="Black" BorderThickness="2" Width="220" Height="300" Background="White" HorizontalAlignment="Right">
-                    <Image></Image>
-                </Button>
-                <TextBlock Height="40"/>
-                    <StackPanel Orientation="Horizontal" Height="50" HorizontalAlignment="Right">
-                        <TextBlock Width="110"/>
-                        <TextBlock FontSize="14" FontWeight="Bold" Text="    Erfahrung:       "  TextAlignment="Center" VerticalAlignment="Center" />
-                        <Border Height="50" Width="160" BorderBrush="Black" BorderThickness="1">
-                            <TextBlock FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Expierience}"/>
-                        </Border>
-                    </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <StackPanel>
+                    <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
+                    <TextBlock FontSize="20" Text="Übersicht" TextAlignment="Center"/>
                 </StackPanel>
-            </Grid>
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=StatusValues, Mode=TwoWay}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Height="107">
-                            <StackPanel Orientation="Horizontal" >
-                                <Label FontSize="16" Content="{Binding Name}" Width="200" FontWeight="Bold" />
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox Width="50" Height="50" Text="{Binding Standard, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                        <Label Width="15"/>
-                                        <TextBox Width="50" Height="50"  Text="{Binding Modifiers, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                        <Label Width="15"/>
-                                        <TextBox Width="50" Height="50" Text="{Binding Bonus, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                        <Label Width="15"/>
-                                        <TextBox Width="50" Height="50" Text="{Binding Value, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                    </StackPanel>
-                                    <Label Height="12"/>
-                                    <TextBox Width="50" Height="25" Text="{Binding Base, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="Black"/>
+                <ItemsControl ItemsSource="{Binding Attributes, Mode=TwoWay}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <DockPanel HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="DockPanel.Dock" Value="Left"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="12"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="12"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="80"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="1">
+                                        <Border BorderThickness="3" BorderBrush="{Binding Color}">
+                                            <Border BorderBrush="Black" BorderThickness="1">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="20"/>
+                                                        <RowDefinition Height="60"/>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Width="80" Height="20" Grid.Row="0" Text="{Binding Tag,  Mode=TwoWay}" TextAlignment="Left" Margin="8,2,0,0" FontWeight="Bold"/>
+                                                    <TextBox Width="80" Height="60" Grid.Row="1" Text="{Binding Value, Mode=TwoWay}" TextAlignment="Center" FontSize="30" FontWeight="DemiBold"/>
+                                                </Grid>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55*"/>
+                    <ColumnDefinition Width="45*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="70*"/>
+                    </Grid.RowDefinitions>
+                    <ItemsControl Grid.Row="0" ItemsSource="{Binding CharacterInformation, Mode=TwoWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="40">
+                                    <TextBlock Height="38" Width="{Binding FirstElementWidth}" Text="{Binding FirstElement}" FontSize="16" FontWeight="Bold"/>
+                                    <TextBox Height="38" Width="{Binding FirstValueWidth}" Text="{Binding FirstValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
+                                    <TextBlock Width="5"/>
+                                    <TextBlock Height="38" Width="{Binding SecondElementWidth}" Text="{Binding SecondElement}" FontSize="16" FontWeight="Bold"/>
+                                    <TextBox Height="38" Width="{Binding SecondValueWidth}" Text="{Binding SecondValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
+                                    <TextBlock Width="5"/>
+                                    <TextBlock Height="38" Width="{Binding ThirdElementWidth}" Text="{Binding ThirdElement}" FontSize="16" FontWeight="Bold"/>
+                                    <TextBox Height="38" Width="{Binding ThirdValueWidth}" Text="{Binding ThirdValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
                                 </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Traits, Mode=TwoWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
+                                    </Label>
+                                    <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White"
+                                    Command="{Binding TraitClickCommand, Mode=TwoWay}"
+                                    CommandParameter="{Binding Name}">
+                                        <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap">
+
+                                        </TextBlock>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="70*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="55"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock FontSize="14" FontWeight="Bold" Text="Portrait" VerticalAlignment="Center" Width="250" TextAlignment="Center" HorizontalAlignment="Right"/>
+                            <Button BorderBrush="Black" BorderThickness="2" Width="220" Height="300" Background="White" HorizontalAlignment="Right">
+                                <Image></Image>
+                            </Button>
+                            <TextBlock Height="40"/>
+                            <StackPanel Orientation="Horizontal" Height="50" HorizontalAlignment="Right">
+                                <TextBlock Width="110"/>
+                                <TextBlock FontSize="14" FontWeight="Bold" Text="    Erfahrung:       "  TextAlignment="Center" VerticalAlignment="Center" />
+                                <Border Height="50" Width="160" BorderBrush="Black" BorderThickness="1">
+                                    <TextBlock FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Expierience}"/>
+                                </Border>
                             </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                        </StackPanel>
+                    </Grid>
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding StatusValues, Mode=TwoWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="107">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Label FontSize="16" Content="{Binding Name}" Width="200" FontWeight="Bold" />
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBox Width="50" Height="50" Text="{Binding Standard, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                <Label Width="15"/>
+                                                <TextBox Width="50" Height="50"  Text="{Binding Modifiers, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                <Label Width="15"/>
+                                                <TextBox Width="50" Height="50" Text="{Binding Bonus, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="0.5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                                <Label Width="15"/>
+                                                <TextBox Width="50" Height="50" Text="{Binding Value, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                                            </StackPanel>
+                                            <Label Height="12"/>
+                                            <TextBox Width="50" Height="25" Text="{Binding Base, Mode=TwoWay}" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="Black"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
-
 
 
 </UserControl>

@@ -64,7 +64,7 @@
                         <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
                         <TextBlock FontSize="20" Text="Spielwerte" TextAlignment="Center"/>
                     </StackPanel>
-                    <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=AttributeList, Mode=TwoWay}">
+                    <ItemsControl ItemsSource="{Binding Attributes, Mode=TwoWay}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <DockPanel HorizontalAlignment="Center"/>
@@ -121,7 +121,7 @@
                             <ColumnDefinition Width="2"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <DataGrid Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
+                        <DataGrid Grid.Column="0" ItemsSource="{Binding Path=SkillsLeft, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                             <DataGrid.GroupStyle>
                                 <GroupStyle>
@@ -132,9 +132,9 @@
                                                 <StackPanel Orientation="Horizontal" Height="25">
                                                     <TextBlock Width="5"/>
                                                     <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
-                                                    <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                    <TextBlock Width="70" Background="{Binding CellColor}"/>
                                                     <TextBlock Width="40"/>
-                                                    <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                    <TextBlock Width="40" Background="{Binding CellColor}"/>
                                                 </StackPanel>
                                             </Border>
 
@@ -151,7 +151,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <Grid Grid.Column="1" Background="DarkGray"/>
-                        <DataGrid Grid.Column="3" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
+                        <DataGrid Grid.Column="3" ItemsSource="{Binding Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                             <DataGrid.GroupStyle>
                                 <GroupStyle>
@@ -162,9 +162,9 @@
                                                 <StackPanel Orientation="Horizontal" Height="25">
                                                     <TextBlock Width="5"/>
                                                     <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
-                                                    <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                    <TextBlock Width="70" Background="{Binding CellColor}"/>
                                                     <TextBlock Width="40"/>
-                                                    <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor}"/>
+                                                    <TextBlock Width="40" Background="{Binding CellColor}"/>
                                                 </StackPanel>
                                             </Border>
 
@@ -187,13 +187,13 @@
                             <ColumnDefinition Width="1"/>
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
-                        <DataGrid Width="300" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Language, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                        <DataGrid Width="300" Grid.Column="0" ItemsSource="{Binding Language, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" VerticalAlignment="Center" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Sprachen" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid Width="300" Grid.Column="2" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Writing, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                        <DataGrid Width="300" Grid.Column="2" ItemsSource="{Binding Writing, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" VerticalAlignment="Center" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Schriten" HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>

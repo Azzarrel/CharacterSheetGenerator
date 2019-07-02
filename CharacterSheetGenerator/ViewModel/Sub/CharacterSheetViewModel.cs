@@ -54,32 +54,32 @@ namespace CharacterSheetGenerator
         public CharacterSheetViewModel()
         {
             Pages = new ObservableCollection<ControlModel>();
-      Pages.Add(new ControlModel
-      {
-        Control = new MainSheet()
-      });
+            Pages.Add(new ControlModel
+            {
+                Control = new MainSheet { DataContext = this }
+            });
 
-      Pages.Add(new ControlModel
-      {
-        Control = new SkillSheet()
-      });
+            Pages.Add(new ControlModel
+            {
+                Control = new SkillSheet { DataContext = this }
+            });
 
-      Pages.Add(new ControlModel
-      {
-        Control = new SpellSheet()
-      });
+            Pages.Add(new ControlModel
+            {
+                Control = new CombatSheet { DataContext = this }
+            });
 
-      Pages.Add(new ControlModel
-      {
-        Control = new CombatSheet()
-      });
+            Pages.Add(new ControlModel
+            {
+                Control = new SpellSheet { DataContext = this }
+            });
 
-      Pages.Add(new ControlModel
-      {
-        Control = new InventorySheet()
-      });
+            Pages.Add(new ControlModel
+            {
+                Control = new InventorySheet { DataContext = this }
+            });
 
-      CreateCommands();
+            CreateCommands();
         }
 
         #region Framework
@@ -409,7 +409,7 @@ namespace CharacterSheetGenerator
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
-        #region Attributea
+        #region Attributes
 
         #region Properties
 
@@ -537,7 +537,7 @@ namespace CharacterSheetGenerator
 
         #endregion Events
 
-        #endregion Attributea
+        #endregion Attributes
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

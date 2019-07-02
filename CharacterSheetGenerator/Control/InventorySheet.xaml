@@ -37,7 +37,7 @@
                     <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
                     <TextBlock FontSize="20" Text="Inventar" TextAlignment="Center"/>
                 </StackPanel>
-                <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=AttributeList, Mode=TwoWay}">
+                <ItemsControl ItemsSource="{Binding Attributes, Mode=TwoWay}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <DockPanel HorizontalAlignment="Center"/>
@@ -99,7 +99,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                   HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>
@@ -114,7 +114,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="Gesamt:"/>
                             </Grid>
                             <Grid Width="100"/>
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Total, Mode=TwoWay}"/>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="{Binding Total, Mode=TwoWay}"/>
                         </StackPanel>
 
                     </Grid>
@@ -124,7 +124,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                   HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>
@@ -139,7 +139,7 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="Gesamt:"/>
                             </Grid>
                             <Grid Width="100"/>
-                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Total, Mode=TwoWay}"/>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14" FontWeight="Bold" Text="{Binding Total, Mode=TwoWay}"/>
                         </StackPanel>
 
                     </Grid>
@@ -147,29 +147,29 @@
                         <StackPanel>
                             <TextBlock Height="35"/>
                             <TextBlock HorizontalAlignment="Left" Text="Dukaten" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Gold, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
+                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Money.Gold, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
                             <TextBlock Height="15"/>
                             <TextBlock HorizontalAlignment="Left" Text="Silber" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Silver, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
+                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Money.Silver, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
                             <TextBlock Height="15"/>
                             <TextBlock HorizontalAlignment="Left" Text="Heller" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Copper, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
+                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Money.Copper, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
                             <TextBlock Height="15"/>
                             <TextBlock HorizontalAlignment="Left" Text="Pfennig" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Iron, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
+                            <TextBox Height="50" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding Money.Iron, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
                             <TextBlock Height="15"/>
                             <TextBlock HorizontalAlignment="Left" Text="Edelsteine" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="100" BorderBrush="Black" BorderThickness="2"  HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Gems, Mode=TwoWay}" FontSize="14"  />
+                            <TextBox Height="100" BorderBrush="Black" BorderThickness="2"  HorizontalContentAlignment="Center" Text="{Binding Money.Gems, Mode=TwoWay}" FontSize="14"  />
                             <TextBlock Height="15"/>
                             <TextBlock HorizontalAlignment="Left" Text="Artefakte" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="100" BorderBrush="Black" BorderThickness="2" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Artifacts, Mode=TwoWay}" FontSize="14" />
+                            <TextBox Height="100" BorderBrush="Black" BorderThickness="2" HorizontalContentAlignment="Center" Text="{Binding Money.Artifacts, Mode=TwoWay}" FontSize="14" />
                             <TextBlock Height="15"/>
                             <TextBlock HorizontalAlignment="Left" Text="Sonstiges" FontSize="14" FontWeight="SemiBold"/>
-                            <TextBox Height="100" BorderBrush="Black" BorderThickness="2"  HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=Money.Rest, Mode=TwoWay}" FontSize="14" />
+                            <TextBox Height="100" BorderBrush="Black" BorderThickness="2"  HorizontalContentAlignment="Center" Text="{Binding Money.Rest, Mode=TwoWay}" FontSize="14" />
                             <TextBlock Height="52"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock HorizontalAlignment="Left" Text="       Tragkraft:           " FontSize="14" FontWeight="SemiBold"/>
-                                <TextBox Width="70" Height="30" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CarryWeight, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
+                                <TextBox Width="70" Height="30" BorderBrush="Black" BorderThickness="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding CarryWeight, Mode=TwoWay}" FontSize="14" FontWeight="Bold"/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>

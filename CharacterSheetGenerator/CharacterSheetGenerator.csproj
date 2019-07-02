@@ -79,8 +79,8 @@
     <Compile Include="Model\InventorySheet\MoneyModel.cs" />
     <Compile Include="Model\ControlModel.cs" />
     <Compile Include="Model\Template\TemplateModel.cs" />
-    <Compile Include="Control\SpelSheet.xaml.cs">
-      <DependentUpon>SpelSheet.xaml</DependentUpon>
+    <Compile Include="Control\SpellSheet.xaml.cs">
+      <DependentUpon>SpellSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\CombatSheet.xaml.cs">
       <DependentUpon>CombatSheet.xaml</DependentUpon>
@@ -129,7 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Control\SpelSheet.xaml">
+    <Page Include="Control\SpellSheet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

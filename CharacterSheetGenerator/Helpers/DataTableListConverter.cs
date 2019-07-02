@@ -8,7 +8,7 @@ using System.Data;
 using System.Linq;
 
 
-namespace CharacterSheetGenerator
+namespace CharacterSheetGenerator.Helpers
 {
    
 

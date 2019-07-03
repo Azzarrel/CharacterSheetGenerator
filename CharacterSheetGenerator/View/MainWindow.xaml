@@ -30,7 +30,7 @@
           <Image Source="/images/SaveButtonpicture.png" />
         </Button>
         <TextBlock Width="7"/>
-        <Button Name="button3" Click="Button3_Click" Width="25" Height="25" Background="Transparent" BorderThickness="0">
+                <Button Name="button3" Command="{Binding PrintCommand}" Width="25" Height="25" Background="Transparent" BorderThickness="0">
           <Image Source="/images/PrintButtonPicture.png"/>
         </Button>
       </StackPanel>

@@ -14,7 +14,7 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
     <TextBlock></TextBlock>
-    <ItemsControl Grid.Row="1" ItemsSource="{Binding Pages, Mode=TwoWay}">
+    <ItemsControl x:Name="Pages" Grid.Row="1" ItemsSource="{Binding Pages, Mode=TwoWay}">
       <ItemsControl.ItemsPanel>
         <ItemsPanelTemplate>
           <StackPanel HorizontalAlignment="Center"/>

@@ -1,5 +1,6 @@
 ﻿using CharacterSheetGenerator.Helpers;
 using CharacterSheetGenerator.Model;
+using CharacterSheetGenerator.Model.CombatSheet;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,14 +16,21 @@ namespace CharacterSheetGenerator.Helpers
     public static class DataTableListConverter
 
     {
-
-        public static ObservableCollection<T> ConvertToObservableCollection<T>(DataTable dt, PropertyChangedEventHandler eventHandler) where T : TemplateModel
+        /// <summary>
+        /// Wandelt mithilfe von Attributen dynmaisch DataTables zu Listen um
+        /// </summary>
+        /// <typeparam name="T">Ein Model basierend auf dem TemplateModel</typeparam>
+        /// <param name="dt">Umzuwandelnde Datenbank</param>
+        /// <param name="eventHandler">Subsriben eines eigenen PropertyChanged-Event aus dem ViewModel</param>
+        /// <param name="reference">Liste, die für die Umwandlung von Verweisen zu Models benötigt wird</param>
+        /// <returns></returns>
+        public static ObservableCollection<T> ConvertToObservableCollection<T>(DataTable dt, PropertyChangedEventHandler eventHandler = null, ObservableCollection<T> reference = null) where T : TemplateModel
         {
-            return new ObservableCollection<T>(ConvertToList<T>(dt, eventHandler));
+            return new ObservableCollection<T>(ConvertToList<T>(dt, eventHandler, reference.ToList()));
 
         }
 
-        public static List<T> ConvertToList<T>(DataTable dt, PropertyChangedEventHandler eventHandler) where T : TemplateModel
+        public static List<T> ConvertToList<T>(DataTable dt, PropertyChangedEventHandler eventHandler, List<T> reference) where T : TemplateModel
 
         {
             // gibt die Namen aller Columns eines DataTable zurück
@@ -55,8 +63,24 @@ namespace CharacterSheetGenerator.Helpers
                                 try
 
                                 {
-                                    //ToDo: Switch case, um die einzelnen Datentypen entsprechend umzuwandeln?
-                                    property.SetValue(objT, row[((ColumnNameAttribute)attribute).Name]);
+                                    //ToDO: Erweitern und testen
+                                    if (property.GetType() == typeof(WeaponSelectModel))
+                                    {
+                                        //SelectedWeapons erhalten nur einen Verweis auf die Waffen über den Namen, der wieder in ein Model umgewandelt werden muss
+                                        List<WeaponModel> weapons = reference as List<WeaponModel>;
+                                        property.SetValue(objT, weapons.Where(w => w.Name == row[((ColumnNameAttribute)attribute).Name].ToString()));
+
+                                    }
+                                    //else if ()
+                                    //{
+
+                                    //}
+                                    else
+                                    {
+                                        //Wenn keiner der Sonderfälle zutrifft, ist es wohl ein Typ, der ohne Probleme auch so umgewandelt werden kann
+                                        //ToDo: Testen, ob das mit double?s auch richtig klappt
+                                        property.SetValue(objT, row[((ColumnNameAttribute)attribute).Name]);
+                                    }
 
                                 }
 

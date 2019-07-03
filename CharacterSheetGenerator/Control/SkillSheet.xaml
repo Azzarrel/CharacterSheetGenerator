@@ -151,7 +151,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <Grid Grid.Column="1" Background="DarkGray"/>
-                        <DataGrid Grid.Column="3" ItemsSource="{Binding Skills, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
+                        <DataGrid Grid.Column="3" ItemsSource="{Binding SkillsRight, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                             <DataGrid.GroupStyle>
                                 <GroupStyle>

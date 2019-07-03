@@ -19,7 +19,7 @@
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </Style>
             <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleComment" BasedOn="{StaticResource DefaultHeaderStyle}">
-                <Setter Property="Width" Value="240" />
+                <Setter Property="Width" Value="210" />
             </Style>
 
             <!-- Category -->
@@ -33,7 +33,7 @@
             <Style TargetType="DataGridCell" x:Key="CommentGridCellStyle">
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="FontWeight" Value="UltraLight" />
-                <Setter Property="Width" Value="240" />
+                <Setter Property="Width" Value="239" />
             </Style>
             <Style TargetType="DataGridRowHeader" x:Key="InvisibleRowHeader">
                 <Setter Property="Background" Value="White" />
@@ -146,6 +146,7 @@
                                 <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"           CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
                                 <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"     CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
                                 <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                <DataGridTextColumn  Header="M."               Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
                                 <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"    IsReadOnly="True" />
                                 <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
                             </DataGrid.Columns>
@@ -176,6 +177,7 @@
                                 <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"           CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
                                 <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"     CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
                                 <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                <DataGridTextColumn  Header="M."               Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
                                 <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"    IsReadOnly="True" />
                                 <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
                             </DataGrid.Columns>

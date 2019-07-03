@@ -46,7 +46,7 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        public double? Value
+        public double? Bonus
         {
             get { return Get<double?>(); }
             set
@@ -55,6 +55,19 @@ namespace CharacterSheetGenerator.Model
                 SetRoutine(value);
             }
         }
+
+        public double? Value
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        public string Mean
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
 
         [ColumnName("Difficulty")]
         public string Difficulty
@@ -93,15 +106,21 @@ namespace CharacterSheetGenerator.Model
         public void SetRoutine(double? value)
         {
             Routine = "";
-            if (value > 6)
+            if (value >= 5)
+                Routine = "e";
+
+            if (value >= 8)
                 Routine = "r";
 
-            if (value > 10)
+            if (value >= 12)
                 Routine = "g";
 
-            if (value > 14)
+            if (value >= 17)
                 Routine = "m";
-            
+
+            if (value >= 23)
+                Routine = "l";
+
         }
     }
 

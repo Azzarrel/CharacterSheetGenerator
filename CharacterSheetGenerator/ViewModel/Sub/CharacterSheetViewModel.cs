@@ -429,6 +429,7 @@ namespace CharacterSheetGenerator
 
         #region Loading
 
+        //ToDo: Direkt nach dem Laden die Value berechnen? bzw umbauen, dass Skills ausgewertetet werden, wenn sich bei den attributes die value ändert
         private void LoadAttributes()
         {
             Attributes = new ObservableCollection<AttributeModel>();
@@ -533,6 +534,29 @@ namespace CharacterSheetGenerator
             }
             //Exp neu Berechnen
             CalcExpAttributes();
+
+            //ToDo: SkillsRight nicht vergessen
+            foreach(SkillModel skl in SkillsLeft)
+            {
+                double v = 0;
+                double? base_value = null;
+                string mean = "";
+                if (skl.Name != "")
+                {
+                    foreach (string s in skl.Requirement.Split('/'))
+                    {
+                        //ToDo: Value wird erst berechnet, wenn die Modifier erstellt wurden, evtl kann man da noch was verbessern
+                        if (Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Value != 0)
+                        {
+                            v += Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Value;
+                        }
+                    }
+                }
+                base_value = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : base_value;
+                mean = base_value != null ? "(" + base_value * 2 + ")" : "";
+                skl.Base = base_value;
+                skl.Mean = mean;
+            }
         }
 
         #endregion Events
@@ -817,11 +841,27 @@ namespace CharacterSheetGenerator
             List<SkillModel> l_skills = new List<SkillModel>();
             foreach (DataRow row in Data.Tables["Skills"].Rows)
             {
+                //ToDo: Kann hier evtl entfernt werden, weil das eh alles nochmal gemacht werden sollte, sobald die Attribute ihre value kriegen
+                double v = 0;
+                double? base_value = null;
+                string mean = "";
+                if (row["Name"].ToString() != "")
+                {
+                    foreach (string s in row["Requirement"].ToString().Split('/'))
+                    {
+                        //Später wieder von Base auf Value stellen
+                        v += Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Base;
+                    }
+                    base_value = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : base_value;
+                    mean = base_value != null ? "(" + base_value*2 + ")" : "";
+                }
                 SkillModel skill = new SkillModel
                 {
                     Name = row["Name"].ToString(),
                     Requirement = row["Requirement"].ToString(),
-                    Base = Parser.ToNullable<double>(row["Value"].ToString()),
+                    Base = base_value,
+                    Mean = mean,
+                    Value = base_value + Parser.ToNullable<double>(row["Value"].ToString()),
                     Difficulty = row["Difficulty"].ToString(),
                     Comment = row["Comment"].ToString(),
                     Category = row["Category"].ToString(),
@@ -883,10 +923,13 @@ namespace CharacterSheetGenerator
             switch (e.PropertyName)
             {
                 case "Value":
-                    skl.Base = skl.Value - skl.Modifiers;
+                    skl.Bonus = skl.Value - skl.Modifiers - skl.Base;
                     break;
                 case "Modifiers":
-                    skl.Value = skl.Base + skl.Modifiers;
+                    skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
+                    break;
+                case "Base":
+                    skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
                     break;
                 default:
                     break;

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d" Height="1600" Width="1350" Background="White">
+        mc:Ignorable="d"  Height="1760" Width="1400" Background="White">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="85"/>
                 <RowDefinition Height="180"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -37,6 +37,7 @@
                     <TextBlock FontSize="34" FontWeight="Bold" Text="Heldendokument"/>
                     <TextBlock FontSize="20" Text="Inventar" TextAlignment="Center"/>
                 </StackPanel>
+                <TextBlock Width="30" />
                 <ItemsControl ItemsSource="{Binding Attributes, Mode=TwoWay}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -99,7 +100,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding InventoryLeft, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                   HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>
@@ -124,7 +125,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding Inventory, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                        <DataGrid Width="580" Grid.Column="0" ItemsSource="{Binding InventoryRight, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                   RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Left" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                   HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"/>

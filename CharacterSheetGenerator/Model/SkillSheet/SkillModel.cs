@@ -106,19 +106,19 @@ namespace CharacterSheetGenerator.Model
         public void SetRoutine(double? value)
         {
             Routine = "";
-            if (value >= 5)
+            if (value >= 3)
                 Routine = "e";
 
-            if (value >= 8)
+            if (value >= 5)
                 Routine = "r";
 
-            if (value >= 12)
+            if (value >= 8)
                 Routine = "g";
 
-            if (value >= 17)
+            if (value >= 12)
                 Routine = "m";
 
-            if (value >= 23)
+            if (value >= 17)
                 Routine = "l";
 
         }

@@ -341,11 +341,11 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach(SkillModel skill in SkillsLeft)
             {
-                xp = xp + skill.Value.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
+                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
             }
             foreach (SkillModel skill in SkillsLeft)
             {
-                xp = xp + skill.Value.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
+                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
             }
             ExpSkills = xp;
         }
@@ -651,7 +651,7 @@ namespace CharacterSheetGenerator
         #endregion Character Information
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
-
+        
         #region Status Values
 
         #region Properties

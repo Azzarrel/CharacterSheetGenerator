@@ -22,7 +22,7 @@ namespace CharacterSheetGenerator.Control
     {
         public SkillSheet()
         {
-            InitializeComponent();
+             InitializeComponent();
         }
     }
 }

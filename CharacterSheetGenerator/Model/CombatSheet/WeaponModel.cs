@@ -20,6 +20,12 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             set { Set(value); }
         }
 
+        public string Mode
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
         public double AttackBase
         {
             get { return Get<double>(); }
@@ -126,6 +132,20 @@ namespace CharacterSheetGenerator.Model.CombatSheet
 
         [ColumnName("ArmorPenetration")]
         public string ArmorPenetration
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
+        [ColumnName("Reload")]
+        public double Reload
+        {
+            get { return Get<double>(); }
+            set { Set(value); }
+        }
+
+        [ColumnName("Range")]
+        public string Range
         {
             get { return Get<string>(); }
             set { Set(value); }

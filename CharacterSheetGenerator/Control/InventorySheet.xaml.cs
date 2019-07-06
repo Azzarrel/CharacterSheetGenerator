@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CharacterSheetGenerator.Helpers;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,46 @@ namespace CharacterSheetGenerator.Control
     /// </summary>
     public partial class InventorySheet : UserControl
     {
+        private SolidColorBrush m_CellColor = new SolidColorBrush();
+
+        public static readonly DependencyProperty CellColorProperty =
+            DependencyProperty.Register("CellColor", typeof(SolidColorBrush), typeof(InventorySheet),
+            new FrameworkPropertyMetadata(new SolidColorBrush(), OnCellColorPropertyChanged));
+
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public SolidColorBrush CellColor
+        {
+            get { return (SolidColorBrush)GetValue(CellColorProperty); }
+            set { SetValue(CellColorProperty, value); }
+        }
+
+        private static void OnCellColorPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            InventorySheet UserControl = obj as InventorySheet;
+            UserControl.OnPropertyChanged("CellColor");
+            UserControl.OnCellColorPropertyChanged(e);
+        }
+
+        private void OnCellColorPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            m_CellColor = CellColor;
+
+        }
+
         public InventorySheet()
         {
+            CellColor = new SolidColorBrush(ColorHandler.IntToColor(15329769));
             InitializeComponent();
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

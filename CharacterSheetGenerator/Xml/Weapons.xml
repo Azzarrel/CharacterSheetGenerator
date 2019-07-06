@@ -1,7 +1,10 @@
 <PlayerData>
 	<Weapons>
 		<Name>Schwerter</Name>
-		<AttributeLink>GE/ST</AttributeLink>		
+		<AttributeLink>GE/ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>1</AttackBase>
+		<BlockBase>1</BlockBase>
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -9,11 +12,15 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>1D6+4</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>2</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Hiebwaffen</Name>
-		<AttributeLink>ST</AttributeLink>		
+		<AttributeLink>ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>2</AttackBase>
+		<BlockBase>2</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -21,11 +28,15 @@
 		<Damage>2</Damage>
 		<Impulse>1D6+1</Impulse>
 		<ArmorPenetration>3</ArmorPenetration>
-	    <Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>2</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Äxte</Name>
-		<AttributeLink>ST</AttributeLink>		
+		<AttributeLink>ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>2</AttackBase>
+		<BlockBase>0</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -33,11 +44,15 @@
 		<Damage>1D6+3</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>2</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Fechtwaffen</Name>
-		<AttributeLink>GE</AttributeLink>		
+		<AttributeLink>GE</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>3</AttackBase>
+		<BlockBase>-1</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -45,11 +60,15 @@
 		<Damage>1D6+3</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>1D6+2</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>2</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Kettenwaffen</Name>
-		<AttributeLink>ST</AttributeLink>		
+		<AttributeLink>ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>1</AttackBase>
+		<BlockBase>-1</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -57,11 +76,15 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>3</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>3</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Lanzen</Name>
-		<AttributeLink>FF/ST</AttributeLink>		
+		<AttributeLink>FF/ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>2</AttackBase>
+		<BlockBase>-1</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>4</Stamina>
@@ -69,11 +92,15 @@
 		<Damage>2D6+2</Damage>
 		<Impulse>4</Impulse>
 		<ArmorPenetration>1D6+4</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>5</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Raufen</Name>
-		<AttributeLink>GE/ST</AttributeLink>		
+		<AttributeLink>GE/ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>3</AttackBase>
+		<BlockBase>3</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -81,11 +108,15 @@
 		<Damage>1D6</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>1</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Schilde</Name>
-		<AttributeLink>GE/KO</AttributeLink>		
+		<AttributeLink>GE/KO</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>-3</AttackBase>
+		<BlockBase>3</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -93,11 +124,15 @@
 		<Damage>1D6</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>1</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Stangenwaffen</Name>
 		<AttributeLink>GE/ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>1</AttackBase>
+		<BlockBase>0</BlockBase>
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -105,11 +140,15 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>4</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Zweihandhiebwaffen</Name>
-		<AttributeLink>ST</AttributeLink>		
+		<AttributeLink>ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>2</AttackBase>
+		<BlockBase>-2</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>4</Stamina>
@@ -117,11 +156,15 @@
 		<Damage>4</Damage>
 		<Impulse>2D6+1</Impulse>
 		<ArmorPenetration>3</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>3</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Zweihandschwerter</Name>
 		<AttributeLink>ST</AttributeLink>		
+		<Mode>Melee</Mode>
+	    <AttackBase>1</AttackBase>
+		<BlockBase>1</BlockBase>
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>4</Stamina>
@@ -129,11 +172,15 @@
 		<Damage>2D6+4</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>3</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Zweihandäxte</Name>
-		<AttributeLink>ST</AttributeLink>		
+		<AttributeLink>ST</AttributeLink>
+		<Mode>Melee</Mode>
+	    <AttackBase>2</AttackBase>
+		<BlockBase>0</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>4</Stamina>
@@ -141,11 +188,15 @@
 		<Damage>2D6+3</Damage>
 		<Impulse>3</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>3</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Peitschen</Name>
 		<AttributeLink>FF</AttributeLink>		
+		<Mode>Melee</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>-3</BlockBase>
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -153,11 +204,15 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>2</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>4</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Armbrüste</Name>
 		<AttributeLink>FF</AttributeLink>		
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>1</Stamina>
@@ -165,11 +220,15 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>3</Impulse>
 		<ArmorPenetration>1D6+6</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>100</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Blasrohre</Name>
 		<AttributeLink>KO</AttributeLink>	
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -177,11 +236,15 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>2</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>30</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Bögen</Name>
-		<AttributeLink>FF</AttributeLink>		
+		<AttributeLink>FF</AttributeLink>	
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -189,11 +252,15 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>1D6+4</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>200</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Diskusse</Name>
-		<AttributeLink>FF</AttributeLink>		
+		<AttributeLink>FF</AttributeLink>	
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -201,11 +268,15 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>4</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>50</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Feuerwaffen</Name>
-		<AttributeLink>FF</AttributeLink>		
+		<AttributeLink>FF</AttributeLink>
+		<Mode>Ranged</Mode>
+	    <AttackBase>-2</AttackBase>
+		<BlockBase>0</BlockBase>		
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -213,11 +284,15 @@
 		<Damage>1D6+3</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>1D6+2</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>120</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Schleudern</Name>
-		<AttributeLink>GE/FF</AttributeLink>		
+		<AttributeLink>GE/FF</AttributeLink>	
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>			
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -225,11 +300,15 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>2</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>60</Range>
 	</Weapons>
 	<Weapons>
 		<Name>kleine Wurfwaffen</Name>
 		<AttributeLink>FF</AttributeLink>		
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>	
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -237,11 +316,15 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>1</Impulse>
 		<ArmorPenetration>1D6</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>30</Range>
 	</Weapons>
 	<Weapons>
 		<Name>große Wurfwaffen</Name>
-		<AttributeLink>FF/ST</AttributeLink>		
+		<AttributeLink>FF/ST</AttributeLink>
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>			
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -249,11 +332,15 @@
 		<Damage>1D6+4</Damage>
 		<Impulse>2</Impulse>
 		<ArmorPenetration>1D6+3</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>40</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Wurfspeere</Name>
 		<AttributeLink>GE/FF</AttributeLink>		
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>	
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>3</Stamina>
@@ -261,11 +348,15 @@
 		<Damage>1D6+6</Damage>
 		<Impulse>4</Impulse>
 		<ArmorPenetration>1D6+4</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>40</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Wurfgeschosse</Name>
-		<AttributeLink>FF</AttributeLink>		
+		<AttributeLink>FF</AttributeLink>	
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>			
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>1</Stamina>
@@ -273,11 +364,15 @@
 		<Damage>2</Damage>
 		<Impulse>1D6</Impulse>
 		<ArmorPenetration>2</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>40</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Dolche</Name>
-		<AttributeLink>GE/ST</AttributeLink>		
+		<AttributeLink>GE/ST</AttributeLink>	
+		<Mode>Melee</Mode>
+	    <AttackBase>1</AttackBase>
+		<BlockBase>-2</BlockBase>			
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>2</Stamina>
@@ -285,11 +380,15 @@
 		<Damage>1D6+2</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>1D6+1</ArmorPenetration>
-		<Mode>Melee</Mode>
+		<Reload>0</Reload>
+		<Range>1</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Projektilzauber</Name>
 		<AttributeLink>KL/WK</AttributeLink>		
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>	
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>0</Stamina>
@@ -297,11 +396,15 @@
 		<Damage>0</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>99</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Flächenzauber</Name>
 		<AttributeLink>KL/WK</AttributeLink>		
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>	
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>0</Stamina>
@@ -309,11 +412,15 @@
 		<Damage>0</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>99</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Direktzauber</Name>
 		<AttributeLink>KL/WK</AttributeLink>		
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>	
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>0</Stamina>
@@ -321,11 +428,15 @@
 		<Damage>0</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>99</Range>
 	</Weapons>
 	<Weapons>
 		<Name>Umgebungszauber</Name>
-		<AttributeLink>KL/WK</AttributeLink>		
+		<AttributeLink>KL/WK</AttributeLink>	
+		<Mode>Ranged</Mode>
+	    <AttackBase>0</AttackBase>
+		<BlockBase>0</BlockBase>			
 		<AttackBonus>0</AttackBonus>
 		<BlockBonus>0</BlockBonus>
 		<Stamina>0</Stamina>
@@ -333,6 +444,7 @@
 		<Damage>0</Damage>
 		<Impulse>0</Impulse>
 		<ArmorPenetration>0</ArmorPenetration>
-		<Mode>Ranged</Mode>
+		<Reload>0</Reload>
+		<Range>99</Range>
 	</Weapons>
 </PlayerData>

@@ -33,25 +33,6 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             set { Set(value); }
         }
 
-        public double? AttackBase
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-        [ColumnName("AttackBonus")]
-        public double? AttackBonus
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
-        public double? AttackTotal
-        {
-            get { return Get<double?>(); }
-            set { Set(value); }
-        }
-
         public double? BlockBase
         {
             get { return Get<double?>(); }
@@ -65,7 +46,15 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             set { Set(value); }
         }
 
-        public double? BlockTotal
+        [ColumnName("TickBonus")]
+        public double? TickBonus
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
+        [ColumnName("StaminaBonus")]
+        public double? StaminaBonus
         {
             get { return Get<double?>(); }
             set { Set(value); }

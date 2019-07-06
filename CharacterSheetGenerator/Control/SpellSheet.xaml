@@ -23,7 +23,7 @@
             <Style TargetType="DataGridColumnHeader" x:Key="DescriptionHeaderStyleRituals" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="650" />
             </Style>
-            
+
             <Style TargetType="DataGridCell" x:Key="DescriptionCellStyle" BasedOn="{StaticResource ItemNameCellStyle}">
                 <Setter Property="Width" Value="400" />
                 <Setter Property="FontSize" Value="14"/>
@@ -233,18 +233,18 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn      Header=" Name"            Binding="{Binding Name}"                              HeaderStyle="{StaticResource WeaponHeaderStyle}" CellStyle="{StaticResource ItemNameCellStyleLarge}"/>
                                     <DataGridComboBoxColumn  Header=" Art"             SelectedItemBinding="{Binding Weapons}"  
-                                                 DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}"    CellStyle="{StaticResource ComboboxCellStyleGray}"/>
+                                                             DisplayMemberPath="Name" ItemsSource="{Binding Source={StaticResource Weapons}}" HeaderStyle="{StaticResource ComboboxHeaderStyleGray}"    CellStyle="{StaticResource ComboboxCellStyleGray}"/>
                                     <DataGridTextColumn      Header="FW"               Binding="{Binding Value}"                              HeaderStyle="{StaticResource NumericValueHeaderStyle}"    CellStyle="{StaticResource TextBoxTemplateCellStyleBold}"/>
                                     <DataGridTextColumn      Header="Probe"            Binding="{Binding Requirement}"                        HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}"   CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
                                     <DataGridTextColumn      Header="Mana"             Binding="{Binding Mana}"                               HeaderStyle="{StaticResource BaseHeaderStyleLarge}"       CellStyle="{StaticResource BaseGridCellStyleLarge}"/>
-                                    <DataGridTextColumn      Header="Ticks"            Binding="{Binding Ticks}"                              HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}"   CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
+                                    <DataGridTextColumn      Header="INI"              Binding="{Binding Ticks}"                              HeaderStyle="{StaticResource BaseHeaderStyleLargeGray}"   CellStyle="{StaticResource BaseGridCellStyleLargeGray}"/>
                                     <DataGridTextColumn      Header=" Beschreibung"    Binding="{Binding Description}"                        HeaderStyle="{StaticResource DescriptionHeaderStyle}"     CellStyle="{StaticResource DescriptionCellStyle}"/>
                                 </DataGrid.Columns>
 
                             </DataGrid>
                         </StackPanel>
                         <StackPanel Grid.Row="2">
-                            <Label FontSize="26" FontWeight="Bold" Content="  Rituale"/>
+                            <Label FontSize="26" FontWeight="Bold" Content="Rituale"/>
                             <DataGrid ItemsSource="{Binding Rituals, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                           RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" CanUserAddRows="False" HorizontalAlignment="Center"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}" >
                                 <DataGrid.Columns>
@@ -260,7 +260,7 @@
                         <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="53*"/>
-                                <ColumnDefinition Width="135"/>
+                                <ColumnDefinition Width="125"/>
                                 <ColumnDefinition Width="46*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
@@ -278,7 +278,7 @@
                                         <DataGridTextColumn  Header="Zä."       Binding="{Binding Toughness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static sys:String.Empty}}"   HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
                                         <DataGridTextColumn  Header="BF."       Binding="{Binding Break,     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static sys:String.Empty}}"   HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
                                         <DataGridTextColumn  Header="V."                                                                                                                                       HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                                        <DataGridTextColumn  Header="BE."       Binding="{Binding Restriction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static sys:String.Empty}}"   HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                        <DataGridTextColumn  Header="BE."       Binding="{Binding Restriction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Static sys:String.Empty}}" HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
                                     </DataGrid.Columns>
 
                                 </DataGrid>
@@ -306,6 +306,6 @@
                 </Grid>
             </Grid>
         </Grid>
-        
+
     </Grid>
 </UserControl>

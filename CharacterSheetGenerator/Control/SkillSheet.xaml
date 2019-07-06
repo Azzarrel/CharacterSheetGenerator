@@ -20,10 +20,9 @@
             </Style>
             <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleComment" BasedOn="{StaticResource DefaultHeaderStyle}">
                 <Setter Property="Width" Value="245" />
-                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
             </Style>
             <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyleCommentGray" BasedOn="{StaticResource HeaderStyleComment}">
-                <Setter Property="Width" Value="245" />
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
             </Style>
 
             <!-- Category -->
@@ -189,11 +188,11 @@
                                 </GroupStyle>
                             </DataGrid.GroupStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"           CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
-                                <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"     CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
-                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
-                                <DataGridTextColumn  Header="M."               Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                                <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"    IsReadOnly="True" />
+                                <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"               CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
+                                <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"         CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
+                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"       CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                <DataGridTextColumn  Header="M."                Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                                <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"       CellStyle="{StaticResource TextBoxTemplateCellStyle}"        IsReadOnly="True" />
                                 <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleCommentGray}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
                             </DataGrid.Columns>
                         </DataGrid>
@@ -205,23 +204,23 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40*"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="50*"/>
-                        </Grid.ColumnDefinitions>
-                        <DataGrid Width="300" Grid.Column="0" ItemsSource="{Binding Languages, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="1"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <DataGrid Width="300" Grid.Column="0" ItemsSource="{Binding Languages, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}"  >
-                            <DataGrid.Columns>
+                                <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Name}" Header="Sprachen" HeaderStyle="{StaticResource HeaderStyleComment}" CellStyle="{StaticResource LanguageWritingCellStyle}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <DataGrid Width="300" Grid.Column="2" ItemsSource="{Binding Writings, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <DataGrid Width="300" Grid.Column="2" ItemsSource="{Binding Writings, Mode=TwoWay}" AutoGenerateColumns="False" SelectionUnit ="Cell" 
                               RowHeaderWidth="0" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" HorizontalAlignment="Center" CanUserAddRows="False"  ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}"  >
-                            <DataGrid.Columns>
+                                <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Name}" Header="Schriten" HeaderStyle="{StaticResource HeaderStyleComment}" CellStyle="{StaticResource LanguageWritingCellStyle}"/>
-                            </DataGrid.Columns>
+                                </DataGrid.Columns>
 
-                        </DataGrid>
+                            </DataGrid>
                         </Grid>
                     </Grid>
                 </Grid>

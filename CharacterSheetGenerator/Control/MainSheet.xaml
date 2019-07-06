@@ -119,11 +119,8 @@
                                 <StackPanel>
                                     <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
                                     </Label>
-                                    <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White"
-                                    Command="{Binding TraitClickCommand, Mode=TwoWay}"
-                                    CommandParameter="{Binding Name}">
+                                    <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White" Command="{Binding TraitClickCommand, Mode=TwoWay}" CommandParameter="{Binding Name}">
                                         <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap">
-
                                         </TextBlock>
                                     </Button>
                                 </StackPanel>
@@ -140,7 +137,7 @@
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="80"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock FontSize="14" FontWeight="Bold" Text="Portrait" VerticalAlignment="Center" Width="250" TextAlignment="Center" HorizontalAlignment="Right"/>
@@ -190,6 +187,4 @@
             </Grid>
         </Grid>
     </Grid>
-
-
 </UserControl>

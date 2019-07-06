@@ -39,7 +39,9 @@ namespace CharacterSheetGenerator.Model.CombatSheet
                 OnPropertyChanged("Initiative");
                 OnPropertyChanged("Damage");
                 OnPropertyChanged("Impulse");
-                OnPropertyChanged("ArmorPenetration"); 
+                OnPropertyChanged("ArmorPenetration");
+                OnPropertyChanged("Reload");
+                OnPropertyChanged("Range");
                 OnPropertyChanged();
             }
         }
@@ -228,6 +230,29 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             }
         }
 
+        public double Reload
+        {
+            get
+            {
+                return m_Weapon?.Reload ?? 0;
+            }
+            set
+            {
+                m_Weapon.Reload = value;
+            }
+        }
+
+        public string Range
+        {
+            get
+            {
+                return m_Weapon?.Range ?? "";
+            }
+            set
+            {
+                m_Weapon.Range = value;
+            }
+        }
 
     }
 }

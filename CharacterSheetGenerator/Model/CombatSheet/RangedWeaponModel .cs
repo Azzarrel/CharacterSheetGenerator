@@ -48,6 +48,12 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             set { Set(value); }
         }
 
+        public double? AttackBase
+        {
+            get { return Get<double?>(); }
+            set { Set(value); }
+        }
+
         [ColumnName("AttackBonus")]
         public double? AttackBonus
         {

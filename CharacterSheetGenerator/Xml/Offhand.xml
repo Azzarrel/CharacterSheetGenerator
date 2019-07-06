@@ -4,31 +4,35 @@
 		<Strenght></Strenght>
 		<Toughness></Toughness>
 		<Break></Break>
-		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
+		<TickBonus></TickBonus>
+		<StaminaBonus></StaminaBonus>
 	</OffHand>
 	<OffHand>	
 		<Name></Name>
 		<Strenght></Strenght>
 		<Toughness></Toughness>
 		<Break></Break>
-		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
+		<TickBonus></TickBonus>
+		<StaminaBonus></StaminaBonus>
 	</OffHand>
 	<OffHand>	
 		<Name></Name>
 		<Strenght></Strenght>
 		<Toughness></Toughness>
 		<Break></Break>
-		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
+		<TickBonus></TickBonus>
+		<StaminaBonus></StaminaBonus>
 	</OffHand>
 	<OffHand>	
 		<Name></Name>
 		<Strenght></Strenght>
 		<Toughness></Toughness>
 		<Break></Break>
-		<AttackBonus></AttackBonus>
 		<BlockBonus></BlockBonus>
+		<TickBonus></TickBonus>
+		<StaminaBonus></StaminaBonus>
 	</OffHand>
 </PlayerData>

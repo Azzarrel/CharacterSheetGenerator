@@ -129,8 +129,9 @@ namespace CharacterSheetGenerator
         /// Listen wieder in ein DataSet zurückwandeln fürs Speichern
         /// </summary>
         /// <param name="tblAttributeLink"></param>
-        public void SaveData(DataTable tblAttributeLink)
+        public DataSet SaveData(DataTable tblAttributeLink)
         {
+            Data.Clear();
             SaveAttributes();
             SaveSpecialAttributes();
             SaveCharacterInformation();
@@ -145,6 +146,7 @@ namespace CharacterSheetGenerator
             SaveRituals();
             SaveInventory();
             SaveMoney();
+            return Data;
         }
 
         public void GenerateBaseModifiers()
@@ -525,6 +527,14 @@ namespace CharacterSheetGenerator
             {
                 case "Value":
                     attr.Base = attr.Value - attr.Modifiers;
+                    foreach(SkillModel skill in SkillsLeft.Cast<SkillModel>().Where(s => s.Requirement.ToUpper().Contains(attr.Tag.ToUpper())))
+                    {
+                        CalculateSkillBase(skill);
+                    }
+                    foreach (SkillModel skill in SkillsRight.Cast<SkillModel>().Where(s => s.Requirement.ToUpper().Contains(attr.Tag.ToUpper())))
+                    {
+                        CalculateSkillBase(skill);
+                    }
                     break;
                 case "Modifiers":
                     attr.Value = attr.Base + attr.Modifiers;
@@ -535,28 +545,7 @@ namespace CharacterSheetGenerator
             //Exp neu Berechnen
             CalcExpAttributes();
 
-            //ToDo: SkillsRight nicht vergessen
-            foreach(SkillModel skl in SkillsLeft)
-            {
-                double v = 0;
-                double? base_value = null;
-                string mean = "";
-                if (skl.Name != "")
-                {
-                    foreach (string s in skl.Requirement.Split('/'))
-                    {
-                        //ToDo: Value wird erst berechnet, wenn die Modifier erstellt wurden, evtl kann man da noch was verbessern
-                        if (Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Value != 0)
-                        {
-                            v += Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Value;
-                        }
-                    }
-                }
-                base_value = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : base_value;
-                mean = base_value != null ? "(" + base_value * 2 + ")" : "";
-                skl.Base = base_value;
-                skl.Mean = mean;
-            }
+            
         }
 
         #endregion Events
@@ -841,27 +830,14 @@ namespace CharacterSheetGenerator
             List<SkillModel> l_skills = new List<SkillModel>();
             foreach (DataRow row in Data.Tables["Skills"].Rows)
             {
-                //ToDo: Kann hier evtl entfernt werden, weil das eh alles nochmal gemacht werden sollte, sobald die Attribute ihre value kriegen
-                double v = 0;
-                double? base_value = null;
-                string mean = "";
-                if (row["Name"].ToString() != "")
-                {
-                    foreach (string s in row["Requirement"].ToString().Split('/'))
-                    {
-                        //Später wieder von Base auf Value stellen
-                        v += Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Base;
-                    }
-                    base_value = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : base_value;
-                    mean = base_value != null ? "(" + base_value*2 + ")" : "";
-                }
+
                 SkillModel skill = new SkillModel
                 {
                     Name = row["Name"].ToString(),
                     Requirement = row["Requirement"].ToString(),
-                    Base = base_value,
-                    Mean = mean,
-                    Value = base_value + Parser.ToNullable<double>(row["Value"].ToString()),
+                    Base = null,
+                    Mean = "",
+                    Value = null,
                     Difficulty = row["Difficulty"].ToString(),
                     Comment = row["Comment"].ToString(),
                     Category = row["Category"].ToString(),
@@ -889,11 +865,11 @@ namespace CharacterSheetGenerator
 
             foreach (SkillModel skill in SkillsLeft)
             {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Base, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
             }
         }
 
@@ -912,6 +888,21 @@ namespace CharacterSheetGenerator
                 skill.Value = skill.Base + skill.Modifiers;
             }
         }
+
+        public void CalculateSkillBase(SkillModel skill)
+        {
+            double v = 0;
+            if (skill.Name != "")
+            {
+                foreach (string s in skill.Requirement.Split('/'))
+                {
+                    v += Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Value;
+                }
+                skill.Base = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : skill.Base;
+                skill.Mean = skill.Base != null ? "(" + skill.Base * 2 + ")" : "";
+            }
+        }
+
 
         #endregion Calculation
 
@@ -1052,13 +1043,18 @@ namespace CharacterSheetGenerator
                 {
                     Name = row["Name"].ToString(),
                     AttributeLink = row["AttributeLink"].ToString(),
+                    Mode = row["Mode"].ToString(),
+                    AttackBase = double.Parse(row["AttackBase"].ToString()),
                     AttackBonus = double.Parse(row["AttackBonus"].ToString()),
+                    BlockBase = double.Parse(row["BlockBase"].ToString()),
                     BlockBonus = double.Parse(row["BlockBonus"].ToString()),
                     Stamina = int.Parse(row["Stamina"].ToString()),
                     Initiative = int.Parse(row["Initiative"].ToString()),
                     Damage = row["Damage"].ToString(),
                     Impulse = row["Impulse"].ToString(),
                     ArmorPenetration = row["ArmorPenetration"].ToString(),
+                    Reload = double.Parse(row["Reload"].ToString()),
+                    Range = row["Range"].ToString(),
                 };
                 l_weapons.Add(weapon);
                 weapon.PropertyChanged += Weapon_PropertyChanged;
@@ -1105,7 +1101,7 @@ namespace CharacterSheetGenerator
                 weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
                 weapon.Range = row["Range"].ToString();
 
-
+                weapon.PropertyChanged += MeleeWeapon_PropertyChanged;
                 l_weapons.Add(weapon);
             }
             MeleeWeapons = l_weapons;
@@ -1133,7 +1129,7 @@ namespace CharacterSheetGenerator
                 weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
                 weapon.Range = row["Range"].ToString();
 
-
+                weapon.PropertyChanged += RangedWeapon_PropertyChanged;
                 l_weapons.Add(weapon);
             }
             RangedWeapons = l_weapons;
@@ -1147,7 +1143,7 @@ namespace CharacterSheetGenerator
         {
             foreach (WeaponModel weapon in Weapons)
             {
-                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration);
+                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.Mode, weapon.AttackBase, weapon.BlockBase, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Reload, weapon.Range);
             }
             foreach(WeaponSelectModel ws in SelectedWeapons)
             {
@@ -1171,8 +1167,7 @@ namespace CharacterSheetGenerator
         {
             WeaponModel weapon = sender as WeaponModel;
             switch (e.PropertyName)
-            {
-                
+            {                
                 case "AttackTotal":
                     weapon.AttackBonus = weapon.AttackTotal - weapon.AttackModifier - weapon.AttackStandard;
                     break;
@@ -1180,7 +1175,10 @@ namespace CharacterSheetGenerator
                     weapon.AttackTotal = weapon.AttackStandard + weapon.AttackModifier + weapon.AttackBonus;
                     break;
                 case "BlockTotal":
-                    weapon.BlockBonus = weapon.BlockTotal - weapon.BlockModifier - weapon.BlockStandard;
+                    if (weapon.Mode != "Ranged")
+                        weapon.BlockBonus = weapon.BlockTotal - weapon.BlockModifier - weapon.BlockStandard;
+                    else if(weapon.BlockTotal != 0)
+                        weapon.BlockTotal = 0;
                     break;
                 case "BlockModifier":
                     weapon.BlockTotal = weapon.BlockStandard + weapon.BlockModifier + weapon.BlockBonus;
@@ -1189,6 +1187,53 @@ namespace CharacterSheetGenerator
                     break;
             }
             CalcExpWeapon();
+        }
+
+        public void MeleeWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            MeleeWeaponModel weapon = sender as MeleeWeaponModel;
+            switch (e.PropertyName)
+            {
+                case "Weapons":
+                    weapon.AttackBase = weapon.Weapons.AttackTotal;
+                     weapon.BlockBase = weapon.Weapons.BlockTotal;
+                    break;
+                case "AttackBase":
+                    weapon.AttackTotal = weapon.AttackBase + (weapon.AttackBonus ?? 0);
+                    break;
+                case "AttackTotal":
+                    weapon.AttackBonus = weapon.AttackTotal - weapon.AttackBase;
+                    break;
+                case "BlockBase":
+                    weapon.BlockTotal = weapon.BlockBase + (weapon.BlockBonus ?? 0);
+                    break;
+                case "BlockTotal":
+                    weapon.BlockBonus = weapon.BlockTotal - weapon.BlockBase;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        public void RangedWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            RangedWeaponModel weapon = sender as RangedWeaponModel;
+            switch (e.PropertyName)
+            {
+                case "Weapons":
+                    weapon.AttackBase = weapon.Weapons.AttackTotal;
+                    break;
+                case "AttackBase":
+                    weapon.AttackTotal = weapon.AttackBase + (weapon.AttackBonus ?? 0);
+                    break;
+                case "AttackTotal":
+                    weapon.AttackBonus = weapon.AttackTotal - weapon.AttackBase;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         public void SelectedWeapon_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -1222,8 +1267,14 @@ namespace CharacterSheetGenerator
             weapon.AttackStandard = Math.Round((standardValues / 2 / attributes.Length) + weapon.AttackBase, 0);
             weapon.AttackTotal = weapon.AttackStandard + weapon.AttackBonus + weapon.AttackModifier;
 
-            weapon.BlockStandard = Math.Round((standardValues / 2 / attributes.Length) + +weapon.BlockBase, 0);
-            weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockModifier;
+            if (weapon.Mode != "Ranged")
+            {
+                weapon.BlockStandard = Math.Round((standardValues / 2 / attributes.Length) + +weapon.BlockBase, 0);
+                weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockModifier;
+            }
+            else
+                weapon.BlockTotal = 0;
+            
 
             //ToDo: Die WeaponSelectModels kriegen aktuell nicht mit, wenn sich die Werte der Waffen verändern
             //Um das fürs Erste mal zu bypassen, setzten wir einfach das WeaponModel-Property nochmal neu und lösen so ein PropertyChangedEvent aus
@@ -1238,6 +1289,108 @@ namespace CharacterSheetGenerator
         #endregion Calculation
 
         #endregion Weapons
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
+
+        #region Armor and Offhand
+
+        #region Properties
+
+        public ObservableCollection<ArmorModel> Armor
+        {
+            get { return Get<ObservableCollection<ArmorModel>>(); }
+            set { Set(value); }
+        }
+
+        public ObservableCollection<OffHandModel> OffHands
+        {
+            get { return Get<ObservableCollection<OffHandModel>>(); }
+            set { Set(value); }
+        }
+
+        #endregion Properties
+
+        #region Loading
+
+        public void LoadArmor()
+        {
+            ObservableCollection<ArmorModel> l_armor = new ObservableCollection<ArmorModel>();
+            foreach (DataRow row in Data.Tables["Armor"].Rows)
+            {
+
+                ArmorModel armor = new ArmorModel
+                {
+                    Name = row["Name"].ToString(),
+                    Head = Parser.ToNullable<int>(row["Head"].ToString()),
+                    Torso = Parser.ToNullable<int>(row["Torso"].ToString()),
+                    LeftArm = Parser.ToNullable<int>(row["LeftArm"].ToString()),
+                    RightArm = Parser.ToNullable<int>(row["RightArm"].ToString()),
+                    LeftLeg = Parser.ToNullable<int>(row["LeftLeg"].ToString()),
+                    RightLeg = Parser.ToNullable<int>(row["RightLeg"].ToString()),
+                    Toughness = Parser.ToNullable<int>(row["Toughness"].ToString()),
+                    Slow = Parser.ToNullable<int>(row["Slow"].ToString()),
+                    Restriction = Parser.ToNullable<int>(row["Restriction"].ToString()),
+                    Break = Parser.ToNullable<int>(row["Break"].ToString()),
+
+                };
+
+
+                l_armor.Add(armor);
+            }
+            Armor = l_armor;
+        }
+
+        public void LoadOffHands()
+        {
+            ObservableCollection<OffHandModel> l_offhands = new ObservableCollection<OffHandModel>();
+            foreach (DataRow row in Data.Tables["OffHand"].Rows)
+            {
+
+                OffHandModel offhand = new OffHandModel
+                {
+                    Name = row["Name"].ToString(),
+                    TickBonus = Parser.ToNullable<double>(row["TickBonus"].ToString()),
+                    StaminaBonus = Parser.ToNullable<double>(row["StaminaBonus"].ToString()),
+                    BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString()),
+                    Toughness = Parser.ToNullable<int>(row["Toughness"].ToString()),
+                    Strenght = Parser.ToNullable<int>(row["Strenght"].ToString()),
+                    Break = Parser.ToNullable<int>(row["Break"].ToString()),
+
+                };
+
+                l_offhands.Add(offhand);
+            }
+            OffHands = l_offhands;
+        }
+
+        #endregion Loading
+
+        #region Saving
+
+        public void SaveArmor()
+        {
+            foreach (ArmorModel armor in Armor)
+            {
+                Data.Tables["Armor"].Rows.Add(armor.Name, armor.Head, armor.Torso, armor.LeftArm, armor.RightArm, armor.LeftLeg, armor.RightLeg, armor.Toughness, armor.Slow, armor.Restriction, armor.Break);
+            }
+        }
+        public void SaveOffHand()
+        {
+            foreach (OffHandModel offhand in OffHands)
+            {
+                Data.Tables["OffHand"].Rows.Add(offhand.Name, offhand.Strenght, offhand.Toughness, offhand.Break, offhand.BlockBonus, offhand.TickBonus, offhand.StaminaBonus);
+            }
+        }
+
+        #endregion Saving
+
+
+        #region Events
+
+
+        #endregion Events
+
+        #endregion Armor and Offhand
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 
@@ -1514,102 +1667,6 @@ namespace CharacterSheetGenerator
         #endregion Calculation
 
         #endregion Modifiers
-
-        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
-
-        #region Armor and Offhand
-
-        #region Properties
-
-        public ObservableCollection<ArmorModel> Armor
-        {
-            get { return Get<ObservableCollection<ArmorModel>>(); }
-            set { Set(value); }
-        }
-
-        public ObservableCollection<OffHandModel> OffHands
-        {
-            get { return Get<ObservableCollection<OffHandModel>>(); }
-            set { Set(value); }
-        }
-
-        #endregion Properties
-
-        #region Loading
-
-        public void LoadArmor()
-        {
-            ObservableCollection<ArmorModel> l_armor = new ObservableCollection<ArmorModel>();
-            foreach (DataRow row in Data.Tables["Armor"].Rows)
-            {
-
-                ArmorModel armor = new ArmorModel
-                {
-                    Name = row["Name"].ToString(),
-                    Head = Parser.ToNullable<int>(row["Head"].ToString()),
-                    Torso = Parser.ToNullable<int>(row["Torso"].ToString()),
-                    LeftArm = Parser.ToNullable<int>(row["LeftArm"].ToString()),
-                    RightArm = Parser.ToNullable<int>(row["RightArm"].ToString()),
-                    LeftLeg = Parser.ToNullable<int>(row["LeftLeg"].ToString()),
-                    RightLeg = Parser.ToNullable<int>(row["RightLeg"].ToString()),
-                    Toughness = Parser.ToNullable<int>(row["Toughness"].ToString()),
-                    Slow = Parser.ToNullable<int>(row["Slow"].ToString()),
-                    Restriction = Parser.ToNullable<int>(row["Restriction"].ToString()),
-                    Break = Parser.ToNullable<int>(row["Break"].ToString()),
-
-                };
-
-
-                l_armor.Add(armor);
-            }
-            Armor = l_armor;
-        }
-
-        public void LoadOffHands()
-        {
-            ObservableCollection<OffHandModel> l_offhands = new ObservableCollection<OffHandModel>();
-            foreach (DataRow row in Data.Tables["OffHand"].Rows)
-            {
-
-                OffHandModel offhand = new OffHandModel
-                {
-                    Name = row["Name"].ToString(),
-                    AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString()),
-                    BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString()),
-                    Toughness = Parser.ToNullable<int>(row["Toughness"].ToString()),
-                    Strenght = Parser.ToNullable<int>(row["Strenght"].ToString()),
-                    Break = Parser.ToNullable<int>(row["Break"].ToString()),
-
-                };
-
-
-                l_offhands.Add(offhand);
-            }
-            OffHands = l_offhands;
-        }
-
-        #endregion Loading
-
-        #region Saving
-
-        public void SaveArmor()
-        {
-            foreach (ArmorModel armor in Armor)
-            {
-                Data.Tables["Armor"].Rows.Add(armor.Name, armor.Head, armor.Torso, armor.LeftArm, armor.RightArm, armor.LeftLeg, armor.RightLeg, armor.Toughness, armor.Slow, armor.Restriction, armor.Break);
-            }
-        }
-        public void SaveOffHand()
-        {
-            foreach (OffHandModel offhand in OffHands)
-            {
-                Data.Tables["OffHand"].Rows.Add(offhand.Name, offhand.Strenght, offhand.Toughness, offhand.Break, offhand.AttackBonus, offhand.BlockBonus);
-            }
-        }
-
-        #endregion Saving
-
-        #endregion Armor and Offhand
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\\
 

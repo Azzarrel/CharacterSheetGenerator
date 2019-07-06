@@ -150,7 +150,7 @@ namespace CharacterSheetGenerator.ViewModel
 
             //DataSet vor dem Speichern mit aktuellen Daten füllen
             Data.Clear();
-            SelectedCharacter.SaveData(tblAttributeLink);
+            Data = SelectedCharacter.SaveData(tblAttributeLink);
 
             SaveWindowViewModel vm = new SaveWindowViewModel();
             vm.Data = this.Data;
@@ -199,15 +199,5 @@ namespace CharacterSheetGenerator.ViewModel
 
         #endregion Commands
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

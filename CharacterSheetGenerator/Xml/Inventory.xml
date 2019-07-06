@@ -461,4 +461,46 @@
 		<Weight></Weight>
 		<Place></Place>
 	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
+	<Inventory>	
+		<Name></Name>
+		<Quantity></Quantity>
+		<Value></Value>
+		<Weight></Weight>
+		<Place></Place>
+	</Inventory>
 </PlayerData>

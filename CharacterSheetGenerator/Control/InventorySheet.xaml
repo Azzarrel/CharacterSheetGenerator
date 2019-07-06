@@ -86,16 +86,19 @@
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="8*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="2"/>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="60"/>
@@ -119,8 +122,8 @@
                         </StackPanel>
 
                     </Grid>
-                    <Grid Grid.Column="1" Background="DarkGray"/>
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="2" Background="DarkGray"/>
+                    <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="60"/>
@@ -144,7 +147,7 @@
                         </StackPanel>
 
                     </Grid>
-                    <Grid Grid.Column="3" HorizontalAlignment="Center">
+                    <Grid Grid.Column="4" HorizontalAlignment="Center">
                         <StackPanel>
                             <TextBlock Height="35"/>
                             <TextBlock HorizontalAlignment="Left" Text="Dukaten" FontSize="14" FontWeight="SemiBold"/>
@@ -175,13 +178,13 @@
                         </StackPanel>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
+                    <Label Grid.Column="1" Content="Begleittier:" FontSize="26" FontWeight="Bold"/>
                 </Grid>
             </Grid>
         </Grid>

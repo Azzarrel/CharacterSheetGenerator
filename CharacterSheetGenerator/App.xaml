@@ -23,7 +23,7 @@
             <Setter Property="Width" Value="210" />
         </Style>
         <Style TargetType="DataGridColumnHeader" x:Key="WeaponHeaderStyle" BasedOn="{StaticResource DefaultHeaderStyle}">
-            <Setter Property="Width" Value="275" />
+            <Setter Property="Width" Value="400" />
         </Style>
         <Style TargetType="DataGridColumnHeader" x:Key="BaseHeaderStyle" BasedOn="{StaticResource DefaultHeaderStyle}">
             <Setter Property="Width" Value="60" />
@@ -93,7 +93,7 @@
             <Setter Property="Width" Value="210" />
         </Style>
         <Style TargetType="DataGridCell" x:Key="ItemNameCellStyleLarge" BasedOn="{StaticResource ItemNameCellStyle}">
-            <Setter Property="Width" Value="265" />
+            <Setter Property="Width" Value="405" />
         </Style>
 
 

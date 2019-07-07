@@ -96,13 +96,13 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Height="40">
-                                    <TextBlock Height="38" Width="{Binding FirstElementWidth}" Text="{Binding FirstElement}" FontSize="16" FontWeight="Bold"/>
+                                    <TextBlock Height="20" Width="{Binding FirstElementWidth}" Text="{Binding FirstElement}" FontSize="16" FontWeight="Bold"/>
                                     <TextBox Height="38" Width="{Binding FirstValueWidth}" Text="{Binding FirstValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
                                     <TextBlock Width="5"/>
-                                    <TextBlock Height="38" Width="{Binding SecondElementWidth}" Text="{Binding SecondElement}" FontSize="16" FontWeight="Bold"/>
+                                    <TextBlock Height="20" Width="{Binding SecondElementWidth}" Text="{Binding SecondElement}" FontSize="16" FontWeight="Bold"/>
                                     <TextBox Height="38" Width="{Binding SecondValueWidth}" Text="{Binding SecondValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
                                     <TextBlock Width="5"/>
-                                    <TextBlock Height="38" Width="{Binding ThirdElementWidth}" Text="{Binding ThirdElement}" FontSize="16" FontWeight="Bold"/>
+                                    <TextBlock Height="20" Width="{Binding ThirdElementWidth}" Text="{Binding ThirdElement}" FontSize="16" FontWeight="Bold"/>
                                     <TextBox Height="38" Width="{Binding ThirdValueWidth}" Text="{Binding ThirdValue}"  FontSize="16" VerticalContentAlignment="Center" BorderThickness="0" MouseEnter="Charinfo_MouseEnter" MouseLeave="Charinfo_MouseLeave"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -119,8 +119,8 @@
                                 <StackPanel>
                                     <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
                                     </Label>
-                                    <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White" Command="{Binding TraitClickCommand, Mode=TwoWay}" CommandParameter="{Binding Name}">
-                                        <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap">
+                                    <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.OpenTraitViewCommand}" CommandParameter="{Binding Name}">
+                                        <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap" FontSize="13">
                                         </TextBlock>
                                     </Button>
                                 </StackPanel>

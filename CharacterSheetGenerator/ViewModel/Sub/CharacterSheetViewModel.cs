@@ -146,6 +146,7 @@ namespace CharacterSheetGenerator
             SaveRituals();
             SaveInventory();
             SaveMoney();
+            SaveModifier();
             return Data;
         }
 
@@ -358,16 +359,16 @@ namespace CharacterSheetGenerator
             switch(s)
             {
                 case "A":
-                    mod = 0.5;
-                    break;
-                case "B":
                     mod = 1;
                     break;
+                case "B":
+                    mod = 2;
+                    break;
                 case "C":
-                    mod = 1.5;
+                    mod = 3;
                     break;
                 case "D":
-                    mod = 2;
+                    mod = 4;
                     break;
                 default:
                     break;
@@ -827,6 +828,7 @@ namespace CharacterSheetGenerator
 
         private void LoadSkills()
         {
+            SkillsLeft = SkillsRight = null;
             List<SkillModel> l_skills = new List<SkillModel>();
             foreach (DataRow row in Data.Tables["Skills"].Rows)
             {
@@ -838,6 +840,7 @@ namespace CharacterSheetGenerator
                     Base = null,
                     Mean = "",
                     Value = null,
+                    Bonus = Parser.ToNullable<double>(row["Value"].ToString()),
                     Difficulty = row["Difficulty"].ToString(),
                     Comment = row["Comment"].ToString(),
                     Category = row["Category"].ToString(),
@@ -881,11 +884,11 @@ namespace CharacterSheetGenerator
         {
             foreach(SkillModel skill in SkillsLeft)
             {
-                skill.Value = skill.Base + skill.Modifiers;
+                skill.Value = skill.Base + (skill.Bonus ?? 0) + skill.Modifiers;
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                skill.Value = skill.Base + skill.Modifiers;
+                skill.Value = skill.Base + (skill.Bonus ?? 0) + skill.Modifiers;
             }
         }
 
@@ -914,6 +917,7 @@ namespace CharacterSheetGenerator
             switch (e.PropertyName)
             {
                 case "Value":
+                    if(skl.Value != null)
                     skl.Bonus = skl.Value - skl.Modifiers - skl.Base;
                     break;
                 case "Modifiers":
@@ -1606,7 +1610,13 @@ namespace CharacterSheetGenerator
 
         #region Saving
 
-
+        public void SaveModifier()
+        {
+            foreach(TraitModifierModel mod in Modifiers)
+            {
+                Data.Tables["Modifiers"].Rows.Add(mod.NameLink, mod.TypeLink, mod.Value, mod.TraitLink);
+            }
+        }
 
         #endregion Saving
 

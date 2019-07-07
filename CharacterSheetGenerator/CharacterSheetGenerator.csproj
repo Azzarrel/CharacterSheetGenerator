@@ -42,6 +42,7 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Interactivity">
       <HintPath>libs\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -115,6 +116,9 @@
     <Compile Include="View\SaveFileWindow.xaml.cs">
       <DependentUpon>SaveFileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SideBarView.xaml.cs">
+      <DependentUpon>SideBarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SpellEditorWindow.xaml.cs">
       <DependentUpon>SpellEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -180,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SideBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SpellEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,18 +228,17 @@
   <ItemGroup>
     <Resource Include="Images\LoadButtonPicture.png" />
     <Resource Include="Images\PrintButtonPicture.png" />
-    <Content Include="Images\SaveButtonPicture.png">
+    <Resource Include="Images\SaveButtonPicture.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM Kopiert die xml in den Debug-Ordner, zum Testen
+    <PostBuildEvent>REM Kopiert die dlls in den Debug-Ordner, zum Testen
+xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Iibs\*.dll"    "$(TargetDir)resources/libs"
+REM Kopiert die xml in den Debug-Ordner, zum Testen
 xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings/Character/Default"
 
-REM Kopiert die dlls in den Debug-Ordner, zum Testen
-xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Ilibs\*.dll" "$(TargetDir)resources/libs"
-REM Kopiert die png in den Debug-Ordner, zum Testen
-xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Images\*.png" "$(TargetDir)resources/images"</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

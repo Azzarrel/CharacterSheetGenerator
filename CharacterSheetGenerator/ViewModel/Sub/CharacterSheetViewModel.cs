@@ -1710,7 +1710,7 @@ namespace CharacterSheetGenerator
                 SpellModel spell = new SpellModel
                 {
                     Name = row["Name"].ToString(),
-                    Type = row["Type"].ToString(),
+                    Weapons = Weapons.Where(w => w.Name == row["Type"].ToString()).FirstOrDefault(),
                     Requirement = row["Requirement"].ToString(),
                     Value = Parser.ToNullable<int>(row["Value"].ToString()),
                     Damage = row["Damage"].ToString(),
@@ -1762,7 +1762,7 @@ namespace CharacterSheetGenerator
         {
             foreach (SpellModel spell in Spells)
             {
-                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Type, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.Description, spell.Mana, spell.Ticks);
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Weapons.Name, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.Description, spell.Mana, spell.Ticks);
             }
         }
 

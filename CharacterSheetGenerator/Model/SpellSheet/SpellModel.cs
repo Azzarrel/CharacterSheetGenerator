@@ -1,4 +1,5 @@
 ﻿using CharacterSheetGenerator.Helpers;
+using CharacterSheetGenerator.Model.CombatSheet;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,10 +20,10 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        [ColumnName("Type")]
-        public string Type
+        [ColumnName("Weapons")]
+        public WeaponModel Weapons
         {
-            get { return Get<string>(); }
+            get { return Get<WeaponModel>(); }
             set { Set(value); }
         }
 

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -42,6 +45,7 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Interactivity">
       <HintPath>libs\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -233,11 +237,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>REM Kopiert die dlls in den Debug-Ordner, zum Testen
-xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Iibs\*.dll"    "$(TargetDir)resources/libs"
-REM Kopiert die xml in den Debug-Ordner, zum Testen
-xcopy /I /R /Y  "$(SolutionDir)CharacterSheetGenerator\Xml\*.xml" "$(TargetDir)Settings/Character/Default"
-
+    <PostBuildEvent>REM Kopiert $(ProjectDir)Iibs\*.dll  in den Debug-Ordner, zum Testen
+xcopy /I /R /Y  "$(ProjectDir)libs\*.dll"   "$(TargetDir)resources/libs"
+xcopy /I /R /Y  "$(ProjectDir)Xml\*.xml" "$(TargetDir)Settings/Character/Default"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>

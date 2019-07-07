@@ -60,13 +60,18 @@ namespace CharacterSheetGenerator.ViewModel
                 Set(value);
                 if(SelectedTrait != null)
                 TraitModifiers = new ObservableCollection<TraitModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
+                InsertModifiersCommand.UpdateCanExecuteState();
+                DeleteTraitsCommand.UpdateCanExecuteState();
             }
         }
 
         public TraitModifierModel SelectedModifier
         {
             get { return Get<TraitModifierModel>(); }
-            set { Set(value); }
+            set {
+                Set(value);
+                DeleteModifiersCommand.UpdateCanExecuteState();
+            }
         }
 
         public ObservableCollection<TraitModifierModel> TraitModifiers
@@ -104,17 +109,17 @@ namespace CharacterSheetGenerator.ViewModel
         {
             SaveCommand = new RelayCommand(SaveMethod, CanExecute);
             InsertTraitsCommand = new RelayCommand(InsertTraitsMethod, CanExecute);
-            DeleteTraitsCommand = new RelayCommand(DeleteTraitsMethod, CanExecute);
-            InsertModifiersCommand = new RelayCommand(InsertModifiersMethod, CanExecute);
-            DeleteModifiersCommand = new RelayCommand(DeleteModifiersMethod, CanExecute);
+            DeleteTraitsCommand = new RelayCommand(DeleteTraitsMethod, () => SelectedTrait != null);
+            InsertModifiersCommand = new RelayCommand(InsertModifiersMethod, () => SelectedTrait != null);
+            DeleteModifiersCommand = new RelayCommand(DeleteModifiersMethod, () => SelectedModifier != null);
 
         }
 
-        public ICommand SaveCommand { get; private set; }
-        public ICommand InsertTraitsCommand { get; private set; }
-        public ICommand DeleteTraitsCommand { get; private set; }
-        public ICommand InsertModifiersCommand { get; private set; }
-        public ICommand DeleteModifiersCommand { get; private set; }
+        public RelayCommand SaveCommand { get; private set; }
+        public RelayCommand InsertTraitsCommand { get; private set; }
+        public RelayCommand DeleteTraitsCommand { get; private set; }
+        public RelayCommand InsertModifiersCommand { get; private set; }
+        public RelayCommand DeleteModifiersCommand { get; private set; }
 
         public void InsertTraitsMethod()
         {

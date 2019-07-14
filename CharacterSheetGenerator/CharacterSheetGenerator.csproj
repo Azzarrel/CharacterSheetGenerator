@@ -112,6 +112,7 @@
     <Compile Include="ViewModel\Main\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\Additional\SaveWindowViewModel.cs" />
     <Compile Include="ViewModel\Additional\TraitViewModel.cs" />
+    <Compile Include="ViewModel\Sub\SideBarViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\CharacterSheetView.xaml.cs">
       <DependentUpon>CharacterSheetView.xaml</DependentUpon>

@@ -80,6 +80,8 @@ namespace CharacterSheetGenerator
             });
 
             CreateCommands();
+
+            
         }
 
         #region Framework
@@ -344,11 +346,11 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach(SkillModel skill in SkillsLeft)
             {
-                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
+                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Deployability);
             }
-            foreach (SkillModel skill in SkillsLeft)
+            foreach (SkillModel skill in SkillsRight)
             {
-                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Difficulty);
+                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Deployability);
             }
             ExpSkills = xp;
         }
@@ -358,17 +360,17 @@ namespace CharacterSheetGenerator
             double mod = 0;
             switch(s)
             {
-                case "A":
-                    mod = 1;
-                    break;
-                case "B":
+                case "D":
                     mod = 2;
                     break;
                 case "C":
+                    mod = 2.5;
+                    break;
+                case "B":
                     mod = 3;
                     break;
-                case "D":
-                    mod = 4;
+                case "A":
+                    mod = 3.5;
                     break;
                 default:
                     break;
@@ -435,21 +437,23 @@ namespace CharacterSheetGenerator
         //ToDo: Direkt nach dem Laden die Value berechnen? bzw umbauen, dass Skills ausgewertetet werden, wenn sich bei den attributes die value ändert
         private void LoadAttributes()
         {
-            Attributes = new ObservableCollection<AttributeModel>();
-            foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Base'"))
-            {
-                AttributeModel attribute = new AttributeModel
-                {
-                    Name = row["Name"].ToString(),
-                    Tag = row["Tag"].ToString(),
-                    Base = double.Parse(row["Value"].ToString()),
-                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
-                    Special = false,
+            //Attributes = new ObservableCollection<AttributeModel>();
+            //foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Base'"))
+            //{
+            //    AttributeModel attribute = new AttributeModel
+            //    {
+            //        Name = row["Name"].ToString(),
+            //        Tag = row["Tag"].ToString(),
+            //        Base = double.Parse(row["Value"].ToString()),
+            //        Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
+            //        Special = false,
 
-                };
-                Attributes.Add(attribute);
-                attribute.PropertyChanged += Attribute_PropertyChanged;
-            }
+            //    };
+            //    Attributes.Add(attribute);
+            //    attribute.PropertyChanged += Attribute_PropertyChanged;
+                Attributes = new ObservableCollection<AttributeModel>(DataTableListConverter.ConvertToObservableCollection<AttributeModel>(Data.Tables["Attributes"], Attribute_PropertyChanged).Where(a => a.Special == false));
+                SpecialAttributes = new ObservableCollection<AttributeModel>(DataTableListConverter.ConvertToObservableCollection<AttributeModel>(Data.Tables["Attributes"], Attribute_PropertyChanged).Where(a => a.Special == true));
+            //}
 
         }
 
@@ -459,21 +463,21 @@ namespace CharacterSheetGenerator
         private void LoadSpecialAttributes()
         {
             //Aktuell immer schwarz, sonst Kirsten Ritzmann!
-            SpecialAttributes = new ObservableCollection<AttributeModel>();
-            foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Special'"))
-            {
-                AttributeModel attribute = new AttributeModel
-                {
-                    Name = row["Name"].ToString(),
-                    Tag = row["Tag"].ToString(),
-                    Base = double.Parse(row["Value"].ToString()),
-                    Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
-                    Special = true,
+            //SpecialAttributes = new ObservableCollection<AttributeModel>();
+            //foreach (DataRow row in Data.Tables["Attributes"].Select("Type = 'Special'"))
+            //{
+            //    AttributeModel attribute = new AttributeModel
+            //    {
+            //        Name = row["Name"].ToString(),
+            //        Tag = row["Tag"].ToString(),
+            //        Base = double.Parse(row["Value"].ToString()),
+            //        Color = new SolidColorBrush(ColorHandler.IntToColor(int.Parse(row["Color"].ToString()))),
+            //        Special = true,
 
-                };
-                SpecialAttributes.Add(attribute);
-                attribute.PropertyChanged += Attribute_PropertyChanged;
-            }
+            //    };
+            //    SpecialAttributes.Add(attribute);
+            //    attribute.PropertyChanged += Attribute_PropertyChanged;
+            //}
         }
 
         #endregion Loading
@@ -658,28 +662,29 @@ namespace CharacterSheetGenerator
 
         public void LoadStatusValues()
         {
-            StatusValues = new ObservableCollection<StatusValueModel>();
-            foreach (DataRow row in Data.Tables["StatusValues"].Rows)
-            {
-                ObservableCollection<string> attributelinks = new ObservableCollection<string>();
-                foreach (DataRow rowAttributeLink in Data.Tables["SVAttributeLink"].Select("StatusValues_Id = " + row["StatusValues_Id"]))
-                {
-                    attributelinks.Add(rowAttributeLink["SVAttributeLink_Text"].ToString());
-                }
+            //StatusValues = new ObservableCollection<StatusValueModel>();
+            //foreach (DataRow row in Data.Tables["StatusValues"].Rows)
+            //{
+            //    ObservableCollection<string> attributelinks = new ObservableCollection<string>();
+            //    foreach (DataRow rowAttributeLink in Data.Tables["SVAttributeLink"].Select("StatusValues_Id = " + row["StatusValues_Id"]))
+            //    {
+            //        attributelinks.Add(rowAttributeLink["SVAttributeLink_Text"].ToString());
+            //    }
 
-                StatusValueModel statusvalue = new StatusValueModel
-                {
-                    Key = int.Parse(row["StatusValues_Id"].ToString()),
-                    Name = row["Name"].ToString(),
-                    Base = double.Parse(row["Base"].ToString()),
-                    Bonus = double.Parse(row["Bonus"].ToString()),
-                    AttributeLinks = attributelinks,
+            //    StatusValueModel statusvalue = new StatusValueModel
+            //    {
+            //        Key = int.Parse(row["StatusValues_Id"].ToString()),
+            //        Name = row["Name"].ToString(),
+            //        Base = double.Parse(row["Base"].ToString()),
+            //        Bonus = double.Parse(row["Bonus"].ToString()),
+            //        AttributeLinks = attributelinks,
 
-                };
+            //    };
 
-                StatusValues.Add(statusvalue);
-                statusvalue.PropertyChanged += StatusValue_PropertyChanged;
-            }
+            //    StatusValues.Add(statusvalue);
+            //    statusvalue.PropertyChanged += StatusValue_PropertyChanged;
+                StatusValues = DataTableListConverter.ConvertToObservableCollection<StatusValueModel>(Data.Tables["StatusValues"], StatusValue_PropertyChanged, Data.Tables["SVAttributeLink"]);
+            //}
         }
 
         #endregion Loading
@@ -828,30 +833,32 @@ namespace CharacterSheetGenerator
 
         private void LoadSkills()
         {
-            SkillsLeft = SkillsRight = null;
-            List<SkillModel> l_skills = new List<SkillModel>();
-            foreach (DataRow row in Data.Tables["Skills"].Rows)
-            {
+            //SkillsLeft = SkillsRight = null;
+            //List<SkillModel> l_skills = new List<SkillModel>();
+            //foreach (DataRow row in Data.Tables["Skills"].Rows)
+            //{
 
-                SkillModel skill = new SkillModel
-                {
-                    Name = row["Name"].ToString(),
-                    Requirement = row["Requirement"].ToString(),
-                    Base = null,
-                    Mean = "",
-                    Value = null,
-                    Bonus = Parser.ToNullable<double>(row["Value"].ToString()),
-                    Difficulty = row["Difficulty"].ToString(),
-                    Comment = row["Comment"].ToString(),
-                    Category = row["Category"].ToString(),
-                    Grouping = row["Grouping"].ToString(),
+            //    SkillModel skill = new SkillModel
+            //    {
+            //        Name = row["Name"].ToString(),
+            //        Requirement = row["Requirement"].ToString(),
+            //        Base = null,
+            //        Mean = "",
+            //        Value = null,
+            //        Bonus = Parser.ToNullable<double>(row["Value"].ToString()),
+            //        Deployability = row["Deployability"].ToString(),
+            //        Difficulty = row["Difficulty"].ToString(),
+            //        Comment = row["Comment"].ToString(),
+            //        Category = row["Category"].ToString(),
+            //        Grouping = row["Grouping"].ToString(),
 
 
-                };
-                l_skills.Add(skill);
-                skill.PropertyChanged += Skill_PropertyChanged;
-            }
+            //    };
+            //    l_skills.Add(skill);
+            //    skill.PropertyChanged += Skill_PropertyChanged;
+            //}
 
+            List<SkillModel> l_skills = DataTableListConverter.ConvertToList<SkillModel>(Data.Tables["Skills"], Skill_PropertyChanged);
             SkillsLeft = new ListCollectionView(l_skills.Where(s => s.Grouping == "Left").ToList());
             SkillsLeft.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
             SkillsRight = new ListCollectionView(l_skills.Where(s => s.Grouping == "Right").ToList());
@@ -868,11 +875,11 @@ namespace CharacterSheetGenerator
 
             foreach (SkillModel skill in SkillsLeft)
             {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Deployability, skill.Comment, skill.Category, skill.Grouping);
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Comment, skill.Category, skill.Grouping);
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Deployability, skill.Comment, skill.Category, skill.Grouping);
             }
         }
 
@@ -901,8 +908,27 @@ namespace CharacterSheetGenerator
                 {
                     v += Attributes.Where(a => a.Tag == s.ToUpper()).FirstOrDefault().Value;
                 }
-                skill.Base = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : skill.Base;
-                skill.Mean = skill.Base != null ? "(" + skill.Base * 2 + ")" : "";
+                double difficulty = 0;
+                switch(skill.Difficulty)
+                {
+                    case "A":
+                        difficulty = 0;
+                        break;
+                    case "B":
+                        difficulty = 1;
+                        break;
+                    case "C":
+                        difficulty = 2;
+                        break;
+                    case "D":
+                        difficulty = 4;
+                        break;
+                    default:
+                        break;
+                }
+                double? l_base = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : skill.Base;
+                skill.Base = l_base - difficulty;
+                skill.Mean = l_base != null ? "(" + l_base * 2 + ")" : "";
             }
         }
 
@@ -1068,18 +1094,19 @@ namespace CharacterSheetGenerator
 
         public void LoadSelectedWeapons()
         {
-            SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
-            foreach (DataRow row in Data.Tables["SelectedWeapons"].Rows)
-            {
-                WeaponSelectModel ws = new WeaponSelectModel
-                {
-                    Weapon = Weapons.Where(w => w.Name == row["Weapon"].ToString()).FirstOrDefault(),
-                    Position = int.Parse(row["Position"].ToString()),
-                
-                };
-                ws.PropertyChanged += SelectedWeapon_PropertyChanged;
-                SelectedWeapons.Add(ws);
-            }
+            //SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
+            //foreach (DataRow row in Data.Tables["SelectedWeapons"].Rows)
+            //{
+            //    WeaponSelectModel ws = new WeaponSelectModel
+            //    {
+            //        Weapon = Weapons.Where(w => w.Name == row["Weapon"].ToString()).FirstOrDefault(),
+            //        Position = int.Parse(row["Position"].ToString()),
+
+            //    };
+            //    ws.PropertyChanged += SelectedWeapon_PropertyChanged;
+            //    SelectedWeapons.Add(ws);
+            //}
+            SelectedWeapons = DataTableListConverter.ConvertToObservableCollection<WeaponSelectModel, WeaponModel>(Data.Tables["SelectedWeapons"], null, Weapons);
             SelectedWeapons = new ObservableCollection<WeaponSelectModel>(SelectedWeapons.OrderBy(ws => ws.Position));
 
 
@@ -1155,11 +1182,11 @@ namespace CharacterSheetGenerator
             }
             foreach (MeleeWeaponModel weapon in MeleeWeapons)
             {
-                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Stamina, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+                Data.Tables["MeleeWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name ?? "", weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Stamina, weapon.Range, weapon.Break, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
             foreach (RangedWeaponModel weapon in RangedWeapons)
             {
-                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name == null ? "" : weapon.Weapons.Name, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Stamina, weapon.Range, weapon.Break, weapon.Load, weapon.StaminaLoad, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
+                Data.Tables["RangedWeapons"].Rows.Add(weapon.Name, weapon.Weapons?.Name ?? "", weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Stamina, weapon.Range, weapon.Break, weapon.Load, weapon.StaminaLoad, weapon.Ticks, weapon.AttackBonus, weapon.BlockBonus);
             }
         }
 
@@ -1710,15 +1737,9 @@ namespace CharacterSheetGenerator
                 SpellModel spell = new SpellModel
                 {
                     Name = row["Name"].ToString(),
-                    Weapons = Weapons.Where(w => w.Name == row["Type"].ToString()).FirstOrDefault(),
+                    Weapons = Weapons.Where(w => w.Name == row["Weapons"].ToString()).FirstOrDefault(),
                     Requirement = row["Requirement"].ToString(),
-                    Value = Parser.ToNullable<int>(row["Value"].ToString()),
-                    Damage = row["Damage"].ToString(),
-                    MagicDamage = row["MagicDamage"].ToString(),
-                    ArmorPenetration = row["ArmorPenetration"].ToString(),
-                    Impulse = row["Impulse"].ToString(),
-                    Range = row["Range"].ToString(),
-                    Duration = row["Duration"].ToString(),
+                    Value = Parser.ToNullable<int>(row["Value"].ToString()),                  
                     Description = row["Description"].ToString(),
                     Mana = row["Mana"].ToString(),
                     Ticks = row["Ticks"].ToString(),
@@ -1762,7 +1783,7 @@ namespace CharacterSheetGenerator
         {
             foreach (SpellModel spell in Spells)
             {
-                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Weapons.Name, spell.Requirement, spell.Value, spell.Damage, spell.MagicDamage, spell.ArmorPenetration, spell.Impulse, spell.Range, spell.Duration, spell.Description, spell.Mana, spell.Ticks);
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Weapons?.Name ?? "", spell.Requirement, spell.Value, spell.Description, spell.Mana, spell.Ticks);
             }
         }
 

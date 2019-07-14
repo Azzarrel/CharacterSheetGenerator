@@ -13,8 +13,10 @@ namespace CharacterSheetGenerator.Model.CombatSheet
 {
     public class WeaponSelectModel : TemplateModel
     {
-        [ColumnName("Weapon")]
+        
         private WeaponModel m_Weapon;
+
+        [ColumnName("Weapon")]
         public WeaponModel Weapon
         {
             get
@@ -162,7 +164,7 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             }
         }
 
-        [ColumnName("BlockBonus")]
+        [ColumnName("Position")]
         public double Position
         {
             get { return Get<double>(); }

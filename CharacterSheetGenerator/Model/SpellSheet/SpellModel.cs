@@ -35,62 +35,14 @@ namespace CharacterSheetGenerator.Model
         }
 
         [ColumnName("Value")]
-        public int? Base
-        {
-            get { return Get<int?>(); }
-            set { Set(value); }
-        }
-
         public int? Value
         {
             get { return Get<int?>(); }
             set { Set(value); }
         }
 
-        [ColumnName("Damage")]
-        public string Damage
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        [ColumnName("Impulse")]
-        public string Impulse
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        [ColumnName("ArmorPenetration")]
-        public string ArmorPenetration
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        [ColumnName("MagicDamage")]
-        public string MagicDamage
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
         [ColumnName("Description")]
         public string Description
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        [ColumnName("Range")]
-        public string Range
-        {
-            get { return Get<string>(); }
-            set { Set(value); }
-        }
-
-        [ColumnName("Duration")]
-        public string Duration
         {
             get { return Get<string>(); }
             set { Set(value); }
@@ -109,11 +61,5 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        [ColumnName("AttackBonus")]
-        public bool AttackBonus
-        {
-            get { return Get<bool>(); }
-            set { Set(value); }
-        }
     }
 }

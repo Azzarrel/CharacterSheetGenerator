@@ -76,6 +76,14 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
+
+        [ColumnName("Deployability")]
+        public string Deployability
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
         public string Routine
         {
             get { return Get<string>(); }

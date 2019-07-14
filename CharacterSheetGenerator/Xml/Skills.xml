@@ -4,7 +4,8 @@
 		<Name>Klettern</Name>
 		<Requirement>FF/KO/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>	
 		<Grouping>Left</Grouping>			
@@ -13,7 +14,8 @@
 		<Name>Akrobatik</Name>
 		<Requirement>GE/GE/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>			
@@ -22,7 +24,8 @@
 		<Name>Schwmimmen</Name>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>			
@@ -31,7 +34,8 @@
 		<Name>Reiten</Name>
 		<Requirement>WK/GE/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -40,7 +44,8 @@
 		<Name>Schleichen</Name>
 		<Requirement>WK/GE/KO</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -49,7 +54,8 @@
 		<Name>Kraftakt</Name>
 		<Requirement>KO/ST/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -59,6 +65,7 @@
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -67,7 +74,8 @@
 		<Name>Selbstbeherrschung</Name>
 		<Requirement>WK/WK/KO</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -76,7 +84,8 @@
 		<Name>Stimmen immitieren</Name>
 		<Requirement>KL/IN/CH</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -85,7 +94,8 @@
 		<Name>Tanzen</Name>
 		<Requirement>WK/CH/GE</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -95,6 +105,7 @@
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -103,7 +114,8 @@
 		<Name>Sicht</Name>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -112,7 +124,8 @@
 		<Name>Gehör</Name>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -121,7 +134,8 @@
 		<Name>Gefühl</Name>
 		<Requirement>Wa/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>C</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -130,7 +144,8 @@
 		<Name>Geruch u. Geschmack</Name>
 		<Requirement>WA/IN/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -139,7 +154,8 @@
 		<Name>Zechen</Name>
 		<Requirement>WK/KO/KO</Requirement>
 		<Value>0</Value>
-		<Difficulty>B</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -149,6 +165,7 @@
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
+		<Deployability></Deployability>
 		<Comment></Comment>
 		<Category>Körpertalente</Category>
 		<Grouping>Left</Grouping>
@@ -160,7 +177,8 @@
 		<Name>Bekehren u. Überzeugen</Name>
 		<Requirement>IN/CH/CH</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -170,6 +188,7 @@
 		<Requirement>IN/CH/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -179,6 +198,7 @@
 		<Requirement>WK/IN/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -187,7 +207,8 @@
 		<Name>Etikette</Name>
 		<Requirement>WA/KL/KL</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -196,7 +217,8 @@
 		<Name>Gassenwissen</Name>
 		<Requirement>KL/IN/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -205,7 +227,8 @@
 		<Name>Menschenkenntnis</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -214,7 +237,8 @@
 		<Name>Überreden</Name>
 		<Requirement>KL/IN/CH</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -223,7 +247,8 @@
 		<Name>Verkleiden</Name>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -233,6 +258,7 @@
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -241,7 +267,8 @@
 		<Name>Tarnen</Name>
 		<Requirement>WK/IN/GE</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -251,6 +278,7 @@
 		<Requirement>WK/FF/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -260,6 +288,7 @@
 		<Requirement>WK/KL/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -269,6 +298,7 @@
 		<Requirement>KL/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -278,6 +308,7 @@
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
+		<Deployability></Deployability>
 		<Comment></Comment>
 		<Category>Gesellschaftstalente</Category>
 		<Grouping>Left</Grouping>
@@ -289,7 +320,8 @@
 		<Name>Tierkunde</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -298,7 +330,8 @@
 		<Name>Plfanzenkunde</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -307,7 +340,8 @@
 		<Name>Fährtensuchen</Name>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -317,6 +351,7 @@
 		<Requirement>WA/IN/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -325,7 +360,8 @@
 		<Name>Wettervorhersagen</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -334,7 +370,8 @@
 		<Name>Fesseln</Name>
 		<Requirement>FF/FF/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -343,7 +380,8 @@
 		<Name>Fallenstellen</Name>
 		<Requirement>WA/FF/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -352,7 +390,8 @@
 		<Name>Fischen u. Angeln</Name>
 		<Requirement>WA/IN/KO</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -361,6 +400,7 @@
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
+		<Deployability></Deployability>
 		<Comment></Comment>
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
@@ -373,7 +413,8 @@
 		<Name>Brett u. Glücksspiel</Name>
 		<Requirement>KL/IN/CH</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -382,7 +423,8 @@
 		<Name>Geschichtswissen</Name>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -391,7 +433,8 @@
 		<Name>Götter u. Kulte</Name>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -400,7 +443,8 @@
 		<Name>Sagen u. Legenden</Name>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -409,7 +453,8 @@
 		<Name>Rechtskunde</Name>
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -418,7 +463,8 @@
 		<Name>Staatskunst</Name>
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -427,7 +473,8 @@
 		<Name>Magiekunde</Name>
 		<Requirement>WK/KL/KL</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -436,7 +483,8 @@
 		<Name>Kriegskunst</Name>
 		<Requirement>WK/WK/KL</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -445,7 +493,8 @@
 		<Name>Rechnen</Name>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -455,6 +504,7 @@
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -463,7 +513,8 @@
 		<Name>Geografie</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -472,7 +523,8 @@
 		<Name>Geologie</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -482,6 +534,7 @@
 		<Requirement>WA/KL/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -490,7 +543,8 @@
 		<Name>Expertise</Name>
 		<Requirement>WA/IN/KL</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -499,7 +553,8 @@
 		<Name>Anatomie</Name>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>´B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -508,7 +563,8 @@
 		<Name>Kartografie</Name>
 		<Requirement>WA/Kl/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -518,6 +574,7 @@
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -527,6 +584,7 @@
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
+		<Deployability></Deployability>
 		<Comment></Comment>
 		<Category>Wissenstalente</Category>
 		<Grouping>Right</Grouping>
@@ -539,6 +597,7 @@
 		<Requirement>KL/Kl/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -547,7 +606,8 @@
 		<Name>Agrarwirtschaft</Name>
 		<Requirement>WK/KO/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -556,7 +616,8 @@
 		<Name>Brauerei</Name>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -565,7 +626,8 @@
 		<Name>Bergbau</Name>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -575,6 +637,7 @@
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -583,7 +646,8 @@
 		<Name>Heilkunde: Körper</Name>
 		<Requirement>KL/IN/IN</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -593,6 +657,7 @@
 		<Requirement>WK/KL/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -601,7 +666,8 @@
 		<Name>Heikunde: Wunden</Name>
 		<Requirement>WA/KL/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>A</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -610,7 +676,8 @@
 		<Name>Holzbearbeitung</Name>
 		<Requirement>FF/KO/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -619,7 +686,8 @@
 		<Name>Kochen</Name>
 		<Requirement>IN/FF/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -628,7 +696,8 @@
 		<Name>Lederbearbeitung</Name>
 		<Requirement>WK/IN/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -638,6 +707,7 @@
 		<Requirement>IN/FF/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -646,7 +716,8 @@
 		<Name>Musizieren</Name>
 		<Requirement>WK/CH/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -655,7 +726,8 @@
 		<Name>Schmiedekunst</Name>
 		<Requirement>IN/KO/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -665,6 +737,7 @@
 		<Requirement>WK/FF/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -674,6 +747,7 @@
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -683,6 +757,7 @@
 		<Requirement>FF/GE/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
+		<Deployability>D</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -691,7 +766,8 @@
 		<Name>Stoffbearbeitung</Name>
 		<Requirement>FF/FF/GE</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -700,7 +776,8 @@
 		<Name>Baukunst</Name>
 		<Requirement>WK/GE/KO</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -709,7 +786,8 @@
 		<Name>Büchsenmacherei</Name>
 		<Requirement>WK/FF/FF</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>D</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -718,7 +796,8 @@
 		<Name>Töpfern</Name>
 		<Requirement>FF/FF/GE</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>A</Difficulty>
+		<Deployability>C</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -727,7 +806,8 @@
 		<Name>Bogenbau</Name>
 		<Requirement>FF/FF/ST</Requirement>
 		<Value>0</Value>
-		<Difficulty>C</Difficulty>
+		<Difficulty>B</Difficulty>
+		<Deployability>B</Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>
@@ -737,6 +817,7 @@
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
+		<Deployability></Deployability>
 		<Comment></Comment>
 		<Category>Handwerkstalente</Category>
 		<Grouping>Right</Grouping>

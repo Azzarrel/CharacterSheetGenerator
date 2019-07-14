@@ -38,6 +38,7 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
+        [ColumnName("StatusValues_Id")]
         public int Key
         {
             get { return Get<int>(); }

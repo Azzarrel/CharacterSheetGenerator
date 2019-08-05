@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="Pluss" Width="100.014" Height="100.014" Clip="F1 M 0,0L 100.014,0L 100.014,100.014L 0,100.014L 0,0">
+	<Canvas x:Name="Layer_1" Width="100.014" Height="100.014" Canvas.Left="0" Canvas.Top="0">
+		<Path x:Name="Path" Width="90.5126" Height="90.5126" Canvas.Left="4.75066" Canvas.Top="4.74537" Stretch="Fill" StrokeThickness="0.50007" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF00C800" Data="F1 M 39.8835,4.99541L 60.1363,4.99541L 60.1363,39.8812L 95.0133,39.8812L 95.0133,60.134L 60.1363,60.134L 60.1363,95.0079L 39.8835,95.0079L 39.8835,60.134L 5.0007,60.134L 5.0007,39.8812L 39.8835,39.8812L 39.8835,4.99541 Z "/>
+	</Canvas>
+</Canvas>

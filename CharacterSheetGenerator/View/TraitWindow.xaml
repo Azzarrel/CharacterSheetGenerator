@@ -38,9 +38,13 @@
             <StackPanel Grid.Column="1" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="10" />
-                    <Button Height="20" Width="20" Content="+" HorizontalAlignment="Left" Command="{Binding InsertTraitsCommand}"/>
+                    <Button Height="20" Width="20" HorizontalAlignment="Left" Command="{Binding InsertTraitsCommand}">
+                        <Image Source="/images/AddButtonPicture.png"/>
+                    </Button>
                     <TextBlock Width="10" />
-                    <Button Height="20" Width="20" Content="x" HorizontalAlignment="Left" Command="{Binding DeleteTraitsCommand}"/>
+                    <Button Height="20" Width="20" HorizontalAlignment="Left" Command="{Binding DeleteTraitsCommand}">
+                        <Image Source="/images/CancelButtonPicture.png"/>
+                    </Button>
                 </StackPanel>
                 <TextBlock Height="5" />
                 <Border BorderBrush="Black" BorderThickness="1,0,1,1" Height="466">
@@ -66,9 +70,13 @@
             <StackPanel Grid.Column="3">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="10" />
-                    <Button Height="20" Width="20" Content="+" HorizontalAlignment="Left" Command="{Binding InsertModifiersCommand}"/>
+                    <Button Height="20" Width="20" HorizontalAlignment="Left" Command="{Binding InsertModifiersCommand}">
+                        <Image Source="/images/AddButtonPicture.png"/>
+                    </Button>
                     <TextBlock Width="10" />
-                    <Button Height="20" Width="20" Content="x" HorizontalAlignment="Left" Command="{Binding DeleteModifiersCommand}"/>
+                    <Button Height="20" Width="20" HorizontalAlignment="Left" Command="{Binding DeleteModifiersCommand}" >
+                        <Image Source="/images/CancelButtonPicture.png"/>
+                    </Button>
                 </StackPanel>
                 <TextBlock Height="5" />
                 <Border BorderBrush="Black" BorderThickness="1,0,1,1" Height="466">

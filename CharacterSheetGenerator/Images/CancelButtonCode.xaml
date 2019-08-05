@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="CancelButton" Width="100.014" Height="100.014" Clip="F1 M 0,0L 100.014,0L 100.014,100.014L 0,100.014L 0,0">
+	<Canvas x:Name="Layer_1" Width="100.014" Height="100.014" Canvas.Left="0" Canvas.Top="0">
+		<Path x:Name="Path" Width="78.4716" Height="78.4757" Canvas.Left="10.7743" Canvas.Top="10.7702" Stretch="Fill" StrokeThickness="0.50007" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FFB51020" Data="F1 M 11.0244,25.3411L 25.3453,11.0202L 50.0133,35.6882L 74.675,11.0265L 88.9959,25.3474L 64.3342,50.0091L 88.9937,74.6687L 74.6728,88.9896L 50.0133,64.33L 25.3474,88.9959L 11.0265,74.675L 35.6923,50.0091L 11.0244,25.3411 Z "/>
+	</Canvas>
+</Canvas>

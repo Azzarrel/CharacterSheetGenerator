@@ -379,7 +379,7 @@
 		<Initiative>4</Initiative>
 		<Damage>1D6+2</Damage>
 		<Impulse>0</Impulse>
-		<ArmorPenetration>1D6+1</ArmorPenetration>
+		<ArmorPenetration>1D6+2</ArmorPenetration>
 		<Reload>0</Reload>
 		<Range>1</Range>
 	</Weapons>

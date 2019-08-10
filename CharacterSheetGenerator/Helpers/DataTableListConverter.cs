@@ -57,8 +57,16 @@ namespace CharacterSheetGenerator.Helpers
                             if (columnNames.Contains(((ColumnNameAttribute)attribute).Name.ToLower()) &&  row[((ColumnNameAttribute)attribute).Name].GetType() != typeof(DBNull))
                             {
                                 try
-                                {                               
-                                    if (property.PropertyType == typeof(double))
+                                {
+                                    if (property.PropertyType == typeof(int))
+                                    {
+                                        property.SetValue(objT, int.Parse(row[((ColumnNameAttribute)attribute).Name].ToString()));
+                                    }
+                                    else if (property.PropertyType == typeof(int?))
+                                    {
+                                        property.SetValue(objT, Parser.ToNullable<int>(row[((ColumnNameAttribute)attribute).Name].ToString()));
+                                    }
+                                    else if (property.PropertyType == typeof(double))
                                     {
                                         property.SetValue(objT, double.Parse(row[((ColumnNameAttribute)attribute).Name].ToString()));
                                     }

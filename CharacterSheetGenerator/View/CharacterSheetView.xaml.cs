@@ -48,8 +48,8 @@ namespace CharacterSheetGenerator.View
 
 
                     //get scale of the print wrt to screen of WPF visual
-                    double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / 1281, capabilities.PageImageableArea.ExtentHeight /
-                                   1800);
+                    double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / e.ActualWidth, capabilities.PageImageableArea.ExtentHeight /
+                                   e.ActualHeight);
 
                     //Transform the Visual to scale
                     e.LayoutTransform = new ScaleTransform(scale, scale);

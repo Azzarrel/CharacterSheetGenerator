@@ -39,13 +39,13 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        [ColumnName("Base")]
         public double? Base
         {
             get { return Get<double?>(); }
             set { Set(value); }
         }
 
+        [ColumnName("Value")]
         public double? Bonus
         {
             get { return Get<double?>(); }

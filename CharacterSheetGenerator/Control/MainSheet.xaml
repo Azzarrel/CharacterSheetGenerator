@@ -120,7 +120,7 @@
                                     <Label Content="{Binding Name}" FontSize="26" FontWeight="Bold">
                                     </Label>
                                     <Button Width="Auto" Height="Auto" BorderThickness="0" Background="White" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.OpenTraitViewCommand}" CommandParameter="{Binding Name}">
-                                        <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap" FontSize="13">
+                                        <TextBlock Height="300" Width="670" Text="{Binding TraitTexts}" TextWrapping="Wrap" FontSize="14.5">
                                         </TextBlock>
                                     </Button>
                                 </StackPanel>

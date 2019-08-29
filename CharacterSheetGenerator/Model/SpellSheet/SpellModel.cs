@@ -54,7 +54,7 @@ namespace CharacterSheetGenerator.Model
             get { return Get<string>(); }
             set { Set(value); }
         }
-
+        [ColumnName("Ticks")]
         public string Ticks
         {
             get { return Get<string>(); }

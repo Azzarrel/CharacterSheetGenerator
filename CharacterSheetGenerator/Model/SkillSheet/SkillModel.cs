@@ -59,7 +59,11 @@ namespace CharacterSheetGenerator.Model
         public double? Value
         {
             get { return Get<double?>(); }
-            set { Set(value); }
+            set
+            {
+                Set(value);
+                SetToolTip(value);
+            }
         }
 
         public string Mean
@@ -110,25 +114,34 @@ namespace CharacterSheetGenerator.Model
             get { return Get<string>(); }
             set { Set(value); }
         }
+        public string ToolTip
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
 
         public void SetRoutine(double? value)
         {
             Routine = "";
-            if (value >= 3)
+            if (value >= 4)
                 Routine = "e";
 
-            if (value >= 5)
+            if (value >= 7)
                 Routine = "r";
 
-            if (value >= 8)
+            if (value >= 10)
                 Routine = "g";
 
-            if (value >= 12)
+            if (value >= 13)
                 Routine = "m";
 
-            if (value >= 17)
+            if (value >= 16)
                 Routine = "l";
 
+        }
+        public void SetToolTip(double? value)
+        {
+            ToolTip = "Gesamt: " + Value + "\n" + "Grundwert: " + Base + "\n" + "Modifier: " + Modifiers + "\n" + "Steigerung: " + Bonus;
         }
     }
 

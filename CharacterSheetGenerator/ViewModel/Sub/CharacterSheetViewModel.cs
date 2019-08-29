@@ -209,22 +209,41 @@ namespace CharacterSheetGenerator
 
         public ICommand OpenTraitViewCommand { get; private set; }
 
-
+        //Das ganze Zeug mit den Traits ist noch unnötig wie shit, sollte man mal vereinfachen.
         public void OpenTraitViewMethod(string Category)
         {
-
 
             int keycounter = 0;
             TraitViewModel vm = new TraitViewModel();
             vm.Modifiers = new ObservableCollection<TraitModifierModel>(Modifiers);
             vm.BaseModifiers = BaseModifiers;
             vm.Category = Category;
+            //ToDo: Vereinfachen/Zusammenfassen
             foreach (TraitCategoryModel category in Traits)
             {
                 keycounter += category.Traits.Count();
             }
+            foreach (TraitCategoryModel category in CombatTraits)
+            {
+                keycounter += category.Traits.Count();
+            }
+            foreach (TraitCategoryModel category in SpellTraits)
+            {
+                keycounter += category.Traits.Count();
+            }
             vm.KeyCounter = keycounter;
-            vm.Traits = new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+            if (Traits.Any(t => t.Name == Category))
+            {
+                vm.Traits = new ObservableCollection<TraitModel>(Traits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+            }
+            else if (CombatTraits.Any(t => t.Name == Category))
+            {
+                vm.Traits = new ObservableCollection<TraitModel>(CombatTraits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+            }
+            else if (SpellTraits.Any(t => t.Name == Category))
+            {
+                vm.Traits = new ObservableCollection<TraitModel>(SpellTraits.Where(c => c.Name == Category).SelectMany(x => x.Traits));
+            }
 
 
             TraitWindow traitview = new TraitWindow();
@@ -232,7 +251,19 @@ namespace CharacterSheetGenerator
             traitview.ShowDialog();
             if (vm.IsSaved)
             {
-                TraitCategoryModel catgory = Traits.Where(c => c.Name == vm.Category).FirstOrDefault();
+                TraitCategoryModel catgory = new TraitCategoryModel();
+                if (Traits.Any(t => t.Name == vm.Category))
+                {
+                     catgory = Traits.FirstOrDefault(c => c.Name == vm.Category);
+                }
+                else if (CombatTraits.Any(t => t.Name == vm.Category))
+                {
+                    catgory = CombatTraits.FirstOrDefault(c => c.Name == vm.Category);
+                }
+                else if (SpellTraits.Any(t => t.Name == vm.Category))
+                {
+                    catgory = SpellTraits.FirstOrDefault(c => c.Name == vm.Category);
+                }
                 //Die alten Traits einfach mit den neuen Überschreiben
                 catgory.Traits = vm.Traits;
                 catgory.TraitTexts = "";
@@ -298,8 +329,6 @@ namespace CharacterSheetGenerator
             set { Set(value); CalculateExpirience(); }
         }
         #endregion Properties
-
-
 
         #region Calculation
 
@@ -573,6 +602,7 @@ namespace CharacterSheetGenerator
 
         #region Loading
 
+        //Wird schwer in den DataTableListConverter zu packen
         public void LoadCharacterInformation()
         {
 
@@ -833,31 +863,6 @@ namespace CharacterSheetGenerator
 
         private void LoadSkills()
         {
-            //SkillsLeft = SkillsRight = null;
-            //List<SkillModel> l_skills = new List<SkillModel>();
-            //foreach (DataRow row in Data.Tables["Skills"].Rows)
-            //{
-
-            //    SkillModel skill = new SkillModel
-            //    {
-            //        Name = row["Name"].ToString(),
-            //        Requirement = row["Requirement"].ToString(),
-            //        Base = null,
-            //        Mean = "",
-            //        Value = null,
-            //        Bonus = Parser.ToNullable<double>(row["Value"].ToString()),
-            //        Deployability = row["Deployability"].ToString(),
-            //        Difficulty = row["Difficulty"].ToString(),
-            //        Comment = row["Comment"].ToString(),
-            //        Category = row["Category"].ToString(),
-            //        Grouping = row["Grouping"].ToString(),
-
-
-            //    };
-            //    l_skills.Add(skill);
-            //    skill.PropertyChanged += Skill_PropertyChanged;
-            //}
-
             List<SkillModel> l_skills = DataTableListConverter.ConvertToList<SkillModel>(Data.Tables["Skills"], Skill_PropertyChanged);
             SkillsLeft = new ListCollectionView(l_skills.Where(s => s.Grouping == "Left").ToList());
             SkillsLeft.GroupDescriptions.Add(new PropertyGroupDescription("Category"));
@@ -988,25 +993,9 @@ namespace CharacterSheetGenerator
 
         public void LoadLanguages()
         {
-            Languages = new ObservableCollection<LanguageModel>();
-            foreach(DataRow row in Data.Tables["Languages"].Rows)
-            {
-                LanguageModel language = new LanguageModel
-                {
-                    Name = row["Name"].ToString(),
-                };
-                Languages.Add(language);
-            }
 
-            Writings = new ObservableCollection<LanguageModel>();
-            foreach (DataRow row in Data.Tables["Writings"].Rows)
-            {
-                LanguageModel writing = new LanguageModel
-                {
-                    Name = row["Name"].ToString(),
-                };
-                Writings.Add(writing);
-            }
+            Languages = DataTableListConverter.ConvertToObservableCollection<LanguageModel>(Data.Tables["Languages"]);            
+            Writings = DataTableListConverter.ConvertToObservableCollection<LanguageModel>(Data.Tables["Languages"]);
         }
 
         #endregion Loading
@@ -1065,48 +1054,12 @@ namespace CharacterSheetGenerator
 
         public void LoadWeapons()
         {
-            ObservableCollection<WeaponModel> l_weapons = new ObservableCollection<WeaponModel>();
-            foreach (DataRow row in Data.Tables["Weapons"].Rows)
-            {
-
-                WeaponModel weapon = new WeaponModel
-                {
-                    Name = row["Name"].ToString(),
-                    AttributeLink = row["AttributeLink"].ToString(),
-                    Mode = row["Mode"].ToString(),
-                    AttackBase = double.Parse(row["AttackBase"].ToString()),
-                    AttackBonus = double.Parse(row["AttackBonus"].ToString()),
-                    BlockBase = double.Parse(row["BlockBase"].ToString()),
-                    BlockBonus = double.Parse(row["BlockBonus"].ToString()),
-                    Stamina = int.Parse(row["Stamina"].ToString()),
-                    Initiative = int.Parse(row["Initiative"].ToString()),
-                    Damage = row["Damage"].ToString(),
-                    Impulse = row["Impulse"].ToString(),
-                    ArmorPenetration = row["ArmorPenetration"].ToString(),
-                    Reload = double.Parse(row["Reload"].ToString()),
-                    Range = row["Range"].ToString(),
-                };
-                l_weapons.Add(weapon);
-                weapon.PropertyChanged += Weapon_PropertyChanged;
-            }
-            Weapons = l_weapons;
+            Weapons = DataTableListConverter.ConvertToObservableCollection<WeaponModel>(Data.Tables["Weapons"]);
         }
 
         public void LoadSelectedWeapons()
         {
-            //SelectedWeapons = new ObservableCollection<WeaponSelectModel>();
-            //foreach (DataRow row in Data.Tables["SelectedWeapons"].Rows)
-            //{
-            //    WeaponSelectModel ws = new WeaponSelectModel
-            //    {
-            //        Weapon = Weapons.Where(w => w.Name == row["Weapon"].ToString()).FirstOrDefault(),
-            //        Position = int.Parse(row["Position"].ToString()),
-
-            //    };
-            //    ws.PropertyChanged += SelectedWeapon_PropertyChanged;
-            //    SelectedWeapons.Add(ws);
-            //}
-            SelectedWeapons = DataTableListConverter.ConvertToObservableCollection<WeaponSelectModel, WeaponModel>(Data.Tables["SelectedWeapons"], null, Weapons);
+            SelectedWeapons = DataTableListConverter.ConvertToObservableCollection<WeaponSelectModel, WeaponModel>(Data.Tables["SelectedWeapons"], SelectedWeapon_PropertyChanged, Weapons);
             SelectedWeapons = new ObservableCollection<WeaponSelectModel>(SelectedWeapons.OrderBy(ws => ws.Position));
 
 
@@ -1114,56 +1067,12 @@ namespace CharacterSheetGenerator
 
         public void LoadMeleeWeapons()
         {
-            ObservableCollection<MeleeWeaponModel> l_weapons = new ObservableCollection<MeleeWeaponModel>();
-            foreach (DataRow row in Data.Tables["MeleeWeapons"].Rows)
-            {
-
-                MeleeWeaponModel weapon = new MeleeWeaponModel();
-
-                weapon.Name = row["Name"].ToString();
-                weapon.Weapons = Weapons.Where(x => x.Name == row["Weapons"].ToString()).ToList().FirstOrDefault();
-                weapon.AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString());
-                weapon.BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString());
-                weapon.Damage = row["Damage"].ToString();
-                weapon.Impulse = row["Impulse"].ToString();
-                weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
-                weapon.Stamina = Parser.ToNullable<int>(row["Stamina"].ToString());
-                weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
-                weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
-                weapon.Range = row["Range"].ToString();
-
-                weapon.PropertyChanged += MeleeWeapon_PropertyChanged;
-                l_weapons.Add(weapon);
-            }
-            MeleeWeapons = l_weapons;
+            MeleeWeapons = DataTableListConverter.ConvertToObservableCollection<MeleeWeaponModel, WeaponModel > (Data.Tables["MeleeWeapons"], SelectedWeapon_PropertyChanged, Weapons);
         }
 
         public void LoadRangedWeapons()
         {
-            ObservableCollection<RangedWeaponModel> l_weapons = new ObservableCollection<RangedWeaponModel>();
-            foreach (DataRow row in Data.Tables["RangedWeapons"].Rows)
-            {
-
-                RangedWeaponModel weapon = new RangedWeaponModel();
-
-                weapon.Name = row["Name"].ToString();
-                weapon.Weapons = Weapons.Where(x => x.Name == row["Weapons"].ToString()).ToList().FirstOrDefault();
-                weapon.AttackBonus = Parser.ToNullable<double>(row["AttackBonus"].ToString());
-                weapon.BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString());
-                weapon.Damage = row["Damage"].ToString();
-                weapon.Impulse = row["Impulse"].ToString();
-                weapon.ArmorPenetration = row["ArmorPenetration"].ToString();
-                weapon.Stamina = Parser.ToNullable<int>(row["Stamina"].ToString());
-                weapon.Load = Parser.ToNullable<int>(row["Load"].ToString());
-                weapon.StaminaLoad = Parser.ToNullable<int>(row["StaminaLoad"].ToString());
-                weapon.Ticks = Parser.ToNullable<int>(row["Ticks"].ToString());
-                weapon.Break = Parser.ToNullable<int>(row["Break"].ToString());
-                weapon.Range = row["Range"].ToString();
-
-                weapon.PropertyChanged += RangedWeapon_PropertyChanged;
-                l_weapons.Add(weapon);
-            }
-            RangedWeapons = l_weapons;
+            RangedWeapons = DataTableListConverter.ConvertToObservableCollection< RangedWeaponModel, WeaponModel > (Data.Tables["RangedWeapons"], SelectedWeapon_PropertyChanged, Weapons);
         }
 
         #endregion Loading
@@ -1345,53 +1254,12 @@ namespace CharacterSheetGenerator
 
         public void LoadArmor()
         {
-            ObservableCollection<ArmorModel> l_armor = new ObservableCollection<ArmorModel>();
-            foreach (DataRow row in Data.Tables["Armor"].Rows)
-            {
-
-                ArmorModel armor = new ArmorModel
-                {
-                    Name = row["Name"].ToString(),
-                    Head = Parser.ToNullable<int>(row["Head"].ToString()),
-                    Torso = Parser.ToNullable<int>(row["Torso"].ToString()),
-                    LeftArm = Parser.ToNullable<int>(row["LeftArm"].ToString()),
-                    RightArm = Parser.ToNullable<int>(row["RightArm"].ToString()),
-                    LeftLeg = Parser.ToNullable<int>(row["LeftLeg"].ToString()),
-                    RightLeg = Parser.ToNullable<int>(row["RightLeg"].ToString()),
-                    Toughness = Parser.ToNullable<int>(row["Toughness"].ToString()),
-                    Slow = Parser.ToNullable<int>(row["Slow"].ToString()),
-                    Restriction = Parser.ToNullable<int>(row["Restriction"].ToString()),
-                    Break = Parser.ToNullable<int>(row["Break"].ToString()),
-
-                };
-
-
-                l_armor.Add(armor);
-            }
-            Armor = l_armor;
+            Armor = DataTableListConverter.ConvertToObservableCollection<ArmorModel>(Data.Tables["Armor"]);
         }
 
         public void LoadOffHands()
         {
-            ObservableCollection<OffHandModel> l_offhands = new ObservableCollection<OffHandModel>();
-            foreach (DataRow row in Data.Tables["OffHand"].Rows)
-            {
-
-                OffHandModel offhand = new OffHandModel
-                {
-                    Name = row["Name"].ToString(),
-                    TickBonus = Parser.ToNullable<double>(row["TickBonus"].ToString()),
-                    StaminaBonus = Parser.ToNullable<double>(row["StaminaBonus"].ToString()),
-                    BlockBonus = Parser.ToNullable<double>(row["BlockBonus"].ToString()),
-                    Toughness = Parser.ToNullable<int>(row["Toughness"].ToString()),
-                    Strenght = Parser.ToNullable<int>(row["Strenght"].ToString()),
-                    Break = Parser.ToNullable<int>(row["Break"].ToString()),
-
-                };
-
-                l_offhands.Add(offhand);
-            }
-            OffHands = l_offhands;
+            OffHands = DataTableListConverter.ConvertToObservableCollection<OffHandModel>(Data.Tables["OffHand"]);
         }
 
         #endregion Loading
@@ -1451,7 +1319,7 @@ namespace CharacterSheetGenerator
 
         #region Loading
 
-
+        //ToDo: Diesen Clusterfuck auch irgendwie in den DataTableConverter einpflegen
         public void LoadTraits()
         {
             //Handling für den Fall, dass ein Charakter keine Traits hat
@@ -1463,8 +1331,8 @@ namespace CharacterSheetGenerator
                 Data.Tables["Traits"].Columns.Add("Description", typeof(string));
                 Data.Tables["Traits"].Columns.Add("TraitCategory_Id", typeof(int));
             }
-
-            foreach(DataRow rowCategoryType in Data.Tables["TraitCategory"].DefaultView.ToTable(true, "Type").Rows)
+            var v = Data.Tables["TraitCategory"].DefaultView.ToTable(true, "Type");
+            foreach (DataRow rowCategoryType in Data.Tables["TraitCategory"].DefaultView.ToTable(true, "Type").Rows)
             {
                 ObservableCollection<TraitCategoryModel> l_TraitList = new ObservableCollection<TraitCategoryModel>();
                 foreach (DataRow rowCategory in Data.Tables["TraitCategory"].Select("Type = '"+ rowCategoryType["Type"].ToString() + "'"))
@@ -1500,11 +1368,11 @@ namespace CharacterSheetGenerator
                 {
                     Traits = l_TraitList;
                 }
-                if (rowCategoryType["Type"].ToString() == "Combat")
+                else if (rowCategoryType["Type"].ToString() == "Combat")
                 {
                     CombatTraits = l_TraitList;
                 }
-                if (rowCategoryType["Type"].ToString() == "Spell")
+                else if (rowCategoryType["Type"].ToString() == "Spell")
                 {
                     SpellTraits = l_TraitList;
                 }
@@ -1730,49 +1598,12 @@ namespace CharacterSheetGenerator
 
         public void LoadSpells()
         {
-            ObservableCollection<SpellModel> l_spells = new ObservableCollection<SpellModel>();
-            foreach (DataRow row in Data.Tables["Spells"].Rows)
-            {
-
-                SpellModel spell = new SpellModel
-                {
-                    Name = row["Name"].ToString(),
-                    Weapons = Weapons.Where(w => w.Name == row["Weapons"].ToString()).FirstOrDefault(),
-                    Requirement = row["Requirement"].ToString(),
-                    Value = Parser.ToNullable<int>(row["Value"].ToString()),                  
-                    Description = row["Description"].ToString(),
-                    Mana = row["Mana"].ToString(),
-                    Ticks = row["Ticks"].ToString(),
-                
-                };
-
-
-                l_spells.Add(spell);
-            }
-            Spells = l_spells;
+            Spells = DataTableListConverter.ConvertToObservableCollection<SpellModel, WeaponModel>(Data.Tables["Spells"], null, Weapons);
         }
 
         public void LoadRituals()
         {
-            ObservableCollection<RitualModel> l_rituals = new ObservableCollection<RitualModel>();
-            foreach (DataRow row in Data.Tables["Rituals"].Rows)
-            {
-
-                RitualModel ritual = new RitualModel
-                {
-                    Name = row["Name"].ToString(),
-                    Requirement = row["Requirement"].ToString(),
-                    Value = Parser.ToNullable<int>(row["Value"].ToString()),
-                    Duration = row["Duration"].ToString(),
-                    Time = row["Time"].ToString(),
-                    Description = row["Description"].ToString(),
-
-                };
-
-
-                l_rituals.Add(ritual);
-            }
-            Rituals = l_rituals;
+            Rituals = DataTableListConverter.ConvertToObservableCollection<RitualModel>(Data.Tables["Rituals"]);
         }
 
         #endregion Loading
@@ -1847,20 +1678,8 @@ namespace CharacterSheetGenerator
 
         public void LoadInventory()
         {
-            List<InventoryItemModel> l_inventory = new List<InventoryItemModel>();
-            foreach (DataRow row in Data.Tables["Inventory"].Rows)
-            {
-                InventoryItemModel item = new InventoryItemModel
-                {
-                    Name = row["Name"].ToString(),
-                    Quantity = Parser.ToNullable<double>(row["Quantity"].ToString()),
-                    Value = row["Value"].ToString(),
-                    Weight = Parser.ToNullable<double>(row["Weight"].ToString()),
-                    Place = row["Place"].ToString(),
-                };
-                l_inventory.Add(item);
-                item.PropertyChanged += Inventory_PropertyChanged;
-            }
+            List<InventoryItemModel>  l_inventory = DataTableListConverter.ConvertToList<InventoryItemModel>(Data.Tables["Inventory"], Inventory_PropertyChanged);
+
             InventoryLeft = new ObservableCollection<InventoryItemModel>(l_inventory.GetRange(0, l_inventory.Count / 2));
             InventoryRight = new ObservableCollection<InventoryItemModel>(l_inventory.GetRange(l_inventory.Count / 2, l_inventory.Count / 2));
         }

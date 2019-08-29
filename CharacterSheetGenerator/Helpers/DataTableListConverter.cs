@@ -175,6 +175,14 @@ namespace CharacterSheetGenerator.Helpers
                                         property.SetValue(objT, weapons.Where(w => w.Name == row[((ColumnNameAttribute)attribute).Name].ToString()).FirstOrDefault());
 
                                     }
+                                    else if (property.PropertyType == typeof(int))
+                                    {
+                                        property.SetValue(objT, int.Parse(row[((ColumnNameAttribute)attribute).Name].ToString()));
+                                    }
+                                    else if (property.PropertyType == typeof(int?))
+                                    {
+                                        property.SetValue(objT, Parser.ToNullable<int>(row[((ColumnNameAttribute)attribute).Name].ToString()));
+                                    }
                                     else if (property.PropertyType == typeof(double))
                                     {
                                         property.SetValue(objT, double.Parse(row[((ColumnNameAttribute)attribute).Name].ToString()));

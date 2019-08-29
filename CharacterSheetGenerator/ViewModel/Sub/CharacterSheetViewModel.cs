@@ -948,8 +948,15 @@ namespace CharacterSheetGenerator
             switch (e.PropertyName)
             {
                 case "Value":
-                    if(skl.Value != null)
-                    skl.Bonus = skl.Value - skl.Modifiers - skl.Base;
+                    if (skl.Value != null)
+                    {
+                        var v = skl.Value - skl.Modifiers - skl.Base;
+                        if(v < 0)
+                        {
+                            skl.Bonus = 0;
+                            skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
+                        }
+                    }
                     break;
                 case "Modifiers":
                     skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
@@ -1754,7 +1761,5 @@ namespace CharacterSheetGenerator
         #endregion Events
 
         #endregion Inventory
-
-
     }
 }

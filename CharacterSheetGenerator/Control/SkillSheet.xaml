@@ -49,6 +49,9 @@
                 <Setter Property="FontWeight" Value="Thin" />
                 <Setter Property="Width" Value="70" />
             </Style>
+            <Style TargetType="DataGridCell" x:Key="SkillCellStyle" BasedOn="{StaticResource TextBoxTemplateCellStyle}">
+                <Setter Property="ToolTip" Value="{Binding ToolTip}" />
+            </Style>
         </Grid.Resources>
         <Grid Name="Fertigkeiten">
             <Grid.ColumnDefinitions>
@@ -149,17 +152,17 @@
                                 </GroupStyle>
                             </DataGrid.GroupStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"           CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
-                                <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"     CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
-                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
-                                <DataGridTextColumn  Header="M."                Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
-                                <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"   CellStyle="{StaticResource TextBoxTemplateCellStyle}"    IsReadOnly="True" />
-                                <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
+                                <DataGridTextColumn  Header="Name"              Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
+                                <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"       CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
+                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource SkillCellStyle}"/>
+                                <DataGridTextColumn  Header="M."                Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
+                                <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource TextBoxTemplateCellStyle}"        IsReadOnly="True" />
+                                <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"          CellStyle="{StaticResource CommentGridCellStyle}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <Grid Grid.Column="1" Background="DarkGray"/>
                         <DataGrid Grid.Column="3" Width="650" ItemsSource="{Binding SkillsRight, Mode=TwoWay}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit ="Cell" HorizontalAlignment="Left"
-                  RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
+                                  RowHeaderWidth="0" RowHeaderStyle="{StaticResource InvisibleRowHeader}" Background="White" BorderThickness="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGray" ColumnHeaderStyle="{StaticResource DefaultHeaderStyle}">
                             <DataGrid.GroupStyle>
                                 <GroupStyle>
                                     <GroupStyle.HeaderTemplate>
@@ -181,12 +184,12 @@
                                 </GroupStyle>
                             </DataGrid.GroupStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name"               Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"               CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
+                                <DataGridTextColumn  Header="Name"              Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"                CellStyle="{StaticResource ItemNameCellStyle}"              IsReadOnly="True"  />
                                 <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"         CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
-                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"       CellStyle="{StaticResource TextBoxTemplateCellStyle}"/>
+                                <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"       CellStyle="{StaticResource SkillCellStyle}"/>
                                 <DataGridTextColumn  Header="M."                Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
                                 <DataGridTextColumn  Header="R."                Binding="{Binding Routine}"                                                       HeaderStyle="{StaticResource NumericValueHeaderStyle}"       CellStyle="{StaticResource TextBoxTemplateCellStyle}"        IsReadOnly="True" />
-                                <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"        CellStyle="{StaticResource CommentGridCellStyle}"/>
+                                <DataGridTextColumn  Header="     Anmerkungen"  Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     HeaderStyle="{StaticResource HeaderStyleComment}"            CellStyle="{StaticResource CommentGridCellStyle}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

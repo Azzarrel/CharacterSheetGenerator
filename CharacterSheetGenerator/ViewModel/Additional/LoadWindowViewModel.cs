@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using System.Xml;
 
@@ -33,8 +34,11 @@ namespace CharacterSheetGenerator.ViewModel
 
 
 
-        public override void ProcessCommand()
+        public override void ProcessCommand(Window window)
         {
+            //Schließt den Dialog
+            window.Close();
+
             XmlReader xmlData;
 
             DataSet l_Data = new DataSet();

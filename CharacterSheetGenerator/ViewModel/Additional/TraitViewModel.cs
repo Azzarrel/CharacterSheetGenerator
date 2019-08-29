@@ -132,7 +132,12 @@ namespace CharacterSheetGenerator.ViewModel
 
         public void DeleteTraitsMethod()
         {
-
+            var selectedTraitModifiers = new ObservableCollection<TraitModifierModel>(Modifiers.Where(m => m.TraitLink == SelectedTrait.Key));
+            foreach (var selectedTraitModifier in selectedTraitModifiers)
+            {
+                Modifiers.Remove(selectedTraitModifier);
+            }
+            TraitModifiers = new ObservableCollection<TraitModifierModel>();
             Traits.Remove(SelectedTrait);
         }
 

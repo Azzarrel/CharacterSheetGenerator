@@ -21,7 +21,7 @@ namespace CharacterSheetGenerator.ViewModel
             set
             {
                 Set(value);
-                CanExecute();
+                CanExecute(null);
             }
         }
 
@@ -35,7 +35,7 @@ namespace CharacterSheetGenerator.ViewModel
         }
 
 
-        public override void ProcessCommand()
+        public override void ProcessCommand(Window window)
         {
             try
             {
@@ -57,6 +57,9 @@ namespace CharacterSheetGenerator.ViewModel
                                      && !SaveName.Contains('<') && !SaveName.Contains('>') && !SaveName.Contains('|') && !SaveName.Contains('.') && !SaveName.Contains(':') && !SaveName.Contains(',') && !SaveName.Contains('#') && !SaveName.Contains('+')
                                      && !SaveName.Contains('~') && !SaveName.Contains('?') && !SaveName.Contains('='))
                 {
+                    //Schließt den Dialog
+                    window.Close();
+
                     //Erstellt einen neuen Ordner
                     DirectoryInfo di = Directory.CreateDirectory(SaveFolder + "\\" + SaveName);
 

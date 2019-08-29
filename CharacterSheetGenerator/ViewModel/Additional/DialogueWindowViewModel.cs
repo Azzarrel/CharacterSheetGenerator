@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using System.Xml;
 
@@ -111,17 +112,18 @@ namespace CharacterSheetGenerator.ViewModel
 
         public void CreateCommands()
         {
-            DialogCommand = new RelayCommand(ProcessCommand, CanExecute);
+            DialogCommand = new RelayCommand<Window>(ProcessCommand, CanExecute);
 
         }
+
         public ICommand DialogCommand { get; private set; }
 
-        public virtual void ProcessCommand()
+        public virtual void ProcessCommand(Window window)
         {
 
         }
 
-        public virtual bool CanExecute()
+        public virtual bool CanExecute(Window window)
         {
             return true;
 

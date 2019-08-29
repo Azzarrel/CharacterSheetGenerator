@@ -221,15 +221,24 @@ namespace CharacterSheetGenerator
             //ToDo: Vereinfachen/Zusammenfassen
             foreach (TraitCategoryModel category in Traits)
             {
-                keycounter += category.Traits.Count();
+                if (category.Traits.Count == 0)
+                    keycounter = 0;
+                else
+                    keycounter += category.Traits.Max(x => x.Key) + 1;
             }
             foreach (TraitCategoryModel category in CombatTraits)
             {
-                keycounter += category.Traits.Count();
+                if (category.Traits.Count == 0)
+                    keycounter = 0;
+                else
+                    keycounter += category.Traits.Max(x => x.Key) + 1;
             }
             foreach (TraitCategoryModel category in SpellTraits)
             {
-                keycounter += category.Traits.Count();
+                if (category.Traits.Count == 0)
+                    keycounter = 0;
+                else
+                    keycounter += category.Traits.Max(x => x.Key) + 1;
             }
             vm.KeyCounter = keycounter;
             if (Traits.Any(t => t.Name == Category))

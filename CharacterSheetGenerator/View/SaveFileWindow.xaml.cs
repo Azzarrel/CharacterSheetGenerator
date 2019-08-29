@@ -28,10 +28,5 @@ namespace CharacterSheetGenerator.View
             InitializeComponent();
             DataContext = new SaveWindowViewModel();
         }
-
-        private void Button_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

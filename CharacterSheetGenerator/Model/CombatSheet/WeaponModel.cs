@@ -13,7 +13,7 @@ namespace CharacterSheetGenerator.Model.CombatSheet
     public class WeaponModel : TemplateModel
     {
 
-        [ColumnName("Name")]
+        [ColumnLangName("Name_ger", "Name_ger")]
         public string Name
         {
             get { return Get<string>(); }

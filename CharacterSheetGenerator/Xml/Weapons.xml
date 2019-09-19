@@ -1,6 +1,9 @@
 <PlayerData>
 	<Weapons>
-		<Name>Schwerter</Name>
+		<Key>0</Key>
+		<RegID>0wep_swt</RegID>
+		<Name_ger>Schwerter</Name_ger>
+		<Name_eng>Swords</Name_eng>
 		<AttributeLink>GE/ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>1</AttackBase>
@@ -16,7 +19,10 @@
 		<Range>2</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Hiebwaffen</Name>
+		<Key>1</Key>
+		<RegID>1wep_hbw</RegID>
+		<Name_ger>Hiebwaffen</Name_ger>
+		<Name_eng>Hiebwaffen</Name_eng>
 		<AttributeLink>ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>2</AttackBase>
@@ -32,7 +38,10 @@
 		<Range>2</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Äxte</Name>
+		<Key>2</Key>
+		<RegID>2wep_axt</RegID>
+		<Name_ger>Äxte</Name_ger>
+		<Name_eng>Äxte</Name_eng>
 		<AttributeLink>ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>2</AttackBase>
@@ -48,7 +57,10 @@
 		<Range>2</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Fechtwaffen</Name>
+		<Key>3</Key>
+		<RegID>3wep_fwf</RegID>
+		<Name_ger>Fechtwaffen</Name_ger>
+		<Name_eng>Fechtwaffen</Name_eng>
 		<AttributeLink>GE</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>3</AttackBase>
@@ -64,7 +76,10 @@
 		<Range>2</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Kettenwaffen</Name>
+		<Key>4</Key>
+		<RegID>4wep_ktw</RegID>
+		<Name_ger>Kettenwaffen</Name_ger>
+		<Name_eng>Kettenwaffen</Name_eng>
 		<AttributeLink>ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>1</AttackBase>
@@ -80,7 +95,10 @@
 		<Range>3</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Lanzen</Name>
+		<Key>5</Key>
+		<RegID>5wep_lnz</RegID>
+		<Name_ger>Lanzen</Name_ger>
+		<Name_eng>Lanzen</Name_eng>
 		<AttributeLink>FF/ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>2</AttackBase>
@@ -96,7 +114,10 @@
 		<Range>5</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Raufen</Name>
+		<Key>6</Key>
+		<RegID>6wep_rfn</RegID>
+		<Name_ger>Raufen</Name_ger>
+		<Name_eng>Raufen</Name_eng>
 		<AttributeLink>GE/ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>3</AttackBase>
@@ -112,7 +133,10 @@
 		<Range>1</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Schilde</Name>
+		<Key>7</Key>
+		<RegID>7wep_sil</RegID>
+		<Name_ger>Schilde</Name_ger>
+		<Name_eng>Schilde</Name_eng>
 		<AttributeLink>GE/KO</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>-3</AttackBase>
@@ -128,7 +152,10 @@
 		<Range>1</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Stangenwaffen</Name>
+		<Key>8</Key>
+		<RegID>8wep_stw</RegID>
+		<Name_ger>Stangenwaffen</Name_ger>
+		<Name_eng>Stangenwaffen</Name_eng>
 		<AttributeLink>GE/ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>1</AttackBase>
@@ -144,7 +171,10 @@
 		<Range>4</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Zweihandhiebwaffen</Name>
+		<Key>9</Key>
+		<RegID>9wep_zhh</RegID>
+		<Name_ger>Zweihandhiebwaffen</Name_ger>
+		<Name_eng>Zweihandhiebwaffen</Name_eng>
 		<AttributeLink>ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>2</AttackBase>
@@ -160,7 +190,10 @@
 		<Range>3</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Zweihandschwerter</Name>
+		<Key>10</Key>
+		<RegID>10wep_zhs</RegID>
+		<Name_ger>Zweihandschwerter</Name_ger>
+		<Name_eng>Zweihandschwerter</Name_eng>
 		<AttributeLink>ST</AttributeLink>		
 		<Mode>Melee</Mode>
 	    <AttackBase>1</AttackBase>
@@ -176,7 +209,10 @@
 		<Range>3</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Zweihandäxte</Name>
+		<Key>11</Key>
+		<RegID>11wep_zha</RegID>
+		<Name_ger>Zweihandäxte</Name_ger>
+		<Name_eng>Zweihandäxte</Name_eng>
 		<AttributeLink>ST</AttributeLink>
 		<Mode>Melee</Mode>
 	    <AttackBase>2</AttackBase>
@@ -192,7 +228,10 @@
 		<Range>3</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Peitschen</Name>
+		<Key>12</Key>
+		<RegID>12wep_pet</RegID>
+		<Name_ger>Peitschen</Name_ger>
+		<Name_eng>Peitschen</Name_eng>
 		<AttributeLink>FF</AttributeLink>		
 		<Mode>Melee</Mode>
 	    <AttackBase>0</AttackBase>
@@ -208,7 +247,10 @@
 		<Range>4</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Armbrüste</Name>
+		<Key>13</Key>
+		<RegID>13wep_abr</RegID>
+		<Name_ger>Armbrüste</Name_ger>
+		<Name_eng>Armbrüste</Name_eng>
 		<AttributeLink>FF</AttributeLink>		
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -224,7 +266,10 @@
 		<Range>100</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Blasrohre</Name>
+		<Key>14</Key>
+		<RegID>14wep_blr</RegID>
+		<Name_ger>Blasrohre</Name_ger>
+		<Name_eng>Blasrohre</Name_eng>
 		<AttributeLink>KO</AttributeLink>	
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -240,7 +285,10 @@
 		<Range>30</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Bögen</Name>
+		<Key>15</Key>
+		<RegID>15wep_bog</RegID>
+		<Name_ger>Bögen</Name_ger>
+		<Name_eng>Bögen</Name_eng>
 		<AttributeLink>FF</AttributeLink>	
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -256,7 +304,10 @@
 		<Range>200</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Diskusse</Name>
+		<Key>16</Key>
+		<RegID>16wep_dsk</RegID>
+		<Name_ger>Diskusse</Name_ger>
+		<Name_eng>Diskusse</Name_eng>
 		<AttributeLink>FF</AttributeLink>	
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -272,7 +323,10 @@
 		<Range>50</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Feuerwaffen</Name>
+		<Key>17</Key>
+		<RegID>17wep_few</RegID>
+		<Name_ger>Feuerwaffen</Name_ger>
+		<Name_eng>Feuerwaffen</Name_eng>
 		<AttributeLink>FF</AttributeLink>
 		<Mode>Ranged</Mode>
 	    <AttackBase>-2</AttackBase>
@@ -288,7 +342,10 @@
 		<Range>120</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Schleudern</Name>
+		<Key>18</Key>
+		<RegID>18wep_scl</RegID>
+		<Name_ger>Schleudern</Name_ger>
+		<Name_eng>Schleudern</Name_eng>
 		<AttributeLink>GE/FF</AttributeLink>	
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -304,7 +361,10 @@
 		<Range>60</Range>
 	</Weapons>
 	<Weapons>
-		<Name>kleine Wurfwaffen</Name>
+		<Key>19</Key>
+		<RegID>19wep_kww</RegID>
+		<Name_ger>kleine Wurfwaffen</Name_ger>
+		<Name_eng>kleine Wurfwaffen</Name_eng>
 		<AttributeLink>FF</AttributeLink>		
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -320,7 +380,10 @@
 		<Range>30</Range>
 	</Weapons>
 	<Weapons>
-		<Name>große Wurfwaffen</Name>
+		<Key>20</Key>
+		<RegID>20wep_gww</RegID>
+		<Name_ger>große Wurfwaffen</Name_ger>
+		<Name_eng>große Wurfwaffen</Name_eng>
 		<AttributeLink>FF/ST</AttributeLink>
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -336,7 +399,10 @@
 		<Range>40</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Wurfspeere</Name>
+		<Key>21</Key>
+		<RegID>21wep_wfs</RegID>
+		<Name_ger>Wurfspeere</Name_ger>
+		<Name_eng>Wurfspeere</Name_eng>
 		<AttributeLink>GE/FF</AttributeLink>		
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -352,7 +418,10 @@
 		<Range>40</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Wurfgeschosse</Name>
+		<Key>22</Key>
+		<RegID>22wep_wgs</RegID>
+		<Name_ger>Wurfgeschosse</Name_ger>
+		<Name_eng>Wurfgeschosse</Name_eng>
 		<AttributeLink>FF</AttributeLink>	
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -368,7 +437,10 @@
 		<Range>40</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Dolche</Name>
+		<Key>23</Key>
+		<RegID>23wep_dlc</RegID>
+		<Name_ger>Dolche</Name_ger>
+		<Name_eng>Dolche</Name_eng>
 		<AttributeLink>GE/ST</AttributeLink>	
 		<Mode>Melee</Mode>
 	    <AttackBase>1</AttackBase>
@@ -384,7 +456,10 @@
 		<Range>1</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Projektilzauber</Name>
+		<Key>24</Key>
+		<RegID>24wep_pjz</RegID>
+		<Name_ger>Projektilzauber</Name_ger>
+		<Name_eng>Projektilzauber</Name_eng>
 		<AttributeLink>KL/WK</AttributeLink>		
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -400,7 +475,10 @@
 		<Range>99</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Flächenzauber</Name>
+		<Key>25</Key>
+		<RegID>25wep_flz</RegID>
+		<Name_ger>Flächenzauber</Name_ger>
+		<Name_eng>Flächenzauber</Name_eng>
 		<AttributeLink>KL/WK</AttributeLink>		
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -416,7 +494,10 @@
 		<Range>99</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Direktzauber</Name>
+		<Key>26</Key>
+		<RegID>26wep_drz</RegID>
+		<Name_ger>Direktzauber</Name_ger>
+		<Name_eng>Direktzauber</Name_eng>
 		<AttributeLink>KL/WK</AttributeLink>		
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>
@@ -432,7 +513,10 @@
 		<Range>99</Range>
 	</Weapons>
 	<Weapons>
-		<Name>Umgebungszauber</Name>
+		<Key>27</Key>
+		<RegID>27wep_ugz</RegID>
+		<Name_ger>Umgebungszauber</Name_ger>
+		<Name_eng>Umgebungszauber</Name_eng>
 		<AttributeLink>KL/WK</AttributeLink>	
 		<Mode>Ranged</Mode>
 	    <AttackBase>0</AttackBase>

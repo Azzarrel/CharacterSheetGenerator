@@ -76,6 +76,7 @@
     <Compile Include="Helpers\BubbleScrollEvent.cs" />
     <Compile Include="Helpers\ColorHandler.cs" />
     <Compile Include="Helpers\GridHelpers.cs" />
+    <Compile Include="Helpers\LanguageHandler.cs" />
     <Compile Include="Helpers\NotifyBase.cs" />
     <Compile Include="Helpers\Parser.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />

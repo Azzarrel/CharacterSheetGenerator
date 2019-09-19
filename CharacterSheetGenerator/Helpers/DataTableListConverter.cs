@@ -87,7 +87,20 @@ namespace CharacterSheetGenerator.Helpers
                                 }
                                 catch (Exception e) { }
                             }
-                        }                     
+                        }
+                        //Prüft die Sprache, in der das Programm eingestellt ist
+                        if(attribute.GetType() == typeof(ColumnLangNameAttribute))
+                        {
+                            if (LanguageHandler.UserLanguage == LanguageHandler.DefaultLanguage)
+                            {
+                                property.SetValue(objT, row[((ColumnLangNameAttribute)attribute).Default]);
+                            }
+                            else
+                            {
+                                object value = row[((ColumnLangNameAttribute)attribute).LangName].ToString() != "" && row[((ColumnLangNameAttribute)attribute).LangName] != null ? row[((ColumnLangNameAttribute)attribute).LangName] : row[((ColumnLangNameAttribute)attribute).Default];
+                                property.SetValue(objT, value);
+                            }
+                        }
                     }
 
                     //Speicalattributes (also StatusValues als Attribute) werden im Moment noch ein wenig kompliziert gehandhabt

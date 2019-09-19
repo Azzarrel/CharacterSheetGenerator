@@ -965,6 +965,10 @@ namespace CharacterSheetGenerator
                             skl.Bonus = 0;
                             skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
                         }
+                        else
+                        {
+                            skl.Bonus = v;
+                        }
                     }
                     break;
                 case "Modifiers":
@@ -1070,7 +1074,7 @@ namespace CharacterSheetGenerator
 
         public void LoadWeapons()
         {
-            Weapons = DataTableListConverter.ConvertToObservableCollection<WeaponModel>(Data.Tables["Weapons"]);
+            Weapons = DataTableListConverter.ConvertToObservableCollection<WeaponModel>(Data.Tables["Weapons"], Weapon_PropertyChanged);
         }
 
         public void LoadSelectedWeapons()

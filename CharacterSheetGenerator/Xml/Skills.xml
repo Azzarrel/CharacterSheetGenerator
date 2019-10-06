@@ -21,7 +21,7 @@
 		<Grouping>Left</Grouping>			
 	</Skills>
 	<Skills>
-		<Name>Schwmimmen</Name>
+		<Name>Schwimmen</Name>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -653,7 +653,7 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Heikunde: Seele</Name>
+		<Name>Heilkunde: Seele</Name>
 		<Requirement>WK/KL/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -663,7 +663,7 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Heikunde: Wunden</Name>
+		<Name>Heilkunde: Wunden</Name>
 		<Requirement>WA/KL/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>

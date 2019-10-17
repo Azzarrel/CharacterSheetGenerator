@@ -1,59 +1,77 @@
 <PlayerData>
 	<StatusValues>
-		<Name>Lebenspunkte</Name>
+		<ID>stv_lebenspunkte</ID>
+		<Name_ger>Lebenspunkte</Name_ger>
+		<Name_eng>Health</Name_eng>
 		<Base>9</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>
 		<SVAttributeLink>Stärke</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
-		<Name>Ausdauer</Name>
+		<ID>stv_ausdauer</ID>
+		<Name_ger>Ausdauer</Name_ger>
+		<Name_eng>Stamina</Name_eng>
 		<Base>7</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
-		<Name>Mana</Name>
+		<ID>stv_mana</ID>
+		<Name_ger>Mana</Name_ger>
+		<Name_eng>Mana</Name_eng>
 		<Base>7</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Klugheit</SVAttributeLink>
 		<SVAttributeLink>Willenskraft</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
-		<Name>Zähigkeit</Name>
+		<ID>stv_zaehigkeit</ID>
+		<Name_ger>Zähigkeit</Name_ger>
+		<Name_eng>Toughness</Name_eng>
 		<Base>-4</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>
 		<SVAttributeLink>Stärke</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
-		<Name>Magieresistenz</Name>
+		<ID>stv_magieresistenz</ID>
+		<Name_ger>Magieresistenz</Name_ger>
+		<Name_eng>Magic Resist</Name_eng>
 		<Base>-4</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>
 		<SVAttributeLink>Klugheit</SVAttributeLink>
 	</StatusValues>	
 	<StatusValues>
-		<Name>Agilität</Name>
+		<ID>stv_agilitaet</ID>
+		<Name_ger>Agilität</Name_ger>
+		<Name_eng>Agility</Name_eng>
 		<Base>4</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Gewandtheit</SVAttributeLink>
 		<SVAttributeLink>Intuition</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
-		<Name>Initiative</Name>
+		<ID>stv_initiative</ID>
+		<Name_ger>Initiative</Name_ger>
+		<Name_eng>Initiative</Name_eng>
 		<Base>0</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Willenskraft</SVAttributeLink>
 		<SVAttributeLink>Intuition</SVAttributeLink>
 	</StatusValues>
 	<StatusValues>
-		<Name>Geschwindigkeit</Name>
-		<Base>3</Base>
+		<ID>stv_geschwindigkeit</ID>
+		<Name_ger>Geschwindigkeit</Name_ger>
+		<Name_eng>Movement Speed</Name_eng>
+		<Base>4</Base>
 		<Bonus>0</Bonus>
 	</StatusValues>
 	<StatusValues>
-		<Name>Wundschwelle</Name>
+		<ID>stv_wundschwelle</ID>
+		<Name_ger>Wundschwelle</Name_ger>
+		<Name_eng>Wound Threshold</Name_eng>
 		<Base>3</Base>
 		<Bonus>0</Bonus>
 		<SVAttributeLink>Konstitution</SVAttributeLink>

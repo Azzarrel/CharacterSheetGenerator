@@ -175,7 +175,20 @@ namespace CharacterSheetGenerator.ViewModel
             //Wenn das Lade-Fenster geschlossen wurde, ohne, dass ein Ladevorgang ausgeführt wurde, dann keine neuen Daten laden.
             if (vm.LoadSucessful == true)
             {
-                this.Data.Clear();
+                foreach(DataTable tbl in Data.Copy().Tables)
+                {
+                    if (tbl.Columns.Contains("ID"))
+                    {
+                        Data.Tables[tbl.TableName].PrimaryKey = new DataColumn[] { tbl.Columns["ID"] };
+                        Data.Tables[tbl.TableName].Merge(vm.Data.Tables[tbl.TableName]);
+                        
+                    }
+                    else
+                    {
+                        Data.Tables.Remove(tbl.TableName);
+                        Data.Tables.Add(vm.Data.Tables[tbl.TableName]);
+                    }
+                }
                 this.Data = vm.Data;
 
                 SelectedCharacter.LoadData(Data);

@@ -12,7 +12,7 @@ namespace CharacterSheetGenerator.Model
 {
     public class StatusValueModel : TemplateModel
     {
-        [ColumnName("Name")]
+        [LangColumnName("Name_ger", "Name_ger")]
         public string Name
         {
             get { return Get<string>(); }

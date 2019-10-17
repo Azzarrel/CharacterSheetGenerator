@@ -221,23 +221,18 @@ namespace CharacterSheetGenerator
             //ToDo: Vereinfachen/Zusammenfassen
             foreach (TraitCategoryModel category in Traits)
             {
-                if (category.Traits.Count == 0)
-                    keycounter = 0;
-                else
+
+                if (category.Traits.Count != 0)
                     keycounter += category.Traits.Max(x => x.Key) + 1;
             }
             foreach (TraitCategoryModel category in CombatTraits)
             {
-                if (category.Traits.Count == 0)
-                    keycounter = 0;
-                else
+                if (category.Traits.Count != 0)
                     keycounter += category.Traits.Max(x => x.Key) + 1;
             }
             foreach (TraitCategoryModel category in SpellTraits)
             {
-                if (category.Traits.Count == 0)
-                    keycounter = 0;
-                else
+                if (category.Traits.Count != 0)
                     keycounter += category.Traits.Max(x => x.Key) + 1;
             }
             vm.KeyCounter = keycounter;
@@ -701,29 +696,7 @@ namespace CharacterSheetGenerator
 
         public void LoadStatusValues()
         {
-            //StatusValues = new ObservableCollection<StatusValueModel>();
-            //foreach (DataRow row in Data.Tables["StatusValues"].Rows)
-            //{
-            //    ObservableCollection<string> attributelinks = new ObservableCollection<string>();
-            //    foreach (DataRow rowAttributeLink in Data.Tables["SVAttributeLink"].Select("StatusValues_Id = " + row["StatusValues_Id"]))
-            //    {
-            //        attributelinks.Add(rowAttributeLink["SVAttributeLink_Text"].ToString());
-            //    }
-
-            //    StatusValueModel statusvalue = new StatusValueModel
-            //    {
-            //        Key = int.Parse(row["StatusValues_Id"].ToString()),
-            //        Name = row["Name"].ToString(),
-            //        Base = double.Parse(row["Base"].ToString()),
-            //        Bonus = double.Parse(row["Bonus"].ToString()),
-            //        AttributeLinks = attributelinks,
-
-            //    };
-
-            //    StatusValues.Add(statusvalue);
-            //    statusvalue.PropertyChanged += StatusValue_PropertyChanged;
                 StatusValues = DataTableListConverter.ConvertToObservableCollection<StatusValueModel>(Data.Tables["StatusValues"], StatusValue_PropertyChanged, Data.Tables["SVAttributeLink"]);
-            //}
         }
 
         #endregion Loading
@@ -940,7 +913,8 @@ namespace CharacterSheetGenerator
                     default:
                         break;
                 }
-                double? l_base = Math.Round(v / 6, 0) > 0 ? Math.Round(v / 6, 0) : skill.Base;
+                double? val = Math.Round(v / 6, 0);
+                double? l_base = Math.Floor(v / 6 + 0.5) > 0 ? Math.Floor(v / 6 + 0.5) : 0;
                 skill.Base = l_base - difficulty;
                 skill.Mean = l_base != null ? "(" + l_base * 2 + ")" : "";
             }

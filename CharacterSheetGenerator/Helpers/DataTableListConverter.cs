@@ -33,7 +33,6 @@ namespace CharacterSheetGenerator.Helpers
         }
 
         public static List<T> ConvertToList<T>(DataTable dt, PropertyChangedEventHandler eventHandler, DataTable reference = null) where T : TemplateModel
-
         {
             // gibt die Namen aller Columns eines DataTable zurück
             var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
@@ -89,20 +88,19 @@ namespace CharacterSheetGenerator.Helpers
                             }
                         }
                         //Prüft die Sprache, in der das Programm eingestellt ist
-                        if(attribute.GetType() == typeof(ColumnLangNameAttribute))
+                        if(attribute.GetType() == typeof(LangColumnNameAttribute))
                         {
                             if (LanguageHandler.UserLanguage == LanguageHandler.DefaultLanguage)
                             {
-                                property.SetValue(objT, row[((ColumnLangNameAttribute)attribute).Default]);
+                                property.SetValue(objT, row[((LangColumnNameAttribute)attribute).Default]);
                             }
                             else
                             {
-                                object value = row[((ColumnLangNameAttribute)attribute).LangName].ToString() != "" && row[((ColumnLangNameAttribute)attribute).LangName] != null ? row[((ColumnLangNameAttribute)attribute).LangName] : row[((ColumnLangNameAttribute)attribute).Default];
+                                object value = row[((LangColumnNameAttribute)attribute).LangName].ToString() != "" && row[((LangColumnNameAttribute)attribute).LangName] != null ? row[((LangColumnNameAttribute)attribute).LangName] : row[((LangColumnNameAttribute)attribute).Default];
                                 property.SetValue(objT, value);
                             }
                         }
                     }
-
                     //Speicalattributes (also StatusValues als Attribute) werden im Moment noch ein wenig kompliziert gehandhabt
                     if (property.Name == "Special")
                     {
@@ -122,14 +120,11 @@ namespace CharacterSheetGenerator.Helpers
                         }
                         property.SetValue(objT, attributelinks);
                     }
-
                 }
 
                 objT.PropertyChanged += eventHandler;
                 return objT;
-
             }).ToList();
-
         }
 
 
@@ -148,7 +143,6 @@ namespace CharacterSheetGenerator.Helpers
         }
 
         public static List<T> ConvertToList<T, R>(DataTable dt, PropertyChangedEventHandler eventHandler, List<R> reference) where T : TemplateModel
-
         {
             // gibt die Namen aller Columns eines DataTable zurück
             var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
@@ -162,23 +156,15 @@ namespace CharacterSheetGenerator.Helpers
                 var objT = Activator.CreateInstance<T>();
 
                 foreach (var property in properties)
-
                 {
                     //Schaut per Attribut welche Column mit dem aktuellen Property des Objekts verlinkt werden soll
                     foreach (var attribute in property.GetCustomAttributes(false))
-
                     {
-
                         if (attribute.GetType() == typeof(ColumnNameAttribute))
-
                         {
-
                             if (columnNames.Contains(((ColumnNameAttribute)attribute).Name.ToLower()))
-
                             {
-
                                 try
-
                                 {
                                     //ToDO: Erweitern und testen
                                     if (property.PropertyType == typeof(WeaponModel))
@@ -216,53 +202,31 @@ namespace CharacterSheetGenerator.Helpers
                                     }
 
                                 }
-
                                 catch (Exception e) { }
-
                             }
-
-
-
                         }
-
                     }
-
                 }
-
                 objT.PropertyChanged += eventHandler;
                 return objT;
-
             }).ToList();
-
         }
 
 
 
         public static DataTable CreateDataTable<T>(IEnumerable<T> list)
-
         {
-
             Type type = typeof(T);
-
             var properties = type.GetProperties();
-
-
-
             DataTable dataTable = new DataTable();
 
             foreach (var property in properties)
-
             {
-
                 foreach (var attribute in property.GetCustomAttributes(false))
-
                 {
 
                     if (attribute.GetType() == typeof(ColumnNameAttribute))
-
                     {
-
-
 
                         dataTable.Columns.Add(new DataColumn(((ColumnNameAttribute)attribute).Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType));
                         //ToDO: Erweitern und testen
@@ -282,23 +246,15 @@ namespace CharacterSheetGenerator.Helpers
                             //ToDo: Testen, ob das mit double?s auch richtig klappt
                             dataTable.Columns.Add(new DataColumn(((ColumnNameAttribute)attribute).Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType));
                         }
-
                     }
 
                 }
-
             }
-
-
-
             foreach (T entity in list)
-
             {
-
                 object[] values = new object[properties.Length];
 
                 for (int i = 0; i < properties.Length; i++)
-
                 {
                     if (properties[i].GetType() == typeof(WeaponModel))
                     {
@@ -321,8 +277,6 @@ namespace CharacterSheetGenerator.Helpers
 
                 }
 
-
-
                 dataTable.Rows.Add(values);
 
             }
@@ -330,11 +284,7 @@ namespace CharacterSheetGenerator.Helpers
 
 
             return dataTable;
-
         }
 
-
-
     }
-
 }

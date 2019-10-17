@@ -1,128 +1,181 @@
 <PlayerValues>
   <Attributes>
-    <Name>Wahrnehmung</Name>
-    <Type>Base</Type>
-    <Tag>WA</Tag>
-    <Value>8</Value>
-    <Color>58880</Color>
+		<ID>attr_wahrnehmung</ID>
+		<Name_ger>Wahrnehmung</Name_ger>
+		<Name_eng>Wahrnehmung</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>WA</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>58880</Color>
   </Attributes>
   <Attributes>
-    <Name>Willenskraft</Name>
-    <Type>Base</Type>
-    <Tag>WK</Tag>
-    <Value>8</Value>
-    <Color>13120050</Color>
+		<ID>attr_willenskraft</ID>
+		<Name_ger>Willenskraft</Name_ger>
+		<Name_eng>Willenskraft</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>WK</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>13120050</Color>
   </Attributes>
   <Attributes>
-    <Name>Klugheit</Name>
-    <Type>Base</Type>
-    <Tag>KL</Tag>
-    <Value>8</Value>
-    <Color>11154120</Color>
+		<ID>attr_klugheit</ID>
+		<Name_ger>Klugheit</Name_ger>
+		<Name_eng>Klugheit</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>KL</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>11154120</Color>
   </Attributes>
   <Attributes>
-    <Name>Intuition</Name>
-    <Type>Base</Type>
-    <Tag>IN</Tag>
-    <Value>8</Value>
-    <Color>7923400</Color>
+		<ID>attr_intuition</ID>
+		<Name_ger>Intuition</Name_ger>
+		<Name_eng>Intuition</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>IN</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>7923400</Color>
   </Attributes>
   <Attributes>
-    <Name>Charisma</Name>
-    <Type>Base</Type>
-    <Tag>CH</Tag>
-    <Value>8</Value>
-    <Color>657930</Color>
+		<ID>attr_charisma</ID>
+		<Name_ger>Charisma</Name_ger>
+		<Name_eng>Charisma</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>CH</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>657930</Color>
   </Attributes>
   <Attributes>
-    <Name>Fingerfertigkeit</Name>
-    <Type>Base</Type>
-    <Tag>FF</Tag>
-    <Value>8</Value>
-    <Color>15329546</Color>
+		<ID>attr_fingerfertigkeit</ID>
+		<Name_ger>Fingerfertigkeit</Name_ger>
+		<Name_eng>Fingerfertigkeit</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>FF</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>15329546</Color>
   </Attributes>
   <Attributes>
-    <Name>Gewandtheit</Name>
-    <Type>Base</Type>
-    <Tag>GE</Tag>
-    <Value>8</Value>
-    <Color>6594790</Color>
+		<ID>attr_gewandtheit</ID>
+		<Name_ger>Gewandtheit</Name_ger>
+		<Name_eng>Gewandtheit</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>GE</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>6594790</Color>
   </Attributes>
   <Attributes>
-    <Name>Konstitution</Name>
-    <Type>Base</Type>
-    <Tag>KO</Tag>
-    <Value>8</Value>
-    <Color>6594790</Color>
+		<ID>attr_konstitution</ID>
+		<Name_ger>Konstitution</Name_ger>
+		<Name_eng>Konstitution</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>KO</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>6594790</Color>
   </Attributes>
   <Attributes>
-    <Name>Stärke</Name>
-    <Type>Base</Type>
-    <Tag>ST</Tag>
-    <Value>8</Value>
-    <Color>16760430</Color>
+		<ID>attr_staerke</ID>
+		<Name_ger>Stärke</Name_ger>
+		<Name_eng>Stärke</Name_eng>
+		<Type>Base</Type>
+		<Tag_ger>ST</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>8</Value>
+		<Color>16760430</Color>
   </Attributes>
   <Attributes>
-    <Name>Lebenspunkte</Name>
-    <Type>Special</Type>
-    <Tag>LP</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_lebenspunkte</ID>
+		<Name_ger>Lebenspunkte</Name_ger>
+		<Name_eng>Lebenspunkte</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>LP</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
   <Attributes>
-    <Name>Ausdauer</Name>
-    <Type>Special</Type>
-    <Tag>AD</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_ausdauer</ID>
+		<Name_ger>Ausdauer</Name_ger>
+		<Name_eng>Ausdauer</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>AD</Tag_ger>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
   <Attributes>
-    <Name>Mana</Name>
-    <Type>Special</Type>
-    <Tag>MA</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_mana</ID>
+		<Name_ger>Mana</Name_ger>
+		<Name_eng>Mana</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>MA</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
   <Attributes>
-    <Name>Zähigkeit</Name>
-    <Type>Special</Type>
-    <Tag>ZK</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_zaehigkeit</ID>
+		<Name_ger>Zähigkeit</Name_ger>
+		<Name_eng>Zähigkeit</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>ZK</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
   <Attributes>
-    <Name>Agilität</Name>
-    <Type>Special</Type>
-    <Tag>AG</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_agilitaet</ID>
+		<Name_ger>Agilität</Name_ger>
+		<Name_eng>Agilität</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>AG</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
   <Attributes>
-    <Name>Magieresistenz</Name>
-    <Type>Special</Type>
-    <Tag>MR</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_magieresistenz</ID>
+		<Name_ger>Magieresistenz</Name_ger>
+		<Name_eng>Magieresistenz</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>MR</Tag_ger>
+		<Tag_eng>MR</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
   <Attributes>
-    <Name>Initiative</Name>
-    <Type>Special</Type>
-    <Tag>INI</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+		<ID>attr_initiative</ID>
+		<Name_ger>Initiative</Name_ger>
+		<Name_eng>Initiative</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>INI</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
-   <Attributes>
-    <Name>Geschwindigkeit</Name>
-    <Type>Special</Type>
-    <Tag>GSW</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+  <Attributes>
+		<ID>attr_geschwindigkeit</ID>
+		<Name_ger>Geschwindigkeit</Name_ger>
+		<Name_eng>Geschwindigkeit</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>GSW</Tag_ger>
+		<Tag_eng>INI</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
-   <Attributes>
-    <Name>Wundschwelle</Name>
-    <Type>Special</Type>
-    <Tag>WS</Tag>
-    <Value>0</Value>
-    <Color>9999</Color>
+  <Attributes>
+		<ID>attr_wundschwelle</ID>
+		<Name_ger>Wundschwelle</Name_ger>
+		<Name_eng>Wundschwelle</Name_eng>
+		<Type>Special</Type>
+		<Tag_ger>WS</Tag_ger>
+		<Tag_eng>WS</Tag_eng>
+		<Value>0</Value>
+		<Color>9999</Color>
   </Attributes>
 </PlayerValues>

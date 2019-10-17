@@ -6,7 +6,7 @@ namespace CharacterSheetGenerator.Model
 {
     public class AttributeModel : TemplateModel
     {
-        [ColumnName("Name")]
+        [LangColumnName("Name_ger", "Name_ger")]
         public string Name
         {
             get { return Get<string>(); }
@@ -48,7 +48,7 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        [ColumnName("Tag")]
+        [LangColumnName("Tag_ger", "Tag_ger")]
         public string Tag
         {
             get { return Get<string>(); }

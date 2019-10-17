@@ -15,12 +15,12 @@ namespace CharacterSheetGenerator.Helpers
                 Name = s;
             }
         }
-    public class ColumnLangNameAttribute : Attribute
+    public class LangColumnNameAttribute : Attribute
     {
         public string Default { get; set; }
         public string LangName { get; set; }
 
-        public ColumnLangNameAttribute(string def, string lang)
+        public LangColumnNameAttribute(string def, string lang)
         {
             Default = def;
             LangName = lang;

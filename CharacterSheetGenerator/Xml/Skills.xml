@@ -1,7 +1,9 @@
 <PlayerData>
 <!-- Körpertalente -->
 	<Skills>
-		<Name>Klettern</Name>
+		<ID>skl_klettern</ID>
+		<Name_ger>Klettern</Name_ger>
+		<Name_eng>Climbing</Name_eng>
 		<Requirement>FF/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -11,7 +13,9 @@
 		<Grouping>Left</Grouping>			
 	</Skills>
 	<Skills>
-		<Name>Akrobatik</Name>
+		<ID>skl_akrobatik</ID>
+		<Name_ger>Akrobatik</Name_ger>
+		<Name_eng>Acrobatics</Name_eng>
 		<Requirement>GE/GE/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -21,7 +25,9 @@
 		<Grouping>Left</Grouping>			
 	</Skills>
 	<Skills>
-		<Name>Schwmimmen</Name>
+		<ID>skl_schwmimmen</ID>
+		<Name_ger>Schwmimmen</Name_ger>
+		<Name_eng>Swimming</Name_eng>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -31,7 +37,9 @@
 		<Grouping>Left</Grouping>			
 	</Skills>
 	<Skills>
-		<Name>Reiten</Name>
+		<ID>skl_reiten</ID>
+		<Name_ger>Reiten</Name_ger>
+		<Name_eng>Riding</Name_eng>
 		<Requirement>WK/GE/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -41,7 +49,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Schleichen</Name>
+		<ID>skl_schleichen</ID>
+		<Name_ger>Schleichen</Name_ger>
+		<Name_eng>Sneak</Name_eng>
 		<Requirement>WK/GE/KO</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -51,7 +61,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Kraftakt</Name>
+		<ID>skl_kraftakt</ID>
+		<Name_ger>Kraftakt</Name_ger>
+		<Name_eng>Feat</Name_eng>
 		<Requirement>KO/ST/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -61,7 +73,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Körperbeherrschung</Name>
+		<ID>skl_koerperbeherrschung</ID>
+		<Name_ger>Körperbeherrschung</Name_ger>
+		<Name_eng>Body Control</Name_eng>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -71,7 +85,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Selbstbeherrschung</Name>
+		<ID>skl_selbstbeherrschung</ID>
+		<Name_ger>Selbstbeherrschung</Name_ger>
+		<Name_eng>Self Control</Name_eng>
 		<Requirement>WK/WK/KO</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -81,7 +97,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Stimmen immitieren</Name>
+		<ID>skl_stimmenimmitieren</ID>
+		<Name_ger>Stimmen immitieren</Name_ger>
+		<Name_eng>Mimic Voices</Name_eng>
 		<Requirement>KL/IN/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -91,7 +109,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Tanzen</Name>
+		<ID>skl_tanzen</ID>
+		<Name_ger>Tanzen</Name_ger>
+		<Name_eng>Dancing</Name_eng>
 		<Requirement>WK/CH/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -101,7 +121,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Singen</Name>
+		<ID>skl_singen</ID>
+		<Name_ger>Singen</Name_ger>
+		<Name_eng>Signging</Name_eng>
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -111,7 +133,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Sicht</Name>
+		<ID>skl_sicht</ID>
+		<Name_ger>Sicht</Name_ger>
+		<Name_eng>Sicht</Name_eng>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -121,7 +145,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Gehör</Name>
+		<ID>skl_gehoer</ID>
+		<Name_ger>Gehör</Name_ger>
+		<Name_eng>Gehör</Name_eng>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -131,7 +157,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Gefühl</Name>
+		<ID>skl_gefuehl</ID>
+		<Name_ger>Gefühl</Name_ger>
+		<Name_eng>Gefühl</Name_eng>
 		<Requirement>Wa/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -141,7 +169,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Geruch u. Geschmack</Name>
+		<ID>skl_geruchugeschmack</ID>
+		<Name_ger>Geruch u. Geschmack</Name_ger>
+		<Name_eng>Geruch u. Geschmack</Name_eng>
 		<Requirement>WA/IN/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -151,7 +181,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Zechen</Name>
+		<ID>skl_zechen</ID>
+		<Name_ger>Zechen</Name_ger>
+		<Name_eng>Zechen</Name_eng>
 		<Requirement>WK/KO/KO</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -161,7 +193,8 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name></Name>
+		<Name_ger> </Name_ger>
+		<Name_eng> </Name_eng>
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
@@ -174,7 +207,9 @@
 		
 <!-- Gesellschaftstalente -->	
 	<Skills>
-		<Name>Bekehren u. Überzeugen</Name>
+		<ID>skl_bekehrenuueberzeugen</ID>
+		<Name_ger>Bekehren u. Überzeugen</Name_ger>
+		<Name_eng>Bekehren u. Überzeugen</Name_eng>
 		<Requirement>IN/CH/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -184,7 +219,9 @@
 		<Grouping>Left</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Betören</Name>
+		<ID>skl_betoeren</ID>
+		<Name_ger>Betören</Name_ger>
+		<Name_eng>Betören</Name_eng>
 		<Requirement>IN/CH/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -194,7 +231,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Einschüchtern</Name>
+		<ID>skl_einschuechtern</ID>
+		<Name_ger>Einschüchtern</Name_ger>
+		<Name_eng>Einschüchtern</Name_eng>
 		<Requirement>WK/IN/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -204,7 +243,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Etikette</Name>
+		<ID>skl_etikette</ID>
+		<Name_ger>Etikette</Name_ger>
+		<Name_eng>Etikette</Name_eng>
 		<Requirement>WA/KL/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -214,7 +255,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Gassenwissen</Name>
+		<ID>skl_gassenwissen</ID>
+		<Name_ger>Gassenwissen</Name_ger>
+		<Name_eng>Gassenwissen</Name_eng>
 		<Requirement>KL/IN/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -224,7 +267,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Menschenkenntnis</Name>
+		<ID>skl_menschenkenntnis</ID>
+		<Name_ger>Menschenkenntnis</Name_ger>
+		<Name_eng>Menschenkenntnis</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -234,7 +279,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Überreden</Name>
+		<ID>skl_ueberreden</ID>
+		<Name_ger>Überreden</Name_ger>
+		<Name_eng>Überreden</Name_eng>
 		<Requirement>KL/IN/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -244,7 +291,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Verkleiden</Name>
+		<ID>skl_verkleiden</ID>
+		<Name_ger>Verkleiden</Name_ger>
+		<Name_eng>Verkleiden</Name_eng>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -254,7 +303,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Täuschen</Name>
+		<ID>skl_tauuschen</ID>
+		<Name_ger>Täuschen</Name_ger>
+		<Name_eng>Täuschen</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -264,7 +315,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Tarnen</Name>
+		<ID>skl_tarnen</ID>
+		<Name_ger>Tarnen</Name_ger>
+		<Name_eng>Tarnen</Name_eng>
 		<Requirement>WK/IN/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -274,7 +327,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Taschendiebstahl</Name>
+		<ID>skl_taschendiebstahlö</ID>
+		<Name_ger>Taschendiebstahl</Name_ger>
+		<Name_eng>Taschendiebstahl</Name_eng>
 		<Requirement>WK/FF/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -284,7 +339,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Schauspielerei</Name>
+		<ID>skl_schauspielerei</ID>
+		<Name_ger>Schauspielerei</Name_ger>
+		<Name_eng>Schauspielerei</Name_eng>
 		<Requirement>WK/KL/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -294,7 +351,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Unterrichten</Name>
+		<ID>skl_unterrichten</ID>
+		<Name_ger>Unterrichten</Name_ger>
+		<Name_eng>Unterrichten</Name_eng>
 		<Requirement>KL/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -304,7 +363,8 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name></Name>
+		<Name_ger> </Name_ger>
+		<Name_eng> </Name_eng>
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
@@ -317,7 +377,9 @@
 	
 <!-- Naturtalente -->	
 	<Skills>
-		<Name>Tierkunde</Name>
+		<ID>skl_tierkunde</ID>
+		<Name_ger>Tierkunde</Name_ger>
+		<Name_eng>Tierkunde</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -327,7 +389,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Plfanzenkunde</Name>
+		<ID>skl_plfanzenkunde</ID>
+		<Name_ger>Plfanzenkunde</Name_ger>
+		<Name_eng>Plfanzenkunde</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -337,7 +401,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Fährtensuchen</Name>
+		<ID>skl_faehrtensuchen</ID>
+		<Name_ger>Fährtensuchen</Name_ger>
+		<Name_eng>Fährtensuchen</Name_eng>
 		<Requirement>WA/WA/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -347,7 +413,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Orientierung</Name>
+		<ID>skl_orientierung</ID>
+		<Name_ger>Orientierung</Name_ger>
+		<Name_eng>Orientierung</Name_eng>
 		<Requirement>WA/IN/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -357,7 +425,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Wettervorhersagen</Name>
+		<ID>skl_wettervorhersagen</ID>
+		<Name_ger>Wettervorhersagen</Name_ger>
+		<Name_eng>Wettervorhersagen</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -367,7 +437,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Fesseln</Name>
+		<ID>skl_fesseln</ID>
+		<Name_ger>Fesseln</Name_ger>
+		<Name_eng>Fesseln</Name_eng>
 		<Requirement>FF/FF/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -377,7 +449,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Fallenstellen</Name>
+		<ID>skl_fallenstellen</ID>
+		<Name_ger>Fallenstellen</Name_ger>
+		<Name_eng>Fallenstellen</Name_eng>
 		<Requirement>WA/FF/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -387,7 +461,9 @@
 		<Grouping>Left</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Fischen u. Angeln</Name>
+		<ID>skl_fischenuangeln</ID>
+		<Name_ger>Fischen u. Angeln</Name_ger>
+		<Name_eng>Fischen u. Angeln</Name_eng>
 		<Requirement>WA/IN/KO</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -396,7 +472,8 @@
 		<Category>Naturtalente</Category>
 		<Grouping>Left</Grouping>
 	<Skills>
-		<Name></Name>
+		<Name_ger> </Name_ger>
+		<Name_eng> </Name_eng>
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
@@ -410,7 +487,9 @@
 <!-- Wissenstalente -->		
 	</Skills>
 	<Skills>
-		<Name>Brett u. Glücksspiel</Name>
+		<ID>skl_brettugluecksspiel</ID>
+		<Name_ger>Brett u. Glücksspiel</Name_ger>
+		<Name_eng>Brett u. Glücksspiel</Name_eng>
 		<Requirement>KL/IN/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -420,7 +499,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Geschichtswissen</Name>
+		<ID>skl_geschichtswissen</ID>
+		<Name_ger>Geschichtswissen</Name_ger>
+		<Name_eng>Geschichtswissen</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -430,7 +511,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Götter u. Kulte</Name>
+		<ID>skl_goetterukulte</ID>
+		<Name_ger>Götter u. Kulte</Name_ger>
+		<Name_eng>Götter u. Kulte</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -440,7 +523,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Sagen u. Legenden</Name>
+		<ID>skl_sagenulegenden</ID>
+		<Name_ger>Sagen u. Legenden</Name_ger>
+		<Name_eng>Sagen u. Legenden</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -450,7 +535,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Rechtskunde</Name>
+		<ID>skl_rechtskunde</ID>
+		<Name_ger>Rechtskunde</Name_ger>
+		<Name_eng>Rechtskunde</Name_eng>
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -460,7 +547,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Staatskunst</Name>
+		<ID>skl_staatskunst</ID>
+		<Name_ger>Staatskunst</Name_ger>
+		<Name_eng>Staatskunst</Name_eng>
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -470,7 +559,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Magiekunde</Name>
+		<ID>skl_magiekunde</ID>
+		<Name_ger>Magiekunde</Name_ger>
+		<Name_eng>Magiekunde</Name_eng>
 		<Requirement>WK/KL/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -480,7 +571,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Kriegskunst</Name>
+		<ID>skl_kriegskunst</ID>
+		<Name_ger>Kriegskunst</Name_ger>
+		<Name_eng>Kriegskunst</Name_eng>
 		<Requirement>WK/WK/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -490,7 +583,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Rechnen</Name>
+		<ID>skl_rechnen</ID>
+		<Name_ger>Rechnen</Name_ger>
+		<Name_eng>Rechnen</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -500,7 +595,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Sternkunde</Name>
+		<ID>skl_sternkunde</ID>
+		<Name_ger>Sternkunde</Name_ger>
+		<Name_eng>Sternkunde</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -510,7 +607,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Geografie</Name>
+		<ID>skl_geografie</ID>
+		<Name_ger>Geografie</Name_ger>
+		<Name_eng>Geografie</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -520,7 +619,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Geologie</Name>
+		<ID>skl_geologie</ID>
+		<Name_ger>Geologie</Name_ger>
+		<Name_eng>Geologie</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -530,7 +631,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Mechanik</Name>
+		<ID>skl_mechanik</ID>
+		<Name_ger>Mechanik</Name_ger>
+		<Name_eng>Mechanik</Name_eng>
 		<Requirement>WA/KL/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -540,7 +643,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Expertise</Name>
+		<ID>skl_expertise</ID>
+		<Name_ger>Expertise</Name_ger>
+		<Name_eng>Expertise</Name_eng>
 		<Requirement>WA/IN/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -550,7 +655,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Anatomie</Name>
+		<ID>skl_anatomie</ID>
+		<Name_ger>Anatomie</Name_ger>
+		<Name_eng>Anatomie</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>´B</Difficulty>
@@ -560,7 +667,9 @@
 		<Grouping>Right</Grouping>
 	</Skills>
 	<Skills>
-		<Name>Kartografie</Name>
+		<ID>skl_kartografie</ID>
+		<Name_ger>Kartografie</Name_ger>
+		<Name_eng>Kartografie</Name_eng>
 		<Requirement>WA/Kl/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -570,7 +679,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Kryptografie</Name>
+		<ID>skl_kryptografie</ID>
+		<Name_ger>Kryptografie</Name_ger>
+		<Name_eng>Kryptografie</Name_eng>
 		<Requirement>KL/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -580,7 +691,8 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name></Name>
+		<Name_ger> </Name_ger>
+		<Name_eng> </Name_eng>
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>
@@ -593,7 +705,9 @@
 	
 <!-- Handwerkstalente  -->	
 	<Skills>
-		<Name>Alchemie</Name>
+		<ID>skl_alchemie</ID>
+		<Name_ger>Alchemie</Name_ger>
+		<Name_eng>Alchemie</Name_eng>
 		<Requirement>KL/Kl/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -603,7 +717,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Agrarwirtschaft</Name>
+		<ID>skl_agrarwirtschaft</ID>
+		<Name_ger>Agrarwirtschaft</Name_ger>
+		<Name_eng>Agrarwirtschaft</Name_eng>
 		<Requirement>WK/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -613,7 +729,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Brauerei</Name>
+		<ID>skl_brauerei</ID>
+		<Name_ger>Brauerei</Name_ger>
+		<Name_eng>Brauerei</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -623,7 +741,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Bergbau</Name>
+		<ID>skl_bergbau</ID>
+		<Name_ger>Bergbau</Name_ger>
+		<Name_eng>Bergbau</Name_eng>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -633,7 +753,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Handel</Name>
+		<ID>skl_handel</ID>
+		<Name_ger>Handel</Name_ger>
+		<Name_eng>Handel</Name_eng>
 		<Requirement>WK/KL/CH</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -643,7 +765,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Heilkunde: Körper</Name>
+		<ID>skl_heilkundekoerper</ID>
+		<Name_ger>Heilkunde: Körper</Name_ger>
+		<Name_eng>Heilkunde: Körper</Name_eng>
 		<Requirement>KL/IN/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -653,7 +777,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Heikunde: Seele</Name>
+		<ID>skl_heikundeseele</ID>
+		<Name_ger>Heilkunde: Seele</Name_ger>
+		<Name_eng>Heilkunde: Seele</Name_eng>
 		<Requirement>WK/KL/KL</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -663,7 +789,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Heikunde: Wunden</Name>
+		<ID>skl_heikundewunden</ID>
+		<Name_ger>Heilkunde: Wunden</Name_ger>
+		<Name_eng>Heilkunde: Wunden</Name_eng>
 		<Requirement>WA/KL/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -673,7 +801,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Holzbearbeitung</Name>
+		<ID>skl_holzbearbeitung</ID>
+		<Name_ger>Holzbearbeitung</Name_ger>
+		<Name_eng>Holzbearbeitung</Name_eng>
 		<Requirement>FF/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -683,7 +813,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Kochen</Name>
+		<ID>skl_kochen</ID>
+		<Name_ger>Kochen</Name_ger>
+		<Name_eng>Kochen</Name_eng>
 		<Requirement>IN/FF/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -693,7 +825,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Lederbearbeitung</Name>
+		<ID>skl_lederbearbeitung</ID>
+		<Name_ger>Lederbearbeitung</Name_ger>
+		<Name_eng>Lederbearbeitung</Name_eng>
 		<Requirement>WK/IN/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -703,7 +837,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Male u. Zeichnen</Name>
+		<ID>skl_malenuzeichnen</ID>
+		<Name_ger>Malen u. Zeichnen</Name_ger>
+		<Name_eng>Malen u. Zeichnen</Name_eng>
 		<Requirement>IN/FF/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -713,7 +849,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Musizieren</Name>
+		<ID>skl_musizieren</ID>
+		<Name_ger>Musizieren</Name_ger>
+		<Name_eng>Musizieren</Name_eng>
 		<Requirement>WK/CH/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -723,7 +861,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Schmiedekunst</Name>
+		<ID>skl_schmiedekunst</ID>
+		<Name_ger>Schmiedekunst</Name_ger>
+		<Name_eng>Schmiedekunst</Name_eng>
 		<Requirement>IN/KO/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -733,7 +873,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Schlossknacken</Name>
+		<ID>skl_schlossknacken</ID>
+		<Name_ger>Schlossknacken</Name_ger>
+		<Name_eng>Schlossknacken</Name_eng>
 		<Requirement>WK/FF/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -743,7 +885,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Seefahrt</Name>
+		<ID>skl_seefahrt</ID>
+		<Name_ger>Seefahrt</Name_ger>
+		<Name_eng>Seefahrt</Name_eng>
 		<Requirement>WA/KL/IN</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -753,7 +897,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Steinmetzkunst</Name>
+		<ID>skl_steinmetzkunst</ID>
+		<Name_ger>Steinmetzkunst</Name_ger>
+		<Name_eng>Steinmetzkunst</Name_eng>
 		<Requirement>FF/GE/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>C</Difficulty>
@@ -763,7 +909,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Stoffbearbeitung</Name>
+		<ID>skl_stoffbearbeitung</ID>
+		<Name_ger>Stoffbearbeitung</Name_ger>
+		<Name_eng>Stoffbearbeitung</Name_eng>
 		<Requirement>FF/FF/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -773,7 +921,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Baukunst</Name>
+		<ID>skl_baukunst</ID>
+		<Name_ger>Baukunst</Name_ger>
+		<Name_eng>Baukunst</Name_eng>
 		<Requirement>WK/GE/KO</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -783,7 +933,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Büchsenmacherei</Name>
+		<ID>skl_buechsenmacherei</ID>
+		<Name_ger>Büchsenmacherei</Name_ger>
+		<Name_eng>Büchsenmacherei</Name_eng>
 		<Requirement>WK/FF/FF</Requirement>
 		<Value>0</Value>
 		<Difficulty>D</Difficulty>
@@ -793,7 +945,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Töpfern</Name>
+		<ID>skl_toepfern</ID>
+		<Name_ger>Töpfern</Name_ger>
+		<Name_eng>Töpfern</Name_eng>
 		<Requirement>FF/FF/GE</Requirement>
 		<Value>0</Value>
 		<Difficulty>A</Difficulty>
@@ -803,7 +957,9 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name>Bogenbau</Name>
+		<ID>skl_bogenbau</ID>
+		<Name_ger>Bogenbau</Name_ger>
+		<Name_eng>Bogenbau</Name_eng>
 		<Requirement>FF/FF/ST</Requirement>
 		<Value>0</Value>
 		<Difficulty>B</Difficulty>
@@ -813,7 +969,8 @@
 		<Grouping>Right</Grouping>
 	</Skills> 
 	<Skills>
-		<Name></Name>
+		<Name_ger> </Name_ger>
+		<Name_eng> </Name_eng>
 		<Requirement></Requirement>
 		<Value></Value>
 		<Difficulty></Difficulty>

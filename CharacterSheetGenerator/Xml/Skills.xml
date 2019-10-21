@@ -26,7 +26,7 @@
 	</Skills>
 	<Skills>
 		<ID>skl_schwmimmen</ID>
-		<Name_ger>Schwmimmen</Name_ger>
+		<Name_ger>Schwimmen</Name_ger>
 		<Name_eng>Swimming</Name_eng>
 		<Requirement>KO/KO/ST</Requirement>
 		<Value>0</Value>

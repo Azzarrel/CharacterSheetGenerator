@@ -28,4 +28,11 @@ namespace CharacterSheetGenerator.Helpers
 
         }
     }
+
+    public class SaveDataAttribute : Attribute
+    {
+        public SaveDataAttribute()
+        {
+        }
+    }
 }

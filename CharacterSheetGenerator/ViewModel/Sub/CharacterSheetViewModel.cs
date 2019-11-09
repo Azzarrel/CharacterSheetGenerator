@@ -369,7 +369,7 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach (StatusValueModel stv in StatusValues)
             {
-                xp = xp + stv.Bonus * 5;
+                xp = xp + stv.Level * 5;
             }
             ExpStatusValues = xp;
         }
@@ -379,11 +379,11 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach(SkillModel skill in SkillsLeft)
             {
-                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Deployability);
+                xp = xp + skill.Level.GetValueOrDefault() * GetExpSkillModifier(skill.Deployability);
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                xp = xp + skill.Bonus.GetValueOrDefault() * GetExpSkillModifier(skill.Deployability);
+                xp = xp + skill.Level.GetValueOrDefault() * GetExpSkillModifier(skill.Deployability);
             }
             ExpSkills = xp;
         }
@@ -416,11 +416,11 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach(WeaponModel weapon in Weapons)
             {
-                for (int i = 0; i < weapon.AttackBonus; i++)
+                for (int i = 0; i < weapon.AttackLevel; i++)
                 {
                     xp = xp + i;
                 }
-                xp = xp + weapon.AttackBonus;
+                xp = xp + weapon.AttackLevel;
                 for (int i = 0; i < weapon.BlockBonus; i++)
                 {
                     xp = xp + i;
@@ -435,7 +435,7 @@ namespace CharacterSheetGenerator
             double xp = 0;
             foreach(SpellModel spell in Spells)
             {
-                xp = xp + spell.Value == null ? 0 : (double)spell.Value * 5;
+                xp = xp + spell.Level == null ? 0 : (double)spell.Level * 5;
             }
             ExpSpells = xp;
         }
@@ -516,6 +516,54 @@ namespace CharacterSheetGenerator
         #endregion Loading
 
         #region Saving
+
+        private void TestSave<T>(List<T> list)
+        {
+            XmlWriter writer = null;
+
+            try
+            {
+
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                writer = XmlWriter.Create(m_Document, settings);
+
+                writer.WriteStartElement(nameof(list));
+
+                var properties = typeof(T).GetProperties();
+                foreach (T entity in list)
+                {
+                    writer.WriteStartElement(nameof(entity));
+                    object[] values = new object[properties.Length];
+                    bool isSlimFormat = false;
+                    // Für Charaktere muss bei vielen Listen nur wenig gespeichert werden (z.B bei Skills nur ID und Level)
+                    foreach (var prop in properties.Where(p => p.CustomAttributes.Any(a => a.GetType() == typeof(SaveDataAttribute))))
+                    {
+                        string element = ((ColumnNameAttribute)prop.GetCustomAttributes(false).FirstOrDefault(a => a.GetType() == typeof(ColumnNameAttribute)))?.Name ?? nameof(prop);
+                        
+
+                        writer.WriteStartElement(element);
+                        writer.WriteString(prop.GetValue(entity).ToString());
+                        writer.WriteEndElement();
+                        isSlimFormat = true;
+                    }
+                    writer.WriteEndElement();
+                    //Bei manchen Liste muss alles gespeichert werden (z.B. Nahkampfwaffen)
+                    if (isSlimFormat == false)
+                    {
+
+                    }
+                    
+                }
+                writer.WriteEndElement();
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+            }
+
+        }
 
         private void SaveAttributes()
         {
@@ -707,7 +755,7 @@ namespace CharacterSheetGenerator
         {
             foreach (StatusValueModel stv in StatusValues)
             {
-                Data.Tables["StatusValues"].Rows.Add(stv.Name, stv.Base, stv.Bonus, stv.Key);
+                Data.Tables["StatusValues"].Rows.Add(stv.Name, stv.Base, stv.Level, stv.Key);
             }
 
             foreach (DataRow row in tblAttributeLink.Rows)
@@ -737,13 +785,13 @@ namespace CharacterSheetGenerator
                     CalculateStatusValues(attributes, stv);
                     break;
                 case "Standard":
-                    stv.Value = Math.Round(stv.Standard + stv.Modifiers + stv.Bonus, 0);
+                    stv.Value = Math.Round(stv.Standard + stv.Modifiers + stv.Level, 0);
                     break;
                 case "Modifiers":
-                    stv.Value = Math.Round(stv.Standard + stv.Modifiers + stv.Bonus, 0);
+                    stv.Value = Math.Round(stv.Standard + stv.Modifiers + stv.Level, 0);
                     break;
                 case "Bonus":
-                    stv.Value = Math.Round(stv.Standard + stv.Modifiers + stv.Bonus, 0);
+                    stv.Value = Math.Round(stv.Standard + stv.Modifiers + stv.Level, 0);
                     break;
                 case "Value":
                     //Aus Platzgründen werden alle Statuswerte auf einigen Seiten wie Attribute dargestellt. Dafür gibt es 'spezielle' Attribute, 
@@ -862,11 +910,11 @@ namespace CharacterSheetGenerator
 
             foreach (SkillModel skill in SkillsLeft)
             {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Deployability, skill.Comment, skill.Category, skill.Grouping);
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Level, skill.Difficulty, skill.Deployability, skill.Comment, skill.Category, skill.Grouping);
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Bonus, skill.Difficulty, skill.Deployability, skill.Comment, skill.Category, skill.Grouping);
+                Data.Tables["Skills"].Rows.Add(skill.Name, skill.Requirement, skill.Level, skill.Difficulty, skill.Deployability, skill.Comment, skill.Category, skill.Grouping);
             }
         }
 
@@ -878,11 +926,11 @@ namespace CharacterSheetGenerator
         {
             foreach(SkillModel skill in SkillsLeft)
             {
-                skill.Value = skill.Base + (skill.Bonus ?? 0) + skill.Modifiers;
+                skill.Value = skill.Base + (skill.Level ?? 0) + skill.Modifiers;
             }
             foreach (SkillModel skill in SkillsRight)
             {
-                skill.Value = skill.Base + (skill.Bonus ?? 0) + skill.Modifiers;
+                skill.Value = skill.Base + (skill.Level ?? 0) + skill.Modifiers;
             }
         }
 
@@ -936,20 +984,20 @@ namespace CharacterSheetGenerator
                         var v = skl.Value - skl.Modifiers - skl.Base;
                         if(v < 0)
                         {
-                            skl.Bonus = 0;
-                            skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
+                            skl.Level = 0;
+                            skl.Value = skl.Base + skl.Modifiers + skl.Level;
                         }
                         else
                         {
-                            skl.Bonus = v;
+                            skl.Level = v;
                         }
                     }
                     break;
                 case "Modifiers":
-                    skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
+                    skl.Value = skl.Base + skl.Modifiers + skl.Level;
                     break;
                 case "Base":
-                    skl.Value = skl.Base + skl.Modifiers + skl.Bonus;
+                    skl.Value = skl.Base + skl.Modifiers + skl.Level;
                     break;
                 default:
                     break;
@@ -1077,7 +1125,7 @@ namespace CharacterSheetGenerator
         {
             foreach (WeaponModel weapon in Weapons)
             {
-                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.Mode, weapon.AttackBase, weapon.BlockBase, weapon.AttackBonus, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Reload, weapon.Range);
+                Data.Tables["Weapons"].Rows.Add(weapon.Name, weapon.AttributeLink, weapon.Mode, weapon.AttackBase, weapon.BlockBase, weapon.AttackLevel, weapon.BlockBonus, weapon.Stamina, weapon.Initiative, weapon.Damage, weapon.Impulse, weapon.ArmorPenetration, weapon.Reload, weapon.Range);
             }
             foreach(WeaponSelectModel ws in SelectedWeapons)
             {
@@ -1103,19 +1151,19 @@ namespace CharacterSheetGenerator
             switch (e.PropertyName)
             {                
                 case "AttackTotal":
-                    weapon.AttackBonus = weapon.AttackTotal - weapon.AttackModifier - weapon.AttackStandard;
+                    weapon.AttackLevel = weapon.AttackTotal - weapon.AttackModifier - weapon.AttackStandard;
                     break;
                 case "AttackModifier":
-                    weapon.AttackTotal = weapon.AttackStandard + weapon.AttackModifier + weapon.AttackBonus;
+                    weapon.AttackTotal = weapon.AttackStandard + weapon.AttackModifier + weapon.AttackLevel;
                     break;
                 case "BlockTotal":
                     if (weapon.Mode != "Ranged")
-                        weapon.BlockBonus = weapon.BlockTotal - weapon.BlockModifier - weapon.BlockStandard;
+                        weapon.BlockBonus = weapon.BlockTotal - weapon.BlockLevel - weapon.BlockStandard;
                     else if(weapon.BlockTotal != 0)
                         weapon.BlockTotal = 0;
                     break;
                 case "BlockModifier":
-                    weapon.BlockTotal = weapon.BlockStandard + weapon.BlockModifier + weapon.BlockBonus;
+                    weapon.BlockTotal = weapon.BlockStandard + weapon.BlockLevel + weapon.BlockBonus;
                     break;
                 default:
                     break;
@@ -1199,12 +1247,12 @@ namespace CharacterSheetGenerator
                 standardValues += Attributes.Where(x => x.Tag == s).FirstOrDefault().Value;
             }
             weapon.AttackStandard = Math.Round((standardValues / 2 / attributes.Length) + weapon.AttackBase, 0);
-            weapon.AttackTotal = weapon.AttackStandard + weapon.AttackBonus + weapon.AttackModifier;
+            weapon.AttackTotal = weapon.AttackStandard + weapon.AttackLevel + weapon.AttackModifier;
 
             if (weapon.Mode != "Ranged")
             {
                 weapon.BlockStandard = Math.Round((standardValues / 2 / attributes.Length) + +weapon.BlockBase, 0);
-                weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockModifier;
+                weapon.BlockTotal = weapon.BlockStandard + weapon.BlockBonus + weapon.BlockLevel;
             }
             else
                 weapon.BlockTotal = 0;
@@ -1516,7 +1564,7 @@ namespace CharacterSheetGenerator
             foreach (WeaponModel weapon in Weapons)
             {
                 weapon.AttackModifier = 0;
-                weapon.BlockModifier = 0;
+                weapon.BlockLevel = 0;
                 foreach (TraitModifierModel mod in Modifiers.Where(m => m.NameLink == weapon.Name))
                 {
                     if(mod.TypeLink == "Angriff")
@@ -1525,7 +1573,7 @@ namespace CharacterSheetGenerator
                     }
                     if (mod.TypeLink == "Parieren")
                     {
-                        weapon.BlockModifier = weapon.BlockModifier + mod.Value;
+                        weapon.BlockLevel = weapon.BlockLevel + mod.Value;
                     }
                 }
             }
@@ -1608,7 +1656,7 @@ namespace CharacterSheetGenerator
         {
             foreach (SpellModel spell in Spells)
             {
-                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Weapons?.Name ?? "", spell.Requirement, spell.Value, spell.Description, spell.Mana, spell.Ticks);
+                Data.Tables["Spells"].Rows.Add(spell.Name, spell.Weapons?.Name ?? "", spell.Requirement, spell.Level, spell.Description, spell.Mana, spell.Ticks);
             }
         }
 
@@ -1616,7 +1664,7 @@ namespace CharacterSheetGenerator
         {
             foreach (RitualModel ritual in Rituals)
             {
-                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Time, ritual.Requirement, ritual.Value, ritual.Duration, ritual.Description);
+                Data.Tables["Rituals"].Rows.Add(ritual.Name, ritual.Time, ritual.Requirement, ritual.Level, ritual.Duration, ritual.Description);
             }
         }
 

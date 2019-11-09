@@ -11,13 +11,19 @@ namespace CharacterSheetGenerator.Model
 {
     public class SkillModel : TemplateModel
     {
+        [ColumnName("ID")]
+        public string Identifier
+        {
+            get { return Get<string>(); }
+            set { Set(value); }
+        }
+
         [LangColumnName("Name_ger", "Name_ger")]
         public string Name
         {
             get { return Get<string>(); }
             set { Set(value); }
         }
-
 
         public double Modifiers
         {
@@ -46,7 +52,7 @@ namespace CharacterSheetGenerator.Model
         }
 
         [ColumnName("Value")]
-        public double? Bonus
+        public double? Level
         {
             get { return Get<double?>(); }
             set
@@ -55,7 +61,6 @@ namespace CharacterSheetGenerator.Model
                 SetRoutine(value);
             }
         }
-
         public double? Value
         {
             get { return Get<double?>(); }
@@ -71,7 +76,6 @@ namespace CharacterSheetGenerator.Model
             get { return Get<string>(); }
             set { Set(value); }
         }
-
 
         [ColumnName("Difficulty")]
         public string Difficulty
@@ -141,7 +145,7 @@ namespace CharacterSheetGenerator.Model
         }
         public void SetToolTip(double? value)
         {
-            ToolTip = "Gesamt: " + Value + "\n" + "Grundwert: " + Base + "\n" + "Modifier: " + Modifiers + "\n" + "Steigerung: " + Bonus;
+            ToolTip = "Gesamt: " + Value + "\n" + "Grundwert: " + Base + "\n" + "Modifier: " + Modifiers + "\n" + "Steigerung: " + Level;
         }
     }
 

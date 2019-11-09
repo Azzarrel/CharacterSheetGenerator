@@ -28,11 +28,11 @@ namespace CharacterSheetGenerator.Model.CombatSheet
                 m_Weapon = value;
                 OnPropertyChanged("AttackBase");
                 OnPropertyChanged("AttackStandard");
-                OnPropertyChanged("AttackBonus");
+                OnPropertyChanged("AttackLevel");
                 OnPropertyChanged("AttackTotal");
                 OnPropertyChanged("BlockBase");
                 OnPropertyChanged("BlockStandard");
-                OnPropertyChanged("BlockBonus");
+                OnPropertyChanged("BlockLevel");
                 OnPropertyChanged("BlockTotal");
                 OnPropertyChanged("Weapon");
                 OnPropertyChanged("Position");
@@ -81,15 +81,15 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             }
         }
 
-        public double AttackBonus
+        public double AttackLevel
         {
             get
             {
-                return m_Weapon?.AttackBonus ?? 0;
+                return m_Weapon?.AttackLevel ?? 0;
             }
             set
             {
-                m_Weapon.AttackBonus = value;
+                m_Weapon.AttackLevel = value;
             }
         }
 
@@ -129,7 +129,7 @@ namespace CharacterSheetGenerator.Model.CombatSheet
             }
         }
 
-        public double BlockBonus
+        public double BlockLevel
         {
             get
             {

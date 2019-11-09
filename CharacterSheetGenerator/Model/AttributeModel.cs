@@ -20,13 +20,11 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-
         public double Value
         {
             get { return Get<double>(); }
             set { Set(value); }
         }
-
 
         public double Modifiers
         {
@@ -54,7 +52,6 @@ namespace CharacterSheetGenerator.Model
             get { return Get<string>(); }
             set { Set(value); }
         }
-
         
         public bool Special
         {

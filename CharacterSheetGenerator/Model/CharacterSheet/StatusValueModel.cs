@@ -51,8 +51,8 @@ namespace CharacterSheetGenerator.Model
             set { Set(value); }
         }
 
-        [ColumnName("Bonus")]
-        public double Bonus
+        [ColumnName("Value")]
+        public double Level
         {
             get { return Get<double>(); }
             set { Set(value); }

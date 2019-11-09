@@ -35,7 +35,7 @@ namespace CharacterSheetGenerator.Model
         }
 
         [ColumnName("Value")]
-        public int? Value
+        public int? Level
         {
             get { return Get<int?>(); }
             set { Set(value); }

@@ -224,17 +224,14 @@ namespace CharacterSheetGenerator.Helpers
             {
                 foreach (var attribute in property.GetCustomAttributes(false))
                 {
-
                     if (attribute.GetType() == typeof(ColumnNameAttribute))
                     {
-
                         dataTable.Columns.Add(new DataColumn(((ColumnNameAttribute)attribute).Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType));
                         //ToDO: Erweitern und testen
                         if (property.GetType() == typeof(WeaponModel))
                         {
                             //Bei Waffen wird der Name gespeichert, deswegen string
                             dataTable.Columns.Add(new DataColumn(((ColumnNameAttribute)attribute).Name, typeof(string)) );
-
                         }
                         //else if ()
                         //{
@@ -247,13 +244,11 @@ namespace CharacterSheetGenerator.Helpers
                             dataTable.Columns.Add(new DataColumn(((ColumnNameAttribute)attribute).Name, Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType));
                         }
                     }
-
                 }
             }
             foreach (T entity in list)
             {
                 object[] values = new object[properties.Length];
-
                 for (int i = 0; i < properties.Length; i++)
                 {
                     if (properties[i].GetType() == typeof(WeaponModel))
@@ -261,7 +256,6 @@ namespace CharacterSheetGenerator.Helpers
                         //Bei Waffen wird der Name gespeichert, deswegen string
                         WeaponModel m = properties[i].GetValue(entity) as WeaponModel;
                         values[i] = m.Name;
-
                     }
                     //else if ()
                     //{
@@ -274,17 +268,10 @@ namespace CharacterSheetGenerator.Helpers
                         values[i] = properties[i].GetValue(entity);
                     }
                     values[i] = properties[i].GetValue(entity);
-
                 }
-
                 dataTable.Rows.Add(values);
-
             }
-
-
-
             return dataTable;
         }
-
     }
 }

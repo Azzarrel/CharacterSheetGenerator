@@ -45,8 +45,8 @@ namespace CharacterSheetGenerator.Model.CombatSheet
         }
 
 
-        [ColumnName("AttackBonus")]
-        public double AttackBonus
+        [ColumnName("AttackValue")]
+        public double AttackLevel
         {
             get { return Get<double>(); }
             set { Set(value); }
@@ -71,8 +71,8 @@ namespace CharacterSheetGenerator.Model.CombatSheet
         }
 
 
-        [ColumnName("BlockModifier")]
-        public double BlockModifier
+        [ColumnName("BlockValue")]
+        public double BlockLevel
         {
             get { return Get<double>(); }
             set { Set(value); }

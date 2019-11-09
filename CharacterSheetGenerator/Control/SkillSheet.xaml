@@ -139,7 +139,9 @@
                                             <Border BorderBrush="Black" BorderThickness="0,0,0,0.45">
                                                 <StackPanel Orientation="Horizontal" Height="25">
                                                     <TextBlock Width="5"/>
-                                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
+                                                    <Image Width="21"/>
+                                                    <TextBlock Width="5"/>
+                                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="184.25"/>
                                                     <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
                                                     <TextBlock Width="40"/>
                                                     <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
@@ -152,7 +154,14 @@
                                 </GroupStyle>
                             </DataGrid.GroupStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn  Header="Name"              Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"             CellStyle="{StaticResource ItemNameCellStyle}"               IsReadOnly="True"  />
+                                <DataGridTemplateColumn  Header=""              HeaderStyle="{StaticResource IconHeaderStyle}"                CellStyle="{StaticResource IconCellStyle}"              IsReadOnly="True"  >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding Icon, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn  Header="Name"              Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyleWithIcon}"     CellStyle="{StaticResource ItemNameCellStyleWithIcon}"       IsReadOnly="True"  />
                                 <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"       CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
                                 <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"     CellStyle="{StaticResource SkillCellStyle}"/>
                                 <DataGridTextColumn  Header="M."                Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource NumericValueHeaderStyleGray}" CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
@@ -171,7 +180,9 @@
                                             <Border BorderBrush="Black" BorderThickness="0,0,0,0.45">
                                                 <StackPanel Orientation="Horizontal" Height="25">
                                                     <TextBlock Width="5"/>
-                                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="210.25"/>
+                                                    <Image Width="21"/>
+                                                    <TextBlock Width="5"/>
+                                                    <TextBlock Text="{Binding Path=Name}" Style="{StaticResource CategoryTextBlockSyle}" VerticalAlignment="Center" Width="184.25"/>
                                                     <TextBlock Width="70" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
                                                     <TextBlock Width="40"/>
                                                     <TextBlock Width="40" Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=CellColor, Mode=TwoWay}"/>
@@ -184,7 +195,14 @@
                                 </GroupStyle>
                             </DataGrid.GroupStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn  Header="Name"              Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyle}"                CellStyle="{StaticResource ItemNameCellStyle}"              IsReadOnly="True"  />
+                                <DataGridTemplateColumn  Header=""              HeaderStyle="{StaticResource IconHeaderStyle}"                CellStyle="{StaticResource IconCellStyle}"              IsReadOnly="True"  >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding Icon, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn  Header="Name"              Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource ItemHeaderStyleWithIcon}"       CellStyle="{StaticResource ItemNameCellStyleWithIcon}"       IsReadOnly="True"  />
                                 <DataGridTextColumn  Header="Probe"             Binding="{Binding Requirement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HeaderStyle="{StaticResource HeaderStyleSkillCheck}"         CellStyle="{StaticResource SkillCheckGridCellStyle}"         IsReadOnly="True" />
                                 <DataGridTextColumn  Header="Fw."               Binding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       HeaderStyle="{StaticResource NumericValueHeaderStyle}"       CellStyle="{StaticResource SkillCellStyle}"/>
                                 <DataGridTextColumn  Header="M."                Binding="{Binding Mean, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"        HeaderStyle="{StaticResource NumericValueHeaderStyleGray}"   CellStyle="{StaticResource TextBoxTemplateCellStyleGray}"/>
